@@ -18,6 +18,7 @@
 // includes
 // Eigen
 #include <Eigen/Core>
+#include <Eigen/Geometry>
 
 // SpaceVecAlg
 #include "EigenTypedef.h"
@@ -37,8 +38,32 @@ public:
 		r_()
 	{}
 
-	PTransform(Matrix3d rot, Vector3d trans):
+	PTransform(const Matrix3d& rot, const Vector3d& trans):
 		E_(rot),
+		r_(trans)
+	{}
+
+	PTransform(const Quaterniond& rot, const Vector3d& trans):
+		E_(),
+		r_(trans)
+	{
+		E_ = rot.toRotationMatrix();
+	}
+
+	PTransform(const Quaterniond& rot):
+		E_(),
+		r_(Vector3d::Zero())
+	{
+		E_ = rot.toRotationMatrix();
+	}
+
+	PTransform(const Matrix3d& rot):
+		E_(rot),
+		r_(Vector3d::Zero())
+	{}
+
+	PTransform(const Vector3d& trans):
+		E_(Matrix3d::Identity()),
 		r_(trans)
 	{}
 

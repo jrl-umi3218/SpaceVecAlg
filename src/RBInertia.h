@@ -40,7 +40,7 @@ public:
 	RBInertia(double m, const Vector3d& h, const Matrix3d& I):
 		m_(m),
 		h_(h),
-		I_()
+		I_(Matrix3d::Zero())
 	{
 		I_.triangularView<Lower>() = I;
 	}
@@ -71,7 +71,7 @@ public:
 	Matrix3d inertia() const
 	{
 		Matrix3d I;
-		I.triangularView<Upper>() = I_;
+		I.triangularView<Upper>() = I_.transpose();
 		I.triangularView<StrictlyLower>() = I_;
 		return I;
 	}

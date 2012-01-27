@@ -28,7 +28,7 @@
 
 const double TOL = 0.00001;
 
-BOOST_AUTO_TEST_CASE(MotionVec)
+BOOST_AUTO_TEST_CASE(MotionVecTest)
 {
 	using namespace Eigen;
 	Vector3d w, v;
@@ -62,7 +62,7 @@ BOOST_AUTO_TEST_CASE(MotionVec)
 	BOOST_CHECK_EQUAL((vec + vec2).vector(), m + m2);
 }
 
-BOOST_AUTO_TEST_CASE(ForceVec)
+BOOST_AUTO_TEST_CASE(ForceVecTest)
 {
 	using namespace Eigen;
 	Vector3d n, f;
@@ -96,7 +96,7 @@ BOOST_AUTO_TEST_CASE(ForceVec)
 	BOOST_CHECK_EQUAL((vec + vec2).vector(), m + m2);
 }
 
-BOOST_AUTO_TEST_CASE(MotionVecLeftOperators)
+BOOST_AUTO_TEST_CASE(MotionVecLeftOperatorsTest)
 {
 	using namespace Eigen;
 	Vector3d w, v, n, f;

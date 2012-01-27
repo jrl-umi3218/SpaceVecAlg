@@ -37,9 +37,9 @@ public:
 	{}
 
 	ABInertia(const Matrix3d& M, const Matrix3d& H, const Matrix3d& I):
-		M_(),
+		M_(Matrix3d::Zero()),
 		H_(H),
-		I_()
+		I_(Matrix3d::Zero())
 	{
 		M_.triangularView<Lower>() = M;
 		I_.triangularView<Lower>() = I;
@@ -62,7 +62,7 @@ public:
 	Matrix3d massMatrix() const
 	{
 		Matrix3d M;
-		M.triangularView<Upper>() = M_;
+		M.triangularView<Upper>() = M_.transpose();
 		M.triangularView<StrictlyLower>() = M_;
 		return M;
 	}
@@ -80,7 +80,7 @@ public:
 	Matrix3d inertia() const
 	{
 		Matrix3d I;
-		I.triangularView<Upper>() = I_;
+		I.triangularView<Upper>() = I_.transpose();
 		I.triangularView<StrictlyLower>() = I_;
 		return I;
 	}

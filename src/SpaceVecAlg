@@ -15,37 +15,12 @@
 
 #pragma once
 
-// includes
-// Eigen
-#include <Eigen/Core>
-
-// SpaceVecAlg
 #include "EigenTypedef.h"
+#include "EigenUtility.h"
 
-namespace Eigen
-{
-
-inline Matrix3d vector3ToCrossMatrix(const Vector3d& vec)
-{
-	Matrix3d mat;
-	mat << 0.,-vec(2),vec(1),
-				 vec(2),0.,-vec(0),
-				 -vec(1),vec(0),0.;
-	return mat;
-}
-
-inline Matrix6d vector6ToCrossMatrix(const Vector6d& vec)
-{
-	Matrix6d mat;
-	Matrix3d c13 = vector3ToCrossMatrix(vec.head<3>());
-	mat << c13, Matrix3d::Zero(),
-				 vector3ToCrossMatrix(vec.tail<3>()), c13;
-	return mat;
-}
-
-inline Matrix6d vector6ToCrossDualMatrix(const Vector6d& vec)
-{
-	return -vector6ToCrossMatrix(vec).transpose();
-}
-
-} // namespace Eigen
+#include "MotionVec.h"
+#include "ForceVec.h"
+#include "RBInertia.h"
+#include "ABInertia.h"
+#include "PTransform.h"
+#include "Operators.h"

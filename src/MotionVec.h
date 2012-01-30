@@ -79,4 +79,4 @@ inline MotionVec operator*(double scalar, const MotionVec& mv)
 	return MotionVec(scalar * mv.mv_);
 }
 
-}
+} // namespace sva

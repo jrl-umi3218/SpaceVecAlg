@@ -22,10 +22,7 @@
 #include <boost/test/unit_test.hpp>
 
 // SpaceVecAlg
-#include <ABInertia.h>
-#include <MotionVec.h>
-#include <Operators.h>
-#include <RBInertia.h>
+#include <SpaceVecAlg>
 
 const double TOL = 0.00001;
 

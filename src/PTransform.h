@@ -120,4 +120,4 @@ private:
 	Vector3d r_;
 };
 
-}
+} // namespace sva

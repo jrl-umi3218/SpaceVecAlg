@@ -110,4 +110,4 @@ inline RBInertia operator*(double scalar, const RBInertia& rbI)
 	return RBInertia(scalar * rbI.m_, scalar * rbI.h_, I);
 }
 
-}
+} // namespace sva

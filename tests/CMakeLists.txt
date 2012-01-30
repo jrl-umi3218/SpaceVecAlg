@@ -10,13 +10,11 @@ include_directories(${EIGEN_INCLUDE_DIRS})
 include_directories("${PROJECT_SOURCE_DIR}/src")
 include_directories(${Boost_INCLUDE_DIRS})
 
-link_directories("${PROJECT_BINARY_DIR}/src")
-
 add_executable(VectorTest VectorTest.cpp)
-target_link_libraries(VectorTest ${Boost_LIBRARIES} -lSpaceVecAlg)
+target_link_libraries(VectorTest ${Boost_LIBRARIES})
 
 add_executable(InertiaTest InertiaTest.cpp)
-target_link_libraries(InertiaTest ${Boost_LIBRARIES} -lSpaceVecAlg)
+target_link_libraries(InertiaTest ${Boost_LIBRARIES})
 
 add_executable(PTransformTest PTransformTest.cpp)
-target_link_libraries(PTransformTest ${Boost_LIBRARIES} -lSpaceVecAlg)
+target_link_libraries(PTransformTest ${Boost_LIBRARIES})

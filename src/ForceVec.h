@@ -80,4 +80,4 @@ inline ForceVec operator*(double scalar, const ForceVec& fv)
 	return ForceVec(scalar * fv.fv_);
 }
 
-}
+} // namespace sva

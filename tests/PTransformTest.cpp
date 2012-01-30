@@ -23,12 +23,7 @@
 #include <boost/math/constants/constants.hpp>
 
 // SpaceVecAlg
-#include <ABInertia.h>
-#include <ForceVec.h>
-#include <MotionVec.h>
-#include <Operators.h>
-#include <PTransform.h>
-#include <RBInertia.h>
+#include <SpaceVecAlg>
 
 const double TOL = 0.00001;
 

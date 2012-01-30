@@ -1,6 +1,7 @@
-set(SOURCES Operators.cpp)
+set(SOURCES lib.cpp)
 set(HEADERS MotionVec.h ForceVec.h PTransform.h RBInertia.h
-						ABInertia.h EigenTypedef.h EigenUtility.h Operators.h)
+						ABInertia.h EigenTypedef.h EigenUtility.h Operators.h
+						SpaceVecAlg)
 
 find_path(EIGEN_INCLUDE_DIRS Eigen/Array
                              /usr/include/eigen3
@@ -8,4 +9,8 @@ find_path(EIGEN_INCLUDE_DIRS Eigen/Array
                              /opt/local/include/eigen3)
 
 include_directories(${EIGEN_INCLUDE_DIRS})
+
+# !!! SpaceVecAlg is an empty library !!!
+# !!! It aim to test header file and have an IDE integration !!!
+# !!! Don't link against it !!!
 add_library(SpaceVecAlg ${SOURCES} ${HEADERS})

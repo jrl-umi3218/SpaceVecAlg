@@ -118,4 +118,4 @@ inline ABInertia operator*(double scalar, const ABInertia& rbI)
 	return ABInertia(M, scalar*rbI.H_, I);
 }
 
-}
+} // namespace sva

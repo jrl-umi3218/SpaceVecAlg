@@ -34,8 +34,8 @@ class PTransform
 public:
 	// Constructor
 	PTransform():
-		E_(),
-		r_()
+		E_(Matrix3d::Identity()),
+		r_(Vector3d::Zero())
 	{}
 
 	PTransform(const Matrix3d& rot, const Vector3d& trans):
@@ -93,6 +93,14 @@ public:
 		Matrix6d m;
 		m << E_, Matrix3d::Zero(),
 				 -E_*vector3ToCrossMatrix(r_), E_;
+		return m;
+	}
+
+	Matrix6d dualMatrix() const
+	{
+		Matrix6d m;
+		m << E_, -E_*vector3ToCrossMatrix(r_),
+				 Matrix3d::Zero(), E_;
 		return m;
 	}
 

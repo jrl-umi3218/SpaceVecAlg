@@ -195,6 +195,8 @@ BOOST_AUTO_TEST_CASE(ABInertiaLeftOperatorsTest)
 	Matrix6d abRes6d = ab6d + rb6d;
 
 	BOOST_CHECK_SMALL((abRes6d - abRes.matrix()).array().abs().sum(), TOL);
+	BOOST_CHECK(isUpperNull(abRes.lowerTriangularMassMatrix()));
+	BOOST_CHECK(isUpperNull(abRes.lowerTriangularInertia()));
 
 	// ABInertia * MotionVec
 	ForceVec fVec = ab*mVec;

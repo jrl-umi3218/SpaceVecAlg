@@ -30,7 +30,7 @@ sva::MotionVec cross(const sva::MotionVec& mv1, const sva::MotionVec& mv2);
 sva::ForceVec crossDual(const sva::MotionVec& mv1, const sva::ForceVec& fv2);
 double dot(const sva::MotionVec& mv1, const sva::ForceVec& fv2);
 
-// sva::RBInerita Left
+// sva::RBInertia Left
 sva::ForceVec operator*(const sva::RBInertia& rbI, const sva::MotionVec& mv);
 
 // sva::ABInertia Left

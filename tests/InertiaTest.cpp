@@ -23,6 +23,7 @@
 
 // SpaceVecAlg
 #include <ABInertia.h>
+#include <MotionVec.h>
 #include <Operators.h>
 #include <RBInertia.h>
 
@@ -135,3 +136,70 @@ BOOST_AUTO_TEST_CASE(ABInertiaTest)
 	BOOST_CHECK_EQUAL(ab4.inertia(), 2.*I);
 	BOOST_CHECK(isUpperNull(ab4.lowerTriangularInertia()));
 }
+
+BOOST_AUTO_TEST_CASE(RBInertiaLeftOperatorsTest)
+{
+	using namespace Eigen;
+	using namespace sva;
+	double mass = 1.;
+	Matrix3d I;
+	I << 1., 2., 3.,
+			 2., 1., 4.,
+			 3., 4., 1.;
+	Vector3d h = Vector3d::Random()*100.;
+	RBInertia rb(mass, h, I);
+	Matrix6d rb6d = rb.matrix();
+
+	Vector3d w, v;
+	w = Vector3d::Random()*100.;
+	v = Vector3d::Random()*100.;
+	sva::MotionVec mVec(w, v);
+	Vector6d mVec6d = mVec.vector();
+
+	// RBInertia * MotionVec
+	ForceVec fVec = rb*mVec;
+	Vector6d fVec6d = rb6d*mVec6d;
+
+	BOOST_CHECK_SMALL((fVec6d - fVec.vector()).array().abs().sum(), TOL);
+}
+
+BOOST_AUTO_TEST_CASE(ABInertiaLeftOperatorsTest)
+{
+	using namespace Eigen;
+	using namespace sva;
+	Matrix3d M, H, I;
+	M << 1., 2., 3.,
+			 2., 1., 4.,
+			 3., 4., 1.;
+	H = Matrix3d::Random()*100.;
+	I << 1., 2., 3.,
+			 2., 1., 4.,
+			 3., 4., 1.;
+
+	ABInertia ab(M, H, I);
+	Matrix6d ab6d = ab.matrix();
+
+	double mass = 1.;
+	Vector3d h = Vector3d::Random()*100.;
+	RBInertia rb(mass, h, I);
+	Matrix6d rb6d = rb.matrix();
+
+	Vector3d w, v;
+	w = Vector3d::Random()*100.;
+	v = Vector3d::Random()*100.;
+	sva::MotionVec mVec(w, v);
+	Vector6d mVec6d = mVec.vector();
+
+	// ABInertia + RBInertia
+	ABInertia abRes = ab + rb;
+	Matrix6d abRes6d = ab6d + rb6d;
+
+	BOOST_CHECK_SMALL((abRes6d - abRes.matrix()).array().abs().sum(), TOL);
+
+	// ABInertia * MotionVec
+	ForceVec fVec = ab*mVec;
+	Vector6d fVec6d = ab6d*mVec6d;
+
+	BOOST_CHECK_SMALL((fVec6d - fVec.vector()).array().abs().sum(), TOL);
+}
+

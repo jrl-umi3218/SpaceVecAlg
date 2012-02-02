@@ -27,6 +27,10 @@ namespace sva
 
 using namespace Eigen;
 
+/**
+	* Spatial Force Vector compact representations.
+	* See Roy Featherstone «Rigid Body Dynamics Algorithms» page 247.
+	*/
 class ForceVec
 {
 public:
@@ -34,30 +38,39 @@ public:
 		fv_()
 	{}
 
+	/// @param vec Spatial force vector with couple in head and force in tail.
 	ForceVec(const Vector6d& vec):
 		fv_(vec)
 	{}
 
+	/**
+		* @param couple Couple.
+		* @param force Force.
+		*/
 	ForceVec(const Vector3d& couple, const Vector3d& force):
 		fv_((Vector6d() << couple, force).finished())
 	{}
 
 	// Accessor
+	/// @return Couple part (3 first parameters).
 	Vector3d couple() const
 	{
 		return fv_.head<3>();
 	}
 
+	/// @return Force part (3 last parameters).
 	Vector3d force() const
 	{
 		return fv_.tail<3>();
 	}
 
+	/// @return Non compact spatial force vector.
 	const Vector6d& vector() const
 	{
 		return fv_;
 	}
 
+	/// @return Non compact spatial force vector.
 	Vector6d& vector()
 	{
 		return fv_;

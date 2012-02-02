@@ -21,28 +21,42 @@ namespace sva
 {
 
 // sva::MotionVec Left
+/// @return v x v
 sva::MotionVec cross(const sva::MotionVec& mv1, const sva::MotionVec& mv2);
+/// @return v x* f
 sva::ForceVec crossDual(const sva::MotionVec& mv1, const sva::ForceVec& fv2);
+/// @return v.v
 double dot(const sva::MotionVec& mv1, const sva::ForceVec& fv2);
 
 // sva::RBInertia Left
+/// @return I*v
 sva::ForceVec operator*(const sva::RBInertia& rbI, const sva::MotionVec& mv);
 
 // sva::ABInertia Left
+/// @return Ia + I
 sva::ABInertia operator+(const sva::ABInertia& abI, const sva::RBInertia& rbI);
+/// @return Ia * v
 sva::ForceVec operator*(const sva::ABInertia& rbI, const sva::MotionVec& mv);
 
 // sva::PTransform Left
+/// @return Xv
 sva::MotionVec operator*(const sva::PTransform& pt, const sva::MotionVec& mv);
+/// @return X⁻¹v
 sva::MotionVec invMul(const sva::PTransform& pt, const sva::MotionVec& mv);
 
+/// @return X*v
 sva::ForceVec dualMul(const sva::PTransform& pt, const sva::ForceVec& fv);
+/// @return Xtv
 sva::ForceVec transMul(const sva::PTransform& pt, const sva::ForceVec& fv);
 
+/// @return X*IX⁻¹
 sva::RBInertia dualMul(const sva::PTransform& pt, const sva::RBInertia& rbI);
+/// @return XtIX
 sva::RBInertia transMul(const sva::PTransform& pt, const sva::RBInertia& rbI);
 
+/// @return X*IX⁻¹
 sva::ABInertia dualMul(const sva::PTransform& pt, const sva::ABInertia& rbI);
+/// @return XtIX
 sva::ABInertia transMul(const sva::PTransform& pt, const sva::ABInertia& rbI);
 
 // Implementation

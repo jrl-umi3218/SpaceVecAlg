@@ -25,6 +25,9 @@
 namespace Eigen
 {
 
+/**
+	* Convert a 3D vector to a cross product matrix.
+	*/
 inline Matrix3d vector3ToCrossMatrix(const Vector3d& vec)
 {
 	Matrix3d mat;
@@ -34,6 +37,9 @@ inline Matrix3d vector3ToCrossMatrix(const Vector3d& vec)
 	return mat;
 }
 
+/**
+	* Convert a 6D vector to a spatial cross product matrix.
+	*/
 inline Matrix6d vector6ToCrossMatrix(const Vector6d& vec)
 {
 	Matrix6d mat;
@@ -43,6 +49,9 @@ inline Matrix6d vector6ToCrossMatrix(const Vector6d& vec)
 	return mat;
 }
 
+/**
+	* Convert a 6D vector to a spatial dual cross product matrix.
+	*/
 inline Matrix6d vector6ToCrossDualMatrix(const Vector6d& vec)
 {
 	return -vector6ToCrossMatrix(vec).transpose();

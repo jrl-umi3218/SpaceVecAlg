@@ -28,6 +28,10 @@ namespace sva
 
 using namespace Eigen;
 
+/**
+	* Spatial Rigid Body Inertia compact representation.
+	* See Roy Featherstone «Rigid Body Dynamics Algorithms» page 247.
+	*/
 class RBInertia
 {
 public:
@@ -37,6 +41,11 @@ public:
 		I_()
 	{}
 
+	/**
+		* @param m Mass.
+		* @param h Spatial momentum.
+		* @param I Inertia matrix.
+		*/
 	RBInertia(double m, const Vector3d& h, const Matrix3d& I):
 		m_(m),
 		h_(h),
@@ -45,6 +54,11 @@ public:
 		I_.triangularView<Lower>() = I;
 	}
 
+	/**
+		* @param m Mass.
+		* @param h Spatial momentum.
+		* @param I Lower triangular view of Inertia matrix.
+		*/
 	RBInertia(double m, const Vector3d& h,
 						const TriangularView<Matrix3d, Lower>& ltI):
 		m_(m),
@@ -53,21 +67,25 @@ public:
 	{}
 
 	// Accessor
+	/// @return Mass.
 	double mass() const
 	{
 		return m_;
 	}
 
+	/// @return Spatial momentum.
 	const Vector3d& momentum() const
 	{
 		return h_;
 	}
 
+	/// @return Inertia matrix with a zero upper part.
 	const Matrix3d& lowerTriangularInertia() const
 	{
 		return I_;
 	}
 
+	/// @return Inertia matrix.
 	Matrix3d inertia() const
 	{
 		Matrix3d I;
@@ -76,6 +94,7 @@ public:
 		return I;
 	}
 
+	/// @retrun Non compact spatial rigid body inertia matrix.
 	Matrix6d matrix() const
 	{
 		Matrix6d m;

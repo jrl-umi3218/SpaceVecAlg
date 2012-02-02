@@ -27,6 +27,10 @@ namespace sva
 
 using namespace Eigen;
 
+/**
+	* Spatial Motion Vector compact representations.
+	* See Roy Featherstone «Rigid Body Dynamics Algorithms» page 247.
+	*/
 class MotionVec
 {
 public:
@@ -34,30 +38,42 @@ public:
 		mv_()
 	{}
 
+	/**
+		* @param vec Spatial motion vector with angular motion in head
+		* and linear motion in tail.
+		*/
 	MotionVec(const Vector6d& vec):
 		mv_(vec)
 	{}
 
+	/**
+		* @param angular Angular motion.
+		* @param linear Linear motion.
+		*/
 	MotionVec(const Vector3d& angular, const Vector3d& linear):
 		mv_((Vector6d() << angular, linear).finished())
 	{}
 
 	// Accessor
+	/// @return Angular motion part (3 first parameters).
 	Vector3d angular() const
 	{
 		return mv_.head<3>();
 	}
 
+	/// @return Linear motion part (3 last parameters).
 	Vector3d linear() const
 	{
 		return mv_.tail<3>();
 	}
 
+	/// @return Non compact spatial motion vector.
 	const Vector6d& vector() const
 	{
 		return mv_;
 	}
 
+	/// @return Non compact spatial motion vector.
 	Vector6d& vector()
 	{
 		return mv_;

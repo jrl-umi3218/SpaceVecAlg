@@ -27,6 +27,10 @@ namespace sva
 
 using namespace Eigen;
 
+/**
+	* Spatial Articulated Body Inertia compact representation.
+	* See Roy Featherstone «Rigid Body Dynamics Algorithms» page 247.
+	*/
 class ABInertia
 {
 public:
@@ -36,6 +40,11 @@ public:
 		I_()
 	{}
 
+	/**
+		* @param M Mass matrix.
+		* @param H Generalized inertia matrix.
+		* @param I Inertia matrix.
+		*/
 	ABInertia(const Matrix3d& M, const Matrix3d& H, const Matrix3d& I):
 		M_(Matrix3d::Zero()),
 		H_(H),
@@ -45,6 +54,11 @@ public:
 		I_.triangularView<Lower>() = I;
 	}
 
+	/**
+		* @param M Lower triangular view of Mass matrix.
+		* @param H Generalized inertia matrix.
+		* @param I Lower triangular view Inertia matrix.
+		*/
 	ABInertia(const TriangularView<Matrix3d, Lower>& ltM,
 						const Matrix3d& H,
 						const TriangularView<Matrix3d, Lower>& ltI):
@@ -54,11 +68,13 @@ public:
 	{}
 
 	// Accessor
+	/// @return Mass matrix with a zero upper part.
 	const Matrix3d& lowerTriangularMassMatrix() const
 	{
 		return M_;
 	}
 
+	/// @return Mass matrix.
 	Matrix3d massMatrix() const
 	{
 		Matrix3d M;
@@ -67,16 +83,19 @@ public:
 		return M;
 	}
 
+	/// @return Generalized inertia matrix.
 	const Matrix3d& gInertia() const
 	{
 		return H_;
 	}
 
+	/// @return Inertia matrix with a zero upper part.
 	const Matrix3d& lowerTriangularInertia() const
 	{
 		return I_;
 	}
 
+	/// @return Inertia matrix.
 	Matrix3d inertia() const
 	{
 		Matrix3d I;
@@ -85,6 +104,7 @@ public:
 		return I;
 	}
 
+	/// @retrun Non compact spatial articulated body inertia matrix.
 	Matrix6d matrix() const
 	{
 		Matrix6d m;

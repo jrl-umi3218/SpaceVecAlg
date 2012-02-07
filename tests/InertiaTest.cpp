@@ -87,7 +87,6 @@ BOOST_AUTO_TEST_CASE(ABInertiaTest)
 	using namespace Eigen;
 	using namespace sva;
 
-	double mass = 1.;
 	Matrix3d M, H, I;
 	M << 1., 2., 3.,
 			 2., 1., 4.,

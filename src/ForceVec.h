@@ -82,6 +82,11 @@ public:
 		return ForceVec(fv_ + fv.fv_);
 	}
 
+	ForceVec operator-(const ForceVec& fv) const
+	{
+		return ForceVec(fv_ - fv.fv_);
+	}
+
 	friend ForceVec operator*(double scalar, const ForceVec& fv);
 
 private:

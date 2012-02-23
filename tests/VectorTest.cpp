@@ -58,6 +58,9 @@ BOOST_AUTO_TEST_CASE(MotionVecTest)
 
 	// M + M
 	BOOST_CHECK_EQUAL((vec + vec2).vector(), m + m2);
+
+	// M - M
+	BOOST_CHECK_EQUAL((vec - vec2).vector(), m - m2);
 }
 
 BOOST_AUTO_TEST_CASE(ForceVecTest)
@@ -80,7 +83,7 @@ BOOST_AUTO_TEST_CASE(ForceVecTest)
 	// vector
 	BOOST_CHECK_EQUAL(m, (Vector6d() << n, f).finished());
 
-	// alpha*M
+	// alpha*F
 	BOOST_CHECK_EQUAL((5.*vec).vector(), 5.*m);
 
 	Vector3d n2, f2;
@@ -90,8 +93,11 @@ BOOST_AUTO_TEST_CASE(ForceVecTest)
 	sva::ForceVec vec2(n2, f2);
 	m2 = vec2.vector();
 
-	// M + M
+	// F + F
 	BOOST_CHECK_EQUAL((vec + vec2).vector(), m + m2);
+
+	// F - F
+	BOOST_CHECK_EQUAL((vec - vec2).vector(), m - m2);
 }
 
 BOOST_AUTO_TEST_CASE(MotionVecLeftOperatorsTest)

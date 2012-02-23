@@ -84,6 +84,12 @@ public:
 	{
 		return MotionVec(mv_ + mv.mv_);
 	}
+
+	MotionVec operator-(const MotionVec& mv) const
+	{
+		return MotionVec(mv_ - mv.mv_);
+	}
+
 	friend MotionVec operator*(double scalar, const MotionVec& fv);
 
 private:

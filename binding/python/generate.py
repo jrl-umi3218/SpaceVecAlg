@@ -16,42 +16,13 @@
 from pybindgen import *
 import sys
 
-from pybindgen.typehandlers.base import ReturnValue, Parameter, ReverseWrapperBase, ForwardWrapperBase
+def import_eigen3_types(mod):
+  mod.add_class('Vector3d', foreign_cpp_namespace='Eigen', import_from_module='eigen3')
+  mod.add_class('Vector6d', foreign_cpp_namespace='Eigen', import_from_module='eigen3')
 
-# Eigen type support based on python object type name.
-# It's ugly but is the only way i have found to easly support
-# Eigen3ToPython type without embedded them in this binding.
-def createEigenType(eType):
-  class Vector6dParam(Parameter):
-    DIRECTIONS = [Parameter.DIRECTION_IN]
-    CTYPES = ['Eigen::%s&' % eType, 'Eigen::%s' % eType]
+  mod.add_class('Matrix3d', foreign_cpp_namespace='Eigen', import_from_module='eigen3')
+  mod.add_class('Matrix6d', foreign_cpp_namespace='Eigen', import_from_module='eigen3')
 
-    # TODO implement c to python
-    def convert_c_to_python(self, wrapper):
-      assert isinstance(wrapper, ReverseWrapperBase)
-      wrapper.build_params.add_parameter('O', [self.value])
-
-    def convert_python_to_c(self, wrapper):
-      assert isinstance(wrapper, ForwardWrapperBase)
-      name = wrapper.declarations.declare_variable('PyBindGenLambdaWithType', self.name,
-                                                   '{0, "_eigen3.%s"}' % eType)
-      wrapper.parse_params.add_parameter('O&', ['pyBindGenLambdaconverter', '&'+name], self.name)
-      wrapper.call_params.append('*(Eigen::%s*)%s.lambda->obj' % (eType, name))
-
-def define_eigen_types(mod):
-  v3 = mod.add_class('Vector3d', foreign_cpp_namespace='Eigen')
-  v6= mod.add_class('Vector6d', foreign_cpp_namespace='Eigen')
-
-  m3 = mod.add_class('Matrix3d', foreign_cpp_namespace='Eigen')
-  m6 = mod.add_class('Matrix6d', foreign_cpp_namespace='Eigen')
-
-  types = [v3, v6, m3, m6]
-
-  def make_tp_name(type):
-    type.slots['tp_name'] = '_eigen3.%s' % type.name
-
-  for t in types:
-    make_tp_name(t)
 
 def add_motion_vec(mod):
   mv = mod.add_class('MotionVec')
@@ -64,17 +35,11 @@ if __name__ == '__main__':
 
   sva = Module('_spacevecalg', cpp_namespace='::sva')
   sva.add_include('<SpaceVecAlg>')
-  sva.add_include('"PyBindGenLambda.h"')
 
-  # create _eigen3 bridge
-  createEigenType('Vector3d')
-  createEigenType('Vector6d')
-
-  createEigenType('Matrix3d')
-  createEigenType('Matrix6d')
+  # import Eigen3 types
+  import_eigen3_types(sva)
 
   add_motion_vec(sva)
-
 
   with open(sys.argv[1], 'w') as f:
     sva.generate(f)

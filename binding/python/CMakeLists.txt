@@ -34,7 +34,7 @@ string(REGEX REPLACE "^([0-9]+)\\.[0-9]+\\.[0-9]+.*" "\\1"
        PYTHON_VERSION_MAJOR "${PYTHON_VERSION_STRING}")
 string(REGEX REPLACE "^[0-9]+\\.([0-9])+\\.[0-9]+.*" "\\1"
        PYTHON_VERSION_MINOR "${PYTHON_VERSION_STRING}")
- 
+
 set(INSTALL_PATH "lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/dist-packages/spacevecalg/")
 install(TARGETS _spacevecalg DESTINATION ${INSTALL_PATH})
 install(FILES __init__.py DESTINATION ${INSTALL_PATH})

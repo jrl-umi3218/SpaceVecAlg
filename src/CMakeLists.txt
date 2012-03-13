@@ -14,3 +14,7 @@ include_directories(${EIGEN_INCLUDE_DIRS})
 # !!! It aim to test header file and have an IDE integration !!!
 # !!! Don't link against it !!!
 add_library(SpaceVecAlg ${SOURCES} ${HEADERS})
+
+set(INSTALL_PATH include/SpaceVecAlg)
+install(FILES ${HEADERS} DESTINATION ${INSTALL_PATH})
+

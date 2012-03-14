@@ -36,15 +36,12 @@ def build_motion_vec(mv):
   mv.add_method('linear', retval('Eigen::Vector3d'), [], is_const=True)
   mv.add_method('vector', retval('Eigen::Vector6d'), [], is_const=True)
 
-  mv.add_function_as_method('cross', retval('sva::MotionVec'),
-                            [param('sva::MotionVec', 'm1'), param('sva::MotionVec', 'm2')],
-                            custom_name='cross')
-  mv.add_function_as_method('crossDual', retval('sva::ForceVec'),
-                            [param('sva::MotionVec', 'm1'), param('sva::ForceVec', 'm2')],
-                            custom_name='crossDual')
-  mv.add_function_as_method('dot', retval('double'),
-                            [param('sva::MotionVec', 'm1'), param('sva::ForceVec', 'm2')],
-                            custom_name='dot')
+  mv.add_method('cross', retval('sva::MotionVec'),
+                [param('sva::MotionVec', 'm2')])
+  mv.add_method('crossDual', retval('sva::ForceVec'),
+                [param('sva::ForceVec', 'm2')])
+  mv.add_method('dot', retval('double'),
+                [param('sva::ForceVec', 'm2')])
 
   mv.add_binary_numeric_operator('+')
   mv.add_binary_numeric_operator('-')
@@ -119,30 +116,23 @@ def build_p_transform(mod):
   pt.add_binary_numeric_operator('*')
 
   pt.add_binary_numeric_operator('*', ReturnValue.new('sva::MotionVec'), right=param('sva::MotionVec', 'mv'))
-  pt.add_function_as_method('invMul', retval('sva::MotionVec'),
-                            [param('sva::PTransform', 'p1'), param('sva::MotionVec', 'p2')],
-                            custom_name='invMul')
+  pt.add_method('invMul', retval('sva::MotionVec'),
+                [param('sva::MotionVec', 'p2')])
 
-  pt.add_function_as_method('dualMul', retval('sva::ForceVec'),
-                            [param('sva::PTransform', 'p1'), param('sva::ForceVec', 'p2')],
-                            custom_name='dualMul')
-  pt.add_function_as_method('transMul', retval('sva::ForceVec'),
-                            [param('sva::PTransform', 'p1'), param('sva::ForceVec', 'p2')],
-                            custom_name='transMul')
+  pt.add_method('dualMul', retval('sva::ForceVec'),
+                [param('sva::ForceVec', 'p2')])
+  pt.add_method('transMul', retval('sva::ForceVec'),
+                [param('sva::ForceVec', 'p2')])
 
-  pt.add_function_as_method('dualMul', retval('sva::RBInertia'),
-                            [param('sva::PTransform', 'p1'), param('sva::RBInertia', 'p2')],
-                            custom_name='dualMul')
-  pt.add_function_as_method('transMul', retval('sva::RBInertia'),
-                            [param('sva::PTransform', 'p1'), param('sva::RBInertia', 'p2')],
-                            custom_name='transMul')
+  pt.add_method('dualMul', retval('sva::RBInertia'),
+                [param('sva::RBInertia', 'p2')])
+  pt.add_method('transMul', retval('sva::RBInertia'),
+                [param('sva::RBInertia', 'p2')])
 
-  pt.add_function_as_method('dualMul', retval('sva::ABInertia'),
-                            [param('sva::PTransform', 'p1'), param('sva::ABInertia', 'p2')],
-                            custom_name='dualMul')
-  pt.add_function_as_method('transMul', retval('sva::ABInertia'),
-                            [param('sva::PTransform', 'p1'), param('sva::ABInertia', 'p2')],
-                            custom_name='transMul')
+  pt.add_method('dualMul', retval('sva::ABInertia'),
+                [param('sva::ABInertia', 'p2')])
+  pt.add_method('transMul', retval('sva::ABInertia'),
+                [param('sva::ABInertia', 'p2')])
 
 
 if __name__ == '__main__':

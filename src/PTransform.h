@@ -27,12 +27,19 @@ using namespace Eigen;
 	*/
 class PTransform
 {
+
+public:
+	static PTransform Identity()
+	{
+		return PTransform(Matrix3d::Identity(), Vector3d::Zero());
+	}
+
 public:
 	// Constructor
 	/// Identity transformation.
 	PTransform():
-		E_(Matrix3d::Identity()),
-		r_(Vector3d::Zero())
+		E_(),
+		r_()
 	{}
 
 	/**

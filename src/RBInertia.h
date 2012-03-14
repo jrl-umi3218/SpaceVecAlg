@@ -28,7 +28,7 @@ class RBInertia
 {
 public:
 	RBInertia():
-		m_(0.),
+		m_(),
 		h_(),
 		I_()
 	{}

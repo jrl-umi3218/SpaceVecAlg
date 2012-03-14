@@ -44,11 +44,6 @@ BOOST_AUTO_TEST_CASE(RBInertiaTest)
 			 3., 4., 1.;
 	Vector3d h = Vector3d::Random()*100.;
 
-	// Default constructor
-	RBInertia rb1;
-
-	BOOST_CHECK_EQUAL(rb1.mass(), 0.);
-
 	// Parametrized constructor double Vector3d Matrix3d
 	RBInertia rb2(mass, h, I);
 

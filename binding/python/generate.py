@@ -95,7 +95,7 @@ def build_ab_inertia(ab):
   rb.add_binary_numeric_operator('+', right=param('sva::RBInertia', 'rb'))
   rb.add_binary_numeric_operator('*', ReturnValue.new('sva::ForceVec'), right=param('sva::MotionVec', 'mv'))
 
-def build_p_transform(mod):
+def build_p_transform(pt):
   pt.add_constructor([])
   pt.add_copy_constructor()
   pt.add_constructor([param('Eigen::Matrix3d', 'rot'),
@@ -105,6 +105,8 @@ def build_p_transform(mod):
   pt.add_constructor([param('Eigen::Quaterniond', 'rot')])
   pt.add_constructor([param('Eigen::Matrix3d', 'rot')])
   pt.add_constructor([param('Eigen::Vector3d', 'trans')])
+
+  pt.add_method('Identity', pt.full_name, [], is_static=True)
 
   pt.add_method('rotation', retval('Eigen::Matrix3d'), [], is_const=True)
   pt.add_method('translation', retval('Eigen::Vector3d'), [], is_const=True)

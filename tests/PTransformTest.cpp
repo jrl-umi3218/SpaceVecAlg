@@ -44,8 +44,8 @@ BOOST_AUTO_TEST_CASE(PTransformTest)
 	Eq = AngleAxisd(constants::pi<double>()/2., Vector3d(1., 0., 0.));
 	Vector3d r = Vector3d::Random()*100.;
 
-	// Default constructor
-	PTransform pt1;
+	// Identity
+	PTransform pt1 = PTransform::Identity();
 
 	BOOST_CHECK_EQUAL(pt1.rotation(), Matrix3d::Identity());
 	BOOST_CHECK_EQUAL(pt1.translation(), Vector3d::Zero());

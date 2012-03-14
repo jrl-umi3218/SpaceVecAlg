@@ -137,11 +137,31 @@ public:
 	}
 
 	// Operators
+	/// @return X*X
 	PTransform operator*(const PTransform& pt) const
 	{
 		return PTransform(E_*pt.E_, pt.r_ + pt.E_.transpose()*r_);
 	}
 
+	/// @return Xv
+	MotionVec operator*(const MotionVec& mv);
+	/// @return X⁻¹v
+	MotionVec invMul(const MotionVec& mv);
+
+	/// @return X*v
+	ForceVec dualMul(const ForceVec& fv);
+	/// @return Xtv
+	ForceVec transMul(const ForceVec& fv);
+
+	/// @return X*IX⁻¹
+	RBInertia dualMul(const RBInertia& rbI);
+	/// @return XtIX
+	RBInertia transMul(const RBInertia& rbI);
+
+	/// @return X*IX⁻¹
+	ABInertia dualMul(const ABInertia& rbI);
+	/// @return XtIX
+	ABInertia transMul(const ABInertia& rbI);
 
 	/// @return Inverse Plücker transformation.
 	PTransform inv() const

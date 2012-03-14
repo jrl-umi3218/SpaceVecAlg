@@ -117,7 +117,7 @@ BOOST_AUTO_TEST_CASE(MotionVecLeftOperatorsTest)
 	mf = fVec.vector();
 
 	// dot(MotionVec, ForceVec)
-	BOOST_CHECK_SMALL(dot(mVec, fVec) - mm.transpose()*mf, TOL);
+	BOOST_CHECK_SMALL(mVec.dot(fVec) - mm.transpose()*mf, TOL);
 
 	// cross(MotionVec, MotionVec)
 	Vector3d w2, v2;
@@ -128,12 +128,12 @@ BOOST_AUTO_TEST_CASE(MotionVecLeftOperatorsTest)
 	Vector6d mm2;
 	mm2 = mVec2.vector();
 
-	sva::MotionVec crossM = cross(mVec, mVec2);
+	sva::MotionVec crossM = mVec.cross(mVec2);
 	BOOST_CHECK_SMALL((crossM.vector() - vector6ToCrossMatrix(mm)*mm2).
 										 array().abs().sum(), TOL);
 
 	// crossDual(MotionVec, ForceVec)
-	sva::ForceVec crossF = crossDual(mVec, fVec);
+	sva::ForceVec crossF = mVec.crossDual(fVec);
 	BOOST_CHECK_SMALL((crossF.vector() - vector6ToCrossDualMatrix(mm)*mf).
 										 array().abs().sum(), TOL);
 }

@@ -25,6 +25,10 @@
 namespace sva
 {
 
+class ForceVec;
+class MotionVec;
+class RBInertia;
+
 using namespace Eigen;
 
 /**
@@ -121,6 +125,12 @@ public:
 		I.triangularView<Lower>() = I_ + rbI.I_;
 		return ABInertia(M, H_ + rbI.H_, I);
 	}
+
+	/// @return Ia + I
+	ABInertia operator+(const RBInertia& rbI);
+
+	/// @return Ia * v
+	ForceVec operator*(const MotionVec& mv);
 
 	friend ABInertia operator*(double scalar, const ABInertia& rbI);
 

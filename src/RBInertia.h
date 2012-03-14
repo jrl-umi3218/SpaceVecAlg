@@ -26,6 +26,9 @@
 namespace sva
 {
 
+class MotionVec;
+class ForceVec;
+
 using namespace Eigen;
 
 /**
@@ -113,6 +116,9 @@ public:
 										 h_ + rbI.h_,
 										 I);
 	}
+
+	/// @return I*v
+	ForceVec operator*(const MotionVec& mv);
 
 	friend RBInertia operator*(double scalar, const RBInertia& rbI);
 

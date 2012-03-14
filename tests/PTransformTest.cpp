@@ -146,43 +146,43 @@ BOOST_AUTO_TEST_CASE(PTransformLeftOperatorsTest)
 	BOOST_CHECK_SMALL((mvRes1.vector() - mvRes16d).array().abs().sum(), TOL);
 
 	// PTransform^-1 * MotionVec
-	MotionVec mvRes2 = invMul(pt, mVec);
+	MotionVec mvRes2 = pt.invMul(mVec);
 	Vector6d mvRes26d = ptInv6d*mVec6d;
 
 	BOOST_CHECK_SMALL((mvRes2.vector() - mvRes26d).array().abs().sum(), TOL);
 
 	// PTransform* * ForceVec
-	ForceVec fvRes1 = dualMul(pt, fVec);
+	ForceVec fvRes1 = pt.dualMul(fVec);
 	Vector6d fvRes16d = ptDual6d*fVec6d;
 
 	BOOST_CHECK_SMALL((fvRes1.vector() - fvRes16d).array().abs().sum(), TOL);
 
 	// PTransform T * ForceVec
-	ForceVec fvRes2 = transMul(pt, fVec);
+	ForceVec fvRes2 = pt.transMul(fVec);
 	Vector6d fvRes26d = pt6d.transpose()*fVec6d;
 
 	BOOST_CHECK_SMALL((fvRes2.vector() - fvRes26d).array().abs().sum(), TOL);
 
 	// PTransform* * RBInertia * PTransform^-1
-	RBInertia rbRes1 = dualMul(pt, rb);
+	RBInertia rbRes1 = pt.dualMul(rb);
 	Matrix6d rbRes16d = ptDual6d*rb6d*ptInv6d;
 
 	BOOST_CHECK_SMALL((rbRes1.matrix() - rbRes16d).array().abs().sum(), TOL);
 
 	// PTransform T * RBInertia * PTransform
-	RBInertia rbRes2 = transMul(pt, rb);
+	RBInertia rbRes2 = pt.transMul(rb);
 	Matrix6d rbRes26d = pt6d.transpose()*rb6d*pt6d;
 
 	BOOST_CHECK_SMALL((rbRes2.matrix() - rbRes26d).array().abs().sum(), TOL);
 
 	// PTransform* * ABInertia * PTransform^-1
-	ABInertia abRes1 = dualMul(pt, ab);
+	ABInertia abRes1 = pt.dualMul(ab);
 	Matrix6d abRes16d = ptDual6d*ab6d*ptInv6d;
 
 	BOOST_CHECK_SMALL((abRes1.matrix() - abRes16d).array().abs().sum(), TOL);
 
 	// PTransform T * ABInertia * PTransform
-	ABInertia abRes2 = transMul(pt, ab);
+	ABInertia abRes2 = pt.transMul(ab);
 	Matrix6d abRes26d = pt6d.transpose()*ab6d*pt6d;
 
 	BOOST_CHECK_SMALL((abRes2.matrix() - abRes26d).array().abs().sum(), TOL);

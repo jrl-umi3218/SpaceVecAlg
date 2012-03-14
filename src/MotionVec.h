@@ -25,6 +25,8 @@
 namespace sva
 {
 
+class ForceVec;
+
 using namespace Eigen;
 
 /**
@@ -89,6 +91,15 @@ public:
 	{
 		return MotionVec(mv_ - mv.mv_);
 	}
+
+	/// @return v x v
+	MotionVec cross(const MotionVec& mv2);
+
+	/// @return v x* f
+	ForceVec crossDual(const ForceVec& fv2);
+
+	/// @return v.v
+	double dot(const ForceVec& fv2);
 
 	friend MotionVec operator*(double scalar, const MotionVec& fv);
 

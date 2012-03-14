@@ -15,8 +15,23 @@
 
 #pragma once
 
+// eigen
+#include <Eigen/Core>
+#include <Eigen/Geometry>
+
+// utility
 #include "EigenTypedef.h"
 #include "EigenUtility.h"
+
+// forward declaration
+namespace sva
+{
+	class MotionVec;
+	class ForceVec;
+	class RBInertia;
+	class ABInertia;
+	class PTransform;
+}
 
 #include "MotionVec.h"
 #include "ForceVec.h"

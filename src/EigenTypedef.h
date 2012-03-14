@@ -15,10 +15,6 @@
 
 #pragma once
 
-// includes
-// Eigen
-#include <Eigen/Core>
-
 namespace Eigen
 {
 

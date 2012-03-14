@@ -15,19 +15,8 @@
 
 #pragma once
 
-// includes
-// Eigen
-#include <Eigen/Core>
-
-// SpaceVecAlg
-#include "EigenTypedef.h"
-#include "EigenUtility.h"
-
 namespace sva
 {
-
-class MotionVec;
-class ForceVec;
 
 using namespace Eigen;
 

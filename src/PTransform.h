@@ -15,15 +15,6 @@
 
 #pragma once
 
-// includes
-// Eigen
-#include <Eigen/Core>
-#include <Eigen/Geometry>
-
-// SpaceVecAlg
-#include "EigenTypedef.h"
-#include "EigenUtility.h"
-
 namespace sva
 {
 

@@ -33,13 +33,26 @@ bool isUpperNull(const Eigen::Matrix3d& m)
 	return (Matrix3d(m.triangularView<StrictlyUpper>()).array() == 0.).all();
 }
 
+BOOST_AUTO_TEST_CASE(RotationMatrixTest)
+{
+	using namespace Eigen;
+	using namespace sva;
+
+	Vector2d theta2d = Vector2d::Random()*10;
+	double theta = theta2d(0);
+
+	BOOST_CHECK_EQUAL(RotX(theta), AngleAxisd(-theta, Vector3d::UnitX()).matrix());
+	BOOST_CHECK_EQUAL(RotY(theta), AngleAxisd(-theta, Vector3d::UnitY()).matrix());
+	BOOST_CHECK_EQUAL(RotZ(theta), AngleAxisd(-theta, Vector3d::UnitZ()).matrix());
+}
+
 BOOST_AUTO_TEST_CASE(PTransformTest)
 {
 	using namespace Eigen;
 	using namespace sva;
 	namespace constants = boost::math::constants;
 
-	Matrix3d Em = AngleAxisd(constants::pi<double>()/2., Vector3d(1., 0., 0.)).toRotationMatrix();
+	Matrix3d Em = AngleAxisd(constants::pi<double>()/2., Vector3d(1., 0., 0.)).inverse().toRotationMatrix();
 	Quaterniond Eq;
 	Eq = AngleAxisd(constants::pi<double>()/2., Vector3d(1., 0., 0.));
 	Vector3d r = Vector3d::Random()*100.;
@@ -59,13 +72,13 @@ BOOST_AUTO_TEST_CASE(PTransformTest)
 	// Quaternion Vector3d constructor
 	PTransform pt3(Eq, r);
 
-	BOOST_CHECK_EQUAL(pt3.rotation(), Eq.toRotationMatrix());
+	BOOST_CHECK_EQUAL(pt3.rotation(), Eq.inverse().toRotationMatrix());
 	BOOST_CHECK_EQUAL(pt3.translation(), r);
 
 	// Quaternion constructor
 	PTransform pt4(Eq);
 
-	BOOST_CHECK_EQUAL(pt4.rotation(), Eq.toRotationMatrix());
+	BOOST_CHECK_EQUAL(pt4.rotation(), Eq.inverse().toRotationMatrix());
 	BOOST_CHECK_EQUAL(pt4.translation(), Vector3d::Zero());
 
 	// Matrix3d constructor

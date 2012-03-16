@@ -21,22 +21,44 @@ namespace sva
 using namespace Eigen;
 
 /**
+	* Create a rotation matrix about the X axis.
+	* The rotation is exprimed in successor frame.
+	*/
+Matrix3d RotX(double theta);
+
+/**
+	* Create a rotation matrix about the Y axis.
+	* The rotation is exprimed in successor frame.
+	*/
+Matrix3d RotY(double theta);
+
+/**
+	* Create a rotation matrix about the Z axis.
+	* The rotation is exprimed in successor frame.
+	*/
+Matrix3d RotZ(double theta);
+
+
+
+/**
 	* Plücker transform compact representation.
 	* Use 3D matrix as rotation internal representation.
+	* Quaternion are inversed as they must be expressed in successor frame.
 	* See Roy Featherstone «Rigid Body Dynamics Algorithms» page 247.
 	*/
 class PTransform
 {
 
 public:
+	/// Identity transformation.
 	static PTransform Identity()
 	{
 		return PTransform(Matrix3d::Identity(), Vector3d::Zero());
 	}
 
 public:
-	// Constructor
-	/// Identity transformation.
+	// Constructors
+	/// Default constructor. Rotation and translation are uninitialized.
 	PTransform():
 		E_(),
 		r_()
@@ -59,7 +81,7 @@ public:
 		E_(),
 		r_(trans)
 	{
-		E_ = rot.toRotationMatrix();
+		E_ = rot.inverse().toRotationMatrix();
 	}
 
 	/**
@@ -70,7 +92,7 @@ public:
 		E_(),
 		r_(Vector3d::Zero())
 	{
-		E_ = rot.toRotationMatrix();
+		E_ = rot.inverse().toRotationMatrix();
 	}
 
 	/**
@@ -171,5 +193,38 @@ private:
 	Matrix3d E_;
 	Vector3d r_;
 };
+
+inline Matrix3d RotX(double theta)
+{
+	double s = std::sin(theta), c = std::cos(theta);
+	return (Matrix3d() << 1., 0., 0.,
+												0., c, s,
+												0., -s, c).finished();
+}
+
+/**
+	* Create a rotation matrix about the Y axis.
+	* The rotation is exprimed in successor frame.
+	*/
+inline Matrix3d RotY(double theta)
+{
+	double s = std::sin(theta), c = std::cos(theta);
+	return (Matrix3d() << c, 0., -s,
+												0., 1., 0.,
+												s, 0., c).finished();
+}
+
+/**
+	* Create a rotation matrix about the Z axis.
+	* The rotation is exprimed in successor frame.
+	*/
+inline Matrix3d RotZ(double theta)
+{
+	double s = std::sin(theta), c = std::cos(theta);
+	return (Matrix3d() << c, s, 0.,
+												-s, c, 0.,
+												0., 0., 1.).finished();
+}
+
 
 } // namespace sva

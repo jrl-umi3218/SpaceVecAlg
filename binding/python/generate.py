@@ -136,6 +136,11 @@ def build_p_transform(pt):
   pt.add_method('transMul', retval('sva::ABInertia'),
                 [param('sva::ABInertia', 'p2')])
 
+def build_sva_functions(mod):
+  mod.add_function('RotX', retval('Eigen::Matrix3d'), [param('double', 'theta')])
+  mod.add_function('RotY', retval('Eigen::Matrix3d'), [param('double', 'theta')])
+  mod.add_function('RotZ', retval('Eigen::Matrix3d'), [param('double', 'theta')])
+
 
 if __name__ == '__main__':
   if len(sys.argv) < 2:
@@ -158,6 +163,8 @@ if __name__ == '__main__':
   build_rb_inertia(rb)
   build_ab_inertia(ab)
   build_p_transform(pt)
+
+  build_sva_functions(sva)
 
   with open(sys.argv[1], 'w') as f:
     sva.generate(f)

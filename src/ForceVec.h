@@ -80,7 +80,15 @@ public:
 		return ForceVec(fv_ - fv.fv_);
 	}
 
-	friend ForceVec operator*(double scalar, const ForceVec& fv);
+	ForceVec operator-() const
+	{
+		return ForceVec(-fv_);
+	}
+
+	ForceVec operator*(double scalar) const
+	{
+		return ForceVec(scalar * fv_);
+	}
 
 private:
 	Vector6d fv_;
@@ -88,7 +96,7 @@ private:
 
 inline ForceVec operator*(double scalar, const ForceVec& fv)
 {
-	return ForceVec(scalar * fv.fv_);
+	return fv*scalar;
 }
 
 } // namespace sva

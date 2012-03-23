@@ -115,13 +115,19 @@ public:
 		return ABInertia(M, H_ + rbI.H_, I);
 	}
 
+	ABInertia operator*(double scalar) const
+	{
+		Matrix3d M, I;
+		M.triangularView<Lower>() = scalar*M_;
+		I.triangularView<Lower>() = scalar*I_;
+		return ABInertia(M, scalar*H_, I);
+	}
+
 	/// @return Ia + I
 	ABInertia operator+(const RBInertia& rbI);
 
 	/// @return Ia * v
 	ForceVec operator*(const MotionVec& mv);
-
-	friend ABInertia operator*(double scalar, const ABInertia& rbI);
 
 private:
 	Matrix3d M_;
@@ -129,12 +135,9 @@ private:
 	Matrix3d I_;
 };
 
-inline ABInertia operator*(double scalar, const ABInertia& rbI)
+inline ABInertia operator*(double scalar, const ABInertia& abI)
 {
-	Matrix3d M, I;
-	M.triangularView<Lower>() = scalar*rbI.M_;
-	I.triangularView<Lower>() = scalar*rbI.I_;
-	return ABInertia(M, scalar*rbI.H_, I);
+	return abI*scalar;
 }
 
 } // namespace sva

@@ -46,6 +46,8 @@ def build_motion_vec(mv):
   mv.add_binary_numeric_operator('+')
   mv.add_binary_numeric_operator('-')
   mv.add_binary_numeric_operator('*', left_cppclass=Parameter.new('double', 'scalar'))
+  mv.add_binary_numeric_operator('*', right=param('double', 'scalar'))
+  mv.add_unary_numeric_operator('-')
 
 def build_force_vec(fv):
   fv.add_copy_constructor()
@@ -61,6 +63,8 @@ def build_force_vec(fv):
   fv.add_binary_numeric_operator('+')
   fv.add_binary_numeric_operator('-')
   fv.add_binary_numeric_operator('*', left_cppclass=Parameter.new('double', 'scalar'))
+  fv.add_binary_numeric_operator('*', right=param('double', 'scalar'))
+  fv.add_unary_numeric_operator('-')
 
 def build_rb_inertia(rb):
   rb.add_copy_constructor()
@@ -76,6 +80,7 @@ def build_rb_inertia(rb):
 
   rb.add_binary_numeric_operator('+')
   rb.add_binary_numeric_operator('*', left_cppclass=Parameter.new('double', 'scalar'))
+  rb.add_binary_numeric_operator('*', right=param('double', 'scalar'))
   rb.add_binary_numeric_operator('*', ReturnValue.new('sva::ForceVec'), right=param('sva::MotionVec', 'mv'))
 
 def build_ab_inertia(ab):
@@ -92,6 +97,7 @@ def build_ab_inertia(ab):
 
   ab.add_binary_numeric_operator('+')
   ab.add_binary_numeric_operator('*', left_cppclass=Parameter.new('double', 'scalar'))
+  ab.add_binary_numeric_operator('*', right=param('double', 'scalar'))
   rb.add_binary_numeric_operator('+', right=param('sva::RBInertia', 'rb'))
   rb.add_binary_numeric_operator('*', ReturnValue.new('sva::ForceVec'), right=param('sva::MotionVec', 'mv'))
 

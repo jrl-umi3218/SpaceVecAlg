@@ -106,10 +106,15 @@ public:
 										 I);
 	}
 
+	RBInertia operator*(double scalar) const
+	{
+		Matrix3d I;
+		I.triangularView<Lower>() = scalar *I_;
+		return RBInertia(scalar * m_, scalar * h_, I);
+	}
+
 	/// @return I*v
 	ForceVec operator*(const MotionVec& mv);
-
-	friend RBInertia operator*(double scalar, const RBInertia& rbI);
 
 private:
 	double m_;
@@ -119,9 +124,7 @@ private:
 
 inline RBInertia operator*(double scalar, const RBInertia& rbI)
 {
-	Matrix3d I;
-	I.triangularView<Lower>() = scalar * rbI.I_;
-	return RBInertia(scalar * rbI.m_, scalar * rbI.h_, I);
+	return rbI*scalar;
 }
 
 } // namespace sva

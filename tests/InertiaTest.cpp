@@ -75,6 +75,14 @@ BOOST_AUTO_TEST_CASE(RBInertiaTest)
 	BOOST_CHECK_EQUAL(rb5.momentum(), 2.*h);
 	BOOST_CHECK_EQUAL(rb5.inertia(), 2.*I);
 	BOOST_CHECK(isUpperNull(rb5.lowerTriangularInertia()));
+
+	// rbI * alpha
+	RBInertia rb6 = rb2*2.;
+
+	BOOST_CHECK_EQUAL(rb6.mass(), 2.*mass);
+	BOOST_CHECK_EQUAL(rb6.momentum(), 2.*h);
+	BOOST_CHECK_EQUAL(rb6.inertia(), 2.*I);
+	BOOST_CHECK(isUpperNull(rb6.lowerTriangularInertia()));
 }
 
 BOOST_AUTO_TEST_CASE(ABInertiaTest)
@@ -126,6 +134,15 @@ BOOST_AUTO_TEST_CASE(ABInertiaTest)
 	BOOST_CHECK_EQUAL(ab4.gInertia(), 2.*H);
 	BOOST_CHECK_EQUAL(ab4.inertia(), 2.*I);
 	BOOST_CHECK(isUpperNull(ab4.lowerTriangularInertia()));
+
+	// rbI * alpha
+	ABInertia ab5 = ab2*2.;
+
+	BOOST_CHECK_EQUAL(ab5.massMatrix(), 2.*M);
+	BOOST_CHECK(isUpperNull(ab5.lowerTriangularMassMatrix()));
+	BOOST_CHECK_EQUAL(ab5.gInertia(), 2.*H);
+	BOOST_CHECK_EQUAL(ab5.inertia(), 2.*I);
+	BOOST_CHECK(isUpperNull(ab5.lowerTriangularInertia()));
 }
 
 BOOST_AUTO_TEST_CASE(RBInertiaLeftOperatorsTest)

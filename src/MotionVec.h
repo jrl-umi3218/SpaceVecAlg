@@ -83,6 +83,16 @@ public:
 		return MotionVec(mv_ - mv.mv_);
 	}
 
+	MotionVec operator-() const
+	{
+		return MotionVec(-mv_);
+	}
+
+	MotionVec operator*(double scalar) const
+	{
+		return MotionVec(scalar * mv_);
+	}
+
 	/// @return v x v
 	MotionVec cross(const MotionVec& mv2);
 
@@ -92,15 +102,13 @@ public:
 	/// @return v.v
 	double dot(const ForceVec& fv2);
 
-	friend MotionVec operator*(double scalar, const MotionVec& fv);
-
 private:
 	Vector6d mv_;
 };
 
 inline MotionVec operator*(double scalar, const MotionVec& mv)
 {
-	return MotionVec(scalar * mv.mv_);
+	return mv*scalar;
 }
 
 } // namespace sva

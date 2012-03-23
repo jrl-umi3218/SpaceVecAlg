@@ -49,6 +49,12 @@ BOOST_AUTO_TEST_CASE(MotionVecTest)
 	// alpha*M
 	BOOST_CHECK_EQUAL((5.*vec).vector(), 5.*m);
 
+	// M*alpha
+	BOOST_CHECK_EQUAL((vec*5.).vector(), 5.*m);
+
+	// -M
+	BOOST_CHECK_EQUAL((-vec).vector(), -m);
+
 	Vector3d w2, v2;
 	Vector6d m2;
 	w2 *= 2.;
@@ -85,6 +91,12 @@ BOOST_AUTO_TEST_CASE(ForceVecTest)
 
 	// alpha*F
 	BOOST_CHECK_EQUAL((5.*vec).vector(), 5.*m);
+
+	// F*alpha
+	BOOST_CHECK_EQUAL((vec*5.).vector(), 5.*m);
+
+	// -F
+	BOOST_CHECK_EQUAL((-vec).vector(), -m);
 
 	Vector3d n2, f2;
 	Vector6d m2;

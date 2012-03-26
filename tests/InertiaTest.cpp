@@ -83,6 +83,14 @@ BOOST_AUTO_TEST_CASE(RBInertiaTest)
 	BOOST_CHECK_EQUAL(rb6.momentum(), 2.*h);
 	BOOST_CHECK_EQUAL(rb6.inertia(), 2.*I);
 	BOOST_CHECK(isUpperNull(rb6.lowerTriangularInertia()));
+
+	// ==
+	BOOST_CHECK_EQUAL(rb2, rb2);
+	BOOST_CHECK_NE(rb2, rb6);
+
+	// !=
+	BOOST_CHECK(rb2 != rb6);
+	BOOST_CHECK(!(rb2 != rb2));
 }
 
 BOOST_AUTO_TEST_CASE(ABInertiaTest)
@@ -143,6 +151,14 @@ BOOST_AUTO_TEST_CASE(ABInertiaTest)
 	BOOST_CHECK_EQUAL(ab5.gInertia(), 2.*H);
 	BOOST_CHECK_EQUAL(ab5.inertia(), 2.*I);
 	BOOST_CHECK(isUpperNull(ab5.lowerTriangularInertia()));
+
+	// ==
+	BOOST_CHECK_EQUAL(ab2, ab2);
+	BOOST_CHECK_NE(ab2, ab5);
+
+	// !=
+	BOOST_CHECK(ab2 != ab5);
+	BOOST_CHECK(!(ab2 != ab2));
 }
 
 BOOST_AUTO_TEST_CASE(RBInertiaLeftOperatorsTest)

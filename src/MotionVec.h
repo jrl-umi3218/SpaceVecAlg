@@ -102,6 +102,17 @@ public:
 	/// @return v.v
 	double dot(const ForceVec& fv2);
 
+
+	bool operator==(const MotionVec& mv) const
+	{
+		return mv_ == mv.mv_;
+	}
+
+	bool operator!=(const MotionVec& mv) const
+	{
+		return mv_ != mv.mv_;
+	}
+
 private:
 	Vector6d mv_;
 };
@@ -109,6 +120,12 @@ private:
 inline MotionVec operator*(double scalar, const MotionVec& mv)
 {
 	return mv*scalar;
+}
+
+inline std::ostream& operator<<(std::ostream& out, const MotionVec& mv)
+{
+	out << mv.vector().transpose();
+	return out;
 }
 
 } // namespace sva

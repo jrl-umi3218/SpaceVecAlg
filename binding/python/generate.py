@@ -47,7 +47,13 @@ def build_motion_vec(mv):
   mv.add_binary_numeric_operator('-')
   mv.add_binary_numeric_operator('*', left_cppclass=Parameter.new('double', 'scalar'))
   mv.add_binary_numeric_operator('*', right=param('double', 'scalar'))
+
   mv.add_unary_numeric_operator('-')
+
+  mv.add_binary_comparison_operator('==')
+  mv.add_binary_comparison_operator('!=')
+
+  mv.add_output_stream_operator()
 
 def build_force_vec(fv):
   fv.add_copy_constructor()
@@ -64,7 +70,13 @@ def build_force_vec(fv):
   fv.add_binary_numeric_operator('-')
   fv.add_binary_numeric_operator('*', left_cppclass=Parameter.new('double', 'scalar'))
   fv.add_binary_numeric_operator('*', right=param('double', 'scalar'))
+
   fv.add_unary_numeric_operator('-')
+
+  fv.add_binary_comparison_operator('==')
+  fv.add_binary_comparison_operator('!=')
+
+  fv.add_output_stream_operator()
 
 def build_rb_inertia(rb):
   rb.add_copy_constructor()
@@ -83,6 +95,11 @@ def build_rb_inertia(rb):
   rb.add_binary_numeric_operator('*', right=param('double', 'scalar'))
   rb.add_binary_numeric_operator('*', ReturnValue.new('sva::ForceVec'), right=param('sva::MotionVec', 'mv'))
 
+  rb.add_binary_comparison_operator('==')
+  rb.add_binary_comparison_operator('!=')
+
+  rb.add_output_stream_operator()
+
 def build_ab_inertia(ab):
   ab.add_constructor([])
   ab.add_copy_constructor()
@@ -98,8 +115,13 @@ def build_ab_inertia(ab):
   ab.add_binary_numeric_operator('+')
   ab.add_binary_numeric_operator('*', left_cppclass=Parameter.new('double', 'scalar'))
   ab.add_binary_numeric_operator('*', right=param('double', 'scalar'))
-  rb.add_binary_numeric_operator('+', right=param('sva::RBInertia', 'rb'))
-  rb.add_binary_numeric_operator('*', ReturnValue.new('sva::ForceVec'), right=param('sva::MotionVec', 'mv'))
+  ab.add_binary_numeric_operator('+', right=param('sva::RBInertia', 'rb'))
+  ab.add_binary_numeric_operator('*', ReturnValue.new('sva::ForceVec'), right=param('sva::MotionVec', 'mv'))
+
+  ab.add_binary_comparison_operator('==')
+  ab.add_binary_comparison_operator('!=')
+
+  ab.add_output_stream_operator()
 
 def build_p_transform(pt):
   pt.add_constructor([])
@@ -141,6 +163,11 @@ def build_p_transform(pt):
                 [param('sva::ABInertia', 'p2')])
   pt.add_method('transMul', retval('sva::ABInertia'),
                 [param('sva::ABInertia', 'p2')])
+
+  pt.add_binary_comparison_operator('==')
+  pt.add_binary_comparison_operator('!=')
+
+  pt.add_output_stream_operator()
 
 def build_sva_functions(mod):
   mod.add_function('RotX', retval('Eigen::Matrix3d'), [param('double', 'theta')])

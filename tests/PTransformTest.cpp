@@ -106,6 +106,14 @@ BOOST_AUTO_TEST_CASE(PTransformTest)
 	// inv
 	PTransform pt8 = pt2.inv();
 	BOOST_CHECK_SMALL((pt8.matrix() - pt2.matrix().inverse()).array().abs().sum(), TOL);
+
+	// ==
+	BOOST_CHECK_EQUAL(pt2, pt2);
+	BOOST_CHECK_NE(pt2, pt8);
+
+	// !=
+	BOOST_CHECK(pt2 != pt8);
+	BOOST_CHECK(!(pt2 != pt2));
 }
 
 BOOST_AUTO_TEST_CASE(PTransformLeftOperatorsTest)

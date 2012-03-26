@@ -15,6 +15,9 @@
 
 #pragma once
 
+// std
+#include <ostream>
+
 // eigen
 #include <Eigen/Core>
 #include <Eigen/Geometry>

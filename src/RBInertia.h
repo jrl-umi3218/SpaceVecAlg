@@ -116,6 +116,16 @@ public:
 	/// @return I*v
 	ForceVec operator*(const MotionVec& mv);
 
+	bool operator==(const RBInertia& rbI) const
+	{
+		return m_ == rbI.m_ && h_ == rbI.h_ && I_ == rbI.I_;
+	}
+
+	bool operator!=(const RBInertia& rbI) const
+	{
+		return m_ != rbI.m_ || h_ != rbI.h_ || I_ != rbI.I_;
+	}
+
 private:
 	double m_;
 	Vector3d h_;
@@ -125,6 +135,12 @@ private:
 inline RBInertia operator*(double scalar, const RBInertia& rbI)
 {
 	return rbI*scalar;
+}
+
+inline std::ostream& operator<<(std::ostream& out, const RBInertia& rbI)
+{
+	out << rbI.matrix();
+	return out;
 }
 
 } // namespace sva

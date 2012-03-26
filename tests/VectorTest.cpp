@@ -67,6 +67,14 @@ BOOST_AUTO_TEST_CASE(MotionVecTest)
 
 	// M - M
 	BOOST_CHECK_EQUAL((vec - vec2).vector(), m - m2);
+
+	// ==
+	BOOST_CHECK_EQUAL(vec, vec);
+	BOOST_CHECK_NE(vec, -vec);
+
+	// !=
+	BOOST_CHECK(vec != (-vec));
+	BOOST_CHECK(!(vec != vec));
 }
 
 BOOST_AUTO_TEST_CASE(ForceVecTest)
@@ -110,6 +118,14 @@ BOOST_AUTO_TEST_CASE(ForceVecTest)
 
 	// F - F
 	BOOST_CHECK_EQUAL((vec - vec2).vector(), m - m2);
+
+	// ==
+	BOOST_CHECK_EQUAL(vec, vec);
+	BOOST_CHECK_NE(vec, -vec);
+
+	// !=
+	BOOST_CHECK(vec != (-vec));
+	BOOST_CHECK(!(vec != vec));
 }
 
 BOOST_AUTO_TEST_CASE(MotionVecLeftOperatorsTest)

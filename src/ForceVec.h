@@ -90,6 +90,16 @@ public:
 		return ForceVec(scalar * fv_);
 	}
 
+	bool operator==(const ForceVec& fv) const
+	{
+		return fv_ == fv.fv_;
+	}
+
+	bool operator!=(const ForceVec& fv) const
+	{
+		return fv_ != fv.fv_;
+	}
+
 private:
 	Vector6d fv_;
 };
@@ -97,6 +107,12 @@ private:
 inline ForceVec operator*(double scalar, const ForceVec& fv)
 {
 	return fv*scalar;
+}
+
+inline std::ostream& operator<<(std::ostream& out, const ForceVec& fv)
+{
+	out << fv.vector().transpose();
+	return out;
 }
 
 } // namespace sva

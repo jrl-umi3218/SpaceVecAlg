@@ -189,6 +189,16 @@ public:
 		return PTransform(E_.transpose(), -E_*r_);
 	}
 
+	bool operator==(const PTransform& pt) const
+	{
+		return E_ == pt.E_ && r_ == pt.r_;
+	}
+
+	bool operator!=(const PTransform& pt) const
+	{
+		return E_ != pt.E_ || r_ != pt.r_;
+	}
+
 private:
 	Matrix3d E_;
 	Vector3d r_;
@@ -226,5 +236,10 @@ inline Matrix3d RotZ(double theta)
 												0., 0., 1.).finished();
 }
 
+inline std::ostream& operator<<(std::ostream& out, const PTransform& pt)
+{
+	out << pt.matrix();
+	return out;
+}
 
 } // namespace sva

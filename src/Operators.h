@@ -22,32 +22,32 @@ namespace sva
 
 // Operators implementation
 
-inline MotionVec MotionVec::cross(const MotionVec& mv2)
+inline MotionVec MotionVec::cross(const MotionVec& mv2) const
 {
 	return MotionVec(angular().cross(mv2.angular()),
 									 angular().cross(mv2.linear()) +
 									 linear().cross(mv2.angular()));
 }
 
-inline ForceVec MotionVec::crossDual(const ForceVec& fv2)
+inline ForceVec MotionVec::crossDual(const ForceVec& fv2) const
 {
 	return ForceVec(angular().cross(fv2.couple()) +
 									linear().cross(fv2.force()),
 									angular().cross(fv2.force()));
 }
 
-inline double MotionVec::dot(const sva::ForceVec& fv2)
+inline double MotionVec::dot(const sva::ForceVec& fv2) const
 {
 	return angular().dot(fv2.couple()) + linear().dot(fv2.force());
 }
 
-inline ForceVec RBInertia::operator*(const MotionVec& mv)
+inline ForceVec RBInertia::operator*(const MotionVec& mv) const
 {
 	return ForceVec(inertia()*mv.angular() + momentum().cross(mv.linear()),
 									mass()*mv.linear() - momentum().cross(mv.angular()));
 }
 
-inline ABInertia ABInertia::operator+(const RBInertia& rbI)
+inline ABInertia ABInertia::operator+(const RBInertia& rbI) const
 {
 	using namespace Eigen;
 	Matrix3d M, I;
@@ -56,14 +56,14 @@ inline ABInertia ABInertia::operator+(const RBInertia& rbI)
 	return ABInertia(M, gInertia() + vector3ToCrossMatrix(rbI.momentum()), I);
 }
 
-inline ForceVec ABInertia::operator*(const MotionVec& mv)
+inline ForceVec ABInertia::operator*(const MotionVec& mv) const
 {
 	return ForceVec(inertia()*mv.angular() + gInertia()*mv.linear(),
 									massMatrix()*mv.linear() +
 									gInertia().transpose()*mv.angular());
 }
 
-inline MotionVec PTransform::operator*(const MotionVec& mv)
+inline MotionVec PTransform::operator*(const MotionVec& mv) const
 {
 	using namespace Eigen;
 	const Matrix3d& E = rotation();
@@ -72,7 +72,7 @@ inline MotionVec PTransform::operator*(const MotionVec& mv)
 									 E*(mv.linear() - r.cross(mv.angular())));
 }
 
-inline MotionVec PTransform::invMul(const MotionVec& mv)
+inline MotionVec PTransform::invMul(const MotionVec& mv) const
 {
 	using namespace Eigen;
 	const Matrix3d& E = rotation();
@@ -82,7 +82,7 @@ inline MotionVec PTransform::invMul(const MotionVec& mv)
 									 r.cross(E.transpose()*mv.angular()));
 }
 
-inline ForceVec PTransform::dualMul(const ForceVec& fv)
+inline ForceVec PTransform::dualMul(const ForceVec& fv) const
 {
 	using namespace Eigen;
 	const Matrix3d& E = rotation();
@@ -91,7 +91,7 @@ inline ForceVec PTransform::dualMul(const ForceVec& fv)
 									E*fv.force());
 }
 
-inline ForceVec PTransform::transMul(const ForceVec& fv)
+inline ForceVec PTransform::transMul(const ForceVec& fv) const
 {
 	using namespace Eigen;
 	const Matrix3d& E = rotation();
@@ -102,7 +102,7 @@ inline ForceVec PTransform::transMul(const ForceVec& fv)
 									E.transpose()*fv.force());
 }
 
-inline RBInertia PTransform::dualMul(const RBInertia& rbI)
+inline RBInertia PTransform::dualMul(const RBInertia& rbI) const
 {
 	using namespace Eigen;
 	const Matrix3d& E = rotation();
@@ -117,7 +117,7 @@ inline RBInertia PTransform::dualMul(const RBInertia& rbI)
 									 I);
 }
 
-inline RBInertia PTransform::transMul(const RBInertia& rbI)
+inline RBInertia PTransform::transMul(const RBInertia& rbI) const
 {
 	using namespace Eigen;
 	const Matrix3d& E = rotation();
@@ -130,7 +130,7 @@ inline RBInertia PTransform::transMul(const RBInertia& rbI)
 	return RBInertia(rbI.mass(), E.transpose()*rbI.momentum() + rbI.mass()*r, I);
 }
 
-inline ABInertia PTransform::dualMul(const ABInertia& rbI)
+inline ABInertia PTransform::dualMul(const ABInertia& rbI) const
 {
 	using namespace Eigen;
 	const Matrix3d& E = rotation();
@@ -150,7 +150,7 @@ inline ABInertia PTransform::dualMul(const ABInertia& rbI)
 									 I);
 }
 
-inline ABInertia PTransform::transMul(const ABInertia& rbI)
+inline ABInertia PTransform::transMul(const ABInertia& rbI) const
 {
 	using namespace Eigen;
 	const Matrix3d& E = rotation();

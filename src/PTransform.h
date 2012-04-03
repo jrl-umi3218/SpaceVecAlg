@@ -164,24 +164,24 @@ public:
 	}
 
 	/// @return Xv
-	MotionVec operator*(const MotionVec& mv);
+	MotionVec operator*(const MotionVec& mv) const;
 	/// @return X⁻¹v
-	MotionVec invMul(const MotionVec& mv);
+	MotionVec invMul(const MotionVec& mv) const;
 
 	/// @return X*v
-	ForceVec dualMul(const ForceVec& fv);
+	ForceVec dualMul(const ForceVec& fv) const;
 	/// @return Xtv
-	ForceVec transMul(const ForceVec& fv);
+	ForceVec transMul(const ForceVec& fv) const;
 
 	/// @return X*IX⁻¹
-	RBInertia dualMul(const RBInertia& rbI);
+	RBInertia dualMul(const RBInertia& rbI) const;
 	/// @return XtIX
-	RBInertia transMul(const RBInertia& rbI);
+	RBInertia transMul(const RBInertia& rbI) const;
 
 	/// @return X*IX⁻¹
-	ABInertia dualMul(const ABInertia& rbI);
+	ABInertia dualMul(const ABInertia& rbI) const;
 	/// @return XtIX
-	ABInertia transMul(const ABInertia& rbI);
+	ABInertia transMul(const ABInertia& rbI) const;
 
 	/// @return Inverse Plücker transformation.
 	PTransform inv() const

@@ -114,7 +114,7 @@ public:
 	}
 
 	/// @return I*v
-	ForceVec operator*(const MotionVec& mv);
+	ForceVec operator*(const MotionVec& mv) const;
 
 	bool operator==(const RBInertia& rbI) const
 	{

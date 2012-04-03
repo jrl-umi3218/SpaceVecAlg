@@ -94,13 +94,13 @@ public:
 	}
 
 	/// @return v x v
-	MotionVec cross(const MotionVec& mv2);
+	MotionVec cross(const MotionVec& mv2) const;
 
 	/// @return v x* f
-	ForceVec crossDual(const ForceVec& fv2);
+	ForceVec crossDual(const ForceVec& fv2) const;
 
 	/// @return v.v
-	double dot(const ForceVec& fv2);
+	double dot(const ForceVec& fv2) const;
 
 
 	bool operator==(const MotionVec& mv) const

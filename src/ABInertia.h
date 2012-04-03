@@ -124,10 +124,10 @@ public:
 	}
 
 	/// @return Ia + I
-	ABInertia operator+(const RBInertia& rbI);
+	ABInertia operator+(const RBInertia& rbI) const;
 
 	/// @return Ia * v
-	ForceVec operator*(const MotionVec& mv);
+	ForceVec operator*(const MotionVec& mv) const;
 
 	bool operator==(const ABInertia& abI) const
 	{

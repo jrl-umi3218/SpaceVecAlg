@@ -174,6 +174,9 @@ def build_sva_functions(mod):
   mod.add_function('RotY', retval('Eigen::Matrix3d'), [param('double', 'theta')])
   mod.add_function('RotZ', retval('Eigen::Matrix3d'), [param('double', 'theta')])
 
+  mod.add_function('vector3ToCrossMatrix', retval('Eigen::Matrix3d'), [param('Eigen::Vector3d', 'v')])
+  mod.add_function('vector6ToCrossMatrix', retval('Eigen::Matrix6d'), [param('Eigen::Vector6d', 'v')])
+
 
 if __name__ == '__main__':
   if len(sys.argv) < 2:

@@ -36,7 +36,7 @@ public:
 	/**
 		* @param m Mass.
 		* @param h Spatial momentum.
-		* @param I Inertia matrix.
+		* @param I Inertia matrix at body origin.
 		*/
 	RBInertia(double m, const Vector3d& h, const Matrix3d& I):
 		m_(m),
@@ -49,7 +49,7 @@ public:
 	/**
 		* @param m Mass.
 		* @param h Spatial momentum.
-		* @param I Lower triangular view of Inertia matrix.
+		* @param I Lower triangular view of Inertia matrix at body origin.
 		*/
 	RBInertia(double m, const Vector3d& h,
 						const TriangularView<Matrix3d, Lower>& ltI):

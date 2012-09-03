@@ -23,21 +23,39 @@ using namespace Eigen;
 /**
 	* Create a rotation matrix about the X axis.
 	* The rotation is exprimed in successor frame.
+	* @param theta rotation in radian.
 	*/
 Matrix3d RotX(double theta);
 
 /**
 	* Create a rotation matrix about the Y axis.
 	* The rotation is exprimed in successor frame.
+	* @param theta rotation in radian.
 	*/
 Matrix3d RotY(double theta);
 
 /**
 	* Create a rotation matrix about the Z axis.
 	* The rotation is exprimed in successor frame.
+	* @param theta rotation in radian.
 	*/
 Matrix3d RotZ(double theta);
 
+/**
+	* Compute the rotation error between two matrix.
+	* Compute the XYZ rotation of rotTo rotation matrix
+	* calculated has follow rotDes = rotTo*rotCur
+	* @return XYZ rotation in radian.
+	*/
+Vector3d rotationError(const Matrix3d& rotCur, const Matrix3d& rotDes);
+
+/**
+	* Compute the rotation vector of the rotation matrix.
+	* If we integrate this rotation vector for 1 second we must
+	* have the rotation matrix rot.
+	* (see exponential matrix and logarithmic matrix).
+	*/
+Vector3d rotationVelocity(const Matrix3d& rot);
 
 
 /**
@@ -204,6 +222,7 @@ private:
 	Vector3d r_;
 };
 
+
 inline Matrix3d RotX(double theta)
 {
 	double s = std::sin(theta), c = std::cos(theta);
@@ -212,10 +231,7 @@ inline Matrix3d RotX(double theta)
 												0., -s, c).finished();
 }
 
-/**
-	* Create a rotation matrix about the Y axis.
-	* The rotation is exprimed in successor frame.
-	*/
+
 inline Matrix3d RotY(double theta)
 {
 	double s = std::sin(theta), c = std::cos(theta);
@@ -224,10 +240,7 @@ inline Matrix3d RotY(double theta)
 												s, 0., c).finished();
 }
 
-/**
-	* Create a rotation matrix about the Z axis.
-	* The rotation is exprimed in successor frame.
-	*/
+
 inline Matrix3d RotZ(double theta)
 {
 	double s = std::sin(theta), c = std::cos(theta);
@@ -235,6 +248,35 @@ inline Matrix3d RotZ(double theta)
 												-s, c, 0.,
 												0., 0., 1.).finished();
 }
+
+
+inline Vector3d rotationError(const Matrix3d& rotCur, const Matrix3d& rotDes)
+{
+	Matrix3d rotTo = rotDes*rotCur.transpose();
+	return rotCur*rotationVelocity(rotTo);
+}
+
+
+inline Vector3d rotationVelocity(const Matrix3d& rot)
+{
+	Vector3d w;
+	double theta = std::acos((rot(0,0) + rot(1,1) + rot(2,2) - 1.)*0.5);
+
+	if(rot.isIdentity())
+	{
+		w.setZero();
+	}
+	else
+	{
+		w = Vector3d(-rot(2,1) + rot(1,2),
+								 -rot(0,2) + rot(2,0),
+								 -rot(1,0) + rot(0,1));
+		w *= theta/(2.*std::sin(theta));
+	}
+
+	return w;
+}
+
 
 inline std::ostream& operator<<(std::ostream& out, const PTransform& pt)
 {

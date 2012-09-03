@@ -208,3 +208,24 @@ BOOST_AUTO_TEST_CASE(PTransformLeftOperatorsTest)
 
 	BOOST_CHECK_SMALL((abRes2.matrix() - abRes26d).array().abs().sum(), TOL);
 }
+
+BOOST_AUTO_TEST_CASE(EulerAngleTest)
+{
+	using namespace Eigen;
+	using namespace sva;
+	namespace cst = boost::math::constants;
+
+	Vector3d res;
+
+	res = rotationError(Matrix3d::Identity(), RotX(cst::pi<double>()/2.));
+	BOOST_CHECK_SMALL((res - Vector3d(cst::pi<double>()/2., 0., 0.)).norm(), TOL);
+
+	res = rotationError(Matrix3d::Identity(), RotY(cst::pi<double>()/2.));
+	BOOST_CHECK_SMALL((res - Vector3d(0., cst::pi<double>()/2., 0.)).norm(), TOL);
+
+	res = rotationError(Matrix3d::Identity(), RotZ(cst::pi<double>()/2.));
+	BOOST_CHECK_SMALL((res - Vector3d(0., 0., cst::pi<double>()/2.)).norm(), TOL);
+
+	res = rotationError(RotZ(cst::pi<double>()/4.), RotZ(cst::pi<double>()/2.));
+	BOOST_CHECK_SMALL((res - Vector3d(0., 0., cst::pi<double>()/4.)).norm(), TOL);
+}

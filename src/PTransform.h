@@ -45,17 +45,20 @@ Matrix3d RotZ(double theta);
 	* Compute the rotation error between two matrix.
 	* Compute the XYZ rotation of rotTo rotation matrix
 	* calculated has follow rotDes = rotTo*rotCur
+	* @param prec Precision to know if the rotTo matrix is identity.
 	* @return XYZ rotation in radian.
 	*/
-Vector3d rotationError(const Matrix3d& rotCur, const Matrix3d& rotDes);
+Vector3d rotationError(const Matrix3d& rotCur, const Matrix3d& rotDes,
+	double prec=1e-8);
 
 /**
 	* Compute the rotation vector of the rotation matrix.
 	* If we integrate this rotation vector for 1 second we must
 	* have the rotation matrix rot.
 	* (see exponential matrix and logarithmic matrix).
+	* @param prec Precision to know if the rot matrix is identity.
 	*/
-Vector3d rotationVelocity(const Matrix3d& rot);
+Vector3d rotationVelocity(const Matrix3d& rot, double prec=1e-8);
 
 
 /**
@@ -250,19 +253,20 @@ inline Matrix3d RotZ(double theta)
 }
 
 
-inline Vector3d rotationError(const Matrix3d& rotCur, const Matrix3d& rotDes)
+inline Vector3d rotationError(const Matrix3d& rotCur, const Matrix3d& rotDes,
+	double prec)
 {
 	Matrix3d rotTo = rotDes*rotCur.transpose();
-	return rotCur*rotationVelocity(rotTo);
+	return rotCur*rotationVelocity(rotTo, prec);
 }
 
 
-inline Vector3d rotationVelocity(const Matrix3d& rot)
+inline Vector3d rotationVelocity(const Matrix3d& rot, double prec)
 {
 	Vector3d w;
 	double theta = std::acos((rot(0,0) + rot(1,1) + rot(2,2) - 1.)*0.5);
 
-	if(rot.isIdentity())
+	if(rot.isIdentity(prec))
 	{
 		w.setZero();
 	}

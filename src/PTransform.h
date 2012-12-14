@@ -42,7 +42,7 @@ Matrix3d RotY(double theta);
 Matrix3d RotZ(double theta);
 
 /**
-	* Compute the rotation error between two matrix.
+	* Compute the rotation error between two matrix in world frame.
 	* Compute the XYZ rotation of rotTo rotation matrix
 	* calculated has follow rotDes = rotTo*rotCur
 	* @param prec Precision to know if the rotTo matrix is identity.
@@ -257,7 +257,7 @@ inline Vector3d rotationError(const Matrix3d& rotCur, const Matrix3d& rotDes,
 	double prec)
 {
 	Matrix3d rotTo = rotDes*rotCur.transpose();
-	return rotCur*rotationVelocity(rotTo, prec);
+	return rotCur.transpose()*rotationVelocity(rotTo, prec);
 }
 
 

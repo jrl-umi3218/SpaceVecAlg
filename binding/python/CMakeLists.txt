@@ -1,4 +1,3 @@
-pkg_check_modules(EIGEN3 REQUIRED eigen3)
 find_package(PythonInterp REQUIRED)
 find_package(PythonLibs REQUIRED)
 

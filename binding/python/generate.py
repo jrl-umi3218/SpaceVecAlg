@@ -36,12 +36,12 @@ def build_motion_vec(mv):
   mv.add_method('linear', retval('Eigen::Vector3d'), [], is_const=True)
   mv.add_method('vector', retval('Eigen::Vector6d'), [], is_const=True)
 
-  mv.add_method('cross', retval('sva::MotionVec'),
-                [param('sva::MotionVec', 'm2')])
-  mv.add_method('crossDual', retval('sva::ForceVec'),
-                [param('sva::ForceVec', 'm2')])
+  mv.add_method('cross', retval('sva::MotionVecd'),
+                [param('sva::MotionVecd', 'm2')])
+  mv.add_method('crossDual', retval('sva::ForceVecd'),
+                [param('sva::ForceVecd', 'm2')])
   mv.add_method('dot', retval('double'),
-                [param('sva::ForceVec', 'm2')])
+                [param('sva::ForceVecd', 'm2')])
 
   mv.add_binary_numeric_operator('+')
   mv.add_binary_numeric_operator('-')
@@ -93,7 +93,7 @@ def build_rb_inertia(rb):
   rb.add_binary_numeric_operator('+')
   rb.add_binary_numeric_operator('*', left_cppclass=Parameter.new('double', 'scalar'))
   rb.add_binary_numeric_operator('*', right=param('double', 'scalar'))
-  rb.add_binary_numeric_operator('*', ReturnValue.new('sva::ForceVec'), right=param('sva::MotionVec', 'mv'))
+  rb.add_binary_numeric_operator('*', ReturnValue.new('sva::ForceVecd'), right=param('sva::MotionVecd', 'mv'))
 
   rb.add_binary_comparison_operator('==')
   rb.add_binary_comparison_operator('!=')
@@ -115,8 +115,8 @@ def build_ab_inertia(ab):
   ab.add_binary_numeric_operator('+')
   ab.add_binary_numeric_operator('*', left_cppclass=Parameter.new('double', 'scalar'))
   ab.add_binary_numeric_operator('*', right=param('double', 'scalar'))
-  ab.add_binary_numeric_operator('+', right=param('sva::RBInertia', 'rb'))
-  ab.add_binary_numeric_operator('*', ReturnValue.new('sva::ForceVec'), right=param('sva::MotionVec', 'mv'))
+  ab.add_binary_numeric_operator('+', right=param('sva::RBInertiad', 'rb'))
+  ab.add_binary_numeric_operator('*', ReturnValue.new('sva::ForceVecd'), right=param('sva::MotionVecd', 'mv'))
 
   ab.add_binary_comparison_operator('==')
   ab.add_binary_comparison_operator('!=')
@@ -141,28 +141,28 @@ def build_p_transform(pt):
   pt.add_method('matrix', retval('Eigen::Matrix6d'), [], is_const=True)
   pt.add_method('dualMatrix', retval('Eigen::Matrix6d'), [], is_const=True)
 
-  pt.add_method('inv', retval('sva::PTransform'), [])
+  pt.add_method('inv', retval('sva::PTransformd'), [])
 
   pt.add_binary_numeric_operator('*')
 
-  pt.add_binary_numeric_operator('*', ReturnValue.new('sva::MotionVec'), right=param('sva::MotionVec', 'mv'))
-  pt.add_method('invMul', retval('sva::MotionVec'),
-                [param('sva::MotionVec', 'p2')])
+  pt.add_binary_numeric_operator('*', ReturnValue.new('sva::MotionVecd'), right=param('sva::MotionVecd', 'mv'))
+  pt.add_method('invMul', retval('sva::MotionVecd'),
+                [param('sva::MotionVecd', 'p2')])
 
-  pt.add_method('dualMul', retval('sva::ForceVec'),
-                [param('sva::ForceVec', 'p2')])
-  pt.add_method('transMul', retval('sva::ForceVec'),
-                [param('sva::ForceVec', 'p2')])
+  pt.add_method('dualMul', retval('sva::ForceVecd'),
+                [param('sva::ForceVecd', 'p2')])
+  pt.add_method('transMul', retval('sva::ForceVecd'),
+                [param('sva::ForceVecd', 'p2')])
 
-  pt.add_method('dualMul', retval('sva::RBInertia'),
-                [param('sva::RBInertia', 'p2')])
-  pt.add_method('transMul', retval('sva::RBInertia'),
-                [param('sva::RBInertia', 'p2')])
+  pt.add_method('dualMul', retval('sva::RBInertiad'),
+                [param('sva::RBInertiad', 'p2')])
+  pt.add_method('transMul', retval('sva::RBInertiad'),
+                [param('sva::RBInertiad', 'p2')])
 
-  pt.add_method('dualMul', retval('sva::ABInertia'),
-                [param('sva::ABInertia', 'p2')])
-  pt.add_method('transMul', retval('sva::ABInertia'),
-                [param('sva::ABInertia', 'p2')])
+  pt.add_method('dualMul', retval('sva::ABInertiad'),
+                [param('sva::ABInertiad', 'p2')])
+  pt.add_method('transMul', retval('sva::ABInertiad'),
+                [param('sva::ABInertiad', 'p2')])
 
   pt.add_binary_comparison_operator('==')
   pt.add_binary_comparison_operator('!=')
@@ -195,11 +195,11 @@ if __name__ == '__main__':
   # import Eigen3 types
   import_eigen3_types(sva)
 
-  mv = sva.add_class('MotionVec')
-  fv = sva.add_class('ForceVec')
-  rb = sva.add_class('RBInertia')
-  ab = sva.add_class('ABInertia')
-  pt = sva.add_class('PTransform')
+  mv = sva.add_class('MotionVecd')
+  fv = sva.add_class('ForceVecd')
+  rb = sva.add_class('RBInertiad')
+  ab = sva.add_class('ABInertiad')
+  pt = sva.add_class('PTransformd')
 
   build_motion_vec(mv)
   build_force_vec(fv)

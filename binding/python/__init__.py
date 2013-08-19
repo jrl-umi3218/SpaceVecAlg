@@ -15,3 +15,12 @@
 
 from _spacevecalg import *
 
+# for compatibility purpose default SpaceVecAlg type
+# are referencing double implementation
+
+MotionVec = MotionVecd
+ForceVec = ForceVecd
+RBInertia = RBInertiad
+ABInertia = ABInertiad
+PTransform = PTransformd
+

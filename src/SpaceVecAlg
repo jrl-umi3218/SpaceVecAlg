@@ -29,11 +29,11 @@
 // forward declaration
 namespace sva
 {
-	class MotionVec;
-	class ForceVec;
-	class RBInertia;
-	class ABInertia;
-	class PTransform;
+	template<typename T> class MotionVec;
+	template<typename T> class ForceVec;
+	template<typename T> class RBInertia;
+	template<typename T> class ABInertia;
+	template<typename T> class PTransform;
 }
 
 #include "MotionVec.h"
@@ -42,3 +42,13 @@ namespace sva
 #include "ABInertia.h"
 #include "PTransform.h"
 #include "Operators.h"
+
+// typedef
+namespace sva
+{
+	typedef MotionVec<double> MotionVecd;
+	typedef ForceVec<double> ForceVecd;
+	typedef RBInertia<double> RBInertiad;
+	typedef ABInertia<double> ABInertiad;
+	typedef PTransform<double> PTransformd;
+}

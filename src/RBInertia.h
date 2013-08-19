@@ -24,8 +24,14 @@ using namespace Eigen;
 	* Spatial Rigid Body Inertia compact representation.
 	* See Roy Featherstone «Rigid Body Dynamics Algorithms» page 247.
 	*/
+template<typename T>
 class RBInertia
 {
+public:
+	typedef Vector3<T> vector3_t;
+	typedef Matrix3<T> matrix3_t;
+	typedef Matrix6<T> matrix6_t;
+
 public:
 	RBInertia():
 		m_(),
@@ -38,12 +44,12 @@ public:
 		* @param h Spatial momentum.
 		* @param I Inertia matrix at body origin.
 		*/
-	RBInertia(double m, const Vector3d& h, const Matrix3d& I):
+	RBInertia(double m, const vector3_t& h, const matrix3_t& I):
 		m_(m),
 		h_(h),
-		I_(Matrix3d::Zero())
+		I_(matrix3_t::Zero())
 	{
-		I_.triangularView<Lower>() = I;
+		I_.template triangularView<Lower>() = I;
 	}
 
 	/**
@@ -51,8 +57,8 @@ public:
 		* @param h Spatial momentum.
 		* @param I Lower triangular view of Inertia matrix at body origin.
 		*/
-	RBInertia(double m, const Vector3d& h,
-						const TriangularView<Matrix3d, Lower>& ltI):
+	RBInertia(double m, const vector3_t& h,
+						const TriangularView<matrix3_t, Lower>& ltI):
 		m_(m),
 		h_(h),
 		I_(ltI)
@@ -66,78 +72,80 @@ public:
 	}
 
 	/// @return Spatial momentum.
-	const Vector3d& momentum() const
+	const vector3_t& momentum() const
 	{
 		return h_;
 	}
 
 	/// @return Inertia matrix with a zero upper part.
-	const Matrix3d& lowerTriangularInertia() const
+	const matrix3_t& lowerTriangularInertia() const
 	{
 		return I_;
 	}
 
 	/// @return Inertia matrix.
-	Matrix3d inertia() const
+	matrix3_t inertia() const
 	{
-		Matrix3d I;
-		I.triangularView<Upper>() = I_.transpose();
-		I.triangularView<StrictlyLower>() = I_;
+		matrix3_t I;
+		I.template triangularView<Upper>() = I_.transpose();
+		I.template triangularView<StrictlyLower>() = I_;
 		return I;
 	}
 
 	/// @retrun Non compact spatial rigid body inertia matrix.
-	Matrix6d matrix() const
+	matrix6_t matrix() const
 	{
-		Matrix6d m;
-		Matrix3d hCross = vector3ToCrossMatrix(h_);
+		matrix6_t m;
+		matrix3_t hCross = vector3ToCrossMatrix(h_);
 		m << inertia(), hCross,
-				 hCross.transpose(), Matrix3d::Identity()*m_;
+				 hCross.transpose(), matrix3_t::Identity()*m_;
 		return m;
 	}
 
 	// Operators
-	RBInertia operator+(const RBInertia& rbI) const
+	RBInertia<T> operator+(const RBInertia<T>& rbI) const
 	{
-		Matrix3d I;
-		I.triangularView<Lower>() = I_ + rbI.I_;
-		return RBInertia(m_ + rbI.m_,
+		matrix3_t I;
+		I.template triangularView<Lower>() = I_ + rbI.I_;
+		return RBInertia<T>(m_ + rbI.m_,
 										 h_ + rbI.h_,
 										 I);
 	}
 
-	RBInertia operator*(double scalar) const
+	RBInertia<T> operator*(double scalar) const
 	{
-		Matrix3d I;
-		I.triangularView<Lower>() = scalar *I_;
-		return RBInertia(scalar * m_, scalar * h_, I);
+		matrix3_t I;
+		I.template triangularView<Lower>() = scalar *I_;
+		return RBInertia<T>(scalar * m_, scalar * h_, I);
 	}
 
 	/// @return I*v
-	ForceVec operator*(const MotionVec& mv) const;
+	ForceVec<T> operator*(const MotionVec<T>& mv) const;
 
-	bool operator==(const RBInertia& rbI) const
+	bool operator==(const RBInertia<T>& rbI) const
 	{
 		return m_ == rbI.m_ && h_ == rbI.h_ && I_ == rbI.I_;
 	}
 
-	bool operator!=(const RBInertia& rbI) const
+	bool operator!=(const RBInertia<T>& rbI) const
 	{
 		return m_ != rbI.m_ || h_ != rbI.h_ || I_ != rbI.I_;
 	}
 
 private:
-	double m_;
-	Vector3d h_;
-	Matrix3d I_;
+	T m_;
+	vector3_t h_;
+	matrix3_t I_;
 };
 
-inline RBInertia operator*(double scalar, const RBInertia& rbI)
+template <typename T, typename T2>
+inline RBInertia<T> operator*(T2 scalar, const RBInertia<T>& rbI)
 {
 	return rbI*scalar;
 }
 
-inline std::ostream& operator<<(std::ostream& out, const RBInertia& rbI)
+template <typename T>
+inline std::ostream& operator<<(std::ostream& out, const RBInertia<T>& rbI)
 {
 	out << rbI.matrix();
 	return out;

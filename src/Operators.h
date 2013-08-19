@@ -22,150 +22,164 @@ namespace sva
 
 // Operators implementation
 
-inline MotionVec MotionVec::cross(const MotionVec& mv2) const
+template<typename T>
+inline MotionVec<T> MotionVec<T>::cross(const MotionVec<T>& mv2) const
 {
-	return MotionVec(angular().cross(mv2.angular()),
-									 angular().cross(mv2.linear()) +
-									 linear().cross(mv2.angular()));
+	return MotionVec<T>(angular().cross(mv2.angular()),
+										 angular().cross(mv2.linear()) +
+										 linear().cross(mv2.angular()));
 }
 
-inline ForceVec MotionVec::crossDual(const ForceVec& fv2) const
+template<typename T>
+inline ForceVec<T> MotionVec<T>::crossDual(const ForceVec<T>& fv2) const
 {
-	return ForceVec(angular().cross(fv2.couple()) +
-									linear().cross(fv2.force()),
-									angular().cross(fv2.force()));
+	return ForceVec<T>(angular().cross(fv2.couple()) +
+										linear().cross(fv2.force()),
+										angular().cross(fv2.force()));
 }
 
-inline double MotionVec::dot(const sva::ForceVec& fv2) const
+template<typename T>
+inline double MotionVec<T>::dot(const sva::ForceVec<T>& fv2) const
 {
 	return angular().dot(fv2.couple()) + linear().dot(fv2.force());
 }
 
-inline ForceVec RBInertia::operator*(const MotionVec& mv) const
+template<typename T>
+inline ForceVec<T> RBInertia<T>::operator*(const MotionVec<T>& mv) const
 {
-	return ForceVec(inertia()*mv.angular() + momentum().cross(mv.linear()),
-									mass()*mv.linear() - momentum().cross(mv.angular()));
+	return ForceVec<T>(inertia()*mv.angular() + momentum().cross(mv.linear()),
+										mass()*mv.linear() - momentum().cross(mv.angular()));
 }
 
-inline ABInertia ABInertia::operator+(const RBInertia& rbI) const
+template<typename T>
+inline ABInertia<T> ABInertia<T>::operator+(const RBInertia<T>& rbI) const
 {
 	using namespace Eigen;
-	Matrix3d M, I;
-	M.triangularView<Lower>() = massMatrix() + Matrix3d::Identity()*rbI.mass();
-	I.triangularView<Lower>() = inertia() + rbI.inertia();
-	return ABInertia(M, gInertia() + vector3ToCrossMatrix(rbI.momentum()), I);
+	Matrix3<T> M, I;
+	M.template triangularView<Lower>() = massMatrix() + Matrix3<T>::Identity()*rbI.mass();
+	I.template triangularView<Lower>() = inertia() + rbI.inertia();
+	return ABInertia<T>(M, gInertia() + vector3ToCrossMatrix(rbI.momentum()), I);
 }
 
-inline ForceVec ABInertia::operator*(const MotionVec& mv) const
+template<typename T>
+inline ForceVec<T> ABInertia<T>::operator*(const MotionVec<T>& mv) const
 {
-	return ForceVec(inertia()*mv.angular() + gInertia()*mv.linear(),
+	return ForceVec<T>(inertia()*mv.angular() + gInertia()*mv.linear(),
 									massMatrix()*mv.linear() +
 									gInertia().transpose()*mv.angular());
 }
 
-inline MotionVec PTransform::operator*(const MotionVec& mv) const
+template<typename T>
+inline MotionVec<T> PTransform<T>::operator*(const MotionVec<T>& mv) const
 {
 	using namespace Eigen;
-	const Matrix3d& E = rotation();
-	const Vector3d& r = translation();
-	return MotionVec(E*mv.angular(),
-									 E*(mv.linear() - r.cross(mv.angular())));
+	const Matrix3<T>& E = rotation();
+	const Vector3<T>& r = translation();
+	return MotionVec<T>(E*mv.angular(),
+										 E*(mv.linear() - r.cross(mv.angular())));
 }
 
-inline MotionVec PTransform::invMul(const MotionVec& mv) const
+template<typename T>
+inline MotionVec<T> PTransform<T>::invMul(const MotionVec<T>& mv) const
 {
 	using namespace Eigen;
-	const Matrix3d& E = rotation();
-	const Vector3d& r = translation();
-	return MotionVec(E.transpose()*mv.angular(),
-									 E.transpose()*mv.linear() +
-									 r.cross(E.transpose()*mv.angular()));
+	const Matrix3<T>& E = rotation();
+	const Vector3<T>& r = translation();
+	return MotionVec<T>(E.transpose()*mv.angular(),
+										 E.transpose()*mv.linear() +
+										 r.cross(E.transpose()*mv.angular()));
 }
 
-inline ForceVec PTransform::dualMul(const ForceVec& fv) const
+template<typename T>
+inline ForceVec<T> PTransform<T>::dualMul(const ForceVec<T>& fv) const
 {
 	using namespace Eigen;
-	const Matrix3d& E = rotation();
-	const Vector3d& r = translation();
-	return ForceVec(E*(fv.couple() - r.cross(fv.force())),
-									E*fv.force());
+	const Matrix3<T>& E = rotation();
+	const Vector3<T>& r = translation();
+	return ForceVec<T>(E*(fv.couple() - r.cross(fv.force())),
+										E*fv.force());
 }
 
-inline ForceVec PTransform::transMul(const ForceVec& fv) const
+template<typename T>
+inline ForceVec<T> PTransform<T>::transMul(const ForceVec<T>& fv) const
 {
 	using namespace Eigen;
-	const Matrix3d& E = rotation();
-	const Vector3d& r = translation();
-	Vector3d n = E.transpose()*fv.couple();
+	const Matrix3<T>& E = rotation();
+	const Vector3<T>& r = translation();
+	Vector3<T> n(E.transpose()*fv.couple());
 	n.noalias() += r.cross(E.transpose()*fv.force());
-	return ForceVec(n,
-									E.transpose()*fv.force());
+	return ForceVec<T>(n,
+										E.transpose()*fv.force());
 }
 
-inline RBInertia PTransform::dualMul(const RBInertia& rbI) const
+template<typename T>
+inline RBInertia<T> PTransform<T>::dualMul(const RBInertia<T>& rbI) const
 {
 	using namespace Eigen;
-	const Matrix3d& E = rotation();
-	const Vector3d& r = translation();
-	Matrix3d I;
-	I.triangularView<Lower>() = E*(rbI.inertia() + vector3ToCrossMatrix(r)*
-			vector3ToCrossMatrix(rbI.momentum()) +
-			vector3ToCrossMatrix(rbI.momentum() - rbI.mass()*r)*
-			vector3ToCrossMatrix(r))*E.transpose();
-	return RBInertia(rbI.mass(),
-									 E*(rbI.momentum() - rbI.mass()*r),
-									 I);
+	const Matrix3<T>& E = rotation();
+	const Vector3<T>& r = translation();
+	Matrix3<T> I;
+	I.template triangularView<Lower>() = E*(rbI.inertia() + vector3ToCrossMatrix(r)*
+			vector3ToCrossMatrix<T>(rbI.momentum()) +
+			vector3ToCrossMatrix<T>(rbI.momentum() - rbI.mass()*r)*
+			vector3ToCrossMatrix<T>(r))*E.transpose();
+	return RBInertia<T>(rbI.mass(),
+										 E*(rbI.momentum() - rbI.mass()*r),
+										 I);
 }
 
-inline RBInertia PTransform::transMul(const RBInertia& rbI) const
+template<typename T>
+inline RBInertia<T> PTransform<T>::transMul(const RBInertia<T>& rbI) const
 {
 	using namespace Eigen;
-	const Matrix3d& E = rotation();
-	const Vector3d& r = translation();
-	Matrix3d I;
-	I.triangularView<Lower>() = E.transpose()*rbI.inertia()*E -
-			vector3ToCrossMatrix(r)*vector3ToCrossMatrix(E.transpose()*rbI.momentum()) -
-			vector3ToCrossMatrix(E.transpose()*rbI.momentum() + rbI.mass()*r)*
-			vector3ToCrossMatrix(r);
-	return RBInertia(rbI.mass(), E.transpose()*rbI.momentum() + rbI.mass()*r, I);
+	const Matrix3<T>& E = rotation();
+	const Vector3<T>& r = translation();
+	Matrix3<T> I;
+	I.template triangularView<Lower>() = E.transpose()*rbI.inertia()*E -
+			vector3ToCrossMatrix<T>(r)*vector3ToCrossMatrix<T>(E.transpose()*rbI.momentum()) -
+			vector3ToCrossMatrix<T>(E.transpose()*rbI.momentum() + rbI.mass()*r)*
+			vector3ToCrossMatrix<T>(r);
+	return RBInertia<T>(rbI.mass(), E.transpose()*rbI.momentum() + rbI.mass()*r, I);
 }
 
-inline ABInertia PTransform::dualMul(const ABInertia& rbI) const
+template<typename T>
+inline ABInertia<T> PTransform<T>::dualMul(const ABInertia<T>& rbI) const
 {
 	using namespace Eigen;
-	const Matrix3d& E = rotation();
-	const Vector3d& r = translation();
+	const Matrix3<T>& E = rotation();
+	const Vector3<T>& r = translation();
 
-	Matrix3d massM =rbI.massMatrix();
-	Matrix3d rCross = vector3ToCrossMatrix(r);
-	Matrix3d tmpI = rbI.gInertia() - rCross*massM;
+	Matrix3<T> massM =rbI.massMatrix();
+	Matrix3<T> rCross = vector3ToCrossMatrix(r);
+	Matrix3<T> tmpI = rbI.gInertia() - rCross*massM;
 
-	Matrix3d M, I;
-	M.triangularView<Lower>() = E*massM*E.transpose();
-	I.triangularView<Lower>() = E*(rbI.inertia() - rCross*rbI.gInertia().transpose() +
+	Matrix3<T> M, I;
+	M.template triangularView<Lower>() = E*massM*E.transpose();
+	I.template triangularView<Lower>() = E*(rbI.inertia() - rCross*rbI.gInertia().transpose() +
 			(tmpI*rCross))*E.transpose();
 
-	return ABInertia(M,
+	return ABInertia<T>(M,
 									 E*(tmpI)*E.transpose(),
 									 I);
 }
 
-inline ABInertia PTransform::transMul(const ABInertia& rbI) const
+template<typename T>
+inline ABInertia<T> PTransform<T>::transMul(const ABInertia<T>& rbI) const
 {
 	using namespace Eigen;
-	const Matrix3d& E = rotation();
-	const Vector3d& r = translation();
+	const Matrix3<T>& E = rotation();
+	const Vector3<T>& r = translation();
 
-	Matrix3d Mp = E.transpose()*rbI.massMatrix()*E;
-	Matrix3d Hp = E.transpose()*rbI.gInertia()*E;
-	Matrix3d rCross = vector3ToCrossMatrix(r);
+	Matrix3<T> Mp(E.transpose()*rbI.massMatrix()*E);
+	Matrix3<T> Hp(E.transpose()*rbI.gInertia()*E);
+	Matrix3<T> rCross(vector3ToCrossMatrix(r));
 
-	Matrix3d M, I;
-	M.triangularView<Lower>() = Mp;
-	I.triangularView<Lower>() = (E.transpose()*rbI.inertia()*E +
-															 rCross*Hp.transpose() -
-															 (Hp + rCross*Mp)*rCross);
-	return ABInertia(M,
+	Matrix3<T> M, I;
+	M.template triangularView<Lower>() = Mp;
+	I.template triangularView<Lower>() = (E.transpose()*rbI.inertia()*E +
+																			rCross*Hp.transpose() -
+																			(Hp + rCross*Mp)*rCross);
+	return ABInertia<T>(M,
 									 Hp + rCross*Mp,
 									 I);
 

@@ -18,7 +18,7 @@
 #include <iostream>
 
 // boost
-#define BOOST_TEST_MODULE MotionVec ForceVec test
+#define BOOST_TEST_MODULE MotionVecd ForceVecd test
 #include <boost/test/unit_test.hpp>
 
 // SpaceVecAlg
@@ -32,7 +32,7 @@ bool isUpperNull(const Eigen::Matrix3d& m)
 	return (Matrix3d(m.triangularView<StrictlyUpper>()).array() == 0.).all();
 }
 
-BOOST_AUTO_TEST_CASE(RBInertiaTest)
+BOOST_AUTO_TEST_CASE(RBInertiadTest)
 {
 	using namespace Eigen;
 	using namespace sva;
@@ -45,7 +45,7 @@ BOOST_AUTO_TEST_CASE(RBInertiaTest)
 	Vector3d h = Vector3d::Random()*100.;
 
 	// Parametrized constructor double Vector3d Matrix3d
-	RBInertia rb2(mass, h, I);
+	RBInertiad rb2(mass, h, I);
 
 	BOOST_CHECK_EQUAL(rb2.mass(), mass);
 	BOOST_CHECK_EQUAL(rb2.momentum(), h);
@@ -53,7 +53,7 @@ BOOST_AUTO_TEST_CASE(RBInertiaTest)
 	BOOST_CHECK(isUpperNull(rb2.lowerTriangularInertia()));
 
 	// Parametrized constructor double Vector3d Matrix3d
-	RBInertia rb3(mass, h, I.triangularView<Lower>());
+	RBInertiad rb3(mass, h, I.triangularView<Lower>());
 
 	BOOST_CHECK_EQUAL(rb3.mass(), mass);
 	BOOST_CHECK_EQUAL(rb3.momentum(), h);
@@ -61,7 +61,7 @@ BOOST_AUTO_TEST_CASE(RBInertiaTest)
 	BOOST_CHECK(isUpperNull(rb3.lowerTriangularInertia()));
 
 	// rbI + rbI
-	RBInertia rb4 = rb2 + rb3;
+	RBInertiad rb4 = rb2 + rb3;
 
 	BOOST_CHECK_EQUAL(rb4.mass(), mass + mass);
 	BOOST_CHECK_EQUAL(rb4.momentum(), h + h);
@@ -69,7 +69,7 @@ BOOST_AUTO_TEST_CASE(RBInertiaTest)
 	BOOST_CHECK(isUpperNull(rb4.lowerTriangularInertia()));
 
 	// alpha * rbI
-	RBInertia rb5 = 2.*rb2;
+	RBInertiad rb5 = 2.*rb2;
 
 	BOOST_CHECK_EQUAL(rb5.mass(), 2.*mass);
 	BOOST_CHECK_EQUAL(rb5.momentum(), 2.*h);
@@ -77,7 +77,7 @@ BOOST_AUTO_TEST_CASE(RBInertiaTest)
 	BOOST_CHECK(isUpperNull(rb5.lowerTriangularInertia()));
 
 	// rbI * alpha
-	RBInertia rb6 = rb2*2.;
+	RBInertiad rb6 = rb2*2.;
 
 	BOOST_CHECK_EQUAL(rb6.mass(), 2.*mass);
 	BOOST_CHECK_EQUAL(rb6.momentum(), 2.*h);
@@ -93,7 +93,7 @@ BOOST_AUTO_TEST_CASE(RBInertiaTest)
 	BOOST_CHECK(!(rb2 != rb2));
 }
 
-BOOST_AUTO_TEST_CASE(ABInertiaTest)
+BOOST_AUTO_TEST_CASE(ABInertiadTest)
 {
 	using namespace Eigen;
 	using namespace sva;
@@ -108,7 +108,7 @@ BOOST_AUTO_TEST_CASE(ABInertiaTest)
 			 3., 4., 1.;
 
 	// Parametrized constructor double Vector3d Matrix3d
-	ABInertia ab1(M, H, I);
+	ABInertiad ab1(M, H, I);
 
 	BOOST_CHECK_EQUAL(ab1.massMatrix(), M);
 	BOOST_CHECK(isUpperNull(ab1.lowerTriangularMassMatrix()));
@@ -117,7 +117,7 @@ BOOST_AUTO_TEST_CASE(ABInertiaTest)
 	BOOST_CHECK(isUpperNull(ab1.lowerTriangularInertia()));
 
 	// Parametrized constructor double Vector3d Matrix3d
-	ABInertia ab2(M.triangularView<Lower>(), H, I.triangularView<Lower>());
+	ABInertiad ab2(M.triangularView<Lower>(), H, I.triangularView<Lower>());
 
 	BOOST_CHECK_EQUAL(ab2.massMatrix(), M);
 	BOOST_CHECK(isUpperNull(ab2.lowerTriangularMassMatrix()));
@@ -126,7 +126,7 @@ BOOST_AUTO_TEST_CASE(ABInertiaTest)
 	BOOST_CHECK(isUpperNull(ab2.lowerTriangularInertia()));
 
 	// abI + abI
-	ABInertia ab3 = ab1 + ab2;
+	ABInertiad ab3 = ab1 + ab2;
 
 	BOOST_CHECK_EQUAL(ab3.massMatrix(), M + M);
 	BOOST_CHECK(isUpperNull(ab3.lowerTriangularMassMatrix()));
@@ -135,7 +135,7 @@ BOOST_AUTO_TEST_CASE(ABInertiaTest)
 	BOOST_CHECK(isUpperNull(ab3.lowerTriangularInertia()));
 
 	// alpha * rbI
-	ABInertia ab4 = 2.*ab2;
+	ABInertiad ab4 = 2.*ab2;
 
 	BOOST_CHECK_EQUAL(ab4.massMatrix(), 2.*M);
 	BOOST_CHECK(isUpperNull(ab4.lowerTriangularMassMatrix()));
@@ -144,7 +144,7 @@ BOOST_AUTO_TEST_CASE(ABInertiaTest)
 	BOOST_CHECK(isUpperNull(ab4.lowerTriangularInertia()));
 
 	// rbI * alpha
-	ABInertia ab5 = ab2*2.;
+	ABInertiad ab5 = ab2*2.;
 
 	BOOST_CHECK_EQUAL(ab5.massMatrix(), 2.*M);
 	BOOST_CHECK(isUpperNull(ab5.lowerTriangularMassMatrix()));
@@ -161,7 +161,7 @@ BOOST_AUTO_TEST_CASE(ABInertiaTest)
 	BOOST_CHECK(!(ab2 != ab2));
 }
 
-BOOST_AUTO_TEST_CASE(RBInertiaLeftOperatorsTest)
+BOOST_AUTO_TEST_CASE(RBInertiadLeftOperatorsTest)
 {
 	using namespace Eigen;
 	using namespace sva;
@@ -171,23 +171,23 @@ BOOST_AUTO_TEST_CASE(RBInertiaLeftOperatorsTest)
 			 2., 1., 4.,
 			 3., 4., 1.;
 	Vector3d h = Vector3d::Random()*100.;
-	RBInertia rb(mass, h, I);
+	RBInertiad rb(mass, h, I);
 	Matrix6d rb6d = rb.matrix();
 
 	Vector3d w, v;
 	w = Vector3d::Random()*100.;
 	v = Vector3d::Random()*100.;
-	sva::MotionVec mVec(w, v);
+	sva::MotionVecd mVec(w, v);
 	Vector6d mVec6d = mVec.vector();
 
-	// RBInertia * MotionVec
-	ForceVec fVec = rb*mVec;
-	Vector6d fVec6d = rb6d*mVec6d;
+	// RBInertiad * MotionVecd
+	ForceVecd fVec = rb*mVec;
+	Vector6d fVec6d(rb6d*mVec6d);
 
 	BOOST_CHECK_SMALL((fVec6d - fVec.vector()).array().abs().sum(), TOL);
 }
 
-BOOST_AUTO_TEST_CASE(ABInertiaLeftOperatorsTest)
+BOOST_AUTO_TEST_CASE(ABInertiadLeftOperatorsTest)
 {
 	using namespace Eigen;
 	using namespace sva;
@@ -200,31 +200,31 @@ BOOST_AUTO_TEST_CASE(ABInertiaLeftOperatorsTest)
 			 2., 1., 4.,
 			 3., 4., 1.;
 
-	ABInertia ab(M, H, I);
+	ABInertiad ab(M, H, I);
 	Matrix6d ab6d = ab.matrix();
 
 	double mass = 1.;
 	Vector3d h = Vector3d::Random()*100.;
-	RBInertia rb(mass, h, I);
+	RBInertiad rb(mass, h, I);
 	Matrix6d rb6d = rb.matrix();
 
 	Vector3d w, v;
 	w = Vector3d::Random()*100.;
 	v = Vector3d::Random()*100.;
-	sva::MotionVec mVec(w, v);
+	sva::MotionVecd mVec(w, v);
 	Vector6d mVec6d = mVec.vector();
 
-	// ABInertia + RBInertia
-	ABInertia abRes = ab + rb;
+	// ABInertiad + RBInertiad
+	ABInertiad abRes = ab + rb;
 	Matrix6d abRes6d = ab6d + rb6d;
 
 	BOOST_CHECK_SMALL((abRes6d - abRes.matrix()).array().abs().sum(), TOL);
 	BOOST_CHECK(isUpperNull(abRes.lowerTriangularMassMatrix()));
 	BOOST_CHECK(isUpperNull(abRes.lowerTriangularInertia()));
 
-	// ABInertia * MotionVec
-	ForceVec fVec = ab*mVec;
-	Vector6d fVec6d = ab6d*mVec6d;
+	// ABInertiad * MotionVecd
+	ForceVecd fVec = ab*mVec;
+	Vector6d fVec6d(ab6d*mVec6d);
 
 	BOOST_CHECK_SMALL((fVec6d - fVec.vector()).array().abs().sum(), TOL);
 }

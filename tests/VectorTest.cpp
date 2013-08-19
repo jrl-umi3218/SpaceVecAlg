@@ -18,7 +18,7 @@
 #include <iostream>
 
 // boost
-#define BOOST_TEST_MODULE MotionVec ForceVec test
+#define BOOST_TEST_MODULE MotionVecd ForceVecd test
 #include <boost/test/unit_test.hpp>
 
 // SpaceVecAlg
@@ -26,7 +26,7 @@
 
 const double TOL = 0.00001;
 
-BOOST_AUTO_TEST_CASE(MotionVecTest)
+BOOST_AUTO_TEST_CASE(MotionVecdTest)
 {
 	using namespace Eigen;
 	Vector3d w, v;
@@ -34,7 +34,7 @@ BOOST_AUTO_TEST_CASE(MotionVecTest)
 	w = Vector3d::Random();
 	v = Vector3d::Random();
 
-	sva::MotionVec vec(w, v);
+	sva::MotionVecd vec(w, v);
 	m = vec.vector();
 
 	// angular
@@ -59,7 +59,7 @@ BOOST_AUTO_TEST_CASE(MotionVecTest)
 	Vector6d m2;
 	w2 *= 2.;
 	v2 *= 3.;
-	sva::MotionVec vec2(w2, v2);
+	sva::MotionVecd vec2(w2, v2);
 	m2 = vec2.vector();
 
 	// M + M
@@ -77,7 +77,7 @@ BOOST_AUTO_TEST_CASE(MotionVecTest)
 	BOOST_CHECK(!(vec != vec));
 }
 
-BOOST_AUTO_TEST_CASE(ForceVecTest)
+BOOST_AUTO_TEST_CASE(ForceVecdTest)
 {
 	using namespace Eigen;
 	Vector3d n, f;
@@ -85,7 +85,7 @@ BOOST_AUTO_TEST_CASE(ForceVecTest)
 	n = Vector3d::Random();
 	f = Vector3d::Random();
 
-	sva::ForceVec vec(n, f);
+	sva::ForceVecd vec(n, f);
 	m = vec.vector();
 
 	// couple
@@ -110,7 +110,7 @@ BOOST_AUTO_TEST_CASE(ForceVecTest)
 	Vector6d m2;
 	f2 *= 2.;
 	n2 *= 3.;
-	sva::ForceVec vec2(n2, f2);
+	sva::ForceVecd vec2(n2, f2);
 	m2 = vec2.vector();
 
 	// F + F
@@ -128,7 +128,7 @@ BOOST_AUTO_TEST_CASE(ForceVecTest)
 	BOOST_CHECK(!(vec != vec));
 }
 
-BOOST_AUTO_TEST_CASE(MotionVecLeftOperatorsTest)
+BOOST_AUTO_TEST_CASE(MotionVecdLeftOperatorsTest)
 {
 	using namespace Eigen;
 	Vector3d w, v, n, f;
@@ -137,31 +137,31 @@ BOOST_AUTO_TEST_CASE(MotionVecLeftOperatorsTest)
 	n = Vector3d::Random()*100.;
 	f = Vector3d::Random()*100.;
 
-	sva::MotionVec mVec(w, v);
-	sva::ForceVec fVec(n, f);
+	sva::MotionVecd mVec(w, v);
+	sva::ForceVecd fVec(n, f);
 
 	Vector6d mm, mf;
 	mm = mVec.vector();
 	mf = fVec.vector();
 
-	// dot(MotionVec, ForceVec)
+	// dot(MotionVecd, ForceVecd)
 	BOOST_CHECK_SMALL(mVec.dot(fVec) - mm.transpose()*mf, TOL);
 
-	// cross(MotionVec, MotionVec)
+	// cross(MotionVecd, MotionVecd)
 	Vector3d w2, v2;
 	w2 = Vector3d::Random()*100.;
 	v2 = Vector3d::Random()*100.;
 
-	sva::MotionVec mVec2(w2, v2);
+	sva::MotionVecd mVec2(w2, v2);
 	Vector6d mm2;
 	mm2 = mVec2.vector();
 
-	sva::MotionVec crossM = mVec.cross(mVec2);
+	sva::MotionVecd crossM = mVec.cross(mVec2);
 	BOOST_CHECK_SMALL((crossM.vector() - vector6ToCrossMatrix(mm)*mm2).
 										 array().abs().sum(), TOL);
 
-	// crossDual(MotionVec, ForceVec)
-	sva::ForceVec crossF = mVec.crossDual(fVec);
+	// crossDual(MotionVecd, ForceVecd)
+	sva::ForceVecd crossF = mVec.crossDual(fVec);
 	BOOST_CHECK_SMALL((crossF.vector() - vector6ToCrossDualMatrix(mm)*mf).
 										 array().abs().sum(), TOL);
 }

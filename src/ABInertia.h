@@ -24,8 +24,14 @@ using namespace Eigen;
 	* Spatial Articulated Body Inertia compact representation.
 	* See Roy Featherstone «Rigid Body Dynamics Algorithms» page 247.
 	*/
+template<typename T>
 class ABInertia
 {
+public:
+	typedef Vector3<T> vector3_t;
+	typedef Matrix3<T> matrix3_t;
+	typedef Matrix6<T> matrix6_t;
+
 public:
 	ABInertia():
 		M_(),
@@ -38,13 +44,13 @@ public:
 		* @param H Generalized inertia matrix.
 		* @param I Inertia matrix.
 		*/
-	ABInertia(const Matrix3d& M, const Matrix3d& H, const Matrix3d& I):
-		M_(Matrix3d::Zero()),
+	ABInertia(const matrix3_t& M, const matrix3_t& H, const matrix3_t& I):
+		M_(matrix3_t::Zero()),
 		H_(H),
-		I_(Matrix3d::Zero())
+		I_(matrix3_t::Zero())
 	{
-		M_.triangularView<Lower>() = M;
-		I_.triangularView<Lower>() = I;
+		M_.template triangularView<Lower>() = M;
+		I_.template triangularView<Lower>() = I;
 	}
 
 	/**
@@ -52,9 +58,9 @@ public:
 		* @param H Generalized inertia matrix.
 		* @param I Lower triangular view Inertia matrix.
 		*/
-	ABInertia(const TriangularView<Matrix3d, Lower>& ltM,
-						const Matrix3d& H,
-						const TriangularView<Matrix3d, Lower>& ltI):
+	ABInertia(const TriangularView<matrix3_t, Lower>& ltM,
+						const matrix3_t& H,
+						const TriangularView<matrix3_t, Lower>& ltI):
 		M_(ltM),
 		H_(H),
 		I_(ltI)
@@ -62,95 +68,98 @@ public:
 
 	// Accessor
 	/// @return Mass matrix with a zero upper part.
-	const Matrix3d& lowerTriangularMassMatrix() const
+	const matrix3_t& lowerTriangularMassMatrix() const
 	{
 		return M_;
 	}
 
 	/// @return Mass matrix.
-	Matrix3d massMatrix() const
+	matrix3_t massMatrix() const
 	{
-		Matrix3d M;
-		M.triangularView<Upper>() = M_.transpose();
-		M.triangularView<StrictlyLower>() = M_;
+		matrix3_t M;
+		M.template triangularView<Upper>() = M_.transpose();
+		M.template triangularView<StrictlyLower>() = M_;
 		return M;
 	}
 
 	/// @return Generalized inertia matrix.
-	const Matrix3d& gInertia() const
+	const matrix3_t& gInertia() const
 	{
 		return H_;
 	}
 
 	/// @return Inertia matrix with a zero upper part.
-	const Matrix3d& lowerTriangularInertia() const
+	const matrix3_t& lowerTriangularInertia() const
 	{
 		return I_;
 	}
 
 	/// @return Inertia matrix.
-	Matrix3d inertia() const
+	matrix3_t inertia() const
 	{
-		Matrix3d I;
-		I.triangularView<Upper>() = I_.transpose();
-		I.triangularView<StrictlyLower>() = I_;
+		matrix3_t I;
+		I.template triangularView<Upper>() = I_.transpose();
+		I.template triangularView<StrictlyLower>() = I_;
 		return I;
 	}
 
 	/// @retrun Non compact spatial articulated body inertia matrix.
-	Matrix6d matrix() const
+	matrix6_t matrix() const
 	{
-		Matrix6d m;
+		matrix6_t m;
 		m << inertia(), H_,
 				 H_.transpose(), massMatrix();
 		return m;
 	}
 
 	// Operators
-	ABInertia operator+(const ABInertia& rbI) const
+	ABInertia<T> operator+(const ABInertia<T>& rbI) const
 	{
-		Matrix3d M, I;
-		M.triangularView<Lower>() = M_ + rbI.M_;
-		I.triangularView<Lower>() = I_ + rbI.I_;
-		return ABInertia(M, H_ + rbI.H_, I);
+		matrix3_t M, I;
+		M.template triangularView<Lower>() = M_ + rbI.M_;
+		I.template triangularView<Lower>() = I_ + rbI.I_;
+		return ABInertia<T>(M, H_ + rbI.H_, I);
 	}
 
-	ABInertia operator*(double scalar) const
+	template<typename T2>
+	ABInertia<T> operator*(T2 scalar) const
 	{
-		Matrix3d M, I;
-		M.triangularView<Lower>() = scalar*M_;
-		I.triangularView<Lower>() = scalar*I_;
-		return ABInertia(M, scalar*H_, I);
+		matrix3_t M, I;
+		M.template triangularView<Lower>() = scalar*M_;
+		I.template triangularView<Lower>() = scalar*I_;
+		return ABInertia<T>(M, scalar*H_, I);
 	}
 
 	/// @return Ia + I
-	ABInertia operator+(const RBInertia& rbI) const;
+	ABInertia<T> operator+(const RBInertia<T>& rbI) const;
 
 	/// @return Ia * v
-	ForceVec operator*(const MotionVec& mv) const;
+	ForceVec<T> operator*(const MotionVec<T>& mv) const;
 
-	bool operator==(const ABInertia& abI) const
+	bool operator==(const ABInertia<T>& abI) const
 	{
 		return M_ == abI.M_ && H_ == abI.H_ && I_ == abI.I_;
 	}
 
-	bool operator!=(const ABInertia& abI) const
+	bool operator!=(const ABInertia<T>& abI) const
 	{
 		return M_ != abI.M_ || H_ != abI.H_ || I_ != abI.I_;
 	}
 
 private:
-	Matrix3d M_;
-	Matrix3d H_;
-	Matrix3d I_;
+	matrix3_t M_;
+	matrix3_t H_;
+	matrix3_t I_;
 };
 
-inline ABInertia operator*(double scalar, const ABInertia& abI)
+template<typename T, typename T2>
+inline ABInertia<T> operator*(T2 scalar, const ABInertia<T>& abI)
 {
 	return abI*scalar;
 }
 
-inline std::ostream& operator<<(std::ostream& out, const ABInertia& abI)
+template<typename T>
+inline std::ostream& operator<<(std::ostream& out, const ABInertia<T>& abI)
 {
 	out << abI.matrix();
 	return out;

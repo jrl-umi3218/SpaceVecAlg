@@ -25,21 +25,24 @@ using namespace Eigen;
 	* The rotation is exprimed in successor frame.
 	* @param theta rotation in radian.
 	*/
-Matrix3d RotX(double theta);
+template<typename T>
+Matrix3<T> RotX(T theta);
 
 /**
 	* Create a rotation matrix about the Y axis.
 	* The rotation is exprimed in successor frame.
 	* @param theta rotation in radian.
 	*/
-Matrix3d RotY(double theta);
+template<typename T>
+Matrix3<T> RotY(T theta);
 
 /**
 	* Create a rotation matrix about the Z axis.
 	* The rotation is exprimed in successor frame.
 	* @param theta rotation in radian.
 	*/
-Matrix3d RotZ(double theta);
+template<typename T>
+Matrix3<T> RotZ(T theta);
 
 /**
 	* Compute the rotation error between two matrix in world frame.
@@ -48,7 +51,8 @@ Matrix3d RotZ(double theta);
 	* @param prec Precision to know if the rotTo matrix is identity.
 	* @return XYZ rotation in radian.
 	*/
-Vector3d rotationError(const Matrix3d& rotCur, const Matrix3d& rotDes,
+template<typename T>
+Vector3<T> rotationError(const Matrix3<T>& rotCur, const Matrix3<T>& rotDes,
 	double prec=1e-8);
 
 /**
@@ -58,7 +62,8 @@ Vector3d rotationError(const Matrix3d& rotCur, const Matrix3d& rotDes,
 	* (see exponential matrix and logarithmic matrix).
 	* @param prec Precision to know if the rot matrix is identity.
 	*/
-Vector3d rotationVelocity(const Matrix3d& rot, double prec=1e-8);
+template<typename T>
+Vector3<T> rotationVelocity(const Matrix3<T>& rot, double prec=1e-8);
 
 
 /**
@@ -67,14 +72,19 @@ Vector3d rotationVelocity(const Matrix3d& rot, double prec=1e-8);
 	* Quaternion are inversed as they must be expressed in successor frame.
 	* See Roy Featherstone «Rigid Body Dynamics Algorithms» page 247.
 	*/
+template<typename T>
 class PTransform
 {
+	typedef Vector3<T> vector3_t;
+	typedef Matrix3<T> matrix3_t;
+	typedef Matrix6<T> matrix6_t;
+	typedef Quaternion<T> quaternion_t;
 
 public:
 	/// Identity transformation.
-	static PTransform Identity()
+	static PTransform<T> Identity()
 	{
-		return PTransform(Matrix3d::Identity(), Vector3d::Zero());
+		return PTransform<T>(matrix3_t::Identity(), vector3_t::Zero());
 	}
 
 public:
@@ -89,7 +99,7 @@ public:
 		* @param rot Rotation matrix.
 		* @param trans Translation vector.
 		*/
-	PTransform(const Matrix3d& rot, const Vector3d& trans):
+	PTransform(const matrix3_t& rot, const vector3_t& trans):
 		E_(rot),
 		r_(trans)
 	{}
@@ -98,7 +108,7 @@ public:
 		* @param rot Rotation quaternion.
 		* @param trans Translation vector.
 		*/
-	PTransform(const Quaterniond& rot, const Vector3d& trans):
+	PTransform(const quaternion_t& rot, const vector3_t& trans):
 		E_(),
 		r_(trans)
 	{
@@ -109,9 +119,9 @@ public:
 		* Rotation only transform.
 		* @param rot Rotation quaternion.
 		*/
-	PTransform(const Quaterniond& rot):
+	PTransform(const quaternion_t& rot):
 		E_(),
-		r_(Vector3d::Zero())
+		r_(vector3_t::Zero())
 	{
 		E_ = rot.inverse().toRotationMatrix();
 	}
@@ -120,150 +130,155 @@ public:
 		* Rotation only transform.
 		* @param rot Rotation matrix.
 		*/
-	PTransform(const Matrix3d& rot):
+	PTransform(const matrix3_t& rot):
 		E_(rot),
-		r_(Vector3d::Zero())
+		r_(vector3_t::Zero())
 	{}
 
 	/**
 		* Translation only transform.
 		* @param trans Translation vector.
 		*/
-	PTransform(const Vector3d& trans):
-		E_(Matrix3d::Identity()),
+	PTransform(const vector3_t& trans):
+		E_(matrix3_t::Identity()),
 		r_(trans)
 	{}
 
 	// Accessor
 	/// @return Rotation matrix.
-	const Matrix3d& rotation() const
+	const matrix3_t& rotation() const
 	{
 		return E_;
 	}
 
 	/// @return Rotation matrix.
-	Matrix3d& rotation()
+	matrix3_t& rotation()
 	{
 		return E_;
 	}
 
 	/// @return Translation vector.
-	const Vector3d& translation() const
+	const vector3_t& translation() const
 	{
 		return r_;
 	}
 
 	/// @return Translation vector.
-	Vector3d& translation()
+	vector3_t& translation()
 	{
 		return r_;
 	}
 
 	/// @return Non compact Plücker transformation matrix.
-	Matrix6d matrix() const
+	matrix6_t matrix() const
 	{
-		Matrix6d m;
-		m << E_, Matrix3d::Zero(),
+		matrix6_t m;
+		m << E_, matrix3_t::Zero(),
 				 -E_*vector3ToCrossMatrix(r_), E_;
 		return m;
 	}
 
 	/// @return Non compact dual Plücker transformation matrix.
-	Matrix6d dualMatrix() const
+	matrix6_t dualMatrix() const
 	{
-		Matrix6d m;
+		matrix6_t m;
 		m << E_, -E_*vector3ToCrossMatrix(r_),
-				 Matrix3d::Zero(), E_;
+				 matrix3_t::Zero(), E_;
 		return m;
 	}
 
 	// Operators
 	/// @return X*X
-	PTransform operator*(const PTransform& pt) const
+	PTransform<T> operator*(const PTransform<T>& pt) const
 	{
-		return PTransform(E_*pt.E_, pt.r_ + pt.E_.transpose()*r_);
+		return PTransform<T>(E_*pt.E_, pt.r_ + pt.E_.transpose()*r_);
 	}
 
 	/// @return Xv
-	MotionVec operator*(const MotionVec& mv) const;
+	MotionVec<T> operator*(const MotionVec<T>& mv) const;
 	/// @return X⁻¹v
-	MotionVec invMul(const MotionVec& mv) const;
+	MotionVec<T> invMul(const MotionVec<T>& mv) const;
 
 	/// @return X*v
-	ForceVec dualMul(const ForceVec& fv) const;
+	ForceVec<T> dualMul(const ForceVec<T>& fv) const;
 	/// @return Xtv
-	ForceVec transMul(const ForceVec& fv) const;
+	ForceVec<T> transMul(const ForceVec<T>& fv) const;
 
 	/// @return X*IX⁻¹
-	RBInertia dualMul(const RBInertia& rbI) const;
+	RBInertia<T> dualMul(const RBInertia<T>& rbI) const;
 	/// @return XtIX
-	RBInertia transMul(const RBInertia& rbI) const;
+	RBInertia<T> transMul(const RBInertia<T>& rbI) const;
 
 	/// @return X*IX⁻¹
-	ABInertia dualMul(const ABInertia& rbI) const;
+	ABInertia<T> dualMul(const ABInertia<T>& rbI) const;
 	/// @return XtIX
-	ABInertia transMul(const ABInertia& rbI) const;
+	ABInertia<T> transMul(const ABInertia<T>& rbI) const;
 
 	/// @return Inverse Plücker transformation.
-	PTransform inv() const
+	PTransform<T> inv() const
 	{
-		return PTransform(E_.transpose(), -E_*r_);
+		return PTransform<T>(E_.transpose(), -E_*r_);
 	}
 
-	bool operator==(const PTransform& pt) const
+	bool operator==(const PTransform<T>& pt) const
 	{
 		return E_ == pt.E_ && r_ == pt.r_;
 	}
 
-	bool operator!=(const PTransform& pt) const
+	bool operator!=(const PTransform<T>& pt) const
 	{
 		return E_ != pt.E_ || r_ != pt.r_;
 	}
 
 private:
-	Matrix3d E_;
-	Vector3d r_;
+	matrix3_t E_;
+	vector3_t r_;
 };
 
 
-inline Matrix3d RotX(double theta)
+template<typename T>
+inline Matrix3<T> RotX(T theta)
 {
-	double s = std::sin(theta), c = std::cos(theta);
-	return (Matrix3d() << 1., 0., 0.,
+	T s = std::sin(theta), c = std::cos(theta);
+	return (Matrix3<T>() << 1., 0., 0.,
 												0., c, s,
 												0., -s, c).finished();
 }
 
 
-inline Matrix3d RotY(double theta)
+template<typename T>
+inline Matrix3<T> RotY(T theta)
 {
-	double s = std::sin(theta), c = std::cos(theta);
-	return (Matrix3d() << c, 0., -s,
+	T s = std::sin(theta), c = std::cos(theta);
+	return (Matrix3<T>() << c, 0., -s,
 												0., 1., 0.,
 												s, 0., c).finished();
 }
 
 
-inline Matrix3d RotZ(double theta)
+template<typename T>
+inline Matrix3<T> RotZ(T theta)
 {
-	double s = std::sin(theta), c = std::cos(theta);
-	return (Matrix3d() << c, s, 0.,
+	T s = std::sin(theta), c = std::cos(theta);
+	return (Matrix3<T>() << c, s, 0.,
 												-s, c, 0.,
 												0., 0., 1.).finished();
 }
 
 
-inline Vector3d rotationError(const Matrix3d& rotCur, const Matrix3d& rotDes,
+template<typename T>
+inline Vector3<T> rotationError(const Matrix3<T>& rotCur, const Matrix3<T>& rotDes,
 	double prec)
 {
-	Matrix3d rotTo = rotDes*rotCur.transpose();
-	return rotCur.transpose()*rotationVelocity(rotTo, prec);
+	Matrix3<T> rotTo = rotDes*rotCur.transpose();
+	return Vector3<T>(rotCur.transpose()*rotationVelocity(rotTo, prec));
 }
 
 
-inline Vector3d rotationVelocity(const Matrix3d& rot, double prec)
+template<typename T>
+inline Vector3<T> rotationVelocity(const Matrix3<T>& rot, double prec)
 {
-	Vector3d w;
+	Vector3<T> w;
 	double theta = std::acos((rot(0,0) + rot(1,1) + rot(2,2) - 1.)*0.5);
 
 	if(rot.isIdentity(prec))
@@ -272,9 +287,9 @@ inline Vector3d rotationVelocity(const Matrix3d& rot, double prec)
 	}
 	else
 	{
-		w = Vector3d(-rot(2,1) + rot(1,2),
-								 -rot(0,2) + rot(2,0),
-								 -rot(1,0) + rot(0,1));
+		w = Vector3<T>(-rot(2,1) + rot(1,2),
+									-rot(0,2) + rot(2,0),
+									-rot(1,0) + rot(0,1));
 		w *= theta/(2.*std::sin(theta));
 	}
 
@@ -282,7 +297,8 @@ inline Vector3d rotationVelocity(const Matrix3d& rot, double prec)
 }
 
 
-inline std::ostream& operator<<(std::ostream& out, const PTransform& pt)
+template<typename T>
+inline std::ostream& operator<<(std::ostream& out, const PTransform<T>& pt)
 {
 	out << pt.matrix();
 	return out;

@@ -24,8 +24,13 @@ using namespace Eigen;
 	* Spatial Motion Vector compact representations.
 	* See Roy Featherstone «Rigid Body Dynamics Algorithms» page 247.
 	*/
+template<typename T>
 class MotionVec
 {
+public:
+	typedef Vector3<T> vector3_t;
+	typedef Vector6<T> vector6_t;
+
 public:
 	MotionVec():
 		mv_()
@@ -35,7 +40,7 @@ public:
 		* @param vec Spatial motion vector with angular motion in head
 		* and linear motion in tail.
 		*/
-	MotionVec(const Vector6d& vec):
+	MotionVec(const vector6_t& vec):
 		mv_(vec)
 	{}
 
@@ -43,86 +48,89 @@ public:
 		* @param angular Angular motion.
 		* @param linear Linear motion.
 		*/
-	MotionVec(const Vector3d& angular, const Vector3d& linear):
-		mv_((Vector6d() << angular, linear).finished())
+	MotionVec(const vector3_t& angular, const vector3_t& linear):
+		mv_((vector6_t() << angular, linear).finished())
 	{}
 
 	// Accessor
 	/// @return Angular motion part (3 first parameters).
-	Vector3d angular() const
+	vector3_t angular() const
 	{
-		return mv_.head<3>();
+		return mv_.template head<3>();
 	}
 
 	/// @return Linear motion part (3 last parameters).
-	Vector3d linear() const
+	vector3_t linear() const
 	{
-		return mv_.tail<3>();
+		return mv_.template tail<3>();
 	}
 
 	/// @return Non compact spatial motion vector.
-	const Vector6d& vector() const
+	const vector6_t& vector() const
 	{
 		return mv_;
 	}
 
 	/// @return Non compact spatial motion vector.
-	Vector6d& vector()
+	vector6_t& vector()
 	{
 		return mv_;
 	}
 
 	// Operators
-	MotionVec operator+(const MotionVec& mv) const
+	MotionVec<T> operator+(const MotionVec<T>& mv) const
 	{
-		return MotionVec(mv_ + mv.mv_);
+		return MotionVec<T>(mv_ + mv.mv_);
 	}
 
-	MotionVec operator-(const MotionVec& mv) const
+	MotionVec<T> operator-(const MotionVec<T>& mv) const
 	{
-		return MotionVec(mv_ - mv.mv_);
+		return MotionVec<T>(mv_ - mv.mv_);
 	}
 
-	MotionVec operator-() const
+	MotionVec<T> operator-() const
 	{
-		return MotionVec(-mv_);
+		return MotionVec<T>(-mv_);
 	}
 
-	MotionVec operator*(double scalar) const
+	template<typename T2>
+	MotionVec<T> operator*(T2 scalar) const
 	{
-		return MotionVec(scalar * mv_);
+		return MotionVec<T>(scalar * mv_);
 	}
 
 	/// @return v x v
-	MotionVec cross(const MotionVec& mv2) const;
+	MotionVec<T> cross(const MotionVec<T>& mv2) const;
 
 	/// @return v x* f
-	ForceVec crossDual(const ForceVec& fv2) const;
+	ForceVec<T> crossDual(const ForceVec<T>& fv2) const;
 
 	/// @return v.v
-	double dot(const ForceVec& fv2) const;
+	double dot(const ForceVec<T>& fv2) const;
 
 
-	bool operator==(const MotionVec& mv) const
+	bool operator==(const MotionVec<T>& mv) const
 	{
 		return mv_ == mv.mv_;
 	}
 
-	bool operator!=(const MotionVec& mv) const
+	bool operator!=(const MotionVec<T>& mv) const
 	{
 		return mv_ != mv.mv_;
 	}
 
 private:
-	Vector6d mv_;
+	vector6_t mv_;
 };
 
-inline MotionVec operator*(double scalar, const MotionVec& mv)
+template<typename T, typename T2>
+inline MotionVec<T> operator*(T2 scalar, const MotionVec<T>& mv)
 {
 	return mv*scalar;
 }
 
-inline std::ostream& operator<<(std::ostream& out, const MotionVec& mv)
+template<typename T>
+inline std::ostream& operator<<(std::ostream& out, const MotionVec<T>& mv)
 {
 	out << mv.vector().transpose();
 	return out;

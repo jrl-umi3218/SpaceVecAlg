@@ -18,3 +18,7 @@ add_executable(PTransformTest PTransformTest.cpp)
 target_link_libraries(PTransformTest ${Boost_LIBRARIES})
 add_test(PTransformTestUnit PTransformTest)
 
+add_executable(AutoDiffTest AutoDiffTest.cpp)
+target_link_libraries(AutoDiffTest ${Boost_LIBRARIES})
+add_test(AutoDiffTestUnit AutoDiffTest)
+

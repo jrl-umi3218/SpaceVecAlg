@@ -95,6 +95,13 @@ public:
 		r_()
 	{}
 
+	/// Copy constructor.
+	template<typename T2>
+	PTransform(const PTransform<T2>& pt):
+		E_(pt.rotation().template cast<T>()),
+		r_(pt.translation().template cast<T>())
+	{}
+
 	/**
 		* @param rot Rotation matrix.
 		* @param trans Translation vector.

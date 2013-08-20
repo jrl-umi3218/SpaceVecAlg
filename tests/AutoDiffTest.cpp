@@ -30,6 +30,7 @@
 typedef Eigen::Matrix<double, Eigen::Dynamic, 1> derivative_t;
 typedef Eigen::AutoDiffScalar<derivative_t> scalar_t;
 
+/*
 namespace std
 {
 scalar_t sin(const scalar_t& t)
@@ -41,9 +42,29 @@ scalar_t cos(const scalar_t& t)
   return Eigen::cos(t);
 }
 }
+*/
 
 // SpaceVecAlg
 #include <SpaceVecAlg>
+namespace sva
+{
+template<>
+inline Matrix3<scalar_t> RotZ<scalar_t>(scalar_t theta)
+{
+	using namespace Eigen;
+
+	Matrix3<scalar_t> ret;
+	scalar_t z(0., derivative_t::Zero(theta.derivatives().rows()));
+	scalar_t o(1., derivative_t::Zero(theta.derivatives().rows()));
+	scalar_t s = sin(theta), c = cos(theta);
+
+	ret << c, s, z,
+				-s, c, z,
+				z, z, o;
+
+	return ret;
+}
+}
 
 using boost::math::constants::pi;
 
@@ -80,16 +101,17 @@ BOOST_AUTO_TEST_CASE(PTransformVsPTransform)
 
 	{
 		Vector3<scalar_t> prismY(0., 1., 0.);
-		prismY[0].derivatives().setZero(2);
-		prismY[1].derivatives().setZero(2);
+		prismY[0].derivatives().setZero(2, 1);
+		prismY[1].derivatives().setZero(2, 1);
 		prismY[1].derivatives()(0) = 1.;
-		prismY[2].derivatives().setZero(2);
+		prismY[2].derivatives().setZero(2, 1);
 
 		scalar_t rotZ = pi<double>()/4.;
-		rotZ.derivatives().setZero(2);
+		rotZ.derivatives().setZero(2, 1);
 		rotZ.derivatives()(1) = 1.;
 
-		PTransform<scalar_t> Rot(RotZ(rotZ));
+		// PTransform<scalar_t> Rot(RotZ(rotZ));
+		PTransform<scalar_t> Rot(AngleAxis<scalar_t>(-rotZ, Vector3<scalar_t>::UnitZ()).matrix());
 		PTransform<scalar_t> Prism(prismY);
 
 		PTransform<scalar_t> res = Prism*Rot;

@@ -85,6 +85,7 @@ BOOST_AUTO_TEST_CASE(PTransformVsPTransform)
 
 		PTransform<scalar_t> res1 = pt1*pt1;
 		PTransform<scalar_t> res2 = pt1*PTransform<scalar_t>{pt2};
+		BOOST_CHECK(PTransform<scalar_t>{pt2} == pt2.cast<scalar_t>());
 
 		std::cout << res1.translation()[0].derivatives().transpose() << std::endl;
 		std::cout << res1.translation()[1].derivatives().transpose() << std::endl;

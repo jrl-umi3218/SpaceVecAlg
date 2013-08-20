@@ -194,6 +194,12 @@ public:
 		return m;
 	}
 
+	template<typename T2>
+	PTransform<T2> cast() const
+	{
+		return PTransform<T2>(E_.cast<T2>(), r_.cast<T2>());
+	}
+
 	// Operators
 	/// @return X*X
 	PTransform<T> operator*(const PTransform<T>& pt) const

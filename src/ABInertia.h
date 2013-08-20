@@ -112,6 +112,12 @@ public:
 		return m;
 	}
 
+	template<typename T2>
+	ABInertia<T2> cast() const
+	{
+		return ABInertia<T2>(M_.cast<T2>(), H_.cast<T2>(), I_.cast<T2>());
+	}
+
 	// Operators
 	ABInertia<T> operator+(const ABInertia<T>& rbI) const
 	{

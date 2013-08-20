@@ -74,6 +74,12 @@ public:
 		return fv_;
 	}
 
+	template<typename T2>
+	ForceVec<T2> cast() const
+	{
+		return ForceVec<T2>(fv_.cast<T2>());
+	}
+
 	// Operators
 	ForceVec<T> operator+(const ForceVec<T>& fv) const
 	{

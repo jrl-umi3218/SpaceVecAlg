@@ -44,7 +44,7 @@ public:
 		* @param h Spatial momentum.
 		* @param I Inertia matrix at body origin.
 		*/
-	RBInertia(double m, const vector3_t& h, const matrix3_t& I):
+	RBInertia(T m, const vector3_t& h, const matrix3_t& I):
 		m_(m),
 		h_(h),
 		I_(matrix3_t::Zero())
@@ -57,7 +57,7 @@ public:
 		* @param h Spatial momentum.
 		* @param I Lower triangular view of Inertia matrix at body origin.
 		*/
-	RBInertia(double m, const vector3_t& h,
+	RBInertia(T m, const vector3_t& h,
 						const TriangularView<matrix3_t, Lower>& ltI):
 		m_(m),
 		h_(h),
@@ -66,7 +66,7 @@ public:
 
 	// Accessor
 	/// @return Mass.
-	double mass() const
+	T mass() const
 	{
 		return m_;
 	}
@@ -102,6 +102,12 @@ public:
 		return m;
 	}
 
+	template<typename T2>
+	RBInertia<T2> cast() const
+	{
+		return RBInertia<T2>(T2(m_), h_.cast<T2>(), I_.cast<T2>());
+	}
+
 	// Operators
 	RBInertia<T> operator+(const RBInertia<T>& rbI) const
 	{
@@ -112,7 +118,8 @@ public:
 										 I);
 	}
 
-	RBInertia<T> operator*(double scalar) const
+	template<typename T2>
+	RBInertia<T> operator*(T2 scalar) const
 	{
 		matrix3_t I;
 		I.template triangularView<Lower>() = scalar *I_;

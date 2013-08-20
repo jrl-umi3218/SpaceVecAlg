@@ -77,6 +77,12 @@ public:
 		return mv_;
 	}
 
+	template<typename T2>
+	MotionVec<T2> cast() const
+	{
+		return MotionVec<T2>(mv_.cast<T2>());
+	}
+
 	// Operators
 	MotionVec<T> operator+(const MotionVec<T>& mv) const
 	{

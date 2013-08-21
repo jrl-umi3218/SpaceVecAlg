@@ -292,7 +292,7 @@ template<typename T>
 inline Vector3<T> rotationVelocity(const Matrix3<T>& rot, double prec)
 {
 	Vector3<T> w;
-	double theta = std::acos((rot(0,0) + rot(1,1) + rot(2,2) - 1.)*0.5);
+	T theta = std::acos((rot(0,0) + rot(1,1) + rot(2,2) - 1.)*0.5);
 
 	if(rot.isIdentity(prec))
 	{

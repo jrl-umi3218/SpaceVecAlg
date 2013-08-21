@@ -112,7 +112,7 @@ public:
 	ForceVec<T> crossDual(const ForceVec<T>& fv2) const;
 
 	/// @return v.v
-	double dot(const ForceVec<T>& fv2) const;
+	T dot(const ForceVec<T>& fv2) const;
 
 
 	bool operator==(const MotionVec<T>& mv) const

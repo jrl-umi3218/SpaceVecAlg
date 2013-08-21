@@ -39,7 +39,7 @@ inline ForceVec<T> MotionVec<T>::crossDual(const ForceVec<T>& fv2) const
 }
 
 template<typename T>
-inline double MotionVec<T>::dot(const sva::ForceVec<T>& fv2) const
+inline T MotionVec<T>::dot(const sva::ForceVec<T>& fv2) const
 {
 	return angular().dot(fv2.couple()) + linear().dot(fv2.force());
 }

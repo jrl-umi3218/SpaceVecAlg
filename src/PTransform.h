@@ -197,7 +197,7 @@ public:
 	template<typename T2>
 	PTransform<T2> cast() const
 	{
-		return PTransform<T2>(E_.cast<T2>(), r_.cast<T2>());
+		return PTransform<T2>(E_.template cast<T2>(), r_.template cast<T2>());
 	}
 
 	// Operators

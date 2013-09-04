@@ -77,7 +77,7 @@ public:
 	template<typename T2>
 	ForceVec<T2> cast() const
 	{
-		return ForceVec<T2>(fv_.cast<T2>());
+		return ForceVec<T2>(fv_.template cast<T2>());
 	}
 
 	// Operators

@@ -80,7 +80,7 @@ public:
 	template<typename T2>
 	MotionVec<T2> cast() const
 	{
-		return MotionVec<T2>(mv_.cast<T2>());
+		return MotionVec<T2>(mv_.template cast<T2>());
 	}
 
 	// Operators

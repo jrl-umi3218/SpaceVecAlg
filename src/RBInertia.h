@@ -105,7 +105,7 @@ public:
 	template<typename T2>
 	RBInertia<T2> cast() const
 	{
-		return RBInertia<T2>(T2(m_), h_.cast<T2>(), I_.cast<T2>());
+		return RBInertia<T2>(T2(m_), h_.template cast<T2>(), I_.template cast<T2>());
 	}
 
 	// Operators

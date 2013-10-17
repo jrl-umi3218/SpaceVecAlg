@@ -20,6 +20,11 @@ namespace sva
 
 using namespace Eigen;
 
+template<typename T>
+Matrix3<T> inertiaToOrigin(const Matrix3<T>& inertia,
+												 T mass, const Vector3<T>& com,
+												 const Matrix3<T>& rotation);
+
 /**
 	* Spatial Rigid Body Inertia compact representation.
 	* See Roy Featherstone «Rigid Body Dynamics Algorithms» page 247.
@@ -156,6 +161,15 @@ inline std::ostream& operator<<(std::ostream& out, const RBInertia<T>& rbI)
 {
 	out << rbI.matrix();
 	return out;
+}
+
+template<typename T>
+Matrix3<T> inertiaToOrigin(const Matrix3<T>& inertia,
+												 T mass, const Vector3<T>& com,
+												 const Matrix3<T>& rotation)
+{
+	Matrix3<T> trans = vector3ToCrossMatrix<T>(mass*com)*vector3ToCrossMatrix<T>(com).transpose();
+	return rotation*(inertia + trans)*rotation.transpose();
 }
 
 } // namespace sva

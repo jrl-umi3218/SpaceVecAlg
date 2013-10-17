@@ -184,6 +184,11 @@ def build_sva_functions(mod):
   mod.add_function('vector3ToCrossMatrix', retval('Eigen::Matrix3d'), [param('Eigen::Vector3d', 'v')])
   mod.add_function('vector6ToCrossMatrix', retval('Eigen::Matrix6d'), [param('Eigen::Vector6d', 'v')])
 
+  mod.add_function('inertiaToOrigin', retval('Eigen::Matrix3d'), [param('const Eigen::Matrix3d&', 'inertia'),
+                                                                  param('double', 'mass'),
+                                                                  param('const Eigen::Vector3d&', 'com'),
+                                                                  param('const Eigen::Matrix3d&', 'rotation')])
+
 
 if __name__ == '__main__':
   if len(sys.argv) < 2:

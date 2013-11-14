@@ -32,50 +32,50 @@ public:
 	typedef Vector6<T> vector6_t;
 
 public:
-	MotionVec()
-		: angular_(vector3_t::Zero())
-		, linear_(vector3_t::Zero())
+	MotionVec():
+		angular_(vector3_t::Zero()),
+		linear_(vector3_t::Zero())
 	{}
 
 	/**
 		* @param vec Spatial motion vector with angular motion in head
 		* and linear motion in tail.
 		*/
-	MotionVec(const vector6_t& vec)
-		: angular_(vec.template head<3>())
-		, linear_(vec.template tail<3>())
+	MotionVec(const vector6_t& vec):
+		angular_(vec.template head<3>()),
+		linear_(vec.template tail<3>())
 	{}
 
 	/**
 		* @param angular Angular motion.
 		* @param linear Linear motion.
 		*/
-	MotionVec(const vector3_t& angular, const vector3_t& linear)
-		: angular_(angular)
-		, linear_(linear)
+	MotionVec(const vector3_t& angular, const vector3_t& linear):
+		angular_(angular),
+		linear_(linear)
 	{}
 
 	// Accessor
 	/// @return Angular motion
-	const vector3_t & angular() const
+	const vector3_t& angular() const
 	{
 		return angular_;
 	}
 
 	/// @return Angular motion
-	vector3_t & angular()
+	vector3_t& angular()
 	{
 		return angular_;
 	}
 
 	/// @return Linear motion
-	const vector3_t & linear() const
+	const vector3_t& linear() const
 	{
 		return linear_;
 	}
 
 	/// @return Linear motion
-	vector3_t & linear()
+	vector3_t& linear()
 	{
 		return linear_;
 	}

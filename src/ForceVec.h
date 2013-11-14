@@ -32,45 +32,45 @@ public:
 	typedef Vector6<T> vector6_t;
 
 public:
-	ForceVec()
-		: couple_(vector3_t::Zero())
-		, force_(vector3_t::Zero())
+	ForceVec():
+		couple_(vector3_t::Zero()),
+		force_(vector3_t::Zero())
 	{}
 
 	/// @param vec Spatial force vector with couple in head and force in tail.
-	ForceVec(const vector6_t& vec)
-		: couple_(vec.template head<3>())
-		, force_(vec.template tail<3>())
+	ForceVec(const vector6_t& vec):
+		couple_(vec.template head<3>()),
+		force_(vec.template tail<3>())
 	{}
 
 	/**
 		* @param couple Couple.
 		* @param force Force.
 		*/
-	ForceVec(const vector3_t& couple, const vector3_t& force)
-		: couple_(couple)
-		, force_(force)
+	ForceVec(const vector3_t& couple, const vector3_t& force):
+		couple_(couple),
+		force_(force)
 	{}
 
 	// Accessor
 	/// @return Couple
-	vector3_t & couple()
+	vector3_t& couple()
 	{
 		return couple_;
 	}
 
-	const vector3_t & couple() const
+	const vector3_t& couple() const
 	{
 		return couple_;
 	}
 
 	/// @return Force
-	vector3_t & force()
+	vector3_t& force()
 	{
 		return force_;
 	}
 
-	const vector3_t & force() const
+	const vector3_t& force() const
 	{
 		return force_;
 	}

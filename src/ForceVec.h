@@ -33,8 +33,8 @@ public:
 
 public:
 	ForceVec():
-		couple_(vector3_t::Zero()),
-		force_(vector3_t::Zero())
+		couple_(),
+		force_()
 	{}
 
 	/// @param vec Spatial force vector with couple in head and force in tail.

@@ -33,8 +33,8 @@ public:
 
 public:
 	MotionVec():
-		angular_(vector3_t::Zero()),
-		linear_(vector3_t::Zero())
+		angular_(),
+		linear_()
 	{}
 
 	/**

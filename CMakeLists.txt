@@ -15,11 +15,15 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -std=c++0x -pedantic")
 SETUP_PROJECT()
 
 option(PYTHON_BINDING "Generate python binding." ON)
+option(UNIT_TESTS "Generate unit tests." ON)
 
 SEARCH_FOR_EIGEN()
 
 add_subdirectory(src)
-add_subdirectory(tests)
+
+if(${UNIT_TESTS})
+	add_subdirectory(tests)
+endif()
 
 if(${PYTHON_BINDING})
 	add_subdirectory(binding/python)

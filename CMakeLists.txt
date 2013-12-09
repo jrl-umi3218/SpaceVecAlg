@@ -17,6 +17,7 @@ SETUP_PROJECT()
 option(PYTHON_BINDING "Generate python binding." ON)
 option(UNIT_TESTS "Generate unit tests." ON)
 
+SET(Eigen_REQUIRED "eigen3 >= 3.2.0")
 SEARCH_FOR_EIGEN()
 
 add_subdirectory(src)

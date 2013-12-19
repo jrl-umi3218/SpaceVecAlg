@@ -4,30 +4,41 @@ INCLUDE(../../cmake/python.cmake)
 SET(Python_ADDITIONAL_VERSIONS 2.7)
 FINDPYTHON()
 
-# Create the package in build dir for testing purpose
-SET(LIBRARY_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR}/spacevecalg)
-CONFIGURE_FILE(__init__.py ${CMAKE_CURRENT_BINARY_DIR}/spacevecalg/__init__.py COPYONLY)
-SET(OUTPUT_BINDING ${CMAKE_CURRENT_BINARY_DIR}/spacevecalg.cpp)
+## Define PYTHON_DISTLIB
+EXECUTE_PROCESS(
+  COMMAND "${PYTHON_EXECUTABLE}" "-c"
+  "import sys, os; print os.sep.join(['lib', 'python' + sys.version[:3], 'dist-packages'])"
+  OUTPUT_VARIABLE PYTHON_DISTLIB
+  ERROR_QUIET)
+# Remove final \n of the variable PYTHON_DISTLIB
+STRING(REPLACE "\n" "" PYTHON_DISTLIB "${PYTHON_DISTLIB}")
 
-# Generate Python binding code
-ADD_CUSTOM_COMMAND (
+
+# create the package in build dir for testing purpose
+set(LIBRARY_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR}/spacevecalg)
+configure_file(__init__.py ${CMAKE_CURRENT_BINARY_DIR}/spacevecalg/__init__.py COPYONLY)
+
+set(OUTPUT_BINDING ${CMAKE_CURRENT_BINARY_DIR}/spacevecalg.cpp)
+
+# generate python binding code
+add_custom_command (
   OUTPUT ${OUTPUT_BINDING}
   COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/generate.py ${OUTPUT_BINDING}
   DEPENDS generate.py
 )
 
-# Build the library
-SET(SOURCES ${OUTPUT_BINDING})
+# build the library
+set(SOURCES ${OUTPUT_BINDING})
+include_directories(.)
+include_directories(../../src)
+include_directories(${EIGEN3_INCLUDE_DIRS})
+include_directories(${PYTHON_INCLUDE_DIRS})
+add_library(_spacevecalg SHARED ${SOURCES})
 
-INCLUDE_DIRECTORIES(SYSTEM ${PYTHON_INCLUDE_PATH})
-INCLUDE_DIRECTORIES(SYSTEM ${EIGEN3_INCLUDE_DIRS})
-INCLUDE_DIRECTORIES(.)
-INCLUDE_DIRECTORIES(../../src)
+set_target_properties(_spacevecalg PROPERTIES PREFIX "")
 
-ADD_LIBRARY(_spacevecalg SHARED ${SOURCES})
+# install rules
+set(INSTALL_PATH "${PYTHON_DISTLIB}/spacevecalg/")
+install(TARGETS _spacevecalg DESTINATION ${INSTALL_PATH})
+install(FILES __init__.py DESTINATION ${INSTALL_PATH})
 
-SET_TARGET_PROPERTIES(_spacevecalg PROPERTIES PREFIX "")
-
-# Install rules
-INSTALL(TARGETS _spacevecalg DESTINATION "${PYTHON_SITELIB}/spacevecalg")
-PYTHON_INSTALL_BUILD(spacevecalg __init__.py "${PYTHON_SITELIB}")

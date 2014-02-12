@@ -212,10 +212,31 @@ public:
 	/// @return X⁻¹v
 	MotionVec<T> invMul(const MotionVec<T>& mv) const;
 
+	/// @see operator*(const MotionVec<T>& mv) const;
+	template<typename Derived>
+	void mul(const Eigen::MatrixBase<Derived>& mv,
+		Eigen::MatrixBase<Derived>& result) const;
+
+	/// @see invMul
+	template<typename Derived>
+	void invMul(const Eigen::MatrixBase<Derived>& mv,
+		Eigen::MatrixBase<Derived>& result) const;
+
+
 	/// @return X*v
 	ForceVec<T> dualMul(const ForceVec<T>& fv) const;
 	/// @return Xtv
 	ForceVec<T> transMul(const ForceVec<T>& fv) const;
+
+	/// @see dualMul
+	template<typename Derived>
+	void dualMul(const Eigen::MatrixBase<Derived>& fv,
+		Eigen::MatrixBase<Derived>& result) const;
+
+	/// @see transMul
+	template<typename Derived>
+	void transMul(const Eigen::MatrixBase<Derived>& fv,
+		Eigen::MatrixBase<Derived>& result) const;
 
 	/// @return X*IX⁻¹
 	RBInertia<T> dualMul(const RBInertia<T>& rbI) const;

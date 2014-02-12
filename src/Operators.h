@@ -198,6 +198,20 @@ inline MotionVec<T> PTransform<T>::operator*(const MotionVec<T>& mv) const
 }
 
 template<typename T>
+template<typename Derived>
+void PTransform<T>::mul(const Eigen::MatrixBase<Derived>& mv,
+	Eigen::MatrixBase<Derived>& result) const
+{
+	using namespace Eigen;
+	const Matrix3<T>& E = rotation();
+	const Vector3<T>& r = translation();
+	motionAngular(result).noalias() = E*motionAngular(mv);
+
+	motionLinear(result).noalias() = E*motionLinear(mv);
+	motionLinear(result).noalias() += E*motionAngular(mv).colwise().cross(r);
+}
+
+template<typename T>
 inline MotionVec<T> PTransform<T>::invMul(const MotionVec<T>& mv) const
 {
 	using namespace Eigen;
@@ -206,6 +220,20 @@ inline MotionVec<T> PTransform<T>::invMul(const MotionVec<T>& mv) const
 	return MotionVec<T>(E.transpose()*mv.angular(),
 										 E.transpose()*mv.linear() +
 										 r.cross(E.transpose()*mv.angular()));
+}
+
+template<typename T>
+template<typename Derived>
+void PTransform<T>::invMul(const Eigen::MatrixBase<Derived>& mv,
+	Eigen::MatrixBase<Derived>& result) const
+{
+	using namespace Eigen;
+	const Matrix3<T>& E = rotation();
+	const Vector3<T>& r = translation();
+	motionAngular(result).noalias() = E.transpose()*motionAngular(mv);
+
+	motionLinear(result).noalias() = E.transpose()*motionLinear(mv);
+	motionLinear(result).noalias() -= (E.transpose()*motionAngular(mv)).colwise().cross(r);
 }
 
 template<typename T>
@@ -219,6 +247,20 @@ inline ForceVec<T> PTransform<T>::dualMul(const ForceVec<T>& fv) const
 }
 
 template<typename T>
+template<typename Derived>
+void PTransform<T>::dualMul(const Eigen::MatrixBase<Derived>& fv,
+	Eigen::MatrixBase<Derived>& result) const
+{
+	using namespace Eigen;
+	const Matrix3<T>& E = rotation();
+	const Vector3<T>& r = translation();
+	forceCouple(result).noalias() = E*forceCouple(fv);
+	forceCouple(result).noalias() += E*forceForce(fv).colwise().cross(r);
+
+	forceForce(result).noalias() = E*forceForce(fv);
+}
+
+template<typename T>
 inline ForceVec<T> PTransform<T>::transMul(const ForceVec<T>& fv) const
 {
 	using namespace Eigen;
@@ -228,6 +270,20 @@ inline ForceVec<T> PTransform<T>::transMul(const ForceVec<T>& fv) const
 	n.noalias() += r.cross(E.transpose()*fv.force());
 	return ForceVec<T>(n,
 										E.transpose()*fv.force());
+}
+
+template<typename T>
+template<typename Derived>
+void PTransform<T>::transMul(const Eigen::MatrixBase<Derived>& fv,
+	Eigen::MatrixBase<Derived>& result) const
+{
+	using namespace Eigen;
+	const Matrix3<T>& E = rotation();
+	const Vector3<T>& r = translation();
+	forceCouple(result).noalias() = E.transpose()*forceCouple(fv);
+	forceCouple(result).noalias() -= (E.transpose()*forceForce(fv)).colwise().cross(r);
+
+	forceForce(result).noalias() = E.transpose()*forceForce(fv);
 }
 
 template<typename T>

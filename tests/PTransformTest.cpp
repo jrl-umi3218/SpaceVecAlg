@@ -167,11 +167,23 @@ BOOST_AUTO_TEST_CASE(PTransformdLeftOperatorsTest)
 
 	BOOST_CHECK_SMALL((mvRes1.vector() - mvRes16d).array().abs().sum(), TOL);
 
+	// test the vectorized version
+	Vector6d mvRes1Vec;
+	pt.mul(mVec.vector(), mvRes1Vec);
+
+	BOOST_CHECK_SMALL((mvRes1.vector() - mvRes1Vec).norm(), TOL);
+
 	// PTransformd^-1 * MotionVecd
 	MotionVecd mvRes2 = pt.invMul(mVec);
 	Vector6d mvRes26d(ptInv6d*mVec6d);
 
 	BOOST_CHECK_SMALL((mvRes2.vector() - mvRes26d).array().abs().sum(), TOL);
+
+	// test the vectorized version
+	Vector6d mvRes2Vec;
+	pt.invMul(mVec.vector(), mvRes2Vec);
+
+	BOOST_CHECK_SMALL((mvRes2.vector() - mvRes2Vec).norm(), TOL);
 
 	// PTransformd* * ForceVecd
 	ForceVecd fvRes1 = pt.dualMul(fVec);
@@ -179,11 +191,23 @@ BOOST_AUTO_TEST_CASE(PTransformdLeftOperatorsTest)
 
 	BOOST_CHECK_SMALL((fvRes1.vector() - fvRes16d).array().abs().sum(), TOL);
 
+	// test the vectorized version
+	Vector6d fvRes1Vec;
+	pt.dualMul(fVec.vector(), fvRes1Vec);
+
+	BOOST_CHECK_SMALL((fvRes1.vector() - fvRes1Vec).norm(), TOL);
+
 	// PTransformd T * ForceVecd
 	ForceVecd fvRes2 = pt.transMul(fVec);
 	Vector6d fvRes26d(pt6d.transpose()*fVec6d);
 
 	BOOST_CHECK_SMALL((fvRes2.vector() - fvRes26d).array().abs().sum(), TOL);
+
+	// test the vectorized version
+	Vector6d fvRes2Vec;
+	pt.transMul(fVec.vector(), fvRes2Vec);
+
+	BOOST_CHECK_SMALL((fvRes2.vector() - fvRes2Vec).norm(), TOL);
 
 	// PTransformd* * RBInertiad * PTransformd^-1
 	RBInertiad rbRes1 = pt.dualMul(rb);

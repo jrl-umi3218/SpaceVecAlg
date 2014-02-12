@@ -91,9 +91,14 @@ template<typename Derived>
 inline void MotionVec<T>::cross(const Eigen::MatrixBase<Derived>& mv2,
 	Eigen::MatrixBase<Derived>& result) const
 {
+	static_assert(Derived::RowsAtCompileTime == 6,
+							 "the matrix must have exactly 6 rows");
+	static_assert(std::is_same<typename Derived::Scalar, T>::value,
+							 "motion vec and matrix must be the same type");
 	motionAngular(result).noalias() = motionAngular(mv2).colwise().cross(-angular_);
-	motionLinear(result).noalias() = motionLinear(mv2).colwise().cross(-angular_) +
-																 motionAngular(mv2).colwise().cross(-linear_);
+
+	motionLinear(result).noalias() = motionLinear(mv2).colwise().cross(-angular_);
+	motionLinear(result).noalias() -= motionAngular(mv2).colwise().cross(linear_);
 }
 
 template<typename T>
@@ -109,8 +114,13 @@ template<typename Derived>
 inline void MotionVec<T>::crossDual(const Eigen::MatrixBase<Derived>& fv2,
 	Eigen::MatrixBase<Derived>& result) const
 {
-	forceCouple(result).noalias() = forceCouple(fv2).colwise().cross(-angular_) +
-																forceForce(fv2).colwise().cross(-linear_);
+	static_assert(Derived::RowsAtCompileTime == 6,
+							 "the matrix must have exactly 6 rows");
+	static_assert(std::is_same<typename Derived::Scalar, T>::value,
+							 "motion vec and matrix must be the same type");
+	forceCouple(result).noalias() = forceCouple(fv2).colwise().cross(-angular_);
+	forceCouple(result).noalias() -= forceForce(fv2).colwise().cross(linear_);
+
 	forceForce(result).noalias() = forceForce(fv2).colwise().cross(-angular_);
 }
 

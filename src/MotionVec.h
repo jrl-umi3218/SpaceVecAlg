@@ -131,6 +131,7 @@ public:
 	/// @return v x v
 	MotionVec<T> cross(const MotionVec<T>& mv2) const;
 
+	/// @see cross
 	template<typename Derived>
 	void cross(const Eigen::MatrixBase<Derived>& mv2,
 		Eigen::MatrixBase<Derived>& result) const;
@@ -138,6 +139,7 @@ public:
 	/// @return v x* f
 	ForceVec<T> crossDual(const ForceVec<T>& fv2) const;
 
+	/// @see crossDual
 	template<typename Derived>
 	void crossDual(const Eigen::MatrixBase<Derived>& fv2,
 		Eigen::MatrixBase<Derived>& result) const;

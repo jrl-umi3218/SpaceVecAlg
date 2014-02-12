@@ -50,6 +50,9 @@ def build_motion_vec(mv):
 
   mv.add_unary_numeric_operator('-')
 
+  mv.add_inplace_numeric_operator('+=')
+  mv.add_inplace_numeric_operator('-=')
+
   mv.add_binary_comparison_operator('==')
   mv.add_binary_comparison_operator('!=')
 
@@ -73,6 +76,9 @@ def build_force_vec(fv):
 
   fv.add_unary_numeric_operator('-')
 
+  fv.add_inplace_numeric_operator('+=')
+  fv.add_inplace_numeric_operator('-=')
+
   fv.add_binary_comparison_operator('==')
   fv.add_binary_comparison_operator('!=')
 
@@ -91,9 +97,15 @@ def build_rb_inertia(rb):
   rb.add_method('matrix', retval('Eigen::Matrix6d'), [], is_const=True)
 
   rb.add_binary_numeric_operator('+')
+  rb.add_binary_numeric_operator('-')
   rb.add_binary_numeric_operator('*', left_cppclass=Parameter.new('double', 'scalar'))
   rb.add_binary_numeric_operator('*', right=param('double', 'scalar'))
   rb.add_binary_numeric_operator('*', ReturnValue.new('sva::ForceVecd'), right=param('sva::MotionVecd', 'mv'))
+
+  rb.add_unary_numeric_operator('-')
+
+  rb.add_inplace_numeric_operator('+=')
+  rb.add_inplace_numeric_operator('-=')
 
   rb.add_binary_comparison_operator('==')
   rb.add_binary_comparison_operator('!=')
@@ -113,10 +125,16 @@ def build_ab_inertia(ab):
   ab.add_method('matrix', retval('Eigen::Matrix6d'), [], is_const=True)
 
   ab.add_binary_numeric_operator('+')
+  ab.add_binary_numeric_operator('-')
   ab.add_binary_numeric_operator('*', left_cppclass=Parameter.new('double', 'scalar'))
   ab.add_binary_numeric_operator('*', right=param('double', 'scalar'))
   ab.add_binary_numeric_operator('+', right=param('sva::RBInertiad', 'rb'))
   ab.add_binary_numeric_operator('*', ReturnValue.new('sva::ForceVecd'), right=param('sva::MotionVecd', 'mv'))
+
+  ab.add_unary_numeric_operator('-')
+
+  ab.add_inplace_numeric_operator('+=')
+  ab.add_inplace_numeric_operator('-=')
 
   ab.add_binary_comparison_operator('==')
   ab.add_binary_comparison_operator('!=')

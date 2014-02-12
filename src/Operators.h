@@ -22,6 +22,62 @@ namespace sva
 
 // Operators implementation
 
+template<typename Derived>
+Eigen::Block<Derived, 3, Dynamic>
+motionAngular(Eigen::MatrixBase<Derived>& mv)
+{
+	return Eigen::Block<Derived, 3, Dynamic>(mv.derived(), 0, 0, 3, mv.cols());
+}
+
+template<typename Derived>
+Eigen::Block<const Derived, 3, Dynamic>
+motionAngular(const Eigen::MatrixBase<Derived>& mv)
+{
+	return Eigen::Block<const Derived, 3, Dynamic>(mv.derived(), 0, 0, 3, mv.cols());
+}
+
+template<typename Derived>
+Eigen::Block<Derived, 3, Dynamic>
+motionLinear(Eigen::MatrixBase<Derived>& mv)
+{
+	return Eigen::Block<Derived, 3, Dynamic>(mv.derived(), 3, 0, 3, mv.cols());
+}
+
+template<typename Derived>
+Eigen::Block<const Derived, 3, Dynamic>
+motionLinear(const Eigen::MatrixBase<Derived>& mv)
+{
+	return Eigen::Block<const Derived, 3, Dynamic>(mv.derived(), 3, 0, 3, mv.cols());
+}
+
+template<typename Derived>
+Eigen::Block<Derived, 3, Dynamic>
+forceCouple(Eigen::MatrixBase<Derived>& mv)
+{
+	return Eigen::Block<Derived, 3, Dynamic>(mv.derived(), 0, 0, 3, mv.cols());
+}
+
+template<typename Derived>
+Eigen::Block<const Derived, 3, Dynamic>
+forceCouple(const Eigen::MatrixBase<Derived>& mv)
+{
+	return Eigen::Block<const Derived, 3, Dynamic>(mv.derived(), 0, 0, 3, mv.cols());
+}
+
+template<typename Derived>
+Eigen::Block<Derived, 3, Dynamic>
+forceForce(Eigen::MatrixBase<Derived>& mv)
+{
+	return Eigen::Block<Derived, 3, Dynamic>(mv.derived(), 3, 0, 3, mv.cols());
+}
+
+template<typename Derived>
+Eigen::Block<const Derived, 3, Dynamic>
+forceForce(const Eigen::MatrixBase<Derived>& mv)
+{
+	return Eigen::Block<const Derived, 3, Dynamic>(mv.derived(), 3, 0, 3, mv.cols());
+}
+
 template<typename T>
 inline MotionVec<T> MotionVec<T>::cross(const MotionVec<T>& mv2) const
 {
@@ -31,11 +87,31 @@ inline MotionVec<T> MotionVec<T>::cross(const MotionVec<T>& mv2) const
 }
 
 template<typename T>
+template<typename Derived>
+inline void MotionVec<T>::cross(const Eigen::MatrixBase<Derived>& mv2,
+	Eigen::MatrixBase<Derived>& result) const
+{
+	motionAngular(result).noalias() = motionAngular(mv2).colwise().cross(-angular_);
+	motionLinear(result).noalias() = motionLinear(mv2).colwise().cross(-angular_) +
+																 motionAngular(mv2).colwise().cross(-linear_);
+}
+
+template<typename T>
 inline ForceVec<T> MotionVec<T>::crossDual(const ForceVec<T>& fv2) const
 {
 	return ForceVec<T>(angular().cross(fv2.couple()) +
 										linear().cross(fv2.force()),
 										angular().cross(fv2.force()));
+}
+
+template<typename T>
+template<typename Derived>
+inline void MotionVec<T>::crossDual(const Eigen::MatrixBase<Derived>& fv2,
+	Eigen::MatrixBase<Derived>& result) const
+{
+	forceCouple(result).noalias() = forceCouple(fv2).colwise().cross(-angular_) +
+																forceForce(fv2).colwise().cross(-linear_);
+	forceForce(result).noalias() = forceForce(fv2).colwise().cross(-angular_);
 }
 
 template<typename T>

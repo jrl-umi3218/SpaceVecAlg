@@ -185,5 +185,14 @@ BOOST_AUTO_TEST_CASE(MotionVecdLeftOperatorsTest)
 	sva::ForceVecd crossF = mVec.crossDual(fVec);
 	BOOST_CHECK_SMALL((crossF.vector() - vector6ToCrossDualMatrix(mm)*mf).
 										 array().abs().sum(), TOL);
+
+	// test the vectorized version
+	Eigen::Vector6d crossMVec;
+	mVec.cross(mVec2.vector(), crossMVec);
+	BOOST_CHECK_EQUAL(crossM.vector(), crossMVec);
+
+	Eigen::Vector6d crossFVec;
+	mVec.crossDual(fVec.vector(), crossFVec);
+	BOOST_CHECK_EQUAL(crossF.vector(), crossFVec);
 }
 

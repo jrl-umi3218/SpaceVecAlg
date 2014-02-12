@@ -172,6 +172,11 @@ public:
 	/// @return Ia * v
 	ForceVec<T> operator*(const MotionVec<T>& mv) const;
 
+	/// @see operator*(const MotionVec<T>& mv) const
+	template<typename Derived>
+	void mul(const Eigen::MatrixBase<Derived>& mv,
+		Eigen::MatrixBase<Derived>& result) const;
+
 	bool operator==(const ABInertia<T>& abI) const
 	{
 		return M_ == abI.M_ && H_ == abI.H_ && I_ == abI.I_;

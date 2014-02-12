@@ -245,6 +245,11 @@ BOOST_AUTO_TEST_CASE(RBInertiadLeftOperatorsTest)
 	Vector6d fVec6d(rb6d*mVec6d);
 
 	BOOST_CHECK_SMALL((fVec6d - fVec.vector()).array().abs().sum(), TOL);
+
+	// vectorized version
+	Vector6d fVecVec;
+	rb.mul(mVec.vector(), fVecVec);
+	BOOST_CHECK_EQUAL(fVec.vector(), fVecVec);
 }
 
 BOOST_AUTO_TEST_CASE(ABInertiadLeftOperatorsTest)
@@ -287,5 +292,10 @@ BOOST_AUTO_TEST_CASE(ABInertiadLeftOperatorsTest)
 	Vector6d fVec6d(ab6d*mVec6d);
 
 	BOOST_CHECK_SMALL((fVec6d - fVec.vector()).array().abs().sum(), TOL);
+
+	// vectorized version
+	Vector6d fVecVec;
+	ab.mul(mVec.vector(), fVecVec);
+	BOOST_CHECK_EQUAL(fVec.vector(), fVecVec);
 }
 

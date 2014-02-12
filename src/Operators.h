@@ -138,6 +138,22 @@ inline ForceVec<T> RBInertia<T>::operator*(const MotionVec<T>& mv) const
 }
 
 template<typename T>
+template<typename Derived>
+inline void RBInertia<T>::mul(const Eigen::MatrixBase<Derived>& mv,
+	Eigen::MatrixBase<Derived>& result) const
+{
+	static_assert(Derived::RowsAtCompileTime == 6,
+							 "the matrix must have exactly 6 rows");
+	static_assert(std::is_same<typename Derived::Scalar, T>::value,
+							 "motion vec and matrix must be the same type");
+	forceCouple(result).noalias() = inertia()*motionAngular(mv);
+	forceCouple(result).noalias() -= motionLinear(mv).colwise().cross(momentum());
+
+	forceForce(result).noalias() = motionLinear(mv)*mass();
+	forceForce(result).noalias() += motionAngular(mv).colwise().cross(momentum());
+}
+
+template<typename T>
 inline ABInertia<T> ABInertia<T>::operator+(const RBInertia<T>& rbI) const
 {
 	using namespace Eigen;
@@ -153,6 +169,22 @@ inline ForceVec<T> ABInertia<T>::operator*(const MotionVec<T>& mv) const
 	return ForceVec<T>(inertia()*mv.angular() + gInertia()*mv.linear(),
 									massMatrix()*mv.linear() +
 									gInertia().transpose()*mv.angular());
+}
+
+template<typename T>
+template<typename Derived>
+inline void ABInertia<T>::mul(const Eigen::MatrixBase<Derived>& mv,
+	Eigen::MatrixBase<Derived>& result) const
+{
+	static_assert(Derived::RowsAtCompileTime == 6,
+							 "the matrix must have exactly 6 rows");
+	static_assert(std::is_same<typename Derived::Scalar, T>::value,
+							 "motion vec and matrix must be the same type");
+	forceCouple(result).noalias() = inertia()*motionAngular(mv);
+	forceCouple(result).noalias() += gInertia()*motionLinear(mv);
+
+	forceForce(result).noalias() = inertia()*motionLinear(mv);
+	forceForce(result).noalias() += gInertia().transpose()*motionAngular(mv);
 }
 
 template<typename T>

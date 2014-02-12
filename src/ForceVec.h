@@ -103,6 +103,20 @@ public:
 		return ForceVec<T>(-couple_, -force_);
 	}
 
+	ForceVec<T>& operator+=(const ForceVec<T>& fv)
+	{
+		couple_ += fv.couple_;
+		force_ += fv.force_;
+		return *this;
+	}
+
+	ForceVec<T>& operator-=(const ForceVec<T>& fv)
+	{
+		couple_ -= fv.couple_;
+		force_ -= fv.force_;
+		return *this;
+	}
+
 	template<typename T2>
 	ForceVec<T> operator*(T2 scalar) const
 	{

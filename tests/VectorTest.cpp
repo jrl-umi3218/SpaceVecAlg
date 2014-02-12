@@ -57,9 +57,9 @@ BOOST_AUTO_TEST_CASE(MotionVecdTest)
 	BOOST_CHECK_EQUAL((-vec).vector(), -m);
 
 	Vector3d w2, v2;
+	w2 = Vector3d::Random();
+	v2 = Vector3d::Random();
 	Vector6d m2;
-	w2 *= 2.;
-	v2 *= 3.;
 	sva::MotionVecd vec2(w2, v2);
 	m2 = vec2.vector();
 
@@ -68,6 +68,16 @@ BOOST_AUTO_TEST_CASE(MotionVecdTest)
 
 	// M - M
 	BOOST_CHECK_EQUAL((vec - vec2).vector(), m - m2);
+
+	// M += M
+	sva::MotionVecd vec_pluseq(vec);
+	vec_pluseq += vec2;
+	BOOST_CHECK_EQUAL(vec_pluseq, vec + vec2);
+
+	// M -= M
+	sva::MotionVecd vec_minuseq(vec);
+	vec_minuseq -= vec2;
+	BOOST_CHECK_EQUAL(vec_minuseq, vec - vec2);
 
 	// ==
 	BOOST_CHECK_EQUAL(vec, vec);
@@ -108,9 +118,9 @@ BOOST_AUTO_TEST_CASE(ForceVecdTest)
 	BOOST_CHECK_EQUAL((-vec).vector(), -m);
 
 	Vector3d n2, f2;
+	n2 = Vector3d::Random();
+	f2 = Vector3d::Random();
 	Vector6d m2;
-	f2 *= 2.;
-	n2 *= 3.;
 	sva::ForceVecd vec2(n2, f2);
 	m2 = vec2.vector();
 
@@ -119,6 +129,16 @@ BOOST_AUTO_TEST_CASE(ForceVecdTest)
 
 	// F - F
 	BOOST_CHECK_EQUAL((vec - vec2).vector(), m - m2);
+
+	// M += M
+	sva::ForceVecd vec_pluseq(vec);
+	vec_pluseq += vec2;
+	BOOST_CHECK_EQUAL(vec_pluseq, vec + vec2);
+
+	// M -= M
+	sva::ForceVecd vec_minuseq(vec);
+	vec_minuseq -= vec2;
+	BOOST_CHECK_EQUAL(vec_minuseq, vec - vec2);
 
 	// ==
 	BOOST_CHECK_EQUAL(vec, vec);

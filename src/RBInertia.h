@@ -119,8 +119,38 @@ public:
 		matrix3_t I;
 		I.template triangularView<Lower>() = I_ + rbI.I_;
 		return RBInertia<T>(m_ + rbI.m_,
-										 h_ + rbI.h_,
-										 I);
+											 h_ + rbI.h_,
+											 I);
+	}
+
+	RBInertia<T> operator-(const RBInertia<T>& rbI) const
+	{
+		matrix3_t I;
+		I.template triangularView<Lower>() = I_ - rbI.I_;
+		return RBInertia<T>(m_ - rbI.m_,
+											 h_ - rbI.h_,
+											 I);
+	}
+
+	RBInertia<T> operator-() const
+	{
+		return RBInertia<T>(-m_, -h_, -I_);
+	}
+
+	RBInertia<T>& operator+=(const RBInertia<T>& rbI)
+	{
+		I_.template triangularView<Lower>() += rbI.I_;
+		m_ += rbI.m_;
+		h_ += rbI.h_;
+		return *this;
+	}
+
+	RBInertia<T>& operator-=(const RBInertia<T>& rbI)
+	{
+		I_.template triangularView<Lower>() -= rbI.I_;
+		m_ -= rbI.m_;
+		h_ -= rbI.h_;
+		return *this;
 	}
 
 	template<typename T2>

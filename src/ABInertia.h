@@ -128,6 +128,35 @@ public:
 		return ABInertia<T>(M, H_ + rbI.H_, I);
 	}
 
+	ABInertia<T> operator-(const ABInertia<T>& rbI) const
+	{
+		matrix3_t M, I;
+		M.template triangularView<Lower>() = M_ - rbI.M_;
+		I.template triangularView<Lower>() = I_ - rbI.I_;
+		return ABInertia<T>(M, H_ - rbI.H_, I);
+	}
+
+	ABInertia<T> operator-() const
+	{
+		return ABInertia<T>(-M_, -H_, -I_);
+	}
+
+	ABInertia<T>& operator+=(const ABInertia<T>& rbI)
+	{
+		M_.template triangularView<Lower>() += rbI.M_;
+		H_ += rbI.H_;
+		I_.template triangularView<Lower>() +=  rbI.I_;
+		return *this;
+	}
+
+	ABInertia<T>& operator-=(const ABInertia<T>& rbI)
+	{
+		M_.template triangularView<Lower>() -= rbI.M_;
+		H_ -= rbI.H_;
+		I_.template triangularView<Lower>() -=  rbI.I_;
+		return *this;
+	}
+
 	template<typename T2>
 	ABInertia<T> operator*(T2 scalar) const
 	{

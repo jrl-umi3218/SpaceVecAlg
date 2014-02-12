@@ -108,6 +108,20 @@ public:
 		return MotionVec<T>(-angular_, -linear_);
 	}
 
+	MotionVec<T>& operator+=(const MotionVec<T>& mv)
+	{
+		angular_ += mv.angular_;
+		linear_ += mv.linear_;
+		return *this;
+	}
+
+	MotionVec<T>& operator-=(const MotionVec<T>& mv)
+	{
+		angular_ -= mv.angular_;
+		linear_ -= mv.linear_;
+		return *this;
+	}
+
 	template<typename T2>
 	MotionVec<T> operator*(T2 scalar) const
 	{

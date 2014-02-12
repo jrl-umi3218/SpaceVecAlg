@@ -85,6 +85,34 @@ BOOST_AUTO_TEST_CASE(RBInertiadTest)
 	BOOST_CHECK_EQUAL(rb6.inertia(), 2.*I);
 	BOOST_CHECK(isUpperNull(rb6.lowerTriangularInertia()));
 
+	// rbI - rbI
+	RBInertiad rb7 = rb2 - rb3;
+
+	BOOST_CHECK_EQUAL(rb7.mass(), mass - mass);
+	BOOST_CHECK_EQUAL(rb7.momentum(), h - h);
+	BOOST_CHECK_EQUAL(rb7.inertia(), I - I);
+	BOOST_CHECK(isUpperNull(rb7.lowerTriangularInertia()));
+
+	// -rbI
+	RBInertiad rb8 = -rb2;
+
+	BOOST_CHECK_EQUAL(rb8, rb2*-1.);
+	BOOST_CHECK(isUpperNull(rb8.lowerTriangularInertia()));
+
+	// rbI += rbI
+	RBInertiad rb9(rb2);
+	rb9 += rb3;
+
+	BOOST_CHECK_EQUAL(rb9, rb2 + rb3);
+	BOOST_CHECK(isUpperNull(rb9.lowerTriangularInertia()));
+
+	// rbI -= rbI
+	RBInertiad rb10(rb2);
+	rb10 -= rb3;
+
+	BOOST_CHECK_EQUAL(rb10, rb2 - rb3);
+	BOOST_CHECK(isUpperNull(rb10.lowerTriangularInertia()));
+
 	// ==
 	BOOST_CHECK_EQUAL(rb2, rb2);
 	BOOST_CHECK_NE(rb2, rb6);
@@ -144,7 +172,7 @@ BOOST_AUTO_TEST_CASE(ABInertiadTest)
 	BOOST_CHECK_EQUAL(ab4.inertia(), 2.*I);
 	BOOST_CHECK(isUpperNull(ab4.lowerTriangularInertia()));
 
-	// rbI * alpha
+	// abI * alpha
 	ABInertiad ab5 = ab2*2.;
 
 	BOOST_CHECK_EQUAL(ab5.massMatrix(), 2.*M);
@@ -152,6 +180,37 @@ BOOST_AUTO_TEST_CASE(ABInertiadTest)
 	BOOST_CHECK_EQUAL(ab5.gInertia(), 2.*H);
 	BOOST_CHECK_EQUAL(ab5.inertia(), 2.*I);
 	BOOST_CHECK(isUpperNull(ab5.lowerTriangularInertia()));
+
+	// abI - abI
+	ABInertiad ab6 = ab1 - ab2;
+
+	BOOST_CHECK_EQUAL(ab6.massMatrix(), M - M);
+	BOOST_CHECK(isUpperNull(ab6.lowerTriangularMassMatrix()));
+	BOOST_CHECK_EQUAL(ab6.gInertia(), H - H);
+	BOOST_CHECK_EQUAL(ab6.inertia(), I - I);
+	BOOST_CHECK(isUpperNull(ab6.lowerTriangularInertia()));
+
+	// -abI
+	ABInertiad ab7 = -ab1;
+	BOOST_CHECK_EQUAL(ab7, ab1*-1.);
+	BOOST_CHECK(isUpperNull(ab7.lowerTriangularMassMatrix()));
+	BOOST_CHECK(isUpperNull(ab7.lowerTriangularInertia()));
+
+	// abI += abI
+	ABInertiad ab8(ab1);
+	ab8 += ab2;
+
+	BOOST_CHECK_EQUAL(ab8, ab1 + ab2);
+	BOOST_CHECK(isUpperNull(ab8.lowerTriangularMassMatrix()));
+	BOOST_CHECK(isUpperNull(ab8.lowerTriangularInertia()));
+
+	// abI -= abI
+	ABInertiad ab9(ab1);
+	ab9 -= ab2;
+
+	BOOST_CHECK_EQUAL(ab9, ab1 - ab2);
+	BOOST_CHECK(isUpperNull(ab9.lowerTriangularMassMatrix()));
+	BOOST_CHECK(isUpperNull(ab9.lowerTriangularInertia()));
 
 	// ==
 	BOOST_CHECK_EQUAL(ab2, ab2);

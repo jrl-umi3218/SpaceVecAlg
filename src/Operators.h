@@ -27,9 +27,9 @@ namespace sva_internal
 
 
 template<typename Derived1, typename Derived2, typename Derived3>
-void colwiseCrossEq(const Eigen::MatrixBase<Derived1>& m1,
-									 const Eigen::MatrixBase<Derived2>& m2,
-									 Eigen::MatrixBase<Derived3> const & result)
+inline void colwiseCrossEq(const Eigen::MatrixBase<Derived1>& m1,
+													const Eigen::MatrixBase<Derived2>& m2,
+													Eigen::MatrixBase<Derived3> const & result)
 {
 	Eigen::MatrixBase<Derived3>& result_nc = const_cast<Eigen::MatrixBase<Derived3> &>(result);
 	result_nc.row(0) = (m1.row(1)*m2.coeff(2) - m1.row(2)*m2.coeff(1));
@@ -38,9 +38,9 @@ void colwiseCrossEq(const Eigen::MatrixBase<Derived1>& m1,
 }
 
 template<typename Derived1, typename Derived2, typename Derived3>
-void colwiseCrossPlusEq(const Eigen::MatrixBase<Derived1>& m1,
-											 const Eigen::MatrixBase<Derived2>& m2,
-											 Eigen::MatrixBase<Derived3> const & result)
+inline void colwiseCrossPlusEq(const Eigen::MatrixBase<Derived1>& m1,
+														 const Eigen::MatrixBase<Derived2>& m2,
+														 Eigen::MatrixBase<Derived3> const & result)
 {
 	Eigen::MatrixBase<Derived3>& result_nc = const_cast<Eigen::MatrixBase<Derived3> &>(result);
 	result_nc.row(0) += (m1.row(1)*m2.coeff(2) - m1.row(2)*m2.coeff(1));
@@ -49,9 +49,9 @@ void colwiseCrossPlusEq(const Eigen::MatrixBase<Derived1>& m1,
 }
 
 template<typename Derived1, typename Derived2, typename Derived3>
-void colwiseCrossMinusEq(const Eigen::MatrixBase<Derived1>& m1,
-											 const Eigen::MatrixBase<Derived2>& m2,
-											 Eigen::MatrixBase<Derived3> const & result)
+inline void colwiseCrossMinusEq(const Eigen::MatrixBase<Derived1>& m1,
+															const Eigen::MatrixBase<Derived2>& m2,
+															Eigen::MatrixBase<Derived3> const & result)
 {
 	Eigen::MatrixBase<Derived3>& result_nc = const_cast<Eigen::MatrixBase<Derived3> &>(result);
 	result_nc.row(0) -= (m1.row(1)*m2.coeff(2) - m1.row(2)*m2.coeff(1));
@@ -60,9 +60,9 @@ void colwiseCrossMinusEq(const Eigen::MatrixBase<Derived1>& m1,
 }
 
 template<typename Derived1, typename Derived2, typename Derived3>
-void colwiseLeftMultEq(const Eigen::MatrixBase<Derived1>& m1,
-										 const Eigen::MatrixBase<Derived2>& m2,
-										 Eigen::MatrixBase<Derived3> const & result)
+inline void colwiseLeftMultEq(const Eigen::MatrixBase<Derived1>& m1,
+														const Eigen::MatrixBase<Derived2>& m2,
+														Eigen::MatrixBase<Derived3> const & result)
 {
 	Eigen::MatrixBase<Derived3>& result_nc = const_cast<Eigen::MatrixBase<Derived3> &>(result);
 	for(typename Derived1::Index i = 0; i < m1.cols(); ++i)
@@ -75,56 +75,56 @@ void colwiseLeftMultEq(const Eigen::MatrixBase<Derived1>& m1,
 
 
 template<typename Derived>
-Eigen::Block<Derived, 3, Dynamic>
+inline Eigen::Block<Derived, 3, Dynamic>
 motionAngular(Eigen::MatrixBase<Derived>& mv)
 {
 	return Eigen::Block<Derived, 3, Dynamic>(mv.derived(), 0, 0, 3, mv.cols());
 }
 
 template<typename Derived>
-Eigen::Block<const Derived, 3, Dynamic>
+inline Eigen::Block<const Derived, 3, Dynamic>
 motionAngular(const Eigen::MatrixBase<Derived>& mv)
 {
 	return Eigen::Block<const Derived, 3, Dynamic>(mv.derived(), 0, 0, 3, mv.cols());
 }
 
 template<typename Derived>
-Eigen::Block<Derived, 3, Dynamic>
+inline Eigen::Block<Derived, 3, Dynamic>
 motionLinear(Eigen::MatrixBase<Derived>& mv)
 {
 	return Eigen::Block<Derived, 3, Dynamic>(mv.derived(), 3, 0, 3, mv.cols());
 }
 
 template<typename Derived>
-Eigen::Block<const Derived, 3, Dynamic>
+inline Eigen::Block<const Derived, 3, Dynamic>
 motionLinear(const Eigen::MatrixBase<Derived>& mv)
 {
 	return Eigen::Block<const Derived, 3, Dynamic>(mv.derived(), 3, 0, 3, mv.cols());
 }
 
 template<typename Derived>
-Eigen::Block<Derived, 3, Dynamic>
+inline Eigen::Block<Derived, 3, Dynamic>
 forceCouple(Eigen::MatrixBase<Derived>& mv)
 {
 	return Eigen::Block<Derived, 3, Dynamic>(mv.derived(), 0, 0, 3, mv.cols());
 }
 
 template<typename Derived>
-Eigen::Block<const Derived, 3, Dynamic>
+inline Eigen::Block<const Derived, 3, Dynamic>
 forceCouple(const Eigen::MatrixBase<Derived>& mv)
 {
 	return Eigen::Block<const Derived, 3, Dynamic>(mv.derived(), 0, 0, 3, mv.cols());
 }
 
 template<typename Derived>
-Eigen::Block<Derived, 3, Dynamic>
+inline Eigen::Block<Derived, 3, Dynamic>
 forceForce(Eigen::MatrixBase<Derived>& mv)
 {
 	return Eigen::Block<Derived, 3, Dynamic>(mv.derived(), 3, 0, 3, mv.cols());
 }
 
 template<typename Derived>
-Eigen::Block<const Derived, 3, Dynamic>
+inline Eigen::Block<const Derived, 3, Dynamic>
 forceForce(const Eigen::MatrixBase<Derived>& mv)
 {
 	return Eigen::Block<const Derived, 3, Dynamic>(mv.derived(), 3, 0, 3, mv.cols());
@@ -258,7 +258,7 @@ inline MotionVec<T> PTransform<T>::operator*(const MotionVec<T>& mv) const
 
 template<typename T>
 template<typename Derived>
-void PTransform<T>::mul(const Eigen::MatrixBase<Derived>& mv,
+inline void PTransform<T>::mul(const Eigen::MatrixBase<Derived>& mv,
 	Eigen::MatrixBase<Derived>& result) const
 {
 	using namespace Eigen;
@@ -291,7 +291,7 @@ inline MotionVec<T> PTransform<T>::invMul(const MotionVec<T>& mv) const
 
 template<typename T>
 template<typename Derived>
-void PTransform<T>::invMul(const Eigen::MatrixBase<Derived>& mv,
+inline void PTransform<T>::invMul(const Eigen::MatrixBase<Derived>& mv,
 	Eigen::MatrixBase<Derived>& result) const
 {
 	using namespace Eigen;
@@ -322,7 +322,7 @@ inline ForceVec<T> PTransform<T>::dualMul(const ForceVec<T>& fv) const
 
 template<typename T>
 template<typename Derived>
-void PTransform<T>::dualMul(const Eigen::MatrixBase<Derived>& fv,
+inline void PTransform<T>::dualMul(const Eigen::MatrixBase<Derived>& fv,
 	Eigen::MatrixBase<Derived>& result) const
 {
 	using namespace Eigen;
@@ -356,7 +356,7 @@ inline ForceVec<T> PTransform<T>::transMul(const ForceVec<T>& fv) const
 
 template<typename T>
 template<typename Derived>
-void PTransform<T>::transMul(const Eigen::MatrixBase<Derived>& fv,
+inline void PTransform<T>::transMul(const Eigen::MatrixBase<Derived>& fv,
 	Eigen::MatrixBase<Derived>& result) const
 {
 	using namespace Eigen;

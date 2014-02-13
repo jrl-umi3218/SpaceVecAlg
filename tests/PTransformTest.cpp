@@ -15,13 +15,14 @@
 
 // check memory allocation in some method
 #define EIGEN_RUNTIME_NO_MALLOC
+
 // includes
 // std
 #include <iostream>
 
 // boost
 #define BOOST_TEST_DYN_LINK
-#define BOOST_TEST_MODULE MotionVecd ForceVecd test
+#define BOOST_TEST_MODULE PTransformd test
 #include <boost/test/unit_test.hpp>
 #include <boost/math/constants/constants.hpp>
 

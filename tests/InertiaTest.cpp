@@ -22,7 +22,7 @@
 
 // boost
 #define BOOST_TEST_DYN_LINK
-#define BOOST_TEST_MODULE MotionVecd ForceVecd test
+#define BOOST_TEST_MODULE RBInertiad ABinertiad test
 #include <boost/test/unit_test.hpp>
 
 // SpaceVecAlg

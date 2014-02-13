@@ -172,6 +172,10 @@ BOOST_AUTO_TEST_CASE(PTransformdLeftOperatorsTest)
 
 	BOOST_CHECK_SMALL((mvRes1.vector() - mvRes16d).array().abs().sum(), TOL);
 
+	// test the angular and linear version
+	BOOST_CHECK_SMALL((mvRes1.angular() - pt.angularMul(mVec)).array().abs().sum(), TOL);
+	BOOST_CHECK_SMALL((mvRes1.linear() - pt.linearMul(mVec)).array().abs().sum(), TOL);
+
 	// test the vectorized version
 	Matrix6Xd mv1Vec6Xd(6, 2);
 	Matrix6Xd mvRes1Vec6Xd(6, 2);
@@ -189,6 +193,10 @@ BOOST_AUTO_TEST_CASE(PTransformdLeftOperatorsTest)
 	Vector6d mvRes26d(ptInv6d*mVec6d);
 
 	BOOST_CHECK_SMALL((mvRes2.vector() - mvRes26d).array().abs().sum(), TOL);
+
+	// test the angular and linear version
+	BOOST_CHECK_SMALL((mvRes2.angular() - pt.angularInvMul(mVec)).array().abs().sum(), TOL);
+	BOOST_CHECK_SMALL((mvRes2.linear() - pt.linearInvMul(mVec)).array().abs().sum(), TOL);
 
 	// test the vectorized version
 	Matrix6Xd mv2Vec6Xd(6, 2);
@@ -208,6 +216,10 @@ BOOST_AUTO_TEST_CASE(PTransformdLeftOperatorsTest)
 
 	BOOST_CHECK_SMALL((fvRes1.vector() - fvRes16d).array().abs().sum(), TOL);
 
+	// test the couple and force version
+	BOOST_CHECK_SMALL((fvRes1.couple() - pt.coupleDualMul(fVec)).array().abs().sum(), TOL);
+	BOOST_CHECK_SMALL((fvRes1.force() - pt.forceDualMul(fVec)).array().abs().sum(), TOL);
+
 	// test the vectorized version
 	Matrix6Xd fv1Vec6Xd(6, 2);
 	Matrix6Xd fvRes1Vec6Xd(6, 2);
@@ -225,6 +237,10 @@ BOOST_AUTO_TEST_CASE(PTransformdLeftOperatorsTest)
 	Vector6d fvRes26d(pt6d.transpose()*fVec6d);
 
 	BOOST_CHECK_SMALL((fvRes2.vector() - fvRes26d).array().abs().sum(), TOL);
+
+	// test the couple and force version
+	BOOST_CHECK_SMALL((fvRes2.couple() - pt.coupleTransMul(fVec)).array().abs().sum(), TOL);
+	BOOST_CHECK_SMALL((fvRes2.force() - pt.forceTransMul(fVec)).array().abs().sum(), TOL);
 
 	// test the vectorized version
 	Matrix6Xd fv2Vec6Xd(6, 2);

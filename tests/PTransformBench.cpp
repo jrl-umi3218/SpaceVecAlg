@@ -138,3 +138,87 @@ BOOST_AUTO_TEST_CASE(PTransfromd_MotionEigen_as_motion)
 	}
 	std::cout << std::endl;
 }
+
+BOOST_AUTO_TEST_CASE(PTransfromd_inv_MotionVec)
+{
+	using namespace sva;
+
+	const std::size_t size = 10000000;
+	std::vector<PTransformd> pt1(size, PTransformd::Identity());
+	std::vector<MotionVecd> mv(size, MotionVecd(Eigen::Vector6d::Random()));
+	std::vector<MotionVecd> mvRes(size);
+
+
+	std::cout << "PTransform_inv vs MotionVec" << std::endl;
+	{
+		boost::timer::auto_cpu_timer t;
+		for(std::size_t i = 0; i < size; ++i)
+		{
+			mvRes[i] = pt1[i].inv()*mv[i];
+		}
+	}
+	std::cout << std::endl;
+}
+
+BOOST_AUTO_TEST_CASE(PTransfromd_invMul_MotionVec)
+{
+	using namespace sva;
+
+	const std::size_t size = 10000000;
+	std::vector<PTransformd> pt1(size, PTransformd::Identity());
+	std::vector<MotionVecd> mv(size, MotionVecd(Eigen::Vector6d::Random()));
+	std::vector<MotionVecd> mvRes(size);
+
+
+	std::cout << "PTransform_invMul vs MotionVec" << std::endl;
+	{
+		boost::timer::auto_cpu_timer t;
+		for(std::size_t i = 0; i < size; ++i)
+		{
+			mvRes[i] = pt1[i].invMul(mv[i]);
+		}
+	}
+	std::cout << std::endl;
+}
+
+BOOST_AUTO_TEST_CASE(PTransfromd_dual_ForceVec)
+{
+	using namespace sva;
+
+	const std::size_t size = 10000000;
+	std::vector<PTransformd> pt1(size, PTransformd::Identity());
+	std::vector<ForceVecd> mv(size, ForceVecd(Eigen::Vector6d::Random()));
+	std::vector<ForceVecd> mvRes(size);
+
+
+	std::cout << "PTransform dual vs ForceVec" << std::endl;
+	{
+		boost::timer::auto_cpu_timer t;
+		for(std::size_t i = 0; i < size; ++i)
+		{
+			mvRes[i] = pt1[i].dualMul(mv[i]);
+		}
+	}
+	std::cout << std::endl;
+}
+
+BOOST_AUTO_TEST_CASE(PTransfromd_trans_ForceVec)
+{
+	using namespace sva;
+
+	const std::size_t size = 10000000;
+	std::vector<PTransformd> pt1(size, PTransformd::Identity());
+	std::vector<ForceVecd> mv(size, ForceVecd(Eigen::Vector6d::Random()));
+	std::vector<ForceVecd> mvRes(size);
+
+
+	std::cout << "PTransform trans vs ForceVec" << std::endl;
+	{
+		boost::timer::auto_cpu_timer t;
+		for(std::size_t i = 0; i < size; ++i)
+		{
+			mvRes[i] = pt1[i].transMul(mv[i]);
+		}
+	}
+	std::cout << std::endl;
+}

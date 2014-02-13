@@ -13,6 +13,9 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with SpaceVecAlg.  If not, see <http://www.gnu.org/licenses/>.
 
+// check memory allocation in some method
+#define EIGEN_RUNTIME_NO_MALLOC
+
 // includes
 // std
 #include <iostream>
@@ -24,6 +27,8 @@
 
 // SpaceVecAlg
 #include <SpaceVecAlg>
+
+typedef Eigen::Matrix<double, 6, Eigen::Dynamic> Matrix6Xd;
 
 const double TOL = 0.00001;
 
@@ -187,12 +192,26 @@ BOOST_AUTO_TEST_CASE(MotionVecdLeftOperatorsTest)
 										 array().abs().sum(), TOL);
 
 	// test the vectorized version
-	Eigen::Vector6d crossMVec;
-	mVec.cross(mVec2.vector(), crossMVec);
-	BOOST_CHECK_EQUAL(crossM.vector(), crossMVec);
+	Matrix6Xd crossMVec(6, 2);
+	Matrix6Xd crossMVecRes(6, 2);
+	crossMVec << mVec2.vector(), mVec2.vector();
 
-	Eigen::Vector6d crossFVec;
-	mVec.crossDual(fVec.vector(), crossFVec);
-	BOOST_CHECK_EQUAL(crossF.vector(), crossFVec);
+	internal::set_is_malloc_allowed(false);
+	mVec.cross(crossMVec, crossMVecRes);
+	internal::set_is_malloc_allowed(true);
+
+	BOOST_CHECK_EQUAL(crossM.vector(), crossMVecRes.col(0));
+	BOOST_CHECK_EQUAL(crossMVecRes.col(0), crossMVecRes.col(1));
+
+	Matrix6Xd crossFVec(6, 2);
+	Matrix6Xd crossFVecRes(6, 2);
+	crossFVec << fVec.vector(), fVec.vector();
+
+	internal::set_is_malloc_allowed(false);
+	mVec.crossDual(crossFVec, crossFVecRes);
+	internal::set_is_malloc_allowed(true);
+
+	BOOST_CHECK_EQUAL(crossF.vector(), crossFVecRes.col(0));
+	BOOST_CHECK_EQUAL(crossFVecRes.col(0), crossFVecRes.col(1));
 }
 

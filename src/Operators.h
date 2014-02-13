@@ -22,6 +22,58 @@ namespace sva
 
 // Operators implementation
 
+namespace sva_internal
+{
+
+
+template<typename Derived1, typename Derived2, typename Derived3>
+void colwiseCrossEq(const Eigen::MatrixBase<Derived1>& m1,
+									 const Eigen::MatrixBase<Derived2>& m2,
+									 Eigen::MatrixBase<Derived3> const & result)
+{
+	Eigen::MatrixBase<Derived3>& result_nc = const_cast<Eigen::MatrixBase<Derived3> &>(result);
+	result_nc.row(0) = (m1.row(1)*m2.coeff(2) - m1.row(2)*m2.coeff(1));
+	result_nc.row(1) = (m1.row(2)*m2.coeff(0) - m1.row(0)*m2.coeff(2));
+	result_nc.row(2) = (m1.row(0)*m2.coeff(1) - m1.row(1)*m2.coeff(0));
+}
+
+template<typename Derived1, typename Derived2, typename Derived3>
+void colwiseCrossPlusEq(const Eigen::MatrixBase<Derived1>& m1,
+											 const Eigen::MatrixBase<Derived2>& m2,
+											 Eigen::MatrixBase<Derived3> const & result)
+{
+	Eigen::MatrixBase<Derived3>& result_nc = const_cast<Eigen::MatrixBase<Derived3> &>(result);
+	result_nc.row(0) += (m1.row(1)*m2.coeff(2) - m1.row(2)*m2.coeff(1));
+	result_nc.row(1) += (m1.row(2)*m2.coeff(0) - m1.row(0)*m2.coeff(2));
+	result_nc.row(2) += (m1.row(0)*m2.coeff(1) - m1.row(1)*m2.coeff(0));
+}
+
+template<typename Derived1, typename Derived2, typename Derived3>
+void colwiseCrossMinusEq(const Eigen::MatrixBase<Derived1>& m1,
+											 const Eigen::MatrixBase<Derived2>& m2,
+											 Eigen::MatrixBase<Derived3> const & result)
+{
+	Eigen::MatrixBase<Derived3>& result_nc = const_cast<Eigen::MatrixBase<Derived3> &>(result);
+	result_nc.row(0) -= (m1.row(1)*m2.coeff(2) - m1.row(2)*m2.coeff(1));
+	result_nc.row(1) -= (m1.row(2)*m2.coeff(0) - m1.row(0)*m2.coeff(2));
+	result_nc.row(2) -= (m1.row(0)*m2.coeff(1) - m1.row(1)*m2.coeff(0));
+}
+
+template<typename Derived1, typename Derived2, typename Derived3>
+void colwiseLeftMultEq(const Eigen::MatrixBase<Derived1>& m1,
+										 const Eigen::MatrixBase<Derived2>& m2,
+										 Eigen::MatrixBase<Derived3> const & result)
+{
+	Eigen::MatrixBase<Derived3>& result_nc = const_cast<Eigen::MatrixBase<Derived3> &>(result);
+	for(typename Derived1::Index i = 0; i < m1.cols(); ++i)
+	{
+		result_nc.col(i) = m2*m1.col(i);
+	}
+}
+
+} // internal
+
+
 template<typename Derived>
 Eigen::Block<Derived, 3, Dynamic>
 motionAngular(Eigen::MatrixBase<Derived>& mv)
@@ -91,14 +143,16 @@ template<typename Derived>
 inline void MotionVec<T>::cross(const Eigen::MatrixBase<Derived>& mv2,
 	Eigen::MatrixBase<Derived>& result) const
 {
+	using namespace sva_internal;
 	static_assert(Derived::RowsAtCompileTime == 6,
 							 "the matrix must have exactly 6 rows");
 	static_assert(std::is_same<typename Derived::Scalar, T>::value,
 							 "motion vec and matrix must be the same type");
-	motionAngular(result).noalias() = motionAngular(mv2).colwise().cross(-angular_);
 
-	motionLinear(result).noalias() = motionLinear(mv2).colwise().cross(-angular_);
-	motionLinear(result).noalias() -= motionAngular(mv2).colwise().cross(linear_);
+	colwiseCrossEq(motionAngular(mv2), -angular_, motionAngular(result));
+
+	colwiseCrossEq(motionLinear(mv2), -angular_, motionLinear(result));
+	colwiseCrossMinusEq(motionAngular(mv2), linear_, motionLinear(result));
 }
 
 template<typename T>
@@ -114,14 +168,16 @@ template<typename Derived>
 inline void MotionVec<T>::crossDual(const Eigen::MatrixBase<Derived>& fv2,
 	Eigen::MatrixBase<Derived>& result) const
 {
+	using namespace sva_internal;
 	static_assert(Derived::RowsAtCompileTime == 6,
 							 "the matrix must have exactly 6 rows");
 	static_assert(std::is_same<typename Derived::Scalar, T>::value,
 							 "motion vec and matrix must be the same type");
-	forceCouple(result).noalias() = forceCouple(fv2).colwise().cross(-angular_);
-	forceCouple(result).noalias() -= forceForce(fv2).colwise().cross(linear_);
 
-	forceForce(result).noalias() = forceForce(fv2).colwise().cross(-angular_);
+	colwiseCrossEq(forceCouple(fv2), -angular_, forceCouple(result));
+	colwiseCrossMinusEq(forceForce(fv2), linear_, forceCouple(result));
+
+	colwiseCrossEq(forceForce(fv2), -angular_, forceForce(result));
 }
 
 template<typename T>
@@ -142,15 +198,17 @@ template<typename Derived>
 inline void RBInertia<T>::mul(const Eigen::MatrixBase<Derived>& mv,
 	Eigen::MatrixBase<Derived>& result) const
 {
+	using namespace sva_internal;
 	static_assert(Derived::RowsAtCompileTime == 6,
 							 "the matrix must have exactly 6 rows");
 	static_assert(std::is_same<typename Derived::Scalar, T>::value,
 							 "motion vec and matrix must be the same type");
+
 	forceCouple(result).noalias() = inertia()*motionAngular(mv);
-	forceCouple(result).noalias() -= motionLinear(mv).colwise().cross(momentum());
+	colwiseCrossMinusEq(motionLinear(mv), momentum(), forceCouple(result));
 
 	forceForce(result).noalias() = motionLinear(mv)*mass();
-	forceForce(result).noalias() += motionAngular(mv).colwise().cross(momentum());
+	colwiseCrossPlusEq(motionAngular(mv), momentum(), forceForce(result));
 }
 
 template<typename T>
@@ -180,6 +238,7 @@ inline void ABInertia<T>::mul(const Eigen::MatrixBase<Derived>& mv,
 							 "the matrix must have exactly 6 rows");
 	static_assert(std::is_same<typename Derived::Scalar, T>::value,
 							 "motion vec and matrix must be the same type");
+
 	forceCouple(result).noalias() = inertia()*motionAngular(mv);
 	forceCouple(result).noalias() += gInertia()*motionLinear(mv);
 
@@ -203,12 +262,20 @@ void PTransform<T>::mul(const Eigen::MatrixBase<Derived>& mv,
 	Eigen::MatrixBase<Derived>& result) const
 {
 	using namespace Eigen;
+	using namespace sva_internal;
+	static_assert(Derived::RowsAtCompileTime == 6,
+							 "the matrix must have exactly 6 rows");
+	static_assert(std::is_same<typename Derived::Scalar, T>::value,
+							 "motion vec and matrix must be the same type");
+
 	const Matrix3<T>& E = rotation();
 	const Vector3<T>& r = translation();
+
 	motionAngular(result).noalias() = E*motionAngular(mv);
 
-	motionLinear(result).noalias() = E*motionLinear(mv);
-	motionLinear(result).noalias() += E*motionAngular(mv).colwise().cross(r);
+	motionLinear(result).noalias() = motionLinear(mv);
+	colwiseCrossPlusEq(motionAngular(mv), r, motionLinear(result));
+	colwiseLeftMultEq(motionLinear(result), E, motionLinear(result));
 }
 
 template<typename T>
@@ -228,12 +295,19 @@ void PTransform<T>::invMul(const Eigen::MatrixBase<Derived>& mv,
 	Eigen::MatrixBase<Derived>& result) const
 {
 	using namespace Eigen;
+	using namespace sva_internal;
+	static_assert(Derived::RowsAtCompileTime == 6,
+							 "the matrix must have exactly 6 rows");
+	static_assert(std::is_same<typename Derived::Scalar, T>::value,
+							 "motion vec and matrix must be the same type");
+
 	const Matrix3<T>& E = rotation();
 	const Vector3<T>& r = translation();
+
 	motionAngular(result).noalias() = E.transpose()*motionAngular(mv);
 
 	motionLinear(result).noalias() = E.transpose()*motionLinear(mv);
-	motionLinear(result).noalias() -= (E.transpose()*motionAngular(mv)).colwise().cross(r);
+	colwiseCrossMinusEq(motionAngular(result), r, motionLinear(result));
 }
 
 template<typename T>
@@ -252,10 +326,18 @@ void PTransform<T>::dualMul(const Eigen::MatrixBase<Derived>& fv,
 	Eigen::MatrixBase<Derived>& result) const
 {
 	using namespace Eigen;
+	using namespace sva_internal;
+	static_assert(Derived::RowsAtCompileTime == 6,
+							 "the matrix must have exactly 6 rows");
+	static_assert(std::is_same<typename Derived::Scalar, T>::value,
+							 "force vec and matrix must be the same type");
+
 	const Matrix3<T>& E = rotation();
 	const Vector3<T>& r = translation();
-	forceCouple(result).noalias() = E*forceCouple(fv);
-	forceCouple(result).noalias() += E*forceForce(fv).colwise().cross(r);
+
+	forceCouple(result).noalias() = forceCouple(fv);
+	colwiseCrossPlusEq(forceForce(fv), r, forceCouple(result));
+	colwiseLeftMultEq(forceCouple(result), E, forceCouple(result));
 
 	forceForce(result).noalias() = E*forceForce(fv);
 }
@@ -278,12 +360,19 @@ void PTransform<T>::transMul(const Eigen::MatrixBase<Derived>& fv,
 	Eigen::MatrixBase<Derived>& result) const
 {
 	using namespace Eigen;
+	using namespace sva_internal;
+	static_assert(Derived::RowsAtCompileTime == 6,
+							 "the matrix must have exactly 6 rows");
+	static_assert(std::is_same<typename Derived::Scalar, T>::value,
+							 "force vec and matrix must be the same type");
+
 	const Matrix3<T>& E = rotation();
 	const Vector3<T>& r = translation();
-	forceCouple(result).noalias() = E.transpose()*forceCouple(fv);
-	forceCouple(result).noalias() -= (E.transpose()*forceForce(fv)).colwise().cross(r);
 
 	forceForce(result).noalias() = E.transpose()*forceForce(fv);
+
+	forceCouple(result).noalias() = E.transpose()*forceCouple(fv);
+	colwiseCrossMinusEq(forceForce(result), r, forceCouple(result));
 }
 
 template<typename T>

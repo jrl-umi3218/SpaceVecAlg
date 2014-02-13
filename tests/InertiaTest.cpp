@@ -13,6 +13,9 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with SpaceVecAlg.  If not, see <http://www.gnu.org/licenses/>.
 
+// check memory allocation in some method
+#define EIGEN_RUNTIME_NO_MALLOC
+
 // includes
 // std
 #include <iostream>
@@ -24,6 +27,8 @@
 
 // SpaceVecAlg
 #include <SpaceVecAlg>
+
+typedef Eigen::Matrix<double, 6, Eigen::Dynamic> Matrix6Xd;
 
 const double TOL = 0.00001;
 
@@ -247,9 +252,16 @@ BOOST_AUTO_TEST_CASE(RBInertiadLeftOperatorsTest)
 	BOOST_CHECK_SMALL((fVec6d - fVec.vector()).array().abs().sum(), TOL);
 
 	// vectorized version
-	Vector6d fVecVec;
-	rb.mul(mVec.vector(), fVecVec);
-	BOOST_CHECK_EQUAL(fVec.vector(), fVecVec);
+	Matrix6Xd mVec6Xd(6, 2);
+	Matrix6Xd fVecRes6Xd(6, 2);
+	mVec6Xd << mVec.vector(), mVec.vector();
+
+	internal::set_is_malloc_allowed(false);
+	rb.mul(mVec6Xd, fVecRes6Xd);
+	internal::set_is_malloc_allowed(true);
+
+	BOOST_CHECK_EQUAL(fVec.vector(), fVecRes6Xd.col(0));
+	BOOST_CHECK_EQUAL(fVecRes6Xd.col(0), fVecRes6Xd.col(1));
 }
 
 BOOST_AUTO_TEST_CASE(ABInertiadLeftOperatorsTest)
@@ -294,8 +306,15 @@ BOOST_AUTO_TEST_CASE(ABInertiadLeftOperatorsTest)
 	BOOST_CHECK_SMALL((fVec6d - fVec.vector()).array().abs().sum(), TOL);
 
 	// vectorized version
-	Vector6d fVecVec;
-	ab.mul(mVec.vector(), fVecVec);
-	BOOST_CHECK_EQUAL(fVec.vector(), fVecVec);
+	Matrix6Xd mVec6Xd(6, 2);
+	Matrix6Xd fVecRes6Xd(6, 2);
+	mVec6Xd << mVec.vector(), mVec.vector();
+
+	internal::set_is_malloc_allowed(false);
+	ab.mul(mVec6Xd, fVecRes6Xd);
+	internal::set_is_malloc_allowed(true);
+
+	BOOST_CHECK_EQUAL(fVec.vector(), fVecRes6Xd.col(0));
+	BOOST_CHECK_EQUAL(fVecRes6Xd.col(0), fVecRes6Xd.col(1));
 }
 

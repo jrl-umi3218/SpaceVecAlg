@@ -13,6 +13,8 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with SpaceVecAlg.  If not, see <http://www.gnu.org/licenses/>.
 
+// check memory allocation in some method
+#define EIGEN_RUNTIME_NO_MALLOC
 // includes
 // std
 #include <iostream>
@@ -25,6 +27,8 @@
 
 // SpaceVecAlg
 #include <SpaceVecAlg>
+
+typedef Eigen::Matrix<double, 6, Eigen::Dynamic> Matrix6Xd;
 
 const double TOL = 0.00001;
 
@@ -168,10 +172,16 @@ BOOST_AUTO_TEST_CASE(PTransformdLeftOperatorsTest)
 	BOOST_CHECK_SMALL((mvRes1.vector() - mvRes16d).array().abs().sum(), TOL);
 
 	// test the vectorized version
-	Vector6d mvRes1Vec;
-	pt.mul(mVec.vector(), mvRes1Vec);
+	Matrix6Xd mv1Vec6Xd(6, 2);
+	Matrix6Xd mvRes1Vec6Xd(6, 2);
+	mv1Vec6Xd << mVec.vector(), mVec.vector();
 
-	BOOST_CHECK_SMALL((mvRes1.vector() - mvRes1Vec).norm(), TOL);
+	internal::set_is_malloc_allowed(false);
+	pt.mul(mv1Vec6Xd, mvRes1Vec6Xd);
+	internal::set_is_malloc_allowed(true);
+
+	BOOST_CHECK_SMALL((mvRes1.vector() - mvRes1Vec6Xd.col(0)).norm(), TOL);
+	BOOST_CHECK_EQUAL(mvRes1Vec6Xd.col(0), mvRes1Vec6Xd.col(1));
 
 	// PTransformd^-1 * MotionVecd
 	MotionVecd mvRes2 = pt.invMul(mVec);
@@ -180,10 +190,16 @@ BOOST_AUTO_TEST_CASE(PTransformdLeftOperatorsTest)
 	BOOST_CHECK_SMALL((mvRes2.vector() - mvRes26d).array().abs().sum(), TOL);
 
 	// test the vectorized version
-	Vector6d mvRes2Vec;
-	pt.invMul(mVec.vector(), mvRes2Vec);
+	Matrix6Xd mv2Vec6Xd(6, 2);
+	Matrix6Xd mvRes2Vec6Xd(6, 2);
+	mv2Vec6Xd << mVec.vector(), mVec.vector();
 
-	BOOST_CHECK_SMALL((mvRes2.vector() - mvRes2Vec).norm(), TOL);
+	internal::set_is_malloc_allowed(false);
+	pt.invMul(mv2Vec6Xd, mvRes2Vec6Xd);
+	internal::set_is_malloc_allowed(true);
+
+	BOOST_CHECK_SMALL((mvRes2.vector() - mvRes2Vec6Xd.col(0)).norm(), TOL);
+	BOOST_CHECK_EQUAL(mvRes2Vec6Xd.col(0), mvRes2Vec6Xd.col(1));
 
 	// PTransformd* * ForceVecd
 	ForceVecd fvRes1 = pt.dualMul(fVec);
@@ -192,10 +208,16 @@ BOOST_AUTO_TEST_CASE(PTransformdLeftOperatorsTest)
 	BOOST_CHECK_SMALL((fvRes1.vector() - fvRes16d).array().abs().sum(), TOL);
 
 	// test the vectorized version
-	Vector6d fvRes1Vec;
-	pt.dualMul(fVec.vector(), fvRes1Vec);
+	Matrix6Xd fv1Vec6Xd(6, 2);
+	Matrix6Xd fvRes1Vec6Xd(6, 2);
+	fv1Vec6Xd << fVec.vector(), fVec.vector();
 
-	BOOST_CHECK_SMALL((fvRes1.vector() - fvRes1Vec).norm(), TOL);
+	internal::set_is_malloc_allowed(false);
+	pt.dualMul(fv1Vec6Xd, fvRes1Vec6Xd);
+	internal::set_is_malloc_allowed(true);
+
+	BOOST_CHECK_SMALL((fvRes1.vector() - fvRes1Vec6Xd.col(0)).norm(), TOL);
+	BOOST_CHECK_EQUAL(fvRes1Vec6Xd.col(0), fvRes1Vec6Xd.col(1));
 
 	// PTransformd T * ForceVecd
 	ForceVecd fvRes2 = pt.transMul(fVec);
@@ -204,10 +226,16 @@ BOOST_AUTO_TEST_CASE(PTransformdLeftOperatorsTest)
 	BOOST_CHECK_SMALL((fvRes2.vector() - fvRes26d).array().abs().sum(), TOL);
 
 	// test the vectorized version
-	Vector6d fvRes2Vec;
-	pt.transMul(fVec.vector(), fvRes2Vec);
+	Matrix6Xd fv2Vec6Xd(6, 2);
+	Matrix6Xd fvRes2Vec6Xd(6, 2);
+	fv2Vec6Xd << fVec.vector(), fVec.vector();
 
-	BOOST_CHECK_SMALL((fvRes2.vector() - fvRes2Vec).norm(), TOL);
+	internal::set_is_malloc_allowed(false);
+	pt.transMul(fv2Vec6Xd, fvRes2Vec6Xd);
+	internal::set_is_malloc_allowed(true);
+
+	BOOST_CHECK_SMALL((fvRes2.vector() - fvRes2Vec6Xd.col(0)).norm(), TOL);
+	BOOST_CHECK_EQUAL(fvRes2Vec6Xd.col(0), fvRes2Vec6Xd.col(1));
 
 	// PTransformd* * RBInertiad * PTransformd^-1
 	RBInertiad rbRes1 = pt.dualMul(rb);

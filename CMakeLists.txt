@@ -16,15 +16,14 @@ SETUP_PROJECT()
 
 option(PYTHON_BINDING "Generate python binding." ON)
 option(UNIT_TESTS "Generate unit tests." ON)
+option(BENCHMARKS "Generate benchmark." OFF)
 
 SET(Eigen_REQUIRED "eigen3 >= 3.2.0")
 SEARCH_FOR_EIGEN()
 
 add_subdirectory(src)
 
-if(${UNIT_TESTS})
-	add_subdirectory(tests)
-endif()
+add_subdirectory(tests)
 
 if(${PYTHON_BINDING})
 	add_subdirectory(binding/python)

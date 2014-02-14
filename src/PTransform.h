@@ -211,9 +211,9 @@ public:
 	MotionVec<T> operator*(const MotionVec<T>& mv) const;
 
 	/// @return compute angular part of @see operator*(const MotionVec<T>& mv) const
-	Eigen::Vector3d angularMul(const MotionVec<T>& mv) const;
+	Eigen::Vector3<T> angularMul(const MotionVec<T>& mv) const;
 	/// @return compute linear part of @see operator*(const MotionVec<T>& mv) const
-	Eigen::Vector3d linearMul(const MotionVec<T>& mv) const;
+	Eigen::Vector3<T> linearMul(const MotionVec<T>& mv) const;
 	/// @see operator*(const MotionVec<T>& mv) const;
 	template<typename Derived>
 	void mul(const Eigen::MatrixBase<Derived>& mv,
@@ -223,9 +223,9 @@ public:
 	/// @return X⁻¹v
 	MotionVec<T> invMul(const MotionVec<T>& mv) const;
 	/// @return compute angular part of @see invMul
-	Eigen::Vector3d angularInvMul(const MotionVec<T>& mv) const;
+	Eigen::Vector3<T> angularInvMul(const MotionVec<T>& mv) const;
 	/// @return compute linear part of @see invMul
-	Eigen::Vector3d linearInvMul(const MotionVec<T>& mv) const;
+	Eigen::Vector3<T> linearInvMul(const MotionVec<T>& mv) const;
 	/// @see invMul
 	template<typename Derived>
 	void invMul(const Eigen::MatrixBase<Derived>& mv,
@@ -235,9 +235,9 @@ public:
 	/// @return X*v
 	ForceVec<T> dualMul(const ForceVec<T>& fv) const;
 	/// @return compute couple part of @see dualMul
-	Eigen::Vector3d coupleDualMul(const ForceVec<T>& fv) const;
+	Eigen::Vector3<T> coupleDualMul(const ForceVec<T>& fv) const;
 	/// @return compute force part of @see dualMul
-	Eigen::Vector3d forceDualMul(const ForceVec<T>& fv) const;
+	Eigen::Vector3<T> forceDualMul(const ForceVec<T>& fv) const;
 	/// @see dualMul
 	template<typename Derived>
 	void dualMul(const Eigen::MatrixBase<Derived>& fv,
@@ -247,9 +247,9 @@ public:
 	/// @return Xtv
 	ForceVec<T> transMul(const ForceVec<T>& fv) const;
 	/// @return compute couple part of @see transMul
-	Eigen::Vector3d coupleTransMul(const ForceVec<T>& fv) const;
+	Eigen::Vector3<T> coupleTransMul(const ForceVec<T>& fv) const;
 	/// @return compute force part of @see transMul
-	Eigen::Vector3d forceTransMul(const ForceVec<T>& fv) const;
+	Eigen::Vector3<T> forceTransMul(const ForceVec<T>& fv) const;
 	/// @see transMul
 	template<typename Derived>
 	void transMul(const Eigen::MatrixBase<Derived>& fv,

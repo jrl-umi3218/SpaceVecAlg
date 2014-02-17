@@ -23,7 +23,9 @@ SEARCH_FOR_EIGEN()
 
 add_subdirectory(src)
 
-add_subdirectory(tests)
+if(${UNIT_TESTS} OR ${BENCHMARKS})
+  add_subdirectory(tests)
+endif()
 
 if(${PYTHON_BINDING})
 	add_subdirectory(binding/python)

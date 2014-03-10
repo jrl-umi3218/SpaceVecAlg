@@ -60,7 +60,7 @@ BOOST_AUTO_TEST_CASE(PTransformdTest)
 
 	Matrix3d Em = AngleAxisd(constants::pi<double>()/2., Vector3d(1., 0., 0.)).inverse().toRotationMatrix();
 	Quaterniond Eq;
-	Eq = AngleAxisd(constants::pi<double>()/2., Vector3d(1., 0., 0.));
+	Eq = AngleAxisd(constants::pi<double>()/2., Vector3d(1., 0., 0.)).inverse();
 	Vector3d r = Vector3d::Random()*100.;
 
 	// Identity
@@ -78,13 +78,13 @@ BOOST_AUTO_TEST_CASE(PTransformdTest)
 	// Quaternion Vector3d constructor
 	PTransformd pt3(Eq, r);
 
-	BOOST_CHECK_EQUAL(pt3.rotation(), Eq.inverse().toRotationMatrix());
+	BOOST_CHECK_EQUAL(pt3.rotation(), Eq.toRotationMatrix());
 	BOOST_CHECK_EQUAL(pt3.translation(), r);
 
 	// Quaternion constructor
 	PTransformd pt4(Eq);
 
-	BOOST_CHECK_EQUAL(pt4.rotation(), Eq.inverse().toRotationMatrix());
+	BOOST_CHECK_EQUAL(pt4.rotation(), Eq.toRotationMatrix());
 	BOOST_CHECK_EQUAL(pt4.translation(), Vector3d::Zero());
 
 	// Matrix3d constructor

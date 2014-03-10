@@ -116,10 +116,9 @@ public:
 		* @param trans Translation vector.
 		*/
 	PTransform(const quaternion_t& rot, const vector3_t& trans):
-		E_(),
+		E_(rot.matrix()),
 		r_(trans)
 	{
-		E_ = rot.inverse().toRotationMatrix();
 	}
 
 	/**
@@ -127,10 +126,9 @@ public:
 		* @param rot Rotation quaternion.
 		*/
 	PTransform(const quaternion_t& rot):
-		E_(),
+		E_(rot.matrix()),
 		r_(vector3_t::Zero())
 	{
-		E_ = rot.inverse().toRotationMatrix();
 	}
 
 	/**

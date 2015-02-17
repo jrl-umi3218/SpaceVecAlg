@@ -206,6 +206,10 @@ def build_sva_functions(mod):
                                                                   param('double', 'mass'),
                                                                   param('const Eigen::Vector3d&', 'com'),
                                                                   param('const Eigen::Matrix3d&', 'rotation')])
+  mod.add_function('interpolate', retval('sva::PTransformd'),
+                    [param('const sva::PTransformd&', 'from'),
+                     param('const sva::PTransformd&', 'to'),
+                     param('double', 't', default_value='0.5')])
 
 
 if __name__ == '__main__':

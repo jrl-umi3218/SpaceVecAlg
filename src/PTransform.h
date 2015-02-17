@@ -347,6 +347,17 @@ inline Vector3<T> rotationVelocity(const Matrix3<T>& rot, double prec)
 }
 
 
+// interpolate between transformations, t must be between 0 and 1
+template<typename T>
+PTransform<T> interpolate(const PTransform<T>& from, const PTransform<T>& to, double t)
+{
+	Eigen::Quaternion<T> qfrom(from.rotation());
+	Eigen::Quaternion<T> qto(to.rotation());
+	PTransform<T> result(qfrom.slerp(t, qto), (from.translation()*t + to.translation()*(1.-t)));
+	return result;
+}
+
+
 template<typename T>
 inline std::ostream& operator<<(std::ostream& out, const PTransform<T>& pt)
 {

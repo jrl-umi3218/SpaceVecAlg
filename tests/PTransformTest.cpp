@@ -299,3 +299,20 @@ BOOST_AUTO_TEST_CASE(EulerAngleTest)
 	res = rotationError<double>(RotZ(cst::pi<double>()/4.), RotZ(cst::pi<double>()/2.));
 	BOOST_CHECK_SMALL((res - Vector3d(0., 0., cst::pi<double>()/4.)).norm(), TOL);
 }
+
+BOOST_AUTO_TEST_CASE(InterpolateTest)
+{
+	using namespace Eigen;
+	using namespace sva;
+	namespace cst = boost::math::constants;
+
+	PTransformd from(Matrix3d::Identity(), Vector3d(0., 0., 0.));
+	PTransformd to(AngleAxisd(cst::pi<double>(), Vector3d::UnitZ()).toRotationMatrix(),
+								 Vector3d(1., 2., -3.));
+
+	PTransformd res = interpolate<double>(from, to, 0.5);
+
+	BOOST_CHECK_SMALL((res.rotation() -
+		AngleAxisd(cst::pi<double>()/2., Vector3d::UnitZ()).toRotationMatrix()).norm(), TOL);
+	BOOST_CHECK_SMALL((res.translation() - Vector3d(0.5, 1., -1.5)).norm(), TOL);
+}

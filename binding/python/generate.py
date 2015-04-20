@@ -192,11 +192,20 @@ def build_sva_functions(mod):
   mod.add_function('RotY', retval('Eigen::Matrix3d'), [param('double', 'theta')])
   mod.add_function('RotZ', retval('Eigen::Matrix3d'), [param('double', 'theta')])
 
-  mod.add_function('rotationError', retval('Eigen::Vector3d'), [param('const Matrix3d&', 'rotCur'),
-                                                                param('const Matrix3d&', 'rotDes'),
-                                                                param('double', 'prec', default_value='1e-8')])
+  mod.add_function('rotationError', retval('Eigen::Vector3d'),
+                   [param('const Matrix3d&', 'E_a_b'),
+                    param('const Matrix3d&', 'E_a_c'),
+                    param('double', 'prec', default_value='1e-8')])
   mod.add_function('rotationVelocity', retval('Eigen::Vector3d'),
-                    [param('const Matrix3d&', 'rot'),
+                    [param('const Matrix3d&', 'E_a_b'),
+                     param('double', 'prec', default_value='1e-8')])
+
+  mod.add_function('transformError', retval('sva::MotionVecd'),
+                   [param('const PTransformd&', 'X_a_b'),
+                    param('const PTransformd&', 'X_a_c'),
+                    param('double', 'prec', default_value='1e-8')])
+  mod.add_function('transformVelocity', retval('sva::MotionVecd'),
+                    [param('const PTransformd&', 'X_a_b'),
                      param('double', 'prec', default_value='1e-8')])
 
   mod.add_function('vector3ToCrossMatrix', retval('Eigen::Matrix3d'), [param('Eigen::Vector3d', 'v')])

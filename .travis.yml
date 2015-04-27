@@ -23,5 +23,5 @@ before_install:
   - sudo update-alternatives --config gcc
   - sudo update-alternatives --config g++
   - curDir=`pwd`; cd "$build_dir"; wget https://pybindgen.googlecode.com/files/pybindgen-0.16.0.tar.bz2; tar -xvjf ./pybindgen-0.16.0.tar.bz2; cd pybindgen-0.16.0; ./waf configure; ./waf; sudo ./waf install; cd $curDir
-  - ./.travis/run  before_install
   - ./.travis/dependencies/eigen-3.2
+  - ./.travis/run  before_install

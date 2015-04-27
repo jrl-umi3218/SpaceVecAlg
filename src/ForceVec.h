@@ -122,7 +122,13 @@ public:
 	template<typename T2>
 	ForceVec<T> operator*(T2 scalar) const
 	{
-		return ForceVec<T>(scalar * couple_, scalar * force_);
+		return ForceVec<T>(scalar*couple_, scalar*force_);
+	}
+
+	template<typename T2>
+	ForceVec<T> operator/(T2 scalar) const
+	{
+		return ForceVec<T>(couple_/scalar, force_/scalar);
 	}
 
 	bool operator==(const ForceVec<T>& fv) const

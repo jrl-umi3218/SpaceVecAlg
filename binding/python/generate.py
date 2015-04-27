@@ -47,6 +47,7 @@ def build_motion_vec(mv):
   mv.add_binary_numeric_operator('-')
   mv.add_binary_numeric_operator('*', left_cppclass=Parameter.new('double', 'scalar'))
   mv.add_binary_numeric_operator('*', right=param('double', 'scalar'))
+  mv.add_binary_numeric_operator('/', right=param('double', 'scalar'))
 
   mv.add_unary_numeric_operator('-')
 
@@ -73,6 +74,7 @@ def build_force_vec(fv):
   fv.add_binary_numeric_operator('-')
   fv.add_binary_numeric_operator('*', left_cppclass=Parameter.new('double', 'scalar'))
   fv.add_binary_numeric_operator('*', right=param('double', 'scalar'))
+  fv.add_binary_numeric_operator('/', right=param('double', 'scalar'))
 
   fv.add_unary_numeric_operator('-')
 

@@ -29,5 +29,7 @@ addUnitTest("AutoDiffTest")
 
 addBenchmark("PTransformBench")
 
+set(PYTHON_TEST_COMMAND "${PYTHON_EXECUTABLE}")
 configure_file(sva_pickle_test.py ${CMAKE_CURRENT_BINARY_DIR}/sva_pickle_test.py)
-add_test(svaPickleTestUnit sva_pickle_test.py)
+add_test(svaPickleTestUnit ${PYTHON_TEST_COMMAND}
+  "${CMAKE_CURRENT_BINARY_DIR}/sva_pickle_test.py")

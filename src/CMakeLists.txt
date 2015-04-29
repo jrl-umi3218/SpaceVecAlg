@@ -1,6 +1,7 @@
 set(SOURCES lib.cpp)
 set(HEADERS MotionVec.h ForceVec.h PTransform.h RBInertia.h
 						ABInertia.h EigenTypedef.h EigenUtility.h Operators.h
+						MathFunc.h
 						SpaceVecAlg)
 
 include_directories(${EIGEN_INCLUDE_DIRS})

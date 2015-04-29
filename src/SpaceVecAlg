@@ -16,6 +16,7 @@
 #pragma once
 
 // std
+#include <limits>
 #include <ostream>
 
 // eigen
@@ -25,6 +26,7 @@
 // utility
 #include "EigenTypedef.h"
 #include "EigenUtility.h"
+#include "MathFunc.h"
 
 // forward declaration
 namespace sva

@@ -222,6 +222,8 @@ def build_sva_functions(mod):
                      param('const sva::PTransformd&', 'to'),
                      param('double', 't', default_value='0.5')])
 
+  mod.add_function('sinc_inv', retval('double'), [param('double', 'x')])
+
 
 if __name__ == '__main__':
   if len(sys.argv) < 2:

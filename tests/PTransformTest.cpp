@@ -341,3 +341,68 @@ BOOST_AUTO_TEST_CASE(TransformError)
 	BOOST_CHECK_SMALL((V_b_c_a.angular() - w_b_c_a).norm(), TOL);
 	BOOST_CHECK_SMALL((V_b_c_a.linear() - v_b_c_a).norm(), TOL);
 }
+
+
+BOOST_AUTO_TEST_CASE(sinc_invTest)
+{
+	auto dummy_sinc_inv = [](double x){return x/std::sin(x);};
+	double eps = std::numeric_limits<double>::epsilon();
+
+	// test equality between -1 and 1 (avoid 0)
+	double t = -1.;
+	const int nrIter = 333;
+	for(int i = 0; i < nrIter; ++i)
+	{
+		BOOST_CHECK_EQUAL(dummy_sinc_inv(t), sva::sinc_inv(t));
+		t += 2./nrIter;
+	}
+	BOOST_CHECK(std::isnan(dummy_sinc_inv(0.)));
+	BOOST_CHECK_EQUAL(sva::sinc_inv(0.), 1.);
+
+	// not sure thoses test will work on all architectures
+	BOOST_CHECK_EQUAL(dummy_sinc_inv(eps), sva::sinc_inv(eps));
+	BOOST_CHECK_EQUAL(dummy_sinc_inv(std::sqrt(eps)),
+									 sva::sinc_inv(std::sqrt(eps)));
+	BOOST_CHECK_EQUAL(dummy_sinc_inv(std::sqrt(std::sqrt(eps))),
+									 sva::sinc_inv(std::sqrt(std::sqrt(eps))));
+}
+
+
+template<typename T>
+inline Eigen::Vector3<T> oldRotationVelocity(const Eigen::Matrix3<T>& E_a_b, double prec)
+{
+	Eigen::Vector3<T> w;
+	T acosV = (E_a_b(0,0) + E_a_b(1,1) + E_a_b(2,2) - 1.)*0.5;
+	T theta = std::acos(acosV);
+
+	if(E_a_b.isIdentity(prec))
+	{
+		w.setZero();
+	}
+	else
+	{
+		w = Eigen::Vector3<T>(-E_a_b(2,1) + E_a_b(1,2),
+									-E_a_b(0,2) + E_a_b(2,0),
+									-E_a_b(1,0) + E_a_b(0,1));
+		w *= theta/(2.*std::sin(theta));
+}
+
+	return w;
+}
+
+
+BOOST_AUTO_TEST_CASE(oldVsNewRotationVelocity)
+{
+	using namespace Eigen;
+	using namespace sva;
+
+	Matrix3d r1(RotZ(1.)*RotX(1.5)*RotZ(2.));
+	Matrix3d r2(RotZ(1.043)*RotY(0.3422)*RotX(-0.30943));
+	Matrix3d r3(RotX(-0.8348)*RotY(-0.2344)*RotZ(0.2344));
+	Matrix3d r4(Matrix3d::Identity());
+
+	BOOST_CHECK_EQUAL(oldRotationVelocity(r1, 1e-7), rotationVelocity(r1));
+	BOOST_CHECK_EQUAL(oldRotationVelocity(r2, 1e-7), rotationVelocity(r2));
+	BOOST_CHECK_EQUAL(oldRotationVelocity(r3, 1e-7), rotationVelocity(r3));
+	BOOST_CHECK_EQUAL(oldRotationVelocity(r4, 1e-7), rotationVelocity(r4));
+}

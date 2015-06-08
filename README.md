@@ -20,7 +20,7 @@ A short tutorial is available [here](https://github.com/jorisv/sva_rbdyn_present
 
 To learn more about Spatial Vector Algebra you can find some presentations on the following [page](http://royfeatherstone.org/spatial/).
 
-You can build a Doxygen documentation by typing `make doc` in the build directory. After a `make install` the documentation will be in `CMAKE_INSTALL_PREFIX/share/doc/SpaceVecAlg` (see the [installing](.#Installing) section).
+You can build a Doxygen documentation by typing `make doc` in the build directory. After a `make install` the documentation will be in `CMAKE_INSTALL_PREFIX/share/doc/SpaceVecAlg` (see the Installing section).
 
 ### Appendix A table transcription to C++
 
@@ -101,7 +101,6 @@ abi(M, H, I)                 | `sva::ABInertia(M, H, I)`
 
 Installing
 ------
-#anchor-install
 
 ### Manual
 

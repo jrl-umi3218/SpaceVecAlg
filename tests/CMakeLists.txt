@@ -28,8 +28,10 @@ addUnitTest("PTransformTest")
 addUnitTest("AutoDiffTest")
 
 addBenchmark("PTransformBench")
-
-set(PYTHON_TEST_COMMAND "${PYTHON_EXECUTABLE}")
-configure_file(sva_pickle_test.py ${CMAKE_CURRENT_BINARY_DIR}/sva_pickle_test.py)
-add_test(svaPickleTestUnit ${PYTHON_TEST_COMMAND}
-  "${CMAKE_CURRENT_BINARY_DIR}/sva_pickle_test.py")
+ 
+if(${PYTHON_BINDING})
+  set(PYTHON_TEST_COMMAND "${PYTHON_EXECUTABLE}")
+  configure_file(sva_pickle_test.py ${CMAKE_CURRENT_BINARY_DIR}/sva_pickle_test.py)
+  add_test(svaPickleTestUnit ${PYTHON_TEST_COMMAND}
+    "${CMAKE_CURRENT_BINARY_DIR}/sva_pickle_test.py")
+endif()

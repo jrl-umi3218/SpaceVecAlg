@@ -28,7 +28,9 @@ SET(PROJECT_URL "https://github.com/jrl-umi3218/SpaceVecAlg")
 
 # Disable -Werror on Unix for now.
 SET(CXX_DISABLE_WERROR True)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -std=c++0x -pedantic")
+IF(NOT WIN32)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -std=c++0x -pedantic")
+ENDIF()
 SETUP_PROJECT()
 
 option(PYTHON_BINDING "Generate python binding." OFF)

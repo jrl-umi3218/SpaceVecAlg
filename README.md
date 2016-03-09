@@ -1,8 +1,9 @@
-[![License LGPL 3](https://img.shields.io/badge/license-LGPLv3-green.svg)](http://www.gnu.org/licenses/lgpl-3.0.txt)
-[![Build Status](https://travis-ci.org/jrl-umi3218/SpaceVecAlg.svg?branch=master)](https://travis-ci.org/jrl-umi3218/SpaceVecAlg)
-
 SpaceVecAlg
 ========
+
+[![License LGPL 3](https://img.shields.io/badge/license-LGPLv3-green.svg)](http://www.gnu.org/licenses/lgpl-3.0.txt)
+[![Build Status](https://travis-ci.org/jrl-umi3218/SpaceVecAlg.svg?branch=master)](https://travis-ci.org/jrl-umi3218/SpaceVecAlg)
+[![AppVeyor status](https://ci.appveyor.com/api/projects/status/c1u7qbdtlpqwbq3f/branch/master?svg=true)](https://ci.appveyor.com/project/gergondet/spacevecalg/branch/master)
 
 SpaceVecAlg aim to implement Spatial Vector Algebra with the Eigen3 linear algebra library.
 

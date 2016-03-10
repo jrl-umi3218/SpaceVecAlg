@@ -25,6 +25,7 @@ INCLUDE(cmake/eigen.cmake)
 SET(PROJECT_NAME SpaceVecAlg)
 SET(PROJECT_DESCRIPTION "Implementation of spatial vector algebra with the Eigen3 linear algebra library.")
 SET(PROJECT_URL "https://github.com/jrl-umi3218/SpaceVecAlg")
+SET(PROJECT_VERSION 1.0.1)
 
 # Disable -Werror on Unix for now.
 SET(CXX_DISABLE_WERROR True)

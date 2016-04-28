@@ -29,15 +29,16 @@ MACRO(SEARCH_FOR_EIGEN)
   ELSEIF(NOT Eigen_REQUIRED)
     SET(Eigen_REQUIRED "eigen3 >= 3.0.0")
   ENDIF()
-  
+
   # looking for .pc
   PKG_CHECK_MODULES(_Eigen ${Eigen_REQUIRED})
-  
+
   IF(${_Eigen_FOUND})
     SET(${PROJECT_NAME}_CXX_FLAGS "${${PROJECT_NAME}_CXX_FLAGS} ${_Eigen_CFLAGS_OTHER}")
     SET(${PROJECT_NAME}_LINK_FLAGS "${${PROJECT_NAME}_LINK_FLAGS} ${_Eigen_LDFLAGS_OTHER}")
-    
+
     INCLUDE_DIRECTORIES(SYSTEM ${_Eigen_INCLUDE_DIRS} )
+    _ADD_TO_LIST(_PKG_CONFIG_REQUIRES "${Eigen_REQUIRED}" ",")
   ELSE()
     # fallback: search for the signature_of_eigen3_matrix_library file
     FIND_PATH(Eigen_INCLUDE_DIR NAMES signature_of_eigen3_matrix_library
@@ -46,5 +47,6 @@ MACRO(SEARCH_FOR_EIGEN)
       PATH_SUFFIXES eigen3 eigen
     )
     INCLUDE_DIRECTORIES(SYSTEM ${Eigen_INCLUDE_DIR})
+    PKG_CONFIG_APPEND_CFLAGS(-I${Eigen_INCLUDE_DIR})
   ENDIF()
 ENDMACRO(SEARCH_FOR_EIGEN)

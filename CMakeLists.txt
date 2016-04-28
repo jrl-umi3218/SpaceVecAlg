@@ -21,6 +21,7 @@ INCLUDE(cmake/base.cmake)
 INCLUDE(cmake/boost.cmake)
 INCLUDE(cmake/cpack.cmake)
 INCLUDE(cmake/eigen.cmake)
+INCLUDE(cmake/msvc-specific.cmake)
 
 SET(PROJECT_NAME SpaceVecAlg)
 SET(PROJECT_DESCRIPTION "Implementation of spatial vector algebra with the Eigen3 linear algebra library.")
@@ -40,6 +41,12 @@ option(BENCHMARKS "Generate benchmark." OFF)
 
 SET(Eigen_REQUIRED "eigen3 >= 3.2.0")
 SEARCH_FOR_EIGEN()
+
+# For MSVC, set local environment variable to enable finding the built dlls
+# of roboptim-core and the plugins when launching ctest with RUN_TESTS
+IF(MSVC)
+  SET(CMAKE_MSVCIDE_RUN_PATH "\$(SolutionDir)/src/\$(Configuration)")
+ENDIF(MSVC)
 
 add_subdirectory(src)
 

@@ -26,6 +26,8 @@ INCLUDE_DIRECTORIES(../../src)
 
 ADD_LIBRARY(_spacevecalg SHARED ${SOURCES})
 
+target_link_libraries(_spacevecalg ${PYTHON_LIBRARY})
+
 SET_TARGET_PROPERTIES(_spacevecalg PROPERTIES PREFIX "")
 
 # Install rules

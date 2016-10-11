@@ -1,3 +1,5 @@
+// Copyright 2012-2016 CNRS-UM LIRMM, CNRS-AIST JRL
+//
 // This file is part of SpaceVecAlg.
 //
 // SpaceVecAlg is free software: you can redistribute it and/or modify
@@ -47,9 +49,9 @@ BOOST_AUTO_TEST_CASE(RotationMatrixTest)
 	Vector2d theta2d = Vector2d::Random()*10;
 	double theta = theta2d(0);
 
-	BOOST_CHECK_EQUAL(RotX(theta), AngleAxisd(-theta, Vector3d::UnitX()).matrix());
-	BOOST_CHECK_EQUAL(RotY(theta), AngleAxisd(-theta, Vector3d::UnitY()).matrix());
-	BOOST_CHECK_EQUAL(RotZ(theta), AngleAxisd(-theta, Vector3d::UnitZ()).matrix());
+	BOOST_CHECK_SMALL((RotX(theta) - AngleAxisd(-theta, Vector3d::UnitX()).matrix()).array().abs().sum(), TOL);
+	BOOST_CHECK_SMALL((RotY(theta) - AngleAxisd(-theta, Vector3d::UnitY()).matrix()).array().abs().sum(), TOL);
+	BOOST_CHECK_SMALL((RotZ(theta) - AngleAxisd(-theta, Vector3d::UnitZ()).matrix()).array().abs().sum(), TOL);
 }
 
 BOOST_AUTO_TEST_CASE(PTransformdTest)

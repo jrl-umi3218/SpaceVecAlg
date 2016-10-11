@@ -1,7 +1,9 @@
-[![Build Status](https://travis-ci.org/jorisv/SpaceVecAlg.svg?branch=master)](https://travis-ci.org/jorisv/SpaceVecAlg)
-
 SpaceVecAlg
 ========
+
+[![License LGPL 3](https://img.shields.io/badge/license-LGPLv3-green.svg)](http://www.gnu.org/licenses/lgpl-3.0.txt)
+[![Build Status](https://travis-ci.org/jrl-umi3218/SpaceVecAlg.svg?branch=master)](https://travis-ci.org/jrl-umi3218/SpaceVecAlg)
+[![AppVeyor status](https://ci.appveyor.com/api/projects/status/c1u7qbdtlpqwbq3f/branch/master?svg=true)](https://ci.appveyor.com/project/gergondet/spacevecalg/branch/master)
 
 SpaceVecAlg aim to implement Spatial Vector Algebra with the Eigen3 linear algebra library.
 
@@ -118,13 +120,16 @@ To compile you need the following tools:
  * [g++]() >= 4.7 (for C++11 support)
  * [Boost](http://www.boost.org/doc/libs/1_58_0/more/getting_started/unix-variants.html) >= 1.49
  * [Eigen](http://eigen.tuxfamily.org/index.php?title=Main_Page) >= 3.2
+
+For Python bindings:
+
  * [PyBindGen](https://launchpad.net/pybindgen) = 0.16
- * [Eigen3ToPython](https://github.com/jorisv/Eigen3ToPython) (to use the python binding)
+ * [Eigen3ToPython](https://github.com/jorisv/Eigen3ToPython) (to use the Python binding)
 
 #### Building
 
 ```sh
-git clone --recursive https://github.com/jorisv/SpaceVecAlg
+git clone --recursive https://github.com/jrl-umi3218/SpaceVecAlg
 cd SpaceVecAlg
 mkdir _build
 cd _build

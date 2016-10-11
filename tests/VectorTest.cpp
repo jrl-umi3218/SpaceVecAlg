@@ -1,3 +1,5 @@
+// Copyright 2012-2016 CNRS-UM LIRMM, CNRS-AIST JRL
+//
 // This file is part of SpaceVecAlg.
 //
 // SpaceVecAlg is free software: you can redistribute it and/or modify
@@ -53,13 +55,13 @@ BOOST_AUTO_TEST_CASE(MotionVecdTest)
 	BOOST_CHECK_EQUAL(m, (Vector6d() << w, v).finished());
 
 	// alpha*M
-	BOOST_CHECK_EQUAL((5.*vec).vector(), 5.*m);
+	BOOST_CHECK_EQUAL((5.*vec).vector(), (5.*m).eval());
 
 	// M*alpha
-	BOOST_CHECK_EQUAL((vec*5.).vector(), 5.*m);
+	BOOST_CHECK_EQUAL((vec*5.).vector(), (5.*m).eval());
 
 	// M/alpha
-	BOOST_CHECK_EQUAL((vec/5.).vector(), m/5.);
+	BOOST_CHECK_EQUAL((vec/5.).vector(), (m/5.).eval());
 
 	// -M
 	BOOST_CHECK_EQUAL((-vec).vector(), -m);
@@ -72,10 +74,10 @@ BOOST_AUTO_TEST_CASE(MotionVecdTest)
 	m2 = vec2.vector();
 
 	// M + M
-	BOOST_CHECK_EQUAL((vec + vec2).vector(), m + m2);
+	BOOST_CHECK_EQUAL((vec + vec2).vector(), (m + m2).eval());
 
 	// M - M
-	BOOST_CHECK_EQUAL((vec - vec2).vector(), m - m2);
+	BOOST_CHECK_EQUAL((vec - vec2).vector(), (m - m2).eval());
 
 	// M += M
 	sva::MotionVecd vec_pluseq(vec);
@@ -117,13 +119,13 @@ BOOST_AUTO_TEST_CASE(ForceVecdTest)
 	BOOST_CHECK_EQUAL(m, (Vector6d() << n, f).finished());
 
 	// alpha*F
-	BOOST_CHECK_EQUAL((5.*vec).vector(), 5.*m);
+	BOOST_CHECK_EQUAL((5.*vec).vector(), (5.*m).eval());
 
 	// F*alpha
-	BOOST_CHECK_EQUAL((vec*5.).vector(), 5.*m);
+	BOOST_CHECK_EQUAL((vec*5.).vector(), (5.*m).eval());
 
 	// F/alpha
-	BOOST_CHECK_EQUAL((vec/5.).vector(), m/5.);
+	BOOST_CHECK_EQUAL((vec/5.).vector(), (m/5.).eval());
 
 	// -F
 	BOOST_CHECK_EQUAL((-vec).vector(), -m);
@@ -136,10 +138,10 @@ BOOST_AUTO_TEST_CASE(ForceVecdTest)
 	m2 = vec2.vector();
 
 	// F + F
-	BOOST_CHECK_EQUAL((vec + vec2).vector(), m + m2);
+	BOOST_CHECK_EQUAL((vec + vec2).vector(), (m + m2).eval());
 
 	// F - F
-	BOOST_CHECK_EQUAL((vec - vec2).vector(), m - m2);
+	BOOST_CHECK_EQUAL((vec - vec2).vector(), (m - m2).eval());
 
 	// M += M
 	sva::ForceVecd vec_pluseq(vec);
@@ -206,7 +208,11 @@ BOOST_AUTO_TEST_CASE(MotionVecdLeftOperatorsTest)
 	mVec.cross(crossMVec, crossMVecRes);
 	internal::set_is_malloc_allowed(true);
 
+#ifdef __i386__
+	BOOST_CHECK_SMALL((crossM.vector() - crossMVecRes.col(0)).array().abs().sum(), TOL);
+#else
 	BOOST_CHECK_EQUAL(crossM.vector(), crossMVecRes.col(0));
+#endif
 	BOOST_CHECK_EQUAL(crossMVecRes.col(0), crossMVecRes.col(1));
 
 	Matrix6Xd crossFVec(6, 2);

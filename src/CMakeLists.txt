@@ -21,12 +21,14 @@ set(HEADERS MotionVec.h ForceVec.h PTransform.h RBInertia.h
 						MathFunc.h
 						SpaceVecAlg)
 
-include_directories(${EIGEN_INCLUDE_DIRS})
+
 
 # !!! SpaceVecAlg is an empty library !!!
 # !!! Its aim is to test header file and have an IDE integration !!!
 # !!! Don't link against it !!!
 add_library(SpaceVecAlg ${SOURCES} ${HEADERS})
+target_include_directories(SpaceVecAlg PUBLIC ${EIGEN_INCLUDE_DIRS})
+
 # Targets:
 #   * <prefix>/lib/libbar.a
 #   * <prefix>/lib/libbaz.a

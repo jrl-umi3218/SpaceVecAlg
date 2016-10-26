@@ -27,5 +27,18 @@ include_directories(${EIGEN_INCLUDE_DIRS})
 # !!! Its aim is to test header file and have an IDE integration !!!
 # !!! Don't link against it !!!
 add_library(SpaceVecAlg ${SOURCES} ${HEADERS})
-install(FILES ${HEADERS} DESTINATION ${include_install_destination})
+# Targets:
+#   * <prefix>/lib/libbar.a
+#   * <prefix>/lib/libbaz.a
+#   * header location after install: <prefix>/include/foo/Bar.hpp
+#   * headers can be included by C++ code `#include <foo/Bar.hpp>`
+install(
+    TARGETS SpaceVecAlg
+    EXPORT "${TARGETS_EXPORT_NAME}"
+    LIBRARY DESTINATION "lib"
+    ARCHIVE DESTINATION "lib"
+    RUNTIME DESTINATION "bin"
+    INCLUDES DESTINATION "${INCLUDE_INSTALL_DIR}"
+)
+install(FILES ${HEADERS} DESTINATION ${INCLUDE_INSTALL_DESTINATION})
 

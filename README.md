@@ -113,7 +113,7 @@ Use the [multi-contact-unstable](https://launchpad.net/~pierre-gergondet+ppa/+ar
 ```bash
 sudo add-apt-repository ppa:pierre-gergondet+ppa/multi-contact-unstable
 sudo apt-get update
-sudo apt-get install spacevecalg
+sudo apt-get install libspacevecalg-dev libspacevecalg-doc
 ```
 
 ### Homebrew OS X install

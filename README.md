@@ -27,6 +27,8 @@ Also you will find a lot of IPython Notebook that will present real use case.
 
 Finally you can build a Doxygen documentation by typing `make doc` in the build directory. After a `make install` the documentation will be in `CMAKE_INSTALL_PREFIX/share/doc/SpaceVecAlg` (see the Installing section).
 
+An up-to-date doxygen documentation is also available [online](http://jrl-umi3218.github.io/SpaceVecAlg/).
+
 ### Appendix A table transcription to C++
 
 In this section `a` stand for a double, `v` for a motion vector, `f` for a force vector,

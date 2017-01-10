@@ -23,6 +23,9 @@ env:
   global:
   - APT_DEPENDENCIES="doxygen doxygen-latex libboost-all-dev python-numpy"
   - GIT_DEPENDENCIES=""
+  - GH_USERNAME=gergondet
+  - GH_REPO=jrl-umi3218/SpaceVecAlg
+  - secure: "FWu5+09qN8j8CF6ecpX81eX/gC6QkmXcps3jHyHfhggoKHXLIGL1qN6bICXgjVzhpJbmmAEEJUtbN5UMOSPnJ/kInVR36eR1VwUAQUL81PJazH5XVDgznF8stCbow6lG0WQ9xCZzVfW77V9DXv4QL5K2tfOtRmStbtUiTdf4ZUs="
 notifications:
   email:
   - pierre.gergondet@gmail.com

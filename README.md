@@ -27,6 +27,8 @@ Also you will find a lot of IPython Notebook that will present real use case.
 
 Finally you can build a Doxygen documentation by typing `make doc` in the build directory. After a `make install` the documentation will be in `CMAKE_INSTALL_PREFIX/share/doc/SpaceVecAlg` (see the Installing section).
 
+An up-to-date doxygen documentation is also available [online](http://jrl-umi3218.github.io/SpaceVecAlg/doxygen/HEAD/index.html).
+
 ### Appendix A table transcription to C++
 
 In this section `a` stand for a double, `v` for a motion vector, `f` for a force vector,
@@ -107,7 +109,33 @@ abi(M, H, I)                 | `sva::ABInertia(M, H, I)`
 Installing
 ------
 
-### Manual
+### Ubuntu 14.04 and 16.04 binary ppa install
+
+Use the [multi-contact-unstable](https://launchpad.net/~pierre-gergondet+ppa/+archive/ubuntu/multi-contact-unstable) ppa:
+```bash
+sudo add-apt-repository ppa:pierre-gergondet+ppa/multi-contact-unstable
+sudo apt-get update
+sudo apt-get install libspacevecalg-dev libspacevecalg-doc
+```
+
+### Homebrew OS X install
+
+Install from the command line using [Homebrew](brew.sh):
+
+```bash
+# install homebrew package manager
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# install caskroom application manager
+brew install caskroom/cask/brew-cask
+# tap homebrew-science package repository
+brew tap homebrew/science
+# tap ahundt-robotics repository
+brew tap ahundt/robotics
+# install tasks and all its dependencies
+brew install spacevecalg
+```
+
+## Manually build from source
 
 #### Dependencies
 

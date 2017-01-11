@@ -24,7 +24,7 @@ include_directories(${Boost_INCLUDE_DIRS})
 link_directories(${Boost_LIBRARY_DIRS})
 
 macro(addUnitTest name)
-  if(${UNIT_TESTS})
+  if(NOT ${DISABLE_TESTS})
     add_executable(${name} ${name}.cpp ${HEADERS})
     if(NOT MSVC)
       # for msvc, we let boost auto-link do the work

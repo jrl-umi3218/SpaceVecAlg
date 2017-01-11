@@ -15,9 +15,9 @@
 
 ENABLE_TESTING()
 
-set(Boost_USE_STATIC_LIBS ON)
 set(BOOST_COMPONENTS unit_test_framework timer system)
 SEARCH_FOR_BOOST()
+add_definitions(-DBOOST_TEST_DYN_LINK)
 
 include_directories("${PROJECT_SOURCE_DIR}/src")
 include_directories(${Boost_INCLUDE_DIRS})
@@ -31,7 +31,7 @@ macro(addUnitTest name)
       target_link_libraries(${name} ${Boost_LIBRARIES})
     endif(NOT MSVC)
     add_test(${name}Unit ${name})
-	# Adding a project configuration file (for MSVC only)
+    # Adding a project configuration file (for MSVC only)
     GENERATE_MSVC_DOT_USER_FILE(${name})
   endif()
 endmacro(addUnitTest)
@@ -43,7 +43,7 @@ macro(addBenchmark name)
       # for msvc, we let boost auto-link do the work
       target_link_libraries(${name} ${Boost_LIBRARIES})
     endif(NOT MSVC)
-	# Adding a project configuration file (for MSVC only)
+    # Adding a project configuration file (for MSVC only)
     GENERATE_MSVC_DOT_USER_FILE(${name})
   endif()
 endmacro(addBenchmark)

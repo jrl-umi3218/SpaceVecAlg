@@ -42,8 +42,8 @@ option(BENCHMARKS "Generate benchmark." OFF)
 SET(Eigen_REQUIRED "eigen3 >= 3.2.0")
 SEARCH_FOR_EIGEN()
 
-# For MSVC, set local environment variable to enable finding the built dlls
-# of roboptim-core and the plugins when launching ctest with RUN_TESTS
+# For MSVC, set local environment variable to enable finding the built dll
+# of the main library when launching ctest with RUN_TESTS
 IF(MSVC)
   SET(CMAKE_MSVCIDE_RUN_PATH "\$(SolutionDir)/src/\$(Configuration)")
 ENDIF(MSVC)

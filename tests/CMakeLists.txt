@@ -21,7 +21,7 @@ add_definitions(-DBOOST_TEST_DYN_LINK)
 
 include_directories("${PROJECT_SOURCE_DIR}/src")
 include_directories(${Boost_INCLUDE_DIRS})
-link_directories(${Boost_LIBRARY_DIR})
+link_directories(${Boost_LIBRARY_DIRS})
 
 macro(addUnitTest name)
   if(${UNIT_TESTS})

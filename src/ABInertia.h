@@ -193,6 +193,8 @@ private:
 	matrix3_t M_;
 	matrix3_t H_;
 	matrix3_t I_;
+public:
+  EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 };
 
 template<typename T, typename T2>

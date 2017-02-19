@@ -171,6 +171,8 @@ public:
 private:
 	vector3_t angular_;
 	vector3_t linear_;
+public:
+  EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 };
 
 template<typename T, typename T2>

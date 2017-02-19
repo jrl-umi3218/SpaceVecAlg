@@ -310,6 +310,8 @@ public:
 private:
 	matrix3_t E_;
 	vector3_t r_;
+public:
+  EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 };
 
 

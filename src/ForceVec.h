@@ -146,6 +146,8 @@ public:
 private:
 	vector3_t couple_;
 	vector3_t force_;
+public:
+  EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 };
 
 template<typename T, typename T2>

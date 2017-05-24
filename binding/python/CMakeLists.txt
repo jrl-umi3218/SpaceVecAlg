@@ -1,4 +1,4 @@
-# Copyright 2012-2016 CNRS-UM LIRMM, CNRS-AIST JRL
+# Copyright 2012-2017 CNRS-UM LIRMM, CNRS-AIST JRL
 #
 # This file is part of SpaceVecAlg.
 #
@@ -15,38 +15,31 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with SpaceVecAlg.  If not, see <http://www.gnu.org/licenses/>.
 
-INCLUDE(../../cmake/python.cmake)
-
-# Look for Python 2.7
-SET(Python_ADDITIONAL_VERSIONS 2.7)
-FINDPYTHON()
-
-# Create the package in build dir for testing purpose
-SET(LIBRARY_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR}/spacevecalg)
-CONFIGURE_FILE(__init__.py ${CMAKE_CURRENT_BINARY_DIR}/spacevecalg/__init__.py COPYONLY)
-SET(OUTPUT_BINDING ${CMAKE_CURRENT_BINARY_DIR}/spacevecalg.cpp)
-
-# Generate Python binding code
-ADD_CUSTOM_COMMAND (
-  OUTPUT ${OUTPUT_BINDING}
-  COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/generate.py ${OUTPUT_BINDING}
-  DEPENDS generate.py
+# Build the bindings locally at build time for test purposes
+ADD_CUSTOM_TARGET(sva-python-bindings ALL
+  COMMAND python setup.py build_ext --inplace
+  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+  COMMENT "Generating local SpaceVecAlg Python bindings"
+  DEPENDS include/sva_wrapper.hpp sva/c_sva.pxd sva/sva.pxd sva/sva.pyx
 )
 
-# Build the library
-SET(SOURCES ${OUTPUT_BINDING})
+if(NOT ${DISABLE_TESTS})
+  ADD_CUSTOM_TARGET(test-sva-python-bindings
+    COMMAND nosetests
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    COMMENT "Test SpaceVecAlg Python bindings"
+    DEPENDS tests/test_sva_containers.py tests/test_sva_inertia.py tests/test_sva_pickle.py tests/test_sva_ptransform.py tests/test_sva_vector.py
+  )
+  ADD_TEST(NAME PythonBindingsTest
+    COMMAND nosetests
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+  )
+endif()
 
-INCLUDE_DIRECTORIES(SYSTEM ${PYTHON_INCLUDE_PATH})
-INCLUDE_DIRECTORIES(SYSTEM ${EIGEN3_INCLUDE_DIRS})
-INCLUDE_DIRECTORIES(.)
-INCLUDE_DIRECTORIES(../../src)
-
-ADD_LIBRARY(_spacevecalg SHARED ${SOURCES})
-
-target_link_libraries(_spacevecalg ${PYTHON_LIBRARY})
-
-SET_TARGET_PROPERTIES(_spacevecalg PROPERTIES PREFIX "")
-
-# Install rules
-INSTALL(TARGETS _spacevecalg DESTINATION "${PYTHON_SITELIB}/spacevecalg")
-PYTHON_INSTALL_BUILD(spacevecalg __init__.py "${PYTHON_SITELIB}")
+# Install the bindings
+ADD_CUSTOM_TARGET(install-sva-python-bindings
+  COMMAND pip install .
+  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+  COMMENT "Install SpaceVecAlg Python bindings"
+)
+INSTALL(CODE "EXECUTE_PROCESS(COMMAND ${CMAKE_MAKE_PROGRAM} install-sva-python-bindings)")

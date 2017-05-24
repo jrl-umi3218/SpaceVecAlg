@@ -35,7 +35,7 @@ IF(NOT WIN32)
 ENDIF()
 SETUP_PROJECT()
 
-option(PYTHON_BINDING "Generate python binding." OFF)
+option(PYTHON_BINDING "Generate python binding." ON)
 option(DISABLE_TESTS "Disable unit tests." OFF)
 option(BENCHMARKS "Generate benchmark." OFF)
 

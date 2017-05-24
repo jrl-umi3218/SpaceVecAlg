@@ -37,9 +37,10 @@ after_failure: ./.travis/run after_failure
 before_install:
 - ./.travis/dependencies/eigen-3.2
 - ./.travis/run  before_install
+- pushd .
 - cd /tmp/_ci/build
 - git clone -b topic/Cython https://github.com/jrl-umi3218/Eigen3ToPython
 - cd Eigen3ToPython
 - pip install -r requirements.txt
 - pip install .
-- cd /tmp/_ci
+- popd

@@ -42,5 +42,5 @@ before_install:
 - git clone -b topic/Cython https://github.com/jrl-umi3218/Eigen3ToPython
 - cd Eigen3ToPython
 - pip install -r requirements.txt
-- pip install .
+- pip install . -vvv
 - popd

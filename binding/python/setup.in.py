@@ -50,42 +50,12 @@ for f in src_files:
 version_hash = sha512.hexdigest()[:7]
 
 class pkg_config(object):
-  def __init__(self, package):
-    self.compile_args = []
-    self.include_dirs = []
-    self.library_dirs = []
-    self.libraries = []
+  def __init__(self):
+    self.compile_args = '@SVA_COMPILE_FLAGS@'.split(';')
+    self.include_dirs = '@SVA_INCLUDE_DIRECTORIES@'.split(';')
+    self.library_dirs = '@SVA_LINK_FLAGS@'.split(';')
+    self.libraries = '@SVA_LINK_LIBRARIES@'.split(';')
     self.found = True
-    self.name = package
-    try:
-      tokens = subprocess.check_output(['pkg-config', '--libs', '--cflags', package]).split()
-      tokens = [ token.decode('ascii') for token in tokens ]
-    except subprocess.CalledProcessError:
-      tokens = []
-      self.found = False
-    for token in tokens:
-      flag = token[:2]
-      value = token[2:]
-      if flag == '-I':
-        self.include_dirs.append(value)
-      elif flag == '-l':
-        if value[0] == ':':
-          value = value[1:]
-        self.libraries.append(value)
-      elif flag == '-L':
-        self.library_dirs.append(value)
-      else:
-        if win32_build:
-          if token[len(token)-4:] == '.lib':
-            self.libraries.append(token[:len(token)-4])
-          elif token[:9] == '/LIBPATH:':
-            self.library_dirs.append(token[9:])
-          else:
-            self.compile_args.append(token)
-        else:
-          self.compile_args.append(token)
-  def __repr__(self):
-    return str(self.include_dirs)+", "+str(self.library_dirs)+", "+str(self.libraries)
 
 python_libs = []
 python_lib_dirs = []
@@ -103,20 +73,17 @@ if not win32_build:
     elif token[:1] == '-':
       python_others.append(token)
 
-configs = { pkg: pkg_config(pkg) for pkg in ['SpaceVecAlg', 'eigen3'] }
+config = pkg_config()
 
-for p,c in configs.items():
-  c.compile_args.append('-std=c++11')
-  for o in python_others:
-    c.compile_args.append(o)
-  c.include_dirs.append(os.getcwd() + "/include")
-  if not win32_build:
-    c.library_dirs.extend(python_lib_dirs)
-    c.libraries.extend(python_libs)
-  else:
-    c.compile_args.append("-DWIN32")
-  if p != 'eigen3':
-    c.include_dirs.extend(configs['eigen3'].include_dirs)
+config.compile_args.append('-std=c++11')
+for o in python_others:
+  config.compile_args.append(o)
+config.include_dirs.append(os.getcwd() + "/include")
+if not win32_build:
+  config.library_dirs.extend(python_lib_dirs)
+  config.libraries.extend(python_libs)
+else:
+  config.compile_args.append("-DWIN32")
 
 def GenExtension(name, pkg, ):
   pyx_src = name.replace('.', '/')
@@ -130,7 +97,7 @@ def GenExtension(name, pkg, ):
     return None
 
 extensions = [
-  GenExtension('sva.sva', configs['SpaceVecAlg'])
+  GenExtension('sva.sva', config)
 ]
 
 extensions = [ x for x in extensions if x is not None ]

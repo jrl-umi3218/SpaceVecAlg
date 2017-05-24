@@ -15,6 +15,19 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with SpaceVecAlg.  If not, see <http://www.gnu.org/licenses/>.
 
+MACRO(GET_SVA_PROPERTY PROPERTY)
+  GET_TARGET_PROPERTY(SVA_${PROPERTY} SpaceVecAlg ${PROPERTY})
+  IF(NOT SVA_${PROPERTY})
+    SET(SVA_${PROPERTY} "")
+  ENDIF()
+ENDMACRO()
+GET_SVA_PROPERTY(COMPILE_FLAGS)
+GET_SVA_PROPERTY(INCLUDE_DIRECTORIES)
+GET_SVA_PROPERTY(LINK_FLAGS)
+GET_SVA_PROPERTY(LINK_LIBRARIES)
+GET_SVA_PROPERTY(LOCATION)
+CONFIGURE_FILE(setup.in.py ${CMAKE_CURRENT_SOURCE_DIR}/setup.py)
+
 # Build the bindings locally at build time for test purposes
 ADD_CUSTOM_TARGET(sva-python-bindings ALL
   COMMAND python setup.py build_ext --inplace

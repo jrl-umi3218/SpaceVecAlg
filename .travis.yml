@@ -42,3 +42,4 @@ before_install:
 - cd Eigen3ToPython
 - pip install -r requirements.txt
 - pip install .
+- cd /tmp/_ci

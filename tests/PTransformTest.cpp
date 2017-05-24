@@ -29,7 +29,7 @@
 #include <boost/math/constants/constants.hpp>
 
 // SpaceVecAlg
-#include <SpaceVecAlg>
+#include <SpaceVecAlg/SpaceVecAlg>
 
 typedef Eigen::Matrix<double, 6, Eigen::Dynamic> Matrix6Xd;
 

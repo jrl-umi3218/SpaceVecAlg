@@ -39,6 +39,8 @@ before_install:
 - ./.travis/run  before_install
 - pushd .
 - cd /tmp/_ci/build
+- export install_dir=/tmp/_ci/install
+- export PKG_CONFIG_PATH="$install_dir/lib/pkgconfig:$install_dir/share/pkgconfig:$PKG_CONFIG_PATH"
 - git clone -b topic/Cython https://github.com/jrl-umi3218/Eigen3ToPython
 - cd Eigen3ToPython
 - pip install -r requirements.txt

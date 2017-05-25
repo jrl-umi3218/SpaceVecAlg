@@ -21,20 +21,22 @@ language: cpp
 compiler: gcc
 env:
   global:
-  - APT_DEPENDENCIES="doxygen doxygen-latex libboost-all-dev python-numpy"
+  - APT_DEPENDENCIES="doxygen doxygen-latex libboost-all-dev"
   - GIT_DEPENDENCIES=""
   - GH_USERNAME=gergondet
   - GH_REPO=jrl-umi3218/SpaceVecAlg
   - secure: FWu5+09qN8j8CF6ecpX81eX/gC6QkmXcps3jHyHfhggoKHXLIGL1qN6bICXgjVzhpJbmmAEEJUtbN5UMOSPnJ/kInVR36eR1VwUAQUL81PJazH5XVDgznF8stCbow6lG0WQ9xCZzVfW77V9DXv4QL5K2tfOtRmStbtUiTdf4ZUs=
+  matrix:
+    - USE_PYTHON34=false
+    - USE_PYTHON34=true
 notifications:
-  email:
-  - pierre.gergondet@gmail.com
   slack:
     secure: gCrurakYrdf1A2VxY3eDotv2JGfXQd07ELV3vKoBXBEu3bmv5qfwrqV05FSkZG6rK/O55DRC6KkIftGu79Tk+gCD+iPMXJtKMcdMaEPeO17jB/vPTWHtpGLnC0FevyqQGq0AfGAPjRbUEs1dB9WKBVPCu1KUmnl7sODe3WFYBPs=
 script: ./.travis/run build
 after_success: ./.travis/run after_success
 after_failure: ./.travis/run after_failure
 before_install:
+- if [ $USE_PYTHON34 = true ]; then pushd .; pip install virtualenv; mkdir -p /tmp/_ci/virtualenv; virtualenv -p python3.4 3.4; source 3.4/bin/activate; popd; fi
 - ./.travis/dependencies/eigen-3.2
 - ./.travis/run  before_install
 - pushd .

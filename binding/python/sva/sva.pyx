@@ -19,6 +19,7 @@
 
 cimport eigen.c_eigen as c_eigen
 cimport sva.c_sva as c_sva
+cimport sva.c_sva_private as c_sva_private
 cimport eigen.eigen as eigen
 from libcpp.cast cimport const_cast
 from libcpp.vector cimport vector
@@ -66,12 +67,12 @@ cdef class ForceVecd(object):
   def __repr__(self):
     return "sva.ForceVecd"
   def __str__(self):
-    return c_sva.ForceVecToString[double](deref(self.impl))
+    return c_sva_private.ForceVecToString[double](deref(self.impl))
 
   def __add__(ForceVecd self, ForceVecd other):
     return ForceVecdFromC(deref(self.impl) + deref(other.impl))
   def __iadd__(self, ForceVecd other):
-    c_sva.fv_iadd[double](self.impl, other.impl)
+    c_sva_private.fv_iadd[double](self.impl, other.impl)
     return self
 
   def __neg__(self):
@@ -80,7 +81,7 @@ cdef class ForceVecd(object):
   def __sub__(ForceVecd self, ForceVecd other):
     return ForceVecdFromC(deref(self.impl) - deref(other.impl))
   def __isub__(self, ForceVecd other):
-    c_sva.fv_isub[double](self.impl, other.impl)
+    c_sva_private.fv_isub[double](self.impl, other.impl)
     return self
 
   def __mul(self, double s):
@@ -91,7 +92,7 @@ cdef class ForceVecd(object):
     else:
       return other.__mul__(self)
   def __imul__(self, double other):
-    c_sva.fv_imul(self.impl, other)
+    c_sva_private.fv_imul(self.impl, other)
     return self
 
   def __div__(ForceVecd self, double other):
@@ -101,7 +102,7 @@ cdef class ForceVecd(object):
   def __idiv__(ForceVecd self, double other):
     return self.__itruediv__(other)
   def __itruediv__(self, double other):
-    c_sva.fv_idiv(self.impl, other)
+    c_sva_private.fv_idiv(self.impl, other)
     return self
 
   def __richcmp__(ForceVecd self, ForceVecd other, int op):
@@ -122,7 +123,7 @@ cdef ForceVecd ForceVecdFromC(const c_sva.ForceVecd& fv, cppbool copy = True):
     ret.impl = new c_sva.ForceVecd(fv)
   else:
     ret.__own_impl = False
-    ret.impl = &(c_sva.const_cast_fvd(fv))
+    ret.impl = &(c_sva_private.const_cast_fvd(fv))
   return ret
 
 cdef class ForceVecdVector(object):
@@ -181,12 +182,12 @@ cdef class MotionVecd(object):
   def __repr__(self):
     return "sva.MotionVecd"
   def __str__(self):
-    return c_sva.MotionVecToString[double](deref(self.impl))
+    return c_sva_private.MotionVecToString[double](deref(self.impl))
 
   def __add__(MotionVecd self, MotionVecd other):
     return MotionVecdFromC(deref(self.impl) + deref(other.impl))
   def __iadd__(self, MotionVecd other):
-    c_sva.mv_iadd[double](self.impl, other.impl)
+    c_sva_private.mv_iadd[double](self.impl, other.impl)
     return self
 
   def __neg__(self):
@@ -195,7 +196,7 @@ cdef class MotionVecd(object):
   def __sub__(MotionVecd self, MotionVecd other):
     return MotionVecdFromC(deref(self.impl) - deref(other.impl))
   def __isub__(self, MotionVecd other):
-    c_sva.mv_isub(self.impl, other.impl)
+    c_sva_private.mv_isub(self.impl, other.impl)
     return self
 
   def __mul(self, double s):
@@ -206,7 +207,7 @@ cdef class MotionVecd(object):
     else:
       return other.__mul__(self)
   def __imul__(self, double other):
-    c_sva.mv_imul(self.impl, other)
+    c_sva_private.mv_imul(self.impl, other)
     return self
 
   def __div__(MotionVecd self, double other):
@@ -216,7 +217,7 @@ cdef class MotionVecd(object):
   def __idiv__(self, double other):
     return self.__itruediv__(other)
   def __itruediv__(self, double other):
-    c_sva.mv_idiv(self.impl, other)
+    c_sva_private.mv_idiv(self.impl, other)
     return self
 
   def __richcmp__(MotionVecd self, MotionVecd other, int op):
@@ -237,7 +238,7 @@ cdef MotionVecd MotionVecdFromC(const c_sva.MotionVecd& mv, cppbool copy = True)
       ret.impl = new c_sva.MotionVecd(mv)
   else:
       ret.__own_impl = False
-      ret.impl = &(c_sva.const_cast_mvd(mv))
+      ret.impl = &(c_sva_private.const_cast_mvd(mv))
   return ret
 
 cdef class MotionVecdVector(object):
@@ -305,12 +306,12 @@ cdef class RBInertiad(object):
   def __repr__(self):
     return "sva.RBInertiad"
   def __str__(self):
-    return c_sva.RBInertiaToString[double](deref(self.impl))
+    return c_sva_private.RBInertiaToString[double](deref(self.impl))
 
   def __add__(RBInertiad self, RBInertiad other):
     return RBInertiadFromC(deref(self.impl) + deref(other.impl))
   def __iadd__(self, RBInertiad other):
-    c_sva.rbi_iadd(self.impl, other.impl)
+    c_sva_private.rbi_iadd(self.impl, other.impl)
     return self
 
   def __neg__(self):
@@ -319,7 +320,7 @@ cdef class RBInertiad(object):
   def __sub__(RBInertiad self, RBInertiad other):
     return RBInertiadFromC(deref(self.impl) - deref(other.impl))
   def __isub__(self, RBInertiad other):
-    c_sva.rbi_isub(self.impl, other.impl)
+    c_sva_private.rbi_isub(self.impl, other.impl)
     return self
 
   def __scalar_mul(self, double s):
@@ -335,7 +336,7 @@ cdef class RBInertiad(object):
     else:
       return other.__mul__(self)
   def __imul__(self, double other):
-    c_sva.rbi_imul(self.impl, other)
+    c_sva_private.rbi_imul(self.impl, other)
     return self
 
   def __richcmp__(RBInertiad self, RBInertiad other, int op):
@@ -356,7 +357,7 @@ cdef RBInertiad RBInertiadFromC(const c_sva.RBInertiad& fv, cppbool copy=True):
       ret.impl = new c_sva.RBInertiad(fv)
   else:
       ret.__own_impl = False
-      ret.impl = &(c_sva.const_cast_rbid(fv))
+      ret.impl = &(c_sva_private.const_cast_rbid(fv))
   return ret
 
 cdef class ABInertiad(object):
@@ -397,7 +398,7 @@ cdef class ABInertiad(object):
   def __repr__(self):
     return "sva.ABInertiad"
   def __str__(self):
-    return c_sva.ABInertiaToString[double](deref(self.impl))
+    return c_sva_private.ABInertiaToString[double](deref(self.impl))
 
   def __abinertia_add(self, ABInertiad other):
     return ABInertiadFromC(deref(self.impl) + deref(other.impl))
@@ -414,9 +415,9 @@ cdef class ABInertiad(object):
     else:
       return other.__add__(self)
   def __abinertia_iadd(self, ABInertiad other):
-    c_sva.abi_iadd(self.impl, other.impl)
+    c_sva_private.abi_iadd(self.impl, other.impl)
   def __rbinertia_iadd(self, RBInertiad other):
-    c_sva.abi_rbi_iadd(self.impl, other.impl)
+    c_sva_private.abi_rbi_iadd(self.impl, other.impl)
   def __iadd__(self, other):
     if isinstance(other, ABInertiad):
       self.__abinertia_iadd(other)
@@ -432,7 +433,7 @@ cdef class ABInertiad(object):
   def __sub__(ABInertiad self, ABInertiad other):
     return ABInertiadFromC(deref(self.impl) - deref(other.impl))
   def __isub__(self, ABInertiad other):
-    c_sva.abi_isub(self.impl, other.impl)
+    c_sva_private.abi_isub(self.impl, other.impl)
     return self
 
   def __scalar_mul(self, double s):
@@ -448,7 +449,7 @@ cdef class ABInertiad(object):
     else:
       return other.__mul__(self)
   def __imul__(self, double other):
-    c_sva.abi_imul(self.impl, other)
+    c_sva_private.abi_imul(self.impl, other)
     return self
 
   def __richcmp__(ABInertiad self, ABInertiad other, int op):
@@ -469,7 +470,7 @@ cdef ABInertiad ABInertiadFromC(const c_sva.ABInertiad& fv, cppbool copy=True):
       ret.impl = new c_sva.ABInertiad(fv)
   else:
       ret.__own_impl = False
-      ret.impl = &(c_sva.const_cast_abid(fv))
+      ret.impl = &(c_sva_private.const_cast_abid(fv))
   return ret
 
 cdef class PTransformd(object):
@@ -536,7 +537,7 @@ cdef class PTransformd(object):
   def __repr__(self):
     return "sva.PTransformd"
   def __str__(self):
-    return c_sva.PTransformToString[double](deref(self.impl))
+    return c_sva_private.PTransformToString[double](deref(self.impl))
 
   def __pt_mul(self, PTransformd pt):
     return PTransformdFromC(deref(self.impl)*deref(pt.impl))
@@ -621,7 +622,7 @@ cdef class PTransformd(object):
 
   @staticmethod
   def Identity():
-    return PTransformdFromC(c_sva.PTransformIdentity[double]())
+    return PTransformdFromC(c_sva_private.PTransformIdentity[double]())
   @staticmethod
   def pickle(pt):
     return PTransformd, (list(pt.rotation()), list(pt.translation()))
@@ -633,7 +634,7 @@ cdef PTransformd PTransformdFromC(const c_sva.PTransformd & pt, cppbool
       ret.impl = new c_sva.PTransformd(pt)
   else:
       ret.__own_impl = False
-      ret.impl = &(c_sva.const_cast_ptd(pt))
+      ret.impl = &(c_sva_private.const_cast_ptd(pt))
   return ret
 
 cdef class PTransformdVector(object):
@@ -669,7 +670,7 @@ cdef PTransformdVector PTransformdVectorFromC(const vector[c_sva.PTransformd]&v,
     ret.v = new vector[c_sva.PTransformd](v)
   else:
     ret.__own_impl = False
-    ret.v = &(c_sva.const_cast_pt_vec(v))
+    ret.v = &(c_sva_private.const_cast_pt_vec(v))
   return ret
 
 def RotX(double theta):

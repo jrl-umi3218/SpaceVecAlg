@@ -182,38 +182,3 @@ cdef extern from "<SpaceVecAlg/SpaceVecAlg>" namespace "sva":
   PTransform[T] interpolate[T](const PTransform[T]&, const PTransform[T]&, T)
 
   T sinc_inv[T](T)
-
-cdef extern from "sva_wrapper.hpp" namespace "sva":
-  string ForceVecToString[T](const ForceVec[T] &)
-  string MotionVecToString[T](const MotionVec[T] &)
-  string RBInertiaToString[T](const RBInertia[T] &)
-  string ABInertiaToString[T](const ABInertia[T] &)
-  string PTransformToString[T](const PTransform[T] &)
-
-  PTransform[T] PTransformIdentity[T]()
-
-  ForceVecd & const_cast_fvd(const ForceVecd &)
-  void fv_iadd[T](ForceVec[T] * lhs, ForceVec[T] * rhs)
-  void fv_isub[T](ForceVec[T] * lhs, ForceVec[T] * rhs)
-  void fv_imul[T](ForceVec[T] * lhs, double s)
-  void fv_idiv[T](ForceVec[T] * lhs, double s)
-
-  MotionVecd & const_cast_mvd(const MotionVecd &)
-  void mv_iadd[T](MotionVec[T] * lhs, MotionVec[T] * rhs)
-  void mv_isub[T](MotionVec[T] * lhs, MotionVec[T] * rhs)
-  void mv_imul[T](MotionVec[T] * lhs, double s)
-  void mv_idiv[T](MotionVec[T] * lhs, double s)
-
-  RBInertiad & const_cast_rbid(const RBInertiad &)
-  void rbi_iadd[T](RBInertia[T] * lhs, RBInertia[T] * rhs)
-  void rbi_isub[T](RBInertia[T] * lhs, RBInertia[T] * rhs)
-  void rbi_imul[T](RBInertia[T] * lhs, double s)
-
-  ABInertiad & const_cast_abid(const ABInertiad &)
-  void abi_iadd[T](ABInertia[T] * lhs, ABInertia[T] * rhs)
-  void abi_rbi_iadd[T](ABInertia[T] * lhs, RBInertia[T] * rhs)
-  void abi_isub[T](ABInertia[T] * lhs, ABInertia[T] * rhs)
-  void abi_imul[T](ABInertia[T] * lhs, double s)
-
-  PTransformd & const_cast_ptd(const PTransformd &)
-  vector[PTransformd]& const_cast_pt_vec(const vector[PTransformd]&)

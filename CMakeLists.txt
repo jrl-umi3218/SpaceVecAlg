@@ -36,6 +36,7 @@ ENDIF()
 SETUP_PROJECT()
 
 option(PYTHON_BINDING "Generate python binding." ON)
+option(PYTHON_BINDING_USER_INSTALL "Install the Python bindings in user space" OFF)
 option(DISABLE_TESTS "Disable unit tests." OFF)
 option(BENCHMARKS "Generate benchmark." OFF)
 

@@ -151,7 +151,7 @@ To compile you need the following tools:
 
 For Python bindings:
 
- * [PyBindGen](https://launchpad.net/pybindgen) = 0.16
+ * [Cython](http://cython.org/) >= 0.25
  * [Eigen3ToPython](https://github.com/jorisv/Eigen3ToPython) (to use the Python binding)
 
 #### Building

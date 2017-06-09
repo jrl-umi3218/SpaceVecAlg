@@ -21,7 +21,6 @@ cimport eigen.c_eigen as c_eigen
 cimport sva.c_sva as c_sva
 cimport sva.c_sva_private as c_sva_private
 cimport eigen.eigen as eigen
-from libcpp.cast cimport const_cast
 from libcpp.vector cimport vector
 from cython.operator cimport dereference as deref
 
@@ -492,7 +491,7 @@ cdef class PTransformd(object):
   def __aactor__(self, eigen.AngleAxisd rot):
     self.impl = new c_sva.PTransformd(rot.impl.matrix())
   def __tctor__(self, eigen.Vector3d trans):
-    self.impl = new c_sva.PTransformd(trans.impl)
+    self.impl = c_sva_private.NewPTransformdFromV3(trans.impl)
   def __cinit__(self, *args, skip_alloc = False):
     self.__own_impl = True
     if len(args) == 0:

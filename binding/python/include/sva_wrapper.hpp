@@ -68,6 +68,11 @@ PTransform<T> PTransformIdentity()
   return PTransform<T>::Identity();
 }
 
+sva::PTransformd * NewPTransformdFromV3(const Eigen::Matrix<double, 3, 1> & v)
+{
+  return new sva::PTransformd(v);
+}
+
 sva::ForceVec<double>& const_cast_fvd(const sva::ForceVec<double> & rhs)
 {
   return const_cast<sva::ForceVec<double>&>(rhs);

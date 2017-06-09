@@ -113,13 +113,12 @@ cdef extern from "<SpaceVecAlg/SpaceVecAlg>" namespace "sva":
   cdef cppclass PTransform[T]:
     PTransform()
     PTransform(const PTransform[T]&)
+    PTransform(const c_eigen.Matrix[T,c_eigen.three,c_eigen.three]&)
     PTransform(const c_eigen.Matrix[T,c_eigen.three,c_eigen.three]&,
                const c_eigen.Matrix[T,c_eigen.three,c_eigen.one]&)
     PTransform(const c_eigen.Quaternion[T]&,
                const c_eigen.Matrix[T,c_eigen.three,c_eigen.one]&)
     PTransform(const c_eigen.Quaternion[T]&)
-    PTransform(const c_eigen.Matrix[T,c_eigen.three,c_eigen.three]&)
-    PTransform(const c_eigen.Matrix[T,c_eigen.three,c_eigen.one]&)
 
     c_eigen.Matrix[T,c_eigen.three,c_eigen.three] rotation() const
     c_eigen.Matrix[T,c_eigen.three,c_eigen.one] translation() const

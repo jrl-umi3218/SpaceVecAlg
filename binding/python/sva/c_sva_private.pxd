@@ -29,6 +29,8 @@ cdef extern from "sva_wrapper.hpp" namespace "sva":
 
   PTransform[T] PTransformIdentity[T]()
 
+  PTransformd * NewPTransformdFromV3(const c_eigen.Matrix[double, c_eigen.three, c_eigen.one]&)
+
   ForceVecd & const_cast_fvd(const ForceVecd &)
   void fv_iadd[T](ForceVec[T] * lhs, ForceVec[T] * rhs)
   void fv_isub[T](ForceVec[T] * lhs, ForceVec[T] * rhs)

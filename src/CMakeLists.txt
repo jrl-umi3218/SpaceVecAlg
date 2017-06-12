@@ -16,10 +16,16 @@
 # along with SpaceVecAlg.  If not, see <http://www.gnu.org/licenses/>.
 
 set(SOURCES lib.cpp)
-set(HEADERS MotionVec.h ForceVec.h PTransform.h RBInertia.h
-						ABInertia.h EigenTypedef.h EigenUtility.h Operators.h
-						MathFunc.h
-						SpaceVecAlg)
+set(HEADERS SpaceVecAlg/MotionVec.h
+            SpaceVecAlg/ForceVec.h
+            SpaceVecAlg/PTransform.h
+            SpaceVecAlg/RBInertia.h
+            SpaceVecAlg/ABInertia.h
+            SpaceVecAlg/EigenTypedef.h
+            SpaceVecAlg/EigenUtility.h
+            SpaceVecAlg/Operators.h
+            SpaceVecAlg/MathFunc.h
+            SpaceVecAlg/SpaceVecAlg)
 
 
 

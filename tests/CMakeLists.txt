@@ -1,3 +1,5 @@
+# Copyright 2012-2017 CNRS-UM LIRMM, CNRS-AIST JRL
+#
 # This file is part of SpaceVecAlg.
 #
 # SpaceVecAlg is free software: you can redistribute it and/or modify
@@ -17,9 +19,7 @@ ENABLE_TESTING()
 
 set(BOOST_COMPONENTS unit_test_framework timer system)
 SEARCH_FOR_BOOST()
-add_definitions(-DBOOST_TEST_DYN_LINK)
 
-include_directories("${PROJECT_SOURCE_DIR}/src")
 include_directories(${Boost_INCLUDE_DIRS})
 link_directories(${Boost_LIBRARY_DIRS})
 
@@ -54,10 +54,3 @@ addUnitTest("PTransformTest")
 addUnitTest("AutoDiffTest")
 
 addBenchmark("PTransformBench")
-
-if(${PYTHON_BINDING})
-  set(PYTHON_TEST_COMMAND "${PYTHON_EXECUTABLE}")
-  configure_file(sva_pickle_test.py ${CMAKE_CURRENT_BINARY_DIR}/sva_pickle_test.py)
-  add_test(svaPickleTestUnit ${PYTHON_TEST_COMMAND}
-    "${CMAKE_CURRENT_BINARY_DIR}/sva_pickle_test.py")
-endif()

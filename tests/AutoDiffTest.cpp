@@ -48,7 +48,7 @@ scalar_t cos(const scalar_t& t)
 */
 
 // SpaceVecAlg
-#include <SpaceVecAlg>
+#include <SpaceVecAlg/SpaceVecAlg>
 namespace sva
 {
 template<>

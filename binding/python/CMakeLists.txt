@@ -62,8 +62,7 @@ IF(DEFINED PYTHON_DEB_ROOT)
   )
 ELSE()
   ADD_CUSTOM_TARGET(install-sva-python-bindings
-    #  COMMAND pip install ${PIP_EXTRA_OPTIONS} .
-    COMMAND python setup.py install --install-layout=deb
+    COMMAND pip install ${PIP_EXTRA_OPTIONS} .
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     COMMENT "Install SpaceVecAlg Python bindings"
   )

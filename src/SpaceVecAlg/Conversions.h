@@ -33,11 +33,25 @@ namespace conversions
   {
     if(rightHandedness)
     {
-      return PTransform<T>(m.block<3,3>(0,0).transpose(), m.block<3,1>(0,3));
+      return PTransform<T>(m.template block<3,3>(0,0).transpose(), m.template block<3,1>(0,3));
     }
     else
     {
-      return PTransform<T>(m.block<3,3>(0,0), m.block<3,1>(0,3));
+      return PTransform<T>(m.template block<3,3>(0,0), m.template block<3,1>(0,3));
+    }
+  }
+
+  template<typename T>
+  PTransform<T> fromHomogeneous(const Eigen::Matrix<T, 4, 4>& m,
+                                bool rightHandedness = RightHanded)
+  {
+    if(rightHandedness)
+    {
+      return PTransform<T>(m.template block<3,3>(0,0).transpose(), m.template block<3,1>(0,3));
+    }
+    else
+    {
+      return PTransform<T>(m.template block<3,3>(0,0), m.template block<3,1>(0,3));
     }
   }
 
@@ -46,15 +60,15 @@ namespace conversions
                                        bool rightHandedness = RightHanded)
   {
     Eigen::Matrix<T, 4, 4> res = Eigen::Matrix<T, 4, 4>::Identity();
-    res.block<3, 1>(0, 3) = pt.translation();
+    res.template block<3, 1>(0, 3) = pt.translation();
 
     if(rightHandedness)
     {
-      res.block<3, 3>(0, 0) = pt.rotation().transpose();
+      res.template block<3, 3>(0, 0) = pt.rotation().transpose();
     }
     else
     {
-      res.block<3, 3>(0, 0) = pt.rotation();
+      res.template block<3, 3>(0, 0) = pt.rotation();
     }
     return res;
   }

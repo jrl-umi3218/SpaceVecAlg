@@ -1,4 +1,4 @@
-// Copyright 2012-2016 CNRS-UM LIRMM, CNRS-AIST JRL
+// Copyright 2012-2017 CNRS-UM LIRMM, CNRS-AIST JRL
 //
 // This file is part of SpaceVecAlg.
 //
@@ -59,7 +59,9 @@ namespace conversions
   Eigen::Matrix<T, 4, 4> toHomogeneous(const PTransform<T>& pt,
                                        bool rightHandedness = RightHanded)
   {
-    Eigen::Matrix<T, 4, 4> res = Eigen::Matrix<T, 4, 4>::Identity();
+    Eigen::Matrix<T, 4, 4> res = Eigen::Matrix<T, 4, 4>::Zero();
+    res(3, 3) = 1.0;
+
     res.template block<3, 1>(0, 3) = pt.translation();
 
     if(rightHandedness)

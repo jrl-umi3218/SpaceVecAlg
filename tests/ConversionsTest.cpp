@@ -1,4 +1,4 @@
-// Copyright 2012-2016 CNRS-UM LIRMM, CNRS-AIST JRL
+// Copyright 2012-2017 CNRS-UM LIRMM, CNRS-AIST JRL
 //
 // This file is part of SpaceVecAlg.
 //
@@ -42,16 +42,16 @@ BOOST_AUTO_TEST_CASE(ConversionsHomogeneous)
     hom(1,0) = +1;
     hom(2,2) = +1;
     hom(3,3) = +1;
-    PTransform<double> pt = conversions::fromHomogeneous(hom,conversions::RightHanded);
+    PTransformd pt = conversions::fromHomogeneous(hom,conversions::RightHanded);
 
     const Vector4d vec(4,3,2,1);
     Matrix4d homVec = Matrix4d::Identity();
     homVec.block<4,1>(0,3) = vec;
-    PTransform<double> ptVec = conversions::fromHomogeneous(homVec,conversions::RightHanded);
+    PTransformd ptVec = conversions::fromHomogeneous(homVec,conversions::RightHanded);
 
     Matrix4d hom2 = conversions::toHomogeneous(pt,conversions::RightHanded);
 
-    const PTransform<double> rotatedPT= ptVec*pt;
+    const PTransformd rotatedPT= ptVec*pt;
     const Vector4d rotated = hom*vec;
     const Vector4d rotated2 = hom2*vec;
 

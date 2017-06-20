@@ -27,31 +27,18 @@ namespace conversions
   constexpr bool RightHanded = true;
   constexpr bool LeftHanded = false;
 
-  template<typename T>
-  PTransform<T> fromHomogeneous(const Eigen::Ref<Eigen::Matrix<T, 4, 4>>& m,
+  template<typename Derived>
+  PTransform<typename Derived::Scalar> fromHomogeneous(const Eigen::MatrixBase<Derived>& m,
                                 bool rightHandedness = RightHanded)
   {
+    EIGEN_STATIC_ASSERT_MATRIX_SPECIFIC_SIZE(Derived, 4, 4);
     if(rightHandedness)
     {
-      return PTransform<T>(m.template block<3,3>(0,0).transpose(), m.template block<3,1>(0,3));
+      return PTransform<typename Derived::Scalar>(m.template block<3,3>(0,0).transpose(), m.template block<3,1>(0,3));
     }
     else
     {
-      return PTransform<T>(m.template block<3,3>(0,0), m.template block<3,1>(0,3));
-    }
-  }
-
-  template<typename T>
-  PTransform<T> fromHomogeneous(const Eigen::Matrix<T, 4, 4>& m,
-                                bool rightHandedness = RightHanded)
-  {
-    if(rightHandedness)
-    {
-      return PTransform<T>(m.template block<3,3>(0,0).transpose(), m.template block<3,1>(0,3));
-    }
-    else
-    {
-      return PTransform<T>(m.template block<3,3>(0,0), m.template block<3,1>(0,3));
+      return PTransform<typename Derived::Scalar>(m.template block<3,3>(0,0), m.template block<3,1>(0,3));
     }
   }
 

@@ -42,14 +42,14 @@ BOOST_AUTO_TEST_CASE(ConversionsHomogeneous)
     hom(1,0) = +1;
     hom(2,2) = +1;
     hom(3,3) = +1;
-    PTransformd pt = conversions::fromHomogeneous(hom,conversions::RightHanded);
+    PTransformd pt = conversions::fromHomogeneous(hom, conversions::RightHanded);
 
     const Vector4d vec(4,3,2,1);
     Matrix4d homVec = Matrix4d::Identity();
     homVec.block<4,1>(0,3) = vec;
-    PTransformd ptVec = conversions::fromHomogeneous(homVec,conversions::RightHanded);
+    PTransformd ptVec = conversions::fromHomogeneous(homVec, conversions::RightHanded);
 
-    Matrix4d hom2 = conversions::toHomogeneous(pt,conversions::RightHanded);
+    Matrix4d hom2 = conversions::toHomogeneous(pt, conversions::RightHanded);
 
     const PTransformd rotatedPT= ptVec*pt;
     const Vector4d rotated = hom*vec;

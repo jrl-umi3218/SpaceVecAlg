@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Member List</title>
+<title>sva::sva_internal Namespace Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css">
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="jquery.js"></script>
@@ -26,8 +26,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
-      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li class="current"><a href="namespaces.html"><span>Namespaces</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -49,9 +50,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
-      <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
+      <li><a href="namespaces.html"><span>Namespace&#160;List</span></a></li>
+      <li><a href="namespacemembers.html"><span>Namespace&#160;Members</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -66,7 +66,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('a00002.html','');});
+$(document).ready(function(){initNavTree('a00021.html','');});
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -74,7 +74,7 @@ $(document).ready(function(){initNavTree('a00002.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -84,41 +84,213 @@ $(document).ready(function(){initNavTree('a00002.html','');});
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">sva::ForceVec&lt; T &gt; Member List</div>  </div>
+<div class="title">sva::sva_internal Namespace Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a925b34e58bacdcc4481c5ff74eb7ddd4"><td class="memTemplParams" colspan="2">template&lt;typename Derived1 , typename Derived2 , typename Derived3 &gt; </td></tr>
+<tr class="memitem:a925b34e58bacdcc4481c5ff74eb7ddd4"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00021.html#a925b34e58bacdcc4481c5ff74eb7ddd4">colwiseCrossEq</a> (const Eigen::MatrixBase&lt; Derived1 &gt; &amp;m1, const Eigen::MatrixBase&lt; Derived2 &gt; &amp;m2, Eigen::MatrixBase&lt; Derived3 &gt; const &amp;result)</td></tr>
+<tr class="separator:a925b34e58bacdcc4481c5ff74eb7ddd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab737f4faada616c9e5c70f0485a9a7b6"><td class="memTemplParams" colspan="2">template&lt;typename Derived1 , typename Derived2 , typename Derived3 &gt; </td></tr>
+<tr class="memitem:ab737f4faada616c9e5c70f0485a9a7b6"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00021.html#ab737f4faada616c9e5c70f0485a9a7b6">colwiseCrossPlusEq</a> (const Eigen::MatrixBase&lt; Derived1 &gt; &amp;m1, const Eigen::MatrixBase&lt; Derived2 &gt; &amp;m2, Eigen::MatrixBase&lt; Derived3 &gt; const &amp;result)</td></tr>
+<tr class="separator:ab737f4faada616c9e5c70f0485a9a7b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecd2872735a5a172e30de9246de058fa"><td class="memTemplParams" colspan="2">template&lt;typename Derived1 , typename Derived2 , typename Derived3 &gt; </td></tr>
+<tr class="memitem:aecd2872735a5a172e30de9246de058fa"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00021.html#aecd2872735a5a172e30de9246de058fa">colwiseCrossMinusEq</a> (const Eigen::MatrixBase&lt; Derived1 &gt; &amp;m1, const Eigen::MatrixBase&lt; Derived2 &gt; &amp;m2, Eigen::MatrixBase&lt; Derived3 &gt; const &amp;result)</td></tr>
+<tr class="separator:aecd2872735a5a172e30de9246de058fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82175c48dc1b87580b82ef5a071d786f"><td class="memTemplParams" colspan="2">template&lt;typename Derived1 , typename Derived2 , typename Derived3 &gt; </td></tr>
+<tr class="memitem:a82175c48dc1b87580b82ef5a071d786f"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00021.html#a82175c48dc1b87580b82ef5a071d786f">colwiseLeftMultEq</a> (const Eigen::MatrixBase&lt; Derived1 &gt; &amp;m1, const Eigen::MatrixBase&lt; Derived2 &gt; &amp;m2, Eigen::MatrixBase&lt; Derived3 &gt; const &amp;result)</td></tr>
+<tr class="separator:a82175c48dc1b87580b82ef5a071d786f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a925b34e58bacdcc4481c5ff74eb7ddd4"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Derived1 , typename Derived2 , typename Derived3 &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sva::sva_internal::colwiseCrossEq </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::MatrixBase&lt; Derived1 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>m1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::MatrixBase&lt; Derived2 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>m2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Eigen::MatrixBase&lt; Derived3 &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>result</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
-<p>This is the complete list of members for <a class="el" href="a00002.html">sva::ForceVec&lt; T &gt;</a>, including all inherited members.</p>
-<table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="a00002.html#a87dc3553e5a5a6fab1657cbf5f884b04">cast</a>() const </td><td class="entry"><a class="el" href="a00002.html">sva::ForceVec&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="a00002.html#a4cb565858a92641bf4aea0e59819919a">couple</a>()</td><td class="entry"><a class="el" href="a00002.html">sva::ForceVec&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="a00002.html#a4e4ecfbcecb7d3f6ccc4e899ed8ec7ca">couple</a>() const </td><td class="entry"><a class="el" href="a00002.html">sva::ForceVec&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="a00002.html#a24f8a65444a2150f2d0b1eaf988f6050">force</a>()</td><td class="entry"><a class="el" href="a00002.html">sva::ForceVec&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="a00002.html#ae01fcc6745935483456ce1fa450ce84a">force</a>() const </td><td class="entry"><a class="el" href="a00002.html">sva::ForceVec&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="a00002.html#a730f83bfa7210e24707c39bd3902da61">ForceVec</a>()</td><td class="entry"><a class="el" href="a00002.html">sva::ForceVec&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="a00002.html#a7e9d1c4ca61297af37a34de6b27d505b">ForceVec</a>(const vector6_t &amp;vec)</td><td class="entry"><a class="el" href="a00002.html">sva::ForceVec&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="a00002.html#a9b3a676a68d07834110c8094c9c33620">ForceVec</a>(const vector3_t &amp;couple, const vector3_t &amp;force)</td><td class="entry"><a class="el" href="a00002.html">sva::ForceVec&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="a00002.html#abb947129737da2bb6fc973c694f4959a">operator!=</a>(const ForceVec&lt; T &gt; &amp;fv) const </td><td class="entry"><a class="el" href="a00002.html">sva::ForceVec&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="a00002.html#aea6f4bf4fd5203c02242632a7b3a2c2f">operator*</a>(T2 scalar) const </td><td class="entry"><a class="el" href="a00002.html">sva::ForceVec&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="a00002.html#aab0b01ed3e67617fc5b6d75989116ec1">operator+</a>(const ForceVec&lt; T &gt; &amp;fv) const </td><td class="entry"><a class="el" href="a00002.html">sva::ForceVec&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="a00002.html#ab130da1c2b94fece993f56f039bdc070">operator+=</a>(const ForceVec&lt; T &gt; &amp;fv)</td><td class="entry"><a class="el" href="a00002.html">sva::ForceVec&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="a00002.html#a08f69aa68ac7c842921cadc240386263">operator-</a>(const ForceVec&lt; T &gt; &amp;fv) const </td><td class="entry"><a class="el" href="a00002.html">sva::ForceVec&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="a00002.html#a9cbe1f9d227c2d142e542ca2e9bc9889">operator-</a>() const </td><td class="entry"><a class="el" href="a00002.html">sva::ForceVec&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="a00002.html#a79b84bb24e1cc389608a8b1ac277871a">operator-=</a>(const ForceVec&lt; T &gt; &amp;fv)</td><td class="entry"><a class="el" href="a00002.html">sva::ForceVec&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="a00002.html#a02ca7e0d36023121af6db7f7125fa71a">operator/</a>(T2 scalar) const </td><td class="entry"><a class="el" href="a00002.html">sva::ForceVec&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="a00002.html#a8804fd6876ce6b4602414ce01af8bafd">operator==</a>(const ForceVec&lt; T &gt; &amp;fv) const </td><td class="entry"><a class="el" href="a00002.html">sva::ForceVec&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="a00002.html#afd10841a85903063ea3c0cca84c209cd">PTransform&lt; T &gt;</a> class</td><td class="entry"><a class="el" href="a00002.html">sva::ForceVec&lt; T &gt;</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="a00002.html#a80a9f43ca5332f256d5eaa23122cc467">vector</a>() const </td><td class="entry"><a class="el" href="a00002.html">sva::ForceVec&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="a00002.html#a3f771fa492ae2c9f35c075bfe41ff990">vector3_t</a> typedef</td><td class="entry"><a class="el" href="a00002.html">sva::ForceVec&lt; T &gt;</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="a00002.html#a3d2902bb90cc5a47091cc2c9bdb60800">vector6_t</a> typedef</td><td class="entry"><a class="el" href="a00002.html">sva::ForceVec&lt; T &gt;</a></td><td class="entry"></td></tr>
-</table></div><!-- contents -->
+<p>Referenced by <a class="el" href="a00003.html#ab2f2cce3d341a4de489d5180c51d253d">sva::MotionVec&lt; T &gt;::cross()</a>, and <a class="el" href="a00003.html#a9a0ea67b1e1599236265e0a24dad9949">sva::MotionVec&lt; T &gt;::crossDual()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aecd2872735a5a172e30de9246de058fa"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Derived1 , typename Derived2 , typename Derived3 &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sva::sva_internal::colwiseCrossMinusEq </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::MatrixBase&lt; Derived1 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>m1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::MatrixBase&lt; Derived2 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>m2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Eigen::MatrixBase&lt; Derived3 &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>result</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Referenced by <a class="el" href="a00003.html#ab2f2cce3d341a4de489d5180c51d253d">sva::MotionVec&lt; T &gt;::cross()</a>, <a class="el" href="a00003.html#a9a0ea67b1e1599236265e0a24dad9949">sva::MotionVec&lt; T &gt;::crossDual()</a>, <a class="el" href="a00004.html#a7fab06ef5a422e4e3d99e6e641dc153b">sva::PTransform&lt; T &gt;::invMul()</a>, <a class="el" href="a00005.html#a0f54f36d8e260d001ca825d09450d328">sva::RBInertia&lt; T &gt;::mul()</a>, and <a class="el" href="a00004.html#afce335b0a22c899419567c6d364aac8c">sva::PTransform&lt; T &gt;::transMul()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab737f4faada616c9e5c70f0485a9a7b6"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Derived1 , typename Derived2 , typename Derived3 &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sva::sva_internal::colwiseCrossPlusEq </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::MatrixBase&lt; Derived1 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>m1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::MatrixBase&lt; Derived2 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>m2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Eigen::MatrixBase&lt; Derived3 &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>result</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Referenced by <a class="el" href="a00004.html#a66fdedea351ae8db4980b31c2df45663">sva::PTransform&lt; T &gt;::dualMul()</a>, <a class="el" href="a00005.html#a0f54f36d8e260d001ca825d09450d328">sva::RBInertia&lt; T &gt;::mul()</a>, and <a class="el" href="a00004.html#a5e3393005e73f887384d5b11b82fed92">sva::PTransform&lt; T &gt;::mul()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a82175c48dc1b87580b82ef5a071d786f"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Derived1 , typename Derived2 , typename Derived3 &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sva::sva_internal::colwiseLeftMultEq </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::MatrixBase&lt; Derived1 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>m1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::MatrixBase&lt; Derived2 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>m2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Eigen::MatrixBase&lt; Derived3 &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>result</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Referenced by <a class="el" href="a00004.html#a66fdedea351ae8db4980b31c2df45663">sva::PTransform&lt; T &gt;::dualMul()</a>, and <a class="el" href="a00004.html#a5e3393005e73f887384d5b11b82fed92">sva::PTransform&lt; T &gt;::mul()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.6-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Jun 12 2017 01:47:08 for SpaceVecAlg by
+    <li class="navelem"><a class="el" href="a00019.html">sva</a></li><li class="navelem"><a class="el" href="a00021.html">sva_internal</a></li>
+    <li class="footer">Generated on Tue Jun 20 2017 06:40:56 for SpaceVecAlg by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

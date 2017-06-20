@@ -1,15 +1,6 @@
 var a00012 =
 [
-    [ "colwiseCrossEq", "a00012.html#a925b34e58bacdcc4481c5ff74eb7ddd4", null ],
-    [ "colwiseCrossMinusEq", "a00012.html#aecd2872735a5a172e30de9246de058fa", null ],
-    [ "colwiseCrossPlusEq", "a00012.html#ab737f4faada616c9e5c70f0485a9a7b6", null ],
-    [ "colwiseLeftMultEq", "a00012.html#a82175c48dc1b87580b82ef5a071d786f", null ],
-    [ "forceCouple", "a00012.html#a5bd057544a4e4715453d6b091287ec39", null ],
-    [ "forceCouple", "a00012.html#a16294cce1fad1b8fef911e95dc069441", null ],
-    [ "forceForce", "a00012.html#a36ac26af5675540660450973f8ff331d", null ],
-    [ "forceForce", "a00012.html#a17667abbecd2160e2919e032c8c3d941", null ],
-    [ "motionAngular", "a00012.html#a2453bbce65af3c0244ddb1b6bd5d8ce2", null ],
-    [ "motionAngular", "a00012.html#a4559ada646b1360e454b8e4c111b7f30", null ],
-    [ "motionLinear", "a00012.html#a9b9539cbd6e4e2f2f3b0533712a583e3", null ],
-    [ "motionLinear", "a00012.html#aba1d07bbb03512ddff15e2141a3b4a62", null ]
+    [ "MotionVec", "a00003.html", "a00003" ],
+    [ "operator*", "a00012.html#a5034a19c802c5810244ff02b878cd0ba", null ],
+    [ "operator<<", "a00012.html#ab8fa7e4323ec04f5e03a350901c60258", null ]
 ];

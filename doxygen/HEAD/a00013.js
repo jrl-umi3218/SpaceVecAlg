@@ -1,13 +1,15 @@
 var a00013 =
 [
-    [ "PTransform", "a00004.html", "a00004" ],
-    [ "interpolate", "a00013.html#a381dd489edaba2181144933166257665", null ],
-    [ "operator<<", "a00013.html#a69f52ec476fdbe9a8449b8f168b0a873", null ],
-    [ "rotationError", "a00013.html#a19fbf7e2be8a0b0f4549fa9055c442b2", null ],
-    [ "rotationVelocity", "a00013.html#a69e918e3dc71b93c3f4a2136c525f2a0", null ],
-    [ "RotX", "a00013.html#a3d8592bd972b6bdd69677f5a620daa73", null ],
-    [ "RotY", "a00013.html#a72dd05ef42d5f3f01e76aecd3c769658", null ],
-    [ "RotZ", "a00013.html#a945b27220fb3db512a24939c8cc1b5ee", null ],
-    [ "transformError", "a00013.html#a6fbac271475e71e5c72fa8ba6c01fdf5", null ],
-    [ "transformVelocity", "a00013.html#acc9e3175704107c30feb6c0204ca2086", null ]
+    [ "colwiseCrossEq", "a00013.html#a925b34e58bacdcc4481c5ff74eb7ddd4", null ],
+    [ "colwiseCrossMinusEq", "a00013.html#aecd2872735a5a172e30de9246de058fa", null ],
+    [ "colwiseCrossPlusEq", "a00013.html#ab737f4faada616c9e5c70f0485a9a7b6", null ],
+    [ "colwiseLeftMultEq", "a00013.html#a82175c48dc1b87580b82ef5a071d786f", null ],
+    [ "forceCouple", "a00013.html#a5bd057544a4e4715453d6b091287ec39", null ],
+    [ "forceCouple", "a00013.html#a16294cce1fad1b8fef911e95dc069441", null ],
+    [ "forceForce", "a00013.html#a36ac26af5675540660450973f8ff331d", null ],
+    [ "forceForce", "a00013.html#a17667abbecd2160e2919e032c8c3d941", null ],
+    [ "motionAngular", "a00013.html#a2453bbce65af3c0244ddb1b6bd5d8ce2", null ],
+    [ "motionAngular", "a00013.html#a4559ada646b1360e454b8e4c111b7f30", null ],
+    [ "motionLinear", "a00013.html#a9b9539cbd6e4e2f2f3b0533712a583e3", null ],
+    [ "motionLinear", "a00013.html#aba1d07bbb03512ddff15e2141a3b4a62", null ]
 ];

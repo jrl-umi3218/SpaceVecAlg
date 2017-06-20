@@ -1,4 +1,6 @@
 var a00010 =
 [
-    [ "sinc_inv", "a00010.html#a3cad8a4ff91f4aace786395eaaef6834", null ]
+    [ "ForceVec", "a00002.html", "a00002" ],
+    [ "operator*", "a00010.html#a1afa81055cff14671456d0b626d3c1ad", null ],
+    [ "operator<<", "a00010.html#af6a9cf3044dd068be66723b8c14f7af4", null ]
 ];

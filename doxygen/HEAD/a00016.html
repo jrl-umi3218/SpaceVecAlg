@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Eigen Namespace Reference</title>
+<title>SpaceVecAlg File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css">
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="jquery.js"></script>
@@ -26,9 +26,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li class="current"><a href="namespaces.html"><span>Namespaces</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
-      <li><a href="files.html"><span>Files</span></a></li>
+      <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -49,8 +50,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="namespaces.html"><span>Namespace&#160;List</span></a></li>
-      <li><a href="namespacemembers.html"><span>Namespace&#160;Members</span></a></li>
+      <li><a href="files.html"><span>File&#160;List</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -73,7 +73,7 @@ $(document).ready(function(){initNavTree('a00016.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -84,223 +84,71 @@ $(document).ready(function(){initNavTree('a00016.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#typedef-members">Typedefs</a>  </div>
   <div class="headertitle">
-<div class="title">Eigen Namespace Reference</div>  </div>
+<div class="title">SpaceVecAlg File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<table class="memberdecls">
+<div class="textblock"><code>#include &lt;limits&gt;</code><br/>
+<code>#include &lt;ostream&gt;</code><br/>
+<code>#include &lt;Eigen/Core&gt;</code><br/>
+<code>#include &lt;Eigen/Geometry&gt;</code><br/>
+<code>#include &quot;<a class="el" href="a00008.html">EigenTypedef.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="a00009.html">EigenUtility.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="a00011.html">MathFunc.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="a00012.html">MotionVec.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="a00010.html">ForceVec.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="a00015.html">RBInertia.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="a00006.html">ABInertia.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="a00014.html">PTransform.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="a00013.html">Operators.h</a>&quot;</code><br/>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00003.html">sva::MotionVec&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spatial Motion Vector compact representations.  <a href="a00003.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html">sva::ForceVec&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spatial Force Vector compact representations.  <a href="a00002.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html">sva::RBInertia&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spatial Rigid Body Inertia compact representation.  <a href="a00005.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00001.html">sva::ABInertia&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spatial Articulated Body Inertia compact representation.  <a href="a00001.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00004.html">sva::PTransform&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plücker transform compact representation.  <a href="a00004.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:a00019"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00019.html">sva</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a664778266262bbdb1d1b2776bef25c7d"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a664778266262bbdb1d1b2776bef25c7d"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00016.html#a664778266262bbdb1d1b2776bef25c7d">Vector6</a> = Matrix&lt; T, 6, 1 &gt;</td></tr>
-<tr class="separator:a664778266262bbdb1d1b2776bef25c7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad6321e28b97dd47986f2187fa21be1e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:aad6321e28b97dd47986f2187fa21be1e"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00016.html#aad6321e28b97dd47986f2187fa21be1e">Matrix6</a> = Matrix&lt; T, 6, 6 &gt;</td></tr>
-<tr class="separator:aad6321e28b97dd47986f2187fa21be1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55408ba932fc7d1707bd7adc7e5e930f"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a55408ba932fc7d1707bd7adc7e5e930f"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00016.html#a55408ba932fc7d1707bd7adc7e5e930f">Vector3</a> = Matrix&lt; T, 3, 1 &gt;</td></tr>
-<tr class="separator:a55408ba932fc7d1707bd7adc7e5e930f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4d27bf92869006caf1413e5d218e2f1"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ac4d27bf92869006caf1413e5d218e2f1"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00016.html#ac4d27bf92869006caf1413e5d218e2f1">Matrix3</a> = Matrix&lt; T, 3, 3 &gt;</td></tr>
-<tr class="separator:ac4d27bf92869006caf1413e5d218e2f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acdb6a5c038a9c26a61b0187b696b2630"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00016.html#a664778266262bbdb1d1b2776bef25c7d">Vector6</a>&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00016.html#acdb6a5c038a9c26a61b0187b696b2630">Vector6d</a></td></tr>
-<tr class="separator:acdb6a5c038a9c26a61b0187b696b2630"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e65eb0c6b911896bd105a6e84b0a187"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00016.html#aad6321e28b97dd47986f2187fa21be1e">Matrix6</a>&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00016.html#a3e65eb0c6b911896bd105a6e84b0a187">Matrix6d</a></td></tr>
-<tr class="separator:a3e65eb0c6b911896bd105a6e84b0a187"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a34d0d0706dc16ae0358433af740a48fd"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a34d0d0706dc16ae0358433af740a48fd"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00016.html#ac4d27bf92869006caf1413e5d218e2f1">Matrix3</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00016.html#a34d0d0706dc16ae0358433af740a48fd">vector3ToCrossMatrix</a> (const <a class="el" href="a00016.html#a55408ba932fc7d1707bd7adc7e5e930f">Vector3</a>&lt; T &gt; &amp;vec)</td></tr>
-<tr class="memdesc:a34d0d0706dc16ae0358433af740a48fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a 3D vector to a cross product matrix.  <a href="#a34d0d0706dc16ae0358433af740a48fd">More...</a><br/></td></tr>
-<tr class="separator:a34d0d0706dc16ae0358433af740a48fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a843e61000f53c05966116a6dead6d7cb"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a843e61000f53c05966116a6dead6d7cb"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00016.html#aad6321e28b97dd47986f2187fa21be1e">Matrix6</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00016.html#a843e61000f53c05966116a6dead6d7cb">vector6ToCrossMatrix</a> (const <a class="el" href="a00016.html#a664778266262bbdb1d1b2776bef25c7d">Vector6</a>&lt; T &gt; &amp;vec)</td></tr>
-<tr class="memdesc:a843e61000f53c05966116a6dead6d7cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a 6D vector to a spatial cross product matrix.  <a href="#a843e61000f53c05966116a6dead6d7cb">More...</a><br/></td></tr>
-<tr class="separator:a843e61000f53c05966116a6dead6d7cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2964e2c4bbe44365032512d28ce500ee"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a2964e2c4bbe44365032512d28ce500ee"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00016.html#aad6321e28b97dd47986f2187fa21be1e">Matrix6</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00016.html#a2964e2c4bbe44365032512d28ce500ee">vector6ToCrossDualMatrix</a> (const <a class="el" href="a00016.html#a664778266262bbdb1d1b2776bef25c7d">Vector6</a>&lt; T &gt; &amp;vec)</td></tr>
-<tr class="memdesc:a2964e2c4bbe44365032512d28ce500ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a 6D vector to a spatial dual cross product matrix.  <a href="#a2964e2c4bbe44365032512d28ce500ee">More...</a><br/></td></tr>
-<tr class="separator:a2964e2c4bbe44365032512d28ce500ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc16c15a4fbcc2d8cf5676551b74816d"><td class="memItemLeft" align="right" valign="top">typedef MotionVec&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00019.html#afc16c15a4fbcc2d8cf5676551b74816d">sva::MotionVecd</a></td></tr>
+<tr class="separator:afc16c15a4fbcc2d8cf5676551b74816d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaea958106abfa742585ced52492029c4"><td class="memItemLeft" align="right" valign="top">typedef ForceVec&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00019.html#aaea958106abfa742585ced52492029c4">sva::ForceVecd</a></td></tr>
+<tr class="separator:aaea958106abfa742585ced52492029c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac56f2d381429fa55047d24d79ac9ae82"><td class="memItemLeft" align="right" valign="top">typedef RBInertia&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00019.html#ac56f2d381429fa55047d24d79ac9ae82">sva::RBInertiad</a></td></tr>
+<tr class="separator:ac56f2d381429fa55047d24d79ac9ae82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8d39b02fe4802fabf41faf9d4676578"><td class="memItemLeft" align="right" valign="top">typedef ABInertia&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00019.html#aa8d39b02fe4802fabf41faf9d4676578">sva::ABInertiad</a></td></tr>
+<tr class="separator:aa8d39b02fe4802fabf41faf9d4676578"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a259dde998fab6de957995eedfdb4d179"><td class="memItemLeft" align="right" valign="top">typedef PTransform&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00019.html#a259dde998fab6de957995eedfdb4d179">sva::PTransformd</a></td></tr>
+<tr class="separator:a259dde998fab6de957995eedfdb4d179"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Typedef Documentation</h2>
-<a class="anchor" id="ac4d27bf92869006caf1413e5d218e2f1"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="a00016.html#ac4d27bf92869006caf1413e5d218e2f1">Eigen::Matrix3</a> = typedef Matrix&lt;T, 3, 3&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="aad6321e28b97dd47986f2187fa21be1e"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="a00016.html#aad6321e28b97dd47986f2187fa21be1e">Eigen::Matrix6</a> = typedef Matrix&lt;T, 6, 6&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a3e65eb0c6b911896bd105a6e84b0a187"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef <a class="el" href="a00016.html#aad6321e28b97dd47986f2187fa21be1e">Matrix6</a>&lt;double&gt; <a class="el" href="a00016.html#a3e65eb0c6b911896bd105a6e84b0a187">Eigen::Matrix6d</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a55408ba932fc7d1707bd7adc7e5e930f"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="a00016.html#a55408ba932fc7d1707bd7adc7e5e930f">Eigen::Vector3</a> = typedef Matrix&lt;T, 3, 1&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a664778266262bbdb1d1b2776bef25c7d"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="a00016.html#a664778266262bbdb1d1b2776bef25c7d">Eigen::Vector6</a> = typedef Matrix&lt;T, 6, 1&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="acdb6a5c038a9c26a61b0187b696b2630"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef <a class="el" href="a00016.html#a664778266262bbdb1d1b2776bef25c7d">Vector6</a>&lt;double&gt; <a class="el" href="a00016.html#acdb6a5c038a9c26a61b0187b696b2630">Eigen::Vector6d</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a34d0d0706dc16ae0358433af740a48fd"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00016.html#ac4d27bf92869006caf1413e5d218e2f1">Matrix3</a>&lt;T&gt; Eigen::vector3ToCrossMatrix </td>
-          <td>(</td>
-          <td class="paramtype">const Vector3&lt; T &gt; &amp;&#160;</td>
-          <td class="paramname"><em>vec</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Convert a 3D vector to a cross product matrix. </p>
-
-<p>Referenced by <a class="el" href="a00004.html#afa7630aebda72170cb723e245d3d733f">sva::PTransform&lt; T &gt;::dualMatrix()</a>, <a class="el" href="a00004.html#ac2020d451e4115a6b528d73948720cc0">sva::PTransform&lt; T &gt;::dualMul()</a>, <a class="el" href="a00005.html#a175ff0a93ded97638e29edabc636de0c">sva::RBInertia&lt; T &gt;::matrix()</a>, <a class="el" href="a00004.html#a54562972abd09161aee465c592c14047">sva::PTransform&lt; T &gt;::matrix()</a>, <a class="el" href="a00001.html#a3f2b09d60511dadb0524415f7141d12b">sva::ABInertia&lt; T &gt;::operator+()</a>, and <a class="el" href="a00004.html#ae3928765d649b03b9fdfb61fc0f2eca4">sva::PTransform&lt; T &gt;::transMul()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a2964e2c4bbe44365032512d28ce500ee"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00016.html#aad6321e28b97dd47986f2187fa21be1e">Matrix6</a>&lt;T&gt; Eigen::vector6ToCrossDualMatrix </td>
-          <td>(</td>
-          <td class="paramtype">const Vector6&lt; T &gt; &amp;&#160;</td>
-          <td class="paramname"><em>vec</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Convert a 6D vector to a spatial dual cross product matrix. </p>
-
-</div>
-</div>
-<a class="anchor" id="a843e61000f53c05966116a6dead6d7cb"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00016.html#aad6321e28b97dd47986f2187fa21be1e">Matrix6</a>&lt;T&gt; Eigen::vector6ToCrossMatrix </td>
-          <td>(</td>
-          <td class="paramtype">const Vector6&lt; T &gt; &amp;&#160;</td>
-          <td class="paramname"><em>vec</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Convert a 6D vector to a spatial cross product matrix. </p>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.6-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00016.html">Eigen</a></li>
-    <li class="footer">Generated on Mon Jun 12 2017 01:47:08 for SpaceVecAlg by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f34540a38fb6e22ecdf3e3ec82d1696a.html">SpaceVecAlg</a></li><li class="navelem"><a class="el" href="a00016.html">SpaceVecAlg</a></li>
+    <li class="footer">Generated on Tue Jun 20 2017 06:40:56 for SpaceVecAlg by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

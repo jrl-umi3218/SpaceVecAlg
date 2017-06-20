@@ -1,9 +1,10 @@
 var a00007 =
 [
-    [ "Matrix3", "a00007.html#ac4d27bf92869006caf1413e5d218e2f1", null ],
-    [ "Matrix6", "a00007.html#aad6321e28b97dd47986f2187fa21be1e", null ],
-    [ "Matrix6d", "a00007.html#a3e65eb0c6b911896bd105a6e84b0a187", null ],
-    [ "Vector3", "a00007.html#a55408ba932fc7d1707bd7adc7e5e930f", null ],
-    [ "Vector6", "a00007.html#a664778266262bbdb1d1b2776bef25c7d", null ],
-    [ "Vector6d", "a00007.html#acdb6a5c038a9c26a61b0187b696b2630", null ]
+    [ "affine3_t", "a00007.html#a40ac77c343242ed84a860f10c7797cec", null ],
+    [ "fromAffine", "a00007.html#aa8896657e5adc9a8e790e20f9b27a3c3", null ],
+    [ "fromHomogeneous", "a00007.html#a164f93ece6bd476bdc388886711969c9", null ],
+    [ "toAffine", "a00007.html#aaf02f7d90175c1f87bd0b5ce5e626566", null ],
+    [ "toHomogeneous", "a00007.html#abda8dfd75276624f91e5b8d6b6bbc238", null ],
+    [ "LeftHanded", "a00007.html#a6bf64591c3e46c0a00767a33150595d5", null ],
+    [ "RightHanded", "a00007.html#adfa051e762e1b8048e916c9297df6ac9", null ]
 ];

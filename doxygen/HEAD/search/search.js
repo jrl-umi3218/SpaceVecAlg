@@ -10,10 +10,12 @@ var indexSectionsWithContent =
   0: "acdefgilmoprstv",
   1: "afmpr",
   2: "es",
-  3: "aefmoprs",
+  3: "acefmoprs",
   4: "acdfgilmoprstv",
-  5: "afmprv",
-  6: "p"
+  5: "lr",
+  6: "afmprv",
+  7: "p",
+  8: "c"
 };
 
 var indexSectionNames =
@@ -23,8 +25,10 @@ var indexSectionNames =
   2: "namespaces",
   3: "files",
   4: "functions",
-  5: "typedefs",
-  6: "related"
+  5: "variables",
+  6: "typedefs",
+  7: "related",
+  8: "groups"
 };
 
 function convertToId(search)

@@ -1,6 +1,6 @@
 var a00009 =
 [
-    [ "ForceVec", "a00002.html", "a00002" ],
-    [ "operator*", "a00009.html#a1afa81055cff14671456d0b626d3c1ad", null ],
-    [ "operator<<", "a00009.html#af6a9cf3044dd068be66723b8c14f7af4", null ]
+    [ "vector3ToCrossMatrix", "a00009.html#a34d0d0706dc16ae0358433af740a48fd", null ],
+    [ "vector6ToCrossDualMatrix", "a00009.html#a2964e2c4bbe44365032512d28ce500ee", null ],
+    [ "vector6ToCrossMatrix", "a00009.html#a843e61000f53c05966116a6dead6d7cb", null ]
 ];

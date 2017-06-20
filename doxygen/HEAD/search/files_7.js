@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['spacevecalg',['SpaceVecAlg',['../a00015.html',1,'']]]
+  ['rbinertia_2eh',['RBInertia.h',['../a00015.html',1,'']]]
 ];

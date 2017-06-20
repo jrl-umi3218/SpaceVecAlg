@@ -22,14 +22,39 @@
 namespace sva
 {
 
+/**
+* \addtogroup Conversions Convert to and from sva types
+*
+* @{
+*/
+
+/**
+* @brief Generic functions to convert to/from sva types
+*
+* Each function in the conversions namespace allows to convert to and from
+* another type. An important point to note is that sva internally uses a
+* left-handed convention. Hence, all functions will assume that the non-sva
+* objects use a right-handed convention and convert accordingly. This is
+* overridable by the "rightHandedness" argument.
+*/
 namespace conversions
 {
+  //! Alias for right handedness (default)
   constexpr bool RightHanded = true;
+  //! Alias for left handedness
   constexpr bool LeftHanded = false;
 
+  /**
+   * @brief Convert an homogeneous matrix into a Plucker Transform
+   *
+   * @return Plucker Transform equivalent to the input homogeneous matrix
+   * @param m A 4x4 Eigen Matrix
+   * @param RightHandedness Handedness of the input homogeneous matrix.
+   * Defaults to right handedness.
+   */
   template<typename Derived>
   PTransform<typename Derived::Scalar> fromHomogeneous(const Eigen::MatrixBase<Derived>& m,
-                                bool rightHandedness = RightHanded)
+                                            bool rightHandedness = RightHanded)
   {
     EIGEN_STATIC_ASSERT_MATRIX_SPECIFIC_SIZE(Derived, 4, 4);
     if(rightHandedness)
@@ -42,6 +67,14 @@ namespace conversions
     }
   }
 
+  /**
+   * @brief Convert a Plucker Transform into an homogeneous matrix
+   *
+   * @return An Eigen 4x4 homogeneous matrix equivalent to the input Plucker Transform
+   * @param pt Plucker Transform
+   * @param RightHandedness Handedness of the output homogeneous matrix.
+   * Defaults to right handedness.
+   */
   template<typename T>
   Eigen::Matrix<T, 4, 4> toHomogeneous(const PTransform<T>& pt,
                                        bool rightHandedness = RightHanded)
@@ -63,5 +96,7 @@ namespace conversions
   }
 
 }
+
+/** @} */
 
 }

@@ -32,10 +32,10 @@
 #include <SpaceVecAlg/SpaceVecAlg>
 #include <SpaceVecAlg/Conversions.h>
 
-BOOST_AUTO_TEST_CASE(ConverionsHomogeneous)
+BOOST_AUTO_TEST_CASE(ConversionsHomogeneous)
 {
-	using namespace Eigen;
-	using namespace sva;
+    using namespace Eigen;
+    using namespace sva;
 
     Matrix4d hom = Matrix4d::Zero();
     hom(0,1) = -1;

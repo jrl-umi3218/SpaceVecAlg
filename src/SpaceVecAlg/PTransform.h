@@ -104,6 +104,7 @@ class PTransform
 {
 	typedef Vector3<T> vector3_t;
 	typedef Matrix3<T> matrix3_t;
+	typedef Matrix4<T> matrix4_t;
 	typedef Matrix6<T> matrix6_t;
 	typedef Quaternion<T> quaternion_t;
 
@@ -176,6 +177,15 @@ public:
 		r_(trans)
 	{}
 
+	/**
+		* @param hom Homogeneous transformation matrix
+		*/
+	template<typename T2>
+	PTransform(const Matrix4<T2>& hom):
+			E_(hom.template block<3,3>(0,0).template cast<T>().transpose()),
+			r_(hom.template block<3,1>(0,3).template cast<T>())
+	{}
+
 	// Accessor
 	/// @return Rotation matrix.
 	const matrix3_t& rotation() const
@@ -216,6 +226,14 @@ public:
 		matrix6_t m;
 		m << E_, -E_*vector3ToCrossMatrix(r_),
 				 matrix3_t::Zero(), E_;
+		return m;
+	}
+
+	matrix4_t homogeneousMatrix() const
+	{
+		matrix4_t m = matrix4_t::Identity();
+		m.template block<3,3>(0,0) = E_.transpose();
+		m.template block<3,1>(0,3) = r_;
 		return m;
 	}
 

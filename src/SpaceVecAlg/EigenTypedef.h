@@ -29,6 +29,8 @@ template<typename T>
 using Vector3 = Matrix<T, 3, 1>;
 template<typename T>
 using Matrix3 = Matrix<T, 3, 3>;
+template<typename T>
+using Matrix4 = Matrix<T, 4, 4>;
 
 typedef Vector6<double> Vector6d;
 typedef Matrix6<double> Matrix6d;

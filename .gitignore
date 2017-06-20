@@ -1,4 +1,7 @@
 *~
+build
+CMakeLists.txt.user*
+*.autosave
 *.pyc
 binding/python/sva/__init__.py
 binding/python/sva/sva.cpp

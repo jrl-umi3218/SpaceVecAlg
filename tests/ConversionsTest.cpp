@@ -58,3 +58,30 @@ BOOST_AUTO_TEST_CASE(ConversionsHomogeneous)
     BOOST_CHECK_EQUAL(rotated, rotated2);
     BOOST_CHECK_EQUAL((rotated.block<3,1>(0,0)), rotatedPT.translation());
 }
+
+BOOST_AUTO_TEST_CASE(ConversionsEigenTransform)
+{
+    using namespace Eigen;
+    using namespace sva;
+
+    PTransformd pt(sva::RotX(M_PI/2)*sva::RotZ(M_PI/4), Eigen::Vector3d(1., 2., 3.));
+    conversions::affine3_t<double> et = conversions::toAffine(pt, conversions::RightHanded);
+    PTransformd pt2 = conversions::fromAffine(et, conversions::RightHanded);
+
+    BOOST_CHECK_SMALL(sva::transformError(pt, pt2).vector().norm(), 1e-12);
+
+    conversions::affine3_t<double> etL = conversions::toAffine(pt, conversions::LeftHanded);
+    PTransformd pt3 = conversions::fromAffine(etL, conversions::LeftHanded);
+
+    BOOST_CHECK_SMALL(sva::transformError(pt, pt3).vector().norm(), 1e-12);
+
+    Eigen::Vector3d vec(5, 7, 12);
+
+    sva::PTransformd transformed = sva::PTransformd(vec)*pt;
+    Eigen::Vector3d affineTransformed = et*vec;
+
+    std::cout << transformed.translation().transpose() << std::endl;
+    std::cout << affineTransformed.transpose() << std::endl;
+
+    BOOST_CHECK_EQUAL(transformed.translation(), affineTransformed);
+}

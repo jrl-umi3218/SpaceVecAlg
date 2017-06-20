@@ -95,6 +95,41 @@ namespace conversions
     return res;
   }
 
+
+  template<typename T>
+  using affine3_t = Eigen::Transform<T, 3, Eigen::TransformTraits::Affine>;
+
+  template<typename T>
+  PTransform<T> fromAffine(const affine3_t<T>& m,
+                           bool rightHandedness = RightHanded)
+  {
+    if(rightHandedness)
+    {
+      return PTransform<T>(m.rotation().transpose(), m.translation());
+    }
+    else
+    {
+      return PTransform<T>(m.rotation(), m.translation());
+    }
+  }
+
+  template<typename T>
+  affine3_t<T> toAffine(const PTransform<T>& pt,
+                        bool rightHandedness = RightHanded)
+  {
+    affine3_t<T> ret;
+    ret.setIdentity();
+    ret.translation() = pt.translation();
+    if(rightHandedness)
+    {
+      ret.matrix().template block<3, 3>(0, 0) = pt.rotation().transpose();
+    }
+    else
+    {
+      ret.matrix().template block<3, 3>(0, 0) = pt.rotation();
+    }
+    return ret;
+  }
 }
 
 /** @} */

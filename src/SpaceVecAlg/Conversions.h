@@ -95,23 +95,42 @@ namespace conversions
     return res;
   }
 
-
+  //! Define an Eigen::Affine3<T>
   template<typename T>
   using affine3_t = Eigen::Transform<T, 3, Eigen::TransformTraits::Affine>;
 
+  /**
+   * @brief Convert an Eigen::Affine3<T> into a Plucker Transform
+   *
+   * @return A Plucker Transform of the same type as the input Transform
+   * @param a Input Eigen Transform. Only rotation and translation components
+   * are considered.
+   * @param RightHandedness Handedness of the input Eigen Transform.
+   * Defaults to right handedness.
+   */
+
   template<typename T>
-  PTransform<T> fromAffine(const affine3_t<T>& m,
+  PTransform<T> fromAffine(const affine3_t<T>& a,
                            bool rightHandedness = RightHanded)
   {
     if(rightHandedness)
     {
-      return PTransform<T>(m.rotation().transpose(), m.translation());
+      return PTransform<T>(a.rotation().transpose(), a.translation());
     }
     else
     {
-      return PTransform<T>(m.rotation(), m.translation());
+      return PTransform<T>(a.rotation(), a.translation());
     }
   }
+
+  /**
+   * @brief Convert a Plucker Transform into an Eigen::Affine3<T>
+   *
+   * @return An Eigen::Transform of dimension 3, and same scalar type as the input PTransform.
+   * @param pt Input Plucker Transform.
+   * @param RightHandedness Handedness of the output Eigen Transform.
+   * Defaults to right handedness.
+   */
 
   template<typename T>
   affine3_t<T> toAffine(const PTransform<T>& pt,

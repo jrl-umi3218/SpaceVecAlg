@@ -52,5 +52,6 @@ addUnitTest("VectorTest")
 addUnitTest("InertiaTest")
 addUnitTest("PTransformTest")
 addUnitTest("AutoDiffTest")
+addUnitTest("ConversionsTest")
 
 addBenchmark("PTransformBench")

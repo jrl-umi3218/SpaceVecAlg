@@ -25,6 +25,7 @@ set(HEADERS SpaceVecAlg/MotionVec.h
             SpaceVecAlg/EigenUtility.h
             SpaceVecAlg/Operators.h
             SpaceVecAlg/MathFunc.h
+            SpaceVecAlg/Conversions.h
             SpaceVecAlg/SpaceVecAlg)
 
 

@@ -29,6 +29,10 @@ Finally you can build a Doxygen documentation by typing `make doc` in the build 
 
 An up-to-date doxygen documentation is also available [online](http://jrl-umi3218.github.io/SpaceVecAlg/doxygen/HEAD/index.html).
 
+#### Handedness - Left Hand Rule
+
+When getting started with SpaceVecAlg it is important to know that PTransform utlizes the Left Hand Rule for rigid body transforms and not the [Right Hand Rule](https://en.wikipedia.org/wiki/Right-hand_rule) used by many other libraries and classes. Switching the handedness of a rigid body transform can be done with the functions in [Conversions.h](https://github.com/jrl-umi3218/SpaceVecAlg/blob/master/src/SpaceVecAlg/Conversions.h), or inverting the rotation component. If your transforms are not working as you expect, the handedness is worth double checking.
+
 ### Appendix A table transcription to C++
 
 In this section `a` stand for a double, `v` for a motion vector, `f` for a force vector,

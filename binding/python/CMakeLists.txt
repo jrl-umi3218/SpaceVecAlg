@@ -28,15 +28,22 @@ GET_SVA_PROPERTY(LINK_LIBRARIES)
 GET_SVA_PROPERTY(LOCATION)
 CONFIGURE_FILE(setup.in.py ${CMAKE_CURRENT_SOURCE_DIR}/setup.py)
 
+SET(PYTHON "python")
+SET(PIP "pip")
+IF(${PYTHON_BINDING_FORCE_PYTHON3})
+  SET(PYTHON "python3")
+  SET(PIP "pip3")
+ENDIF()
+
 # Build the bindings locally at build time for test purposes
 ADD_CUSTOM_TARGET(sva-python-bindings ALL
-  COMMAND python setup.py build_ext --inplace
+  COMMAND ${PYTHON} setup.py build_ext --inplace
   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
   COMMENT "Generating local SpaceVecAlg Python bindings"
   DEPENDS include/sva_wrapper.hpp sva/c_sva.pxd sva/sva.pxd sva/sva.pyx
 )
 
-if(NOT ${DISABLE_TESTS})
+IF(NOT ${DISABLE_TESTS})
   ADD_CUSTOM_TARGET(test-sva-python-bindings
     COMMAND nosetests
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
@@ -62,7 +69,7 @@ IF(DEFINED PYTHON_DEB_ROOT)
   )
 ELSE()
   ADD_CUSTOM_TARGET(install-sva-python-bindings
-    COMMAND pip install ${PIP_EXTRA_OPTIONS} .
+    COMMAND ${PIP} install ${PIP_EXTRA_OPTIONS} .
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     COMMENT "Install SpaceVecAlg Python bindings"
   )

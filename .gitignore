@@ -5,3 +5,7 @@ binding/python/sva/sva.cpp
 binding/python/sva/sva.so
 binding/python/setup.py
 binding/python/build
+*.swp
+CMakeLists.txt.user*
+*.autosave
+build/

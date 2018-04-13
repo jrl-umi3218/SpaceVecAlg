@@ -34,7 +34,6 @@ set(HEADERS SpaceVecAlg/MotionVec.h
 # !!! Its aim is to test header file and have an IDE integration !!!
 # !!! Don't link against it !!!
 add_library(SpaceVecAlg ${SOURCES} ${HEADERS})
-target_include_directories(SpaceVecAlg PUBLIC ${EIGEN_INCLUDE_DIRS})
 
 # Targets:
 #   * <prefix>/lib/libbar.a

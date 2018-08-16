@@ -58,12 +58,30 @@ public:
 
 	// Accessor
 	/// @return Couple
+    /// 
+    /// @note The term "couple" is used in SpaceVecAlg with the general meaning
+    /// of "moment" of a force vector. It should not to be confused with the
+    /// more precise meaning of a "pure moment" that is also found in mechanics
+    /// <https://en.wikipedia.org/wiki/Couple_(mechanics)>.
+    ///
+    /// @sa moment()
 	vector3_t& couple()
 	{
 		return couple_;
 	}
 
 	const vector3_t& couple() const
+	{
+		return couple_;
+	}
+
+	/// @return Moment
+	vector3_t& moment()
+	{
+		return couple_;
+	}
+
+	const vector3_t& moment() const
 	{
 		return couple_;
 	}

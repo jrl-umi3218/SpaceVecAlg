@@ -227,3 +227,123 @@ BOOST_AUTO_TEST_CASE(MotionVecdLeftOperatorsTest)
 	BOOST_CHECK_EQUAL(crossFVecRes.col(0), crossFVecRes.col(1));
 }
 
+BOOST_AUTO_TEST_CASE(ImpedanceVecdTest)
+{
+	using namespace Eigen;
+	Vector3d w, v;
+	Vector6d z;
+	w = Vector3d::Random();
+	v = Vector3d::Random();
+
+	sva::ImpedanceVecd vec(w, v);
+	z = vec.vector();
+
+	// angular
+	BOOST_CHECK_EQUAL(w, vec.angular());
+
+	// linear
+	BOOST_CHECK_EQUAL(v, vec.linear());
+
+	// vector
+	BOOST_CHECK_EQUAL(z, (Vector6d() << w, v).finished());
+
+	// alpha*M
+	BOOST_CHECK_EQUAL((5.*vec).vector(), (5.*z).eval());
+
+	// M*alpha
+	BOOST_CHECK_EQUAL((vec*5.).vector(), (5.*z).eval());
+
+	// M/alpha
+	BOOST_CHECK_EQUAL((vec/5.).vector(), (z/5.).eval());
+
+	Vector3d w2, v2;
+	w2 = Vector3d::Random();
+	v2 = Vector3d::Random();
+	Vector6d z2;
+	sva::ImpedanceVecd vec2(w2, v2);
+	z2 = vec2.vector();
+
+	// M + M
+	BOOST_CHECK_EQUAL((vec + vec2).vector(), (z + z2).eval());
+
+	// M += M
+	sva::ImpedanceVecd vec_pluseq(vec);
+	vec_pluseq += vec2;
+	BOOST_CHECK_EQUAL(vec_pluseq, vec + vec2);
+
+	// ==
+	BOOST_CHECK_EQUAL(vec, vec);
+
+	// !=
+	BOOST_CHECK(!(vec != vec));
+
+	w = Vector3d::Random();
+	v = Vector3d::Random();
+	sva::MotionVecd mv(w, v);
+
+    // operator *
+    sva::ForceVecd fv = vec * mv;
+	BOOST_CHECK_EQUAL(fv.force(), vec.linear().cwiseProduct(mv.linear()));
+	BOOST_CHECK_EQUAL(fv.couple(), vec.angular().cwiseProduct(mv.angular()));
+}
+
+BOOST_AUTO_TEST_CASE(AdmittanceVecdTest)
+{
+	using namespace Eigen;
+	Vector3d w, v;
+	Vector6d a;
+	w = Vector3d::Random();
+	v = Vector3d::Random();
+
+	sva::AdmittanceVecd vec(w, v);
+	a = vec.vector();
+
+	// angular
+	BOOST_CHECK_EQUAL(w, vec.angular());
+
+	// linear
+	BOOST_CHECK_EQUAL(v, vec.linear());
+
+	// vector
+	BOOST_CHECK_EQUAL(a, (Vector6d() << w, v).finished());
+
+	// alpha*M
+	BOOST_CHECK_EQUAL((5.*vec).vector(), (5.*a).eval());
+
+	// M*alpha
+	BOOST_CHECK_EQUAL((vec*5.).vector(), (5.*a).eval());
+
+	// M/alpha
+	BOOST_CHECK_EQUAL((vec/5.).vector(), (a/5.).eval());
+
+	Vector3d w2, v2;
+	w2 = Vector3d::Random();
+	v2 = Vector3d::Random();
+	Vector6d a2;
+	sva::AdmittanceVecd vec2(w2, v2);
+	a2 = vec2.vector();
+
+	// M + M
+	BOOST_CHECK_EQUAL((vec + vec2).vector(), (a + a2).eval());
+
+	// M += M
+	sva::AdmittanceVecd vec_pluseq(vec);
+	vec_pluseq += vec2;
+	BOOST_CHECK_EQUAL(vec_pluseq, vec + vec2);
+
+	// ==
+	BOOST_CHECK_EQUAL(vec, vec);
+
+	// !=
+	BOOST_CHECK(!(vec != vec));
+
+	Vector3d n = Vector3d::Random();
+	Vector3d f = Vector3d::Random();
+	sva::ForceVecd fv(n, f);
+
+    // operator *
+    sva::MotionVecd mv = vec * fv;
+	BOOST_CHECK_EQUAL(mv.linear(), vec.linear().cwiseProduct(fv.force()));
+	BOOST_CHECK_EQUAL(mv.angular(), vec.angular().cwiseProduct(fv.couple()));
+}
+

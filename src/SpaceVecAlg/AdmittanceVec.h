@@ -43,6 +43,13 @@ public:
 	friend class PTransform<T>;
 
 public:
+	/// Zero admittance vector
+	static AdmittanceVec<T> Zero()
+	{
+		return AdmittanceVec<T>(vector3_t::Zero(), vector3_t::Zero());
+	}
+
+public:
 	AdmittanceVec():
 		angular_(),
 		linear_()

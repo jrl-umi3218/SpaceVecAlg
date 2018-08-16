@@ -96,6 +96,9 @@ BOOST_AUTO_TEST_CASE(MotionVecdTest)
 	// !=
 	BOOST_CHECK(vec != (-vec));
 	BOOST_CHECK(!(vec != vec));
+
+	// zero
+	BOOST_CHECK_EQUAL(sva::MotionVecd::Zero().vector(), Eigen::Vector6d::Zero());
 }
 
 BOOST_AUTO_TEST_CASE(ForceVecdTest)
@@ -160,6 +163,9 @@ BOOST_AUTO_TEST_CASE(ForceVecdTest)
 	// !=
 	BOOST_CHECK(vec != (-vec));
 	BOOST_CHECK(!(vec != vec));
+
+	// zero
+	BOOST_CHECK_EQUAL(sva::ForceVecd::Zero().vector(), Eigen::Vector6d::Zero());
 }
 
 BOOST_AUTO_TEST_CASE(MotionVecdLeftOperatorsTest)
@@ -290,6 +296,9 @@ BOOST_AUTO_TEST_CASE(ImpedanceVecdTest)
 	sva::ImpedanceVecd hiv(11., 42.);
 	BOOST_CHECK_EQUAL(hiv.angular(), Eigen::Vector3d(11., 11., 11.));
 	BOOST_CHECK_EQUAL(hiv.linear(), Eigen::Vector3d(42., 42., 42.));
+
+	// zero
+	BOOST_CHECK_EQUAL(sva::ImpedanceVecd::Zero().vector(), Eigen::Vector6d::Zero());
 }
 
 BOOST_AUTO_TEST_CASE(AdmittanceVecdTest)
@@ -355,5 +364,7 @@ BOOST_AUTO_TEST_CASE(AdmittanceVecdTest)
 	sva::AdmittanceVecd hav(11., 42.);
 	BOOST_CHECK_EQUAL(hav.angular(), Eigen::Vector3d(11., 11., 11.));
 	BOOST_CHECK_EQUAL(hav.linear(), Eigen::Vector3d(42., 42., 42.));
-}
 
+	// zero
+	BOOST_CHECK_EQUAL(sva::AdmittanceVecd::Zero().vector(), Eigen::Vector6d::Zero());
+}

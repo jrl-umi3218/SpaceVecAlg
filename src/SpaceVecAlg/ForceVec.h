@@ -36,6 +36,13 @@ public:
 	friend class PTransform<T>;
 
 public:
+	/// Zero force vector
+	static ForceVec<T> Zero()
+	{
+		return ForceVec<T>(vector3_t::Zero(), vector3_t::Zero());
+	}
+
+public:
 	ForceVec():
 		couple_(),
 		force_()

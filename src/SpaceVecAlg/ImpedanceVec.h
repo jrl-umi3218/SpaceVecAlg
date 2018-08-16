@@ -42,6 +42,13 @@ public:
 	friend class PTransform<T>;
 
 public:
+	/// Zero impedance vector
+	static ImpedanceVec<T> Zero()
+	{
+		return ImpedanceVec<T>(vector3_t::Zero(), vector3_t::Zero());
+	}
+
+public:
 	ImpedanceVec():
 		angular_(),
 		linear_()

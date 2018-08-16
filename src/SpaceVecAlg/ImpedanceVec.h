@@ -24,13 +24,13 @@ using namespace Eigen;
 
 /**
 	* Impedance Vector.
-    * Mechanical impedance is a measure of how much a structure resists
-    * motion when subjected to a given force:
-    *
-    *     F = Z * v 
-    *
-    * where F is the exerted force, Z the impedance and v the resulting output
-    * velocity. See <https://en.wikipedia.org/wiki/Mechanical_impedance>.
+	* Mechanical impedance is a measure of how much a structure resists
+	* motion when subjected to a given force:
+	*
+	*     F = Z * v
+	*
+	* where F is the exerted force, Z the impedance and v the resulting output
+	* velocity. See <https://en.wikipedia.org/wiki/Mechanical_impedance>.
 	*/
 template<typename T>
 class ImpedanceVec

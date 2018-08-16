@@ -24,14 +24,14 @@ using namespace Eigen;
 
 /**
 	* Admittance Vector.
-    * Mechanical admittance is a measure of how much a structure moves
-    * in response to a given force:
-    *
-    *     v = A * F 
-    *
-    * where F is the exerted force, A the admittance and v the resulting output
-    * velocity. Admittance is the reciprocal of mechanical impedance; see
-    * <https://en.wikipedia.org/wiki/Mechanical_impedance>.
+	* Mechanical admittance is a measure of how much a structure moves
+	* in response to a given force:
+	*
+	*     v = A * F
+	*
+	* where F is the exerted force, A the admittance and v the resulting output
+	* velocity. Admittance is the reciprocal of mechanical impedance; see
+	* <https://en.wikipedia.org/wiki/Mechanical_impedance>.
 	*/
 template<typename T>
 class AdmittanceVec

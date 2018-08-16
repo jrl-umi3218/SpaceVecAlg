@@ -66,6 +66,15 @@ public:
 		linear_(linear)
 	{}
 
+	/** Homogeneous admittance constructor.
+		* @param angular Angular admittance.
+		* @param linear Linear admittance.
+		*/
+	AdmittanceVec(T angular, T linear):
+		angular_(angular, angular, angular),
+		linear_(linear, linear, linear)
+	{}
+
 	// Accessor
 	/// @return Angular admittance
 	const vector3_t& angular() const

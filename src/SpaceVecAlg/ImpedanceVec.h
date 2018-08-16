@@ -65,6 +65,15 @@ public:
 		linear_(linear)
 	{}
 
+	/** Homogeneous impedance constructor.
+		* @param angular Angular impedance.
+		* @param linear Linear impedance.
+		*/
+	ImpedanceVec(T angular, T linear):
+		angular_(angular, angular, angular),
+		linear_(linear, linear, linear)
+	{}
+
 	// Accessor
 	/// @return Angular impedance
 	const vector3_t& angular() const

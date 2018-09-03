@@ -50,6 +50,7 @@ public:
 	}
 
 public:
+	/** Empty constructor */
 	AdmittanceVec():
 		angular_(),
 		linear_()

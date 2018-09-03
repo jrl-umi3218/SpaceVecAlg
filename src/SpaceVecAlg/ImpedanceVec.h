@@ -49,6 +49,7 @@ public:
 	}
 
 public:
+	/** Empty constructor */
 	ImpedanceVec():
 		angular_(),
 		linear_()

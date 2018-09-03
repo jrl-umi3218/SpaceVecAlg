@@ -56,7 +56,7 @@ public:
 		linear_()
 	{}
 
-	/**
+	/** Define admittance from 6D vector.
 		* @param vec Admittance vector with angular motion in head
 		* and linear motion in tail.
 		*/
@@ -65,7 +65,7 @@ public:
 		linear_(vec.template tail<3>())
 	{}
 
-	/**
+	/** Define admittance from angular and linear components.
 		* @param angular Angular admittance.
 		* @param linear Linear admittance.
 		*/

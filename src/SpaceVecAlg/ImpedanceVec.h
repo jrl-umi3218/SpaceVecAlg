@@ -55,7 +55,7 @@ public:
 		linear_()
 	{}
 
-	/**
+	/** Define impedance from 6D vector.
 		* @param vec Impedance vector with angular motion in head
 		* and linear motion in tail.
 		*/
@@ -64,7 +64,7 @@ public:
 		linear_(vec.template tail<3>())
 	{}
 
-	/**
+	/** Define impedance from angular and linear components.
 		* @param angular Angular impedance.
 		* @param linear Linear impedance.
 		*/

@@ -152,7 +152,7 @@ public:
 
 	bool operator!=(const AdmittanceVec<T>& av) const
 	{
-		return (angular_ != av.angular_) || (linear_ != av.linear_);
+		return !(*this == av);
 	}
 
 private:

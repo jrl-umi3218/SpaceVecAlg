@@ -151,7 +151,7 @@ public:
 
 	bool operator!=(const ImpedanceVec<T>& iv) const
 	{
-		return (angular_ != iv.angular_) || (linear_ != iv.linear_);
+		return !(*this == iv);
 	}
 
 private:

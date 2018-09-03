@@ -40,8 +40,6 @@ public:
 	typedef Vector3<T> vector3_t;
 	typedef Vector6<T> vector6_t;
 
-	friend class PTransform<T>;
-
 public:
 	/// Zero admittance vector
 	static AdmittanceVec<T> Zero()

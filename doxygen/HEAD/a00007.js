@@ -1,10 +1,25 @@
 var a00007 =
 [
-    [ "affine3_t", "a00007.html#a40ac77c343242ed84a860f10c7797cec", null ],
-    [ "fromAffine", "a00007.html#aa8896657e5adc9a8e790e20f9b27a3c3", null ],
-    [ "fromHomogeneous", "a00007.html#a164f93ece6bd476bdc388886711969c9", null ],
-    [ "toAffine", "a00007.html#aaf02f7d90175c1f87bd0b5ce5e626566", null ],
-    [ "toHomogeneous", "a00007.html#abda8dfd75276624f91e5b8d6b6bbc238", null ],
-    [ "LeftHanded", "a00007.html#a6bf64591c3e46c0a00767a33150595d5", null ],
-    [ "RightHanded", "a00007.html#adfa051e762e1b8048e916c9297df6ac9", null ]
+    [ "matrix3_t", "a00007.html#aa64e782b6a5a1278f0620fe272862aad", null ],
+    [ "matrix6_t", "a00007.html#a8018cbadb20f77c9c1090ee6f0894ab9", null ],
+    [ "vector3_t", "a00007.html#a6768085b5d1fdb4e91ddb97a64dc00fb", null ],
+    [ "RBInertia", "a00007.html#a73b8ab1ffe411e38ed377d703fecc9c4", null ],
+    [ "RBInertia", "a00007.html#a9c14050634eced8cf16c86bfff66a9e2", null ],
+    [ "RBInertia", "a00007.html#a56a14051627e5e89bf06a8d8c979d56f", null ],
+    [ "cast", "a00007.html#a226d792b20bef31c321a4f8f27844699", null ],
+    [ "inertia", "a00007.html#a1f6b89e38eac55982d48d8ac9efa38fd", null ],
+    [ "lowerTriangularInertia", "a00007.html#ac5d19b0c647782bbd41fa235b87b483b", null ],
+    [ "mass", "a00007.html#a95a7437e72a1cb2f0f76c966d49cbe23", null ],
+    [ "matrix", "a00007.html#a175ff0a93ded97638e29edabc636de0c", null ],
+    [ "momentum", "a00007.html#a5cedeb34319545322a29375562c836d9", null ],
+    [ "mul", "a00007.html#a0f54f36d8e260d001ca825d09450d328", null ],
+    [ "operator!=", "a00007.html#a7cee4828654cc75a2561581a581e8adc", null ],
+    [ "operator*", "a00007.html#ae21ffbb68e7d2186cdc0dc13bfb6347a", null ],
+    [ "operator*", "a00007.html#ad28cfb4018a8ac2f796b94e4ebac859b", null ],
+    [ "operator+", "a00007.html#a2030a1ad399ea63c51bf2189f26fc627", null ],
+    [ "operator+=", "a00007.html#a7659cf7eea62c8f533cc321bbf49d73f", null ],
+    [ "operator-", "a00007.html#a611f4f7469c6a9be0e1278b427fb344a", null ],
+    [ "operator-", "a00007.html#a98c52daceef9db3fec76a197d4add106", null ],
+    [ "operator-=", "a00007.html#a3367ca9346696c3b59a897ba515e66b5", null ],
+    [ "operator==", "a00007.html#a954c354ddccb0fa996e0cebd5cb78659", null ]
 ];

@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>MotionVec.h File Reference</title>
+<title>EigenUtility.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css">
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="jquery.js"></script>
@@ -84,33 +84,32 @@ $(document).ready(function(){initNavTree('a00012.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">MotionVec.h File Reference</div>  </div>
+<div class="title">EigenUtility.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00003.html">sva::MotionVec&lt; T &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spatial Motion Vector compact representations.  <a href="a00003.html#details">More...</a><br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr class="memitem:a00019"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00019.html">sva</a></td></tr>
+<tr class="memitem:a00021"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00021.html">Eigen</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a5034a19c802c5810244ff02b878cd0ba"><td class="memTemplParams" colspan="2">template&lt;typename T , typename T2 &gt; </td></tr>
-<tr class="memitem:a5034a19c802c5810244ff02b878cd0ba"><td class="memTemplItemLeft" align="right" valign="top">MotionVec&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00019.html#a5034a19c802c5810244ff02b878cd0ba">sva::operator*</a> (T2 scalar, const MotionVec&lt; T &gt; &amp;mv)</td></tr>
-<tr class="separator:a5034a19c802c5810244ff02b878cd0ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8fa7e4323ec04f5e03a350901c60258"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ab8fa7e4323ec04f5e03a350901c60258"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00019.html#ab8fa7e4323ec04f5e03a350901c60258">sva::operator&lt;&lt;</a> (std::ostream &amp;out, const MotionVec&lt; T &gt; &amp;mv)</td></tr>
-<tr class="separator:ab8fa7e4323ec04f5e03a350901c60258"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34d0d0706dc16ae0358433af740a48fd"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a34d0d0706dc16ae0358433af740a48fd"><td class="memTemplItemLeft" align="right" valign="top">Matrix3&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00021.html#a34d0d0706dc16ae0358433af740a48fd">Eigen::vector3ToCrossMatrix</a> (const Vector3&lt; T &gt; &amp;vec)</td></tr>
+<tr class="memdesc:a34d0d0706dc16ae0358433af740a48fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a 3D vector to a cross product matrix.  <a href="#a34d0d0706dc16ae0358433af740a48fd">More...</a><br/></td></tr>
+<tr class="separator:a34d0d0706dc16ae0358433af740a48fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a843e61000f53c05966116a6dead6d7cb"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a843e61000f53c05966116a6dead6d7cb"><td class="memTemplItemLeft" align="right" valign="top">Matrix6&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00021.html#a843e61000f53c05966116a6dead6d7cb">Eigen::vector6ToCrossMatrix</a> (const Vector6&lt; T &gt; &amp;vec)</td></tr>
+<tr class="memdesc:a843e61000f53c05966116a6dead6d7cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a 6D vector to a spatial cross product matrix.  <a href="#a843e61000f53c05966116a6dead6d7cb">More...</a><br/></td></tr>
+<tr class="separator:a843e61000f53c05966116a6dead6d7cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2964e2c4bbe44365032512d28ce500ee"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a2964e2c4bbe44365032512d28ce500ee"><td class="memTemplItemLeft" align="right" valign="top">Matrix6&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00021.html#a2964e2c4bbe44365032512d28ce500ee">Eigen::vector6ToCrossDualMatrix</a> (const Vector6&lt; T &gt; &amp;vec)</td></tr>
+<tr class="memdesc:a2964e2c4bbe44365032512d28ce500ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a 6D vector to a spatial dual cross product matrix.  <a href="#a2964e2c4bbe44365032512d28ce500ee">More...</a><br/></td></tr>
+<tr class="separator:a2964e2c4bbe44365032512d28ce500ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -118,8 +117,8 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f34540a38fb6e22ecdf3e3ec82d1696a.html">SpaceVecAlg</a></li><li class="navelem"><a class="el" href="a00012.html">MotionVec.h</a></li>
-    <li class="footer">Generated on Fri Apr 13 2018 08:54:34 for SpaceVecAlg by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f34540a38fb6e22ecdf3e3ec82d1696a.html">SpaceVecAlg</a></li><li class="navelem"><a class="el" href="a00012.html">EigenUtility.h</a></li>
+    <li class="footer">Generated on Wed Sep 5 2018 09:06:28 for SpaceVecAlg by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

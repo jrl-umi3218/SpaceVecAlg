@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>sva::ForceVec&lt; T &gt; Class Template Reference</title>
+<title>sva::AdmittanceVec&lt; T &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css">
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="jquery.js"></script>
@@ -88,101 +88,110 @@ $(document).ready(function(){initNavTree('a00002.html','');});
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#friends">Friends</a> &#124;
-<a href="a00024.html">List of all members</a>  </div>
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="a00028.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">sva::ForceVec&lt; T &gt; Class Template Reference</div>  </div>
+<div class="title">sva::AdmittanceVec&lt; T &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Spatial Force Vector compact representations.  
+<p>Admittance Vector.  
  <a href="a00002.html#details">More...</a></p>
 
-<p><code>#include &lt;SpaceVecAlg/ForceVec.h&gt;</code></p>
+<p><code>#include &lt;SpaceVecAlg/AdmittanceVec.h&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a3f771fa492ae2c9f35c075bfe41ff990"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00017.html#a55408ba932fc7d1707bd7adc7e5e930f">Vector3</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#a3f771fa492ae2c9f35c075bfe41ff990">vector3_t</a></td></tr>
-<tr class="separator:a3f771fa492ae2c9f35c075bfe41ff990"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d2902bb90cc5a47091cc2c9bdb60800"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00017.html#a664778266262bbdb1d1b2776bef25c7d">Vector6</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#a3d2902bb90cc5a47091cc2c9bdb60800">vector6_t</a></td></tr>
-<tr class="separator:a3d2902bb90cc5a47091cc2c9bdb60800"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd066ce0d134c16976d817e497a482d6"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00021.html#a55408ba932fc7d1707bd7adc7e5e930f">Vector3</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#acd066ce0d134c16976d817e497a482d6">vector3_t</a></td></tr>
+<tr class="separator:acd066ce0d134c16976d817e497a482d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a735a97c047ab128473f551374671bcb4"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00021.html#a664778266262bbdb1d1b2776bef25c7d">Vector6</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#a735a97c047ab128473f551374671bcb4">vector6_t</a></td></tr>
+<tr class="separator:a735a97c047ab128473f551374671bcb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a730f83bfa7210e24707c39bd3902da61"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#a730f83bfa7210e24707c39bd3902da61">ForceVec</a> ()</td></tr>
-<tr class="separator:a730f83bfa7210e24707c39bd3902da61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e9d1c4ca61297af37a34de6b27d505b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#a7e9d1c4ca61297af37a34de6b27d505b">ForceVec</a> (const <a class="el" href="a00002.html#a3d2902bb90cc5a47091cc2c9bdb60800">vector6_t</a> &amp;vec)</td></tr>
-<tr class="separator:a7e9d1c4ca61297af37a34de6b27d505b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b3a676a68d07834110c8094c9c33620"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#a9b3a676a68d07834110c8094c9c33620">ForceVec</a> (const <a class="el" href="a00002.html#a3f771fa492ae2c9f35c075bfe41ff990">vector3_t</a> &amp;<a class="el" href="a00002.html#a4cb565858a92641bf4aea0e59819919a">couple</a>, const <a class="el" href="a00002.html#a3f771fa492ae2c9f35c075bfe41ff990">vector3_t</a> &amp;<a class="el" href="a00002.html#a24f8a65444a2150f2d0b1eaf988f6050">force</a>)</td></tr>
-<tr class="separator:a9b3a676a68d07834110c8094c9c33620"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4cb565858a92641bf4aea0e59819919a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00002.html#a3f771fa492ae2c9f35c075bfe41ff990">vector3_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#a4cb565858a92641bf4aea0e59819919a">couple</a> ()</td></tr>
-<tr class="separator:a4cb565858a92641bf4aea0e59819919a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e4ecfbcecb7d3f6ccc4e899ed8ec7ca"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="a00002.html#a3f771fa492ae2c9f35c075bfe41ff990">vector3_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#a4e4ecfbcecb7d3f6ccc4e899ed8ec7ca">couple</a> () const </td></tr>
-<tr class="separator:a4e4ecfbcecb7d3f6ccc4e899ed8ec7ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24f8a65444a2150f2d0b1eaf988f6050"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00002.html#a3f771fa492ae2c9f35c075bfe41ff990">vector3_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#a24f8a65444a2150f2d0b1eaf988f6050">force</a> ()</td></tr>
-<tr class="separator:a24f8a65444a2150f2d0b1eaf988f6050"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae01fcc6745935483456ce1fa450ce84a"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="a00002.html#a3f771fa492ae2c9f35c075bfe41ff990">vector3_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#ae01fcc6745935483456ce1fa450ce84a">force</a> () const </td></tr>
-<tr class="separator:ae01fcc6745935483456ce1fa450ce84a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a80a9f43ca5332f256d5eaa23122cc467"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00002.html#a3d2902bb90cc5a47091cc2c9bdb60800">vector6_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#a80a9f43ca5332f256d5eaa23122cc467">vector</a> () const </td></tr>
-<tr class="separator:a80a9f43ca5332f256d5eaa23122cc467"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87dc3553e5a5a6fab1657cbf5f884b04"><td class="memTemplParams" colspan="2">template&lt;typename T2 &gt; </td></tr>
-<tr class="memitem:a87dc3553e5a5a6fab1657cbf5f884b04"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00002.html">ForceVec</a>&lt; T2 &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00002.html#a87dc3553e5a5a6fab1657cbf5f884b04">cast</a> () const </td></tr>
-<tr class="separator:a87dc3553e5a5a6fab1657cbf5f884b04"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab0b01ed3e67617fc5b6d75989116ec1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00002.html">ForceVec</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#aab0b01ed3e67617fc5b6d75989116ec1">operator+</a> (const <a class="el" href="a00002.html">ForceVec</a>&lt; T &gt; &amp;fv) const </td></tr>
-<tr class="separator:aab0b01ed3e67617fc5b6d75989116ec1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08f69aa68ac7c842921cadc240386263"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00002.html">ForceVec</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#a08f69aa68ac7c842921cadc240386263">operator-</a> (const <a class="el" href="a00002.html">ForceVec</a>&lt; T &gt; &amp;fv) const </td></tr>
-<tr class="separator:a08f69aa68ac7c842921cadc240386263"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9cbe1f9d227c2d142e542ca2e9bc9889"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00002.html">ForceVec</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#a9cbe1f9d227c2d142e542ca2e9bc9889">operator-</a> () const </td></tr>
-<tr class="separator:a9cbe1f9d227c2d142e542ca2e9bc9889"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab130da1c2b94fece993f56f039bdc070"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00002.html">ForceVec</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#ab130da1c2b94fece993f56f039bdc070">operator+=</a> (const <a class="el" href="a00002.html">ForceVec</a>&lt; T &gt; &amp;fv)</td></tr>
-<tr class="separator:ab130da1c2b94fece993f56f039bdc070"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a79b84bb24e1cc389608a8b1ac277871a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00002.html">ForceVec</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#a79b84bb24e1cc389608a8b1ac277871a">operator-=</a> (const <a class="el" href="a00002.html">ForceVec</a>&lt; T &gt; &amp;fv)</td></tr>
-<tr class="separator:a79b84bb24e1cc389608a8b1ac277871a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea6f4bf4fd5203c02242632a7b3a2c2f"><td class="memTemplParams" colspan="2">template&lt;typename T2 &gt; </td></tr>
-<tr class="memitem:aea6f4bf4fd5203c02242632a7b3a2c2f"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00002.html">ForceVec</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00002.html#aea6f4bf4fd5203c02242632a7b3a2c2f">operator*</a> (T2 scalar) const </td></tr>
-<tr class="separator:aea6f4bf4fd5203c02242632a7b3a2c2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02ca7e0d36023121af6db7f7125fa71a"><td class="memTemplParams" colspan="2">template&lt;typename T2 &gt; </td></tr>
-<tr class="memitem:a02ca7e0d36023121af6db7f7125fa71a"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00002.html">ForceVec</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00002.html#a02ca7e0d36023121af6db7f7125fa71a">operator/</a> (T2 scalar) const </td></tr>
-<tr class="separator:a02ca7e0d36023121af6db7f7125fa71a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8804fd6876ce6b4602414ce01af8bafd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#a8804fd6876ce6b4602414ce01af8bafd">operator==</a> (const <a class="el" href="a00002.html">ForceVec</a>&lt; T &gt; &amp;fv) const </td></tr>
-<tr class="separator:a8804fd6876ce6b4602414ce01af8bafd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb947129737da2bb6fc973c694f4959a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#abb947129737da2bb6fc973c694f4959a">operator!=</a> (const <a class="el" href="a00002.html">ForceVec</a>&lt; T &gt; &amp;fv) const </td></tr>
-<tr class="separator:abb947129737da2bb6fc973c694f4959a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34854b64eb3b1bc83e1d5838038a0302"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#a34854b64eb3b1bc83e1d5838038a0302">AdmittanceVec</a> ()</td></tr>
+<tr class="memdesc:a34854b64eb3b1bc83e1d5838038a0302"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty constructor.  <a href="#a34854b64eb3b1bc83e1d5838038a0302">More...</a><br/></td></tr>
+<tr class="separator:a34854b64eb3b1bc83e1d5838038a0302"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32bf09c968ac2f9aba6a3961b87035b8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#a32bf09c968ac2f9aba6a3961b87035b8">AdmittanceVec</a> (const <a class="el" href="a00002.html#a735a97c047ab128473f551374671bcb4">vector6_t</a> &amp;vec)</td></tr>
+<tr class="memdesc:a32bf09c968ac2f9aba6a3961b87035b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define admittance from 6D vector.  <a href="#a32bf09c968ac2f9aba6a3961b87035b8">More...</a><br/></td></tr>
+<tr class="separator:a32bf09c968ac2f9aba6a3961b87035b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23b759afca5f0de97e279197fe627302"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#a23b759afca5f0de97e279197fe627302">AdmittanceVec</a> (const <a class="el" href="a00002.html#acd066ce0d134c16976d817e497a482d6">vector3_t</a> &amp;<a class="el" href="a00002.html#aba6c5b0cdb648ba3ab52917fe7881f5f">angular</a>, const <a class="el" href="a00002.html#acd066ce0d134c16976d817e497a482d6">vector3_t</a> &amp;<a class="el" href="a00002.html#abf5463009e539d07d5f4b6774da52989">linear</a>)</td></tr>
+<tr class="memdesc:a23b759afca5f0de97e279197fe627302"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define admittance from angular and linear components.  <a href="#a23b759afca5f0de97e279197fe627302">More...</a><br/></td></tr>
+<tr class="separator:a23b759afca5f0de97e279197fe627302"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6288cdb8f1931a9c161974848a7d61a0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#a6288cdb8f1931a9c161974848a7d61a0">AdmittanceVec</a> (T <a class="el" href="a00002.html#aba6c5b0cdb648ba3ab52917fe7881f5f">angular</a>, T <a class="el" href="a00002.html#abf5463009e539d07d5f4b6774da52989">linear</a>)</td></tr>
+<tr class="memdesc:a6288cdb8f1931a9c161974848a7d61a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Homogeneous admittance constructor.  <a href="#a6288cdb8f1931a9c161974848a7d61a0">More...</a><br/></td></tr>
+<tr class="separator:a6288cdb8f1931a9c161974848a7d61a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba6c5b0cdb648ba3ab52917fe7881f5f"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="a00002.html#acd066ce0d134c16976d817e497a482d6">vector3_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#aba6c5b0cdb648ba3ab52917fe7881f5f">angular</a> () const </td></tr>
+<tr class="separator:aba6c5b0cdb648ba3ab52917fe7881f5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a8a6a87f090a5b81578644160627861"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00002.html#acd066ce0d134c16976d817e497a482d6">vector3_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#a4a8a6a87f090a5b81578644160627861">angular</a> ()</td></tr>
+<tr class="separator:a4a8a6a87f090a5b81578644160627861"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf5463009e539d07d5f4b6774da52989"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="a00002.html#acd066ce0d134c16976d817e497a482d6">vector3_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#abf5463009e539d07d5f4b6774da52989">linear</a> () const </td></tr>
+<tr class="separator:abf5463009e539d07d5f4b6774da52989"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa974d3d01f37077f8db76c9357d53095"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00002.html#acd066ce0d134c16976d817e497a482d6">vector3_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#aa974d3d01f37077f8db76c9357d53095">linear</a> ()</td></tr>
+<tr class="separator:aa974d3d01f37077f8db76c9357d53095"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3c1c523158d24c230d93b6ca629328d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00002.html#a735a97c047ab128473f551374671bcb4">vector6_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#aa3c1c523158d24c230d93b6ca629328d">vector</a> () const </td></tr>
+<tr class="separator:aa3c1c523158d24c230d93b6ca629328d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26671be7960770ff70ffacb6e7e0a1ca"><td class="memTemplParams" colspan="2">template&lt;typename T2 &gt; </td></tr>
+<tr class="memitem:a26671be7960770ff70ffacb6e7e0a1ca"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00002.html">AdmittanceVec</a>&lt; T2 &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00002.html#a26671be7960770ff70ffacb6e7e0a1ca">cast</a> () const </td></tr>
+<tr class="separator:a26671be7960770ff70ffacb6e7e0a1ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ad8cce9ce67ddbbde755590a7df6ba7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00002.html">AdmittanceVec</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#a5ad8cce9ce67ddbbde755590a7df6ba7">operator+</a> (const <a class="el" href="a00002.html">AdmittanceVec</a>&lt; T &gt; &amp;av) const </td></tr>
+<tr class="separator:a5ad8cce9ce67ddbbde755590a7df6ba7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaaa80b1cf99e897fcf0c5f5fac2937a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00002.html">AdmittanceVec</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#aaaa80b1cf99e897fcf0c5f5fac2937a9">operator+=</a> (const <a class="el" href="a00002.html">AdmittanceVec</a>&lt; T &gt; &amp;av)</td></tr>
+<tr class="separator:aaaa80b1cf99e897fcf0c5f5fac2937a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb560f35018fda92df651c8f98004f06"><td class="memTemplParams" colspan="2">template&lt;typename T2 &gt; </td></tr>
+<tr class="memitem:adb560f35018fda92df651c8f98004f06"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00002.html">AdmittanceVec</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00002.html#adb560f35018fda92df651c8f98004f06">operator*</a> (T2 scalar) const </td></tr>
+<tr class="separator:adb560f35018fda92df651c8f98004f06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8935ccf5367ee7260407557115c2c300"><td class="memTemplParams" colspan="2">template&lt;typename T2 &gt; </td></tr>
+<tr class="memitem:a8935ccf5367ee7260407557115c2c300"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00002.html">AdmittanceVec</a>&lt; T &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00002.html#a8935ccf5367ee7260407557115c2c300">operator*=</a> (T2 scalar)</td></tr>
+<tr class="separator:a8935ccf5367ee7260407557115c2c300"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a471131bfa93828b78d314becf401d392"><td class="memTemplParams" colspan="2">template&lt;typename T2 &gt; </td></tr>
+<tr class="memitem:a471131bfa93828b78d314becf401d392"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00002.html">AdmittanceVec</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00002.html#a471131bfa93828b78d314becf401d392">operator/</a> (T2 scalar) const </td></tr>
+<tr class="separator:a471131bfa93828b78d314becf401d392"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5708a362ffa1b03dc5015b69d14ea4e9"><td class="memTemplParams" colspan="2">template&lt;typename T2 &gt; </td></tr>
+<tr class="memitem:a5708a362ffa1b03dc5015b69d14ea4e9"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00002.html">AdmittanceVec</a>&lt; T &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00002.html#a5708a362ffa1b03dc5015b69d14ea4e9">operator/=</a> (T2 scalar)</td></tr>
+<tr class="separator:a5708a362ffa1b03dc5015b69d14ea4e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a426f4e5eb4df1ce25ff6d345450f0a1b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#a426f4e5eb4df1ce25ff6d345450f0a1b">operator==</a> (const <a class="el" href="a00002.html">AdmittanceVec</a>&lt; T &gt; &amp;av) const </td></tr>
+<tr class="separator:a426f4e5eb4df1ce25ff6d345450f0a1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7a4f0dbc662a3ed076096406543ce9c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#aa7a4f0dbc662a3ed076096406543ce9c">operator!=</a> (const <a class="el" href="a00002.html">AdmittanceVec</a>&lt; T &gt; &amp;av) const </td></tr>
+<tr class="separator:aa7a4f0dbc662a3ed076096406543ce9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
-Friends</h2></td></tr>
-<tr class="memitem:afd10841a85903063ea3c0cca84c209cd"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#afd10841a85903063ea3c0cca84c209cd">PTransform&lt; T &gt;</a></td></tr>
-<tr class="separator:afd10841a85903063ea3c0cca84c209cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a9a9574fbd61b11af495d7f5ebf6cf6e5"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="a00002.html">AdmittanceVec</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#a9a9574fbd61b11af495d7f5ebf6cf6e5">Zero</a> ()</td></tr>
+<tr class="memdesc:a9a9574fbd61b11af495d7f5ebf6cf6e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zero admittance vector.  <a href="#a9a9574fbd61b11af495d7f5ebf6cf6e5">More...</a><br/></td></tr>
+<tr class="separator:a9a9574fbd61b11af495d7f5ebf6cf6e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename T&gt;<br/>
-class sva::ForceVec&lt; T &gt;</h3>
+class sva::AdmittanceVec&lt; T &gt;</h3>
 
-<p>Spatial Force Vector compact representations. </p>
-<p>See Roy Featherstone «Rigid Body Dynamics Algorithms» page 247. </p>
+<p>Admittance Vector. </p>
+<p>Mechanical admittance is a measure of how much a structure moves in response to a given force: </p>
+<pre class="fragment">v = A * F
+</pre><p>where F is the exerted force, A the admittance and v the resulting output velocity. Admittance is the reciprocal of mechanical impedance; see <a href="https://en.wikipedia.org/wiki/Mechanical_impedance">https://en.wikipedia.org/wiki/Mechanical_impedance</a>. </p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a class="anchor" id="a3f771fa492ae2c9f35c075bfe41ff990"></a>
+<a class="anchor" id="acd066ce0d134c16976d817e497a482d6"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="a00017.html#a55408ba932fc7d1707bd7adc7e5e930f">Vector3</a>&lt;T&gt; <a class="el" href="a00002.html">sva::ForceVec</a>&lt; T &gt;::<a class="el" href="a00002.html#a3f771fa492ae2c9f35c075bfe41ff990">vector3_t</a></td>
+          <td class="memname">typedef <a class="el" href="a00021.html#a55408ba932fc7d1707bd7adc7e5e930f">Vector3</a>&lt;T&gt; <a class="el" href="a00002.html">sva::AdmittanceVec</a>&lt; T &gt;::<a class="el" href="a00002.html#acd066ce0d134c16976d817e497a482d6">vector3_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a class="anchor" id="a3d2902bb90cc5a47091cc2c9bdb60800"></a>
+<a class="anchor" id="a735a97c047ab128473f551374671bcb4"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="a00017.html#a664778266262bbdb1d1b2776bef25c7d">Vector6</a>&lt;T&gt; <a class="el" href="a00002.html">sva::ForceVec</a>&lt; T &gt;::<a class="el" href="a00002.html#a3d2902bb90cc5a47091cc2c9bdb60800">vector6_t</a></td>
+          <td class="memname">typedef <a class="el" href="a00021.html#a664778266262bbdb1d1b2776bef25c7d">Vector6</a>&lt;T&gt; <a class="el" href="a00002.html">sva::AdmittanceVec</a>&lt; T &gt;::<a class="el" href="a00002.html#a735a97c047ab128473f551374671bcb4">vector6_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -190,7 +199,7 @@ template&lt;typename T&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a730f83bfa7210e24707c39bd3902da61"></a>
+<a class="anchor" id="a34854b64eb3b1bc83e1d5838038a0302"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -200,7 +209,7 @@ template&lt;typename T&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00002.html">sva::ForceVec</a>&lt; T &gt;::<a class="el" href="a00002.html">ForceVec</a> </td>
+          <td class="memname"><a class="el" href="a00002.html">sva::AdmittanceVec</a>&lt; T &gt;::<a class="el" href="a00002.html">AdmittanceVec</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -213,9 +222,11 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>Empty constructor. </p>
+
 </div>
 </div>
-<a class="anchor" id="a7e9d1c4ca61297af37a34de6b27d505b"></a>
+<a class="anchor" id="a32bf09c968ac2f9aba6a3961b87035b8"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -225,9 +236,9 @@ template&lt;typename T&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00002.html">sva::ForceVec</a>&lt; T &gt;::<a class="el" href="a00002.html">ForceVec</a> </td>
+          <td class="memname"><a class="el" href="a00002.html">sva::AdmittanceVec</a>&lt; T &gt;::<a class="el" href="a00002.html">AdmittanceVec</a> </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00002.html#a3d2902bb90cc5a47091cc2c9bdb60800">vector6_t</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="a00002.html#a735a97c047ab128473f551374671bcb4">vector6_t</a> &amp;&#160;</td>
           <td class="paramname"><em>vec</em></td><td>)</td>
           <td></td>
         </tr>
@@ -238,16 +249,18 @@ template&lt;typename T&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Define admittance from 6D vector. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">vec</td><td>Spatial force vector with couple in head and force in tail. </td></tr>
+    <tr><td class="paramname">vec</td><td>Admittance vector with angular motion in head and linear motion in tail. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a class="anchor" id="a9b3a676a68d07834110c8094c9c33620"></a>
+<a class="anchor" id="a23b759afca5f0de97e279197fe627302"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -257,16 +270,16 @@ template&lt;typename T&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00002.html">sva::ForceVec</a>&lt; T &gt;::<a class="el" href="a00002.html">ForceVec</a> </td>
+          <td class="memname"><a class="el" href="a00002.html">sva::AdmittanceVec</a>&lt; T &gt;::<a class="el" href="a00002.html">AdmittanceVec</a> </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00002.html#a3f771fa492ae2c9f35c075bfe41ff990">vector3_t</a> &amp;&#160;</td>
-          <td class="paramname"><em>couple</em>, </td>
+          <td class="paramtype">const <a class="el" href="a00002.html#acd066ce0d134c16976d817e497a482d6">vector3_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>angular</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="a00002.html#a3f771fa492ae2c9f35c075bfe41ff990">vector3_t</a> &amp;&#160;</td>
-          <td class="paramname"><em>force</em>&#160;</td>
+          <td class="paramtype">const <a class="el" href="a00002.html#acd066ce0d134c16976d817e497a482d6">vector3_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>linear</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -280,10 +293,57 @@ template&lt;typename T&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Define admittance from angular and linear components. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">couple</td><td>Couple. </td></tr>
-    <tr><td class="paramname">force</td><td>Force. </td></tr>
+    <tr><td class="paramname">angular</td><td>Angular admittance. </td></tr>
+    <tr><td class="paramname">linear</td><td>Linear admittance. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a6288cdb8f1931a9c161974848a7d61a0"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00002.html">sva::AdmittanceVec</a>&lt; T &gt;::<a class="el" href="a00002.html">AdmittanceVec</a> </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>angular</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>linear</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Homogeneous admittance constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">angular</td><td>Angular admittance. </td></tr>
+    <tr><td class="paramname">linear</td><td>Linear admittance. </td></tr>
   </table>
   </dd>
 </dl>
@@ -291,19 +351,17 @@ template&lt;typename T&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a87dc3553e5a5a6fab1657cbf5f884b04"></a>
+<a class="anchor" id="aba6c5b0cdb648ba3ab52917fe7881f5f"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T&gt; </div>
-<div class="memtemplate">
-template&lt;typename T2 &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00002.html">ForceVec</a>&lt;T2&gt; <a class="el" href="a00002.html">sva::ForceVec</a>&lt; T &gt;::cast </td>
+          <td class="memname">const <a class="el" href="a00002.html#acd066ce0d134c16976d817e497a482d6">vector3_t</a>&amp; <a class="el" href="a00002.html">sva::AdmittanceVec</a>&lt; T &gt;::angular </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -315,10 +373,13 @@ template&lt;typename T2 &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Angular admittance </dd></dl>
+
+<p>Referenced by <a class="el" href="a00023.html#abb0d4fa8c0eb6968d3b2ea3142494720">sva::operator*()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a4cb565858a92641bf4aea0e59819919a"></a>
+<a class="anchor" id="a4a8a6a87f090a5b81578644160627861"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -328,7 +389,7 @@ template&lt;typename T&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00002.html#a3f771fa492ae2c9f35c075bfe41ff990">vector3_t</a>&amp; <a class="el" href="a00002.html">sva::ForceVec</a>&lt; T &gt;::couple </td>
+          <td class="memname"><a class="el" href="a00002.html#acd066ce0d134c16976d817e497a482d6">vector3_t</a>&amp; <a class="el" href="a00002.html">sva::AdmittanceVec</a>&lt; T &gt;::angular </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -340,117 +401,11 @@ template&lt;typename T&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Couple </dd></dl>
-
-<p>Referenced by <a class="el" href="a00004.html#a6fee292fc09fe9261edbc2fbb64244ae">sva::PTransform&lt; T &gt;::coupleDualMul()</a>, <a class="el" href="a00003.html#a1f9b4e568bfb4b357dfdbaa0277ea8ba">sva::MotionVec&lt; T &gt;::crossDual()</a>, and <a class="el" href="a00003.html#a846f0ac67ef5ba97f1c84928b99f2ea2">sva::MotionVec&lt; T &gt;::dot()</a>.</p>
+<dl class="section return"><dt>Returns</dt><dd>Angular admittance </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a4e4ecfbcecb7d3f6ccc4e899ed8ec7ca"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const <a class="el" href="a00002.html#a3f771fa492ae2c9f35c075bfe41ff990">vector3_t</a>&amp; <a class="el" href="a00002.html">sva::ForceVec</a>&lt; T &gt;::couple </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a24f8a65444a2150f2d0b1eaf988f6050"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00002.html#a3f771fa492ae2c9f35c075bfe41ff990">vector3_t</a>&amp; <a class="el" href="a00002.html">sva::ForceVec</a>&lt; T &gt;::force </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Force </dd></dl>
-
-<p>Referenced by <a class="el" href="a00004.html#a6fee292fc09fe9261edbc2fbb64244ae">sva::PTransform&lt; T &gt;::coupleDualMul()</a>, <a class="el" href="a00003.html#a1f9b4e568bfb4b357dfdbaa0277ea8ba">sva::MotionVec&lt; T &gt;::crossDual()</a>, <a class="el" href="a00003.html#a846f0ac67ef5ba97f1c84928b99f2ea2">sva::MotionVec&lt; T &gt;::dot()</a>, and <a class="el" href="a00004.html#adc2cdbb443fa8b8fe630d48c3cbec159">sva::PTransform&lt; T &gt;::forceDualMul()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ae01fcc6745935483456ce1fa450ce84a"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const <a class="el" href="a00002.html#a3f771fa492ae2c9f35c075bfe41ff990">vector3_t</a>&amp; <a class="el" href="a00002.html">sva::ForceVec</a>&lt; T &gt;::force </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="abb947129737da2bb6fc973c694f4959a"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool <a class="el" href="a00002.html">sva::ForceVec</a>&lt; T &gt;::operator!= </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00002.html">ForceVec</a>&lt; T &gt; &amp;&#160;</td>
-          <td class="paramname"><em>fv</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="aea6f4bf4fd5203c02242632a7b3a2c2f"></a>
+<a class="anchor" id="a26671be7960770ff70ffacb6e7e0a1ca"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -462,7 +417,114 @@ template&lt;typename T2 &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00002.html">ForceVec</a>&lt;T&gt; <a class="el" href="a00002.html">sva::ForceVec</a>&lt; T &gt;::operator* </td>
+          <td class="memname"><a class="el" href="a00002.html">AdmittanceVec</a>&lt;T2&gt; <a class="el" href="a00002.html">sva::AdmittanceVec</a>&lt; T &gt;::cast </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="abf5463009e539d07d5f4b6774da52989"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="a00002.html#acd066ce0d134c16976d817e497a482d6">vector3_t</a>&amp; <a class="el" href="a00002.html">sva::AdmittanceVec</a>&lt; T &gt;::linear </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Linear admittance </dd></dl>
+
+<p>Referenced by <a class="el" href="a00023.html#abb0d4fa8c0eb6968d3b2ea3142494720">sva::operator*()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa974d3d01f37077f8db76c9357d53095"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00002.html#acd066ce0d134c16976d817e497a482d6">vector3_t</a>&amp; <a class="el" href="a00002.html">sva::AdmittanceVec</a>&lt; T &gt;::linear </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Linear admittance </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aa7a4f0dbc662a3ed076096406543ce9c"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="a00002.html">sva::AdmittanceVec</a>&lt; T &gt;::operator!= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00002.html">AdmittanceVec</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>av</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="adb560f35018fda92df651c8f98004f06"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<div class="memtemplate">
+template&lt;typename T2 &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00002.html">AdmittanceVec</a>&lt;T&gt; <a class="el" href="a00002.html">sva::AdmittanceVec</a>&lt; T &gt;::operator* </td>
           <td>(</td>
           <td class="paramtype">T2&#160;</td>
           <td class="paramname"><em>scalar</em></td><td>)</td>
@@ -478,136 +540,7 @@ template&lt;typename T2 &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="aab0b01ed3e67617fc5b6d75989116ec1"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00002.html">ForceVec</a>&lt;T&gt; <a class="el" href="a00002.html">sva::ForceVec</a>&lt; T &gt;::operator+ </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00002.html">ForceVec</a>&lt; T &gt; &amp;&#160;</td>
-          <td class="paramname"><em>fv</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="ab130da1c2b94fece993f56f039bdc070"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00002.html">ForceVec</a>&lt;T&gt;&amp; <a class="el" href="a00002.html">sva::ForceVec</a>&lt; T &gt;::operator+= </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00002.html">ForceVec</a>&lt; T &gt; &amp;&#160;</td>
-          <td class="paramname"><em>fv</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a08f69aa68ac7c842921cadc240386263"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00002.html">ForceVec</a>&lt;T&gt; <a class="el" href="a00002.html">sva::ForceVec</a>&lt; T &gt;::operator- </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00002.html">ForceVec</a>&lt; T &gt; &amp;&#160;</td>
-          <td class="paramname"><em>fv</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a9cbe1f9d227c2d142e542ca2e9bc9889"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00002.html">ForceVec</a>&lt;T&gt; <a class="el" href="a00002.html">sva::ForceVec</a>&lt; T &gt;::operator- </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a79b84bb24e1cc389608a8b1ac277871a"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00002.html">ForceVec</a>&lt;T&gt;&amp; <a class="el" href="a00002.html">sva::ForceVec</a>&lt; T &gt;::operator-= </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00002.html">ForceVec</a>&lt; T &gt; &amp;&#160;</td>
-          <td class="paramname"><em>fv</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a02ca7e0d36023121af6db7f7125fa71a"></a>
+<a class="anchor" id="a8935ccf5367ee7260407557115c2c300"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -619,7 +552,87 @@ template&lt;typename T2 &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00002.html">ForceVec</a>&lt;T&gt; <a class="el" href="a00002.html">sva::ForceVec</a>&lt; T &gt;::operator/ </td>
+          <td class="memname"><a class="el" href="a00002.html">AdmittanceVec</a>&lt;T&gt;&amp; <a class="el" href="a00002.html">sva::AdmittanceVec</a>&lt; T &gt;::operator*= </td>
+          <td>(</td>
+          <td class="paramtype">T2&#160;</td>
+          <td class="paramname"><em>scalar</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a5ad8cce9ce67ddbbde755590a7df6ba7"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00002.html">AdmittanceVec</a>&lt;T&gt; <a class="el" href="a00002.html">sva::AdmittanceVec</a>&lt; T &gt;::operator+ </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00002.html">AdmittanceVec</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>av</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aaaa80b1cf99e897fcf0c5f5fac2937a9"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00002.html">AdmittanceVec</a>&lt;T&gt;&amp; <a class="el" href="a00002.html">sva::AdmittanceVec</a>&lt; T &gt;::operator+= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00002.html">AdmittanceVec</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>av</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a471131bfa93828b78d314becf401d392"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<div class="memtemplate">
+template&lt;typename T2 &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00002.html">AdmittanceVec</a>&lt;T&gt; <a class="el" href="a00002.html">sva::AdmittanceVec</a>&lt; T &gt;::operator/ </td>
           <td>(</td>
           <td class="paramtype">T2&#160;</td>
           <td class="paramname"><em>scalar</em></td><td>)</td>
@@ -635,7 +648,35 @@ template&lt;typename T2 &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a8804fd6876ce6b4602414ce01af8bafd"></a>
+<a class="anchor" id="a5708a362ffa1b03dc5015b69d14ea4e9"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<div class="memtemplate">
+template&lt;typename T2 &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00002.html">AdmittanceVec</a>&lt;T&gt;&amp; <a class="el" href="a00002.html">sva::AdmittanceVec</a>&lt; T &gt;::operator/= </td>
+          <td>(</td>
+          <td class="paramtype">T2&#160;</td>
+          <td class="paramname"><em>scalar</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a426f4e5eb4df1ce25ff6d345450f0a1b"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -645,10 +686,10 @@ template&lt;typename T&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="a00002.html">sva::ForceVec</a>&lt; T &gt;::operator== </td>
+          <td class="memname">bool <a class="el" href="a00002.html">sva::AdmittanceVec</a>&lt; T &gt;::operator== </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00002.html">ForceVec</a>&lt; T &gt; &amp;&#160;</td>
-          <td class="paramname"><em>fv</em></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="a00002.html">AdmittanceVec</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>av</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -661,7 +702,7 @@ template&lt;typename T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a80a9f43ca5332f256d5eaa23122cc467"></a>
+<a class="anchor" id="aa3c1c523158d24c230d93b6ca629328d"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -671,7 +712,7 @@ template&lt;typename T&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00002.html#a3d2902bb90cc5a47091cc2c9bdb60800">vector6_t</a> <a class="el" href="a00002.html">sva::ForceVec</a>&lt; T &gt;::vector </td>
+          <td class="memname"><a class="el" href="a00002.html#a735a97c047ab128473f551374671bcb4">vector6_t</a> <a class="el" href="a00002.html">sva::AdmittanceVec</a>&lt; T &gt;::vector </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -683,14 +724,11 @@ template&lt;typename T&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Non compact spatial force vector. </dd></dl>
-
-<p>Referenced by <a class="el" href="a00019.html#af6a9cf3044dd068be66723b8c14f7af4">sva::operator&lt;&lt;()</a>.</p>
+<dl class="section return"><dt>Returns</dt><dd>Non-compact admittance vector. </dd></dl>
 
 </div>
 </div>
-<h2 class="groupheader">Friends And Related Function Documentation</h2>
-<a class="anchor" id="afd10841a85903063ea3c0cca84c209cd"></a>
+<a class="anchor" id="a9a9574fbd61b11af495d7f5ebf6cf6e5"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -700,15 +738,20 @@ template&lt;typename T&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">friend class <a class="el" href="a00004.html">PTransform</a>&lt; T &gt;</td>
+          <td class="memname">static <a class="el" href="a00002.html">AdmittanceVec</a>&lt;T&gt; <a class="el" href="a00002.html">sva::AdmittanceVec</a>&lt; T &gt;::Zero </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Zero admittance vector. </p>
 
 </div>
 </div>
@@ -718,8 +761,8 @@ template&lt;typename T&gt; </div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00019.html">sva</a></li><li class="navelem"><a class="el" href="a00002.html">ForceVec</a></li>
-    <li class="footer">Generated on Fri Apr 13 2018 08:54:34 for SpaceVecAlg by
+    <li class="navelem"><a class="el" href="a00023.html">sva</a></li><li class="navelem"><a class="el" href="a00002.html">AdmittanceVec</a></li>
+    <li class="footer">Generated on Wed Sep 5 2018 09:06:28 for SpaceVecAlg by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

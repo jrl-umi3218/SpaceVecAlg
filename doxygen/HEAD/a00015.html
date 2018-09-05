@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>RBInertia.h File Reference</title>
+<title>MathFunc.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css">
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="jquery.js"></script>
@@ -84,36 +84,24 @@ $(document).ready(function(){initNavTree('a00015.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">RBInertia.h File Reference</div>  </div>
+<div class="title">MathFunc.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html">sva::RBInertia&lt; T &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spatial Rigid Body Inertia compact representation.  <a href="a00005.html#details">More...</a><br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr class="memitem:a00019"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00019.html">sva</a></td></tr>
+<tr class="memitem:a00023"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html">sva</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a1a0a93626ba1bf5c436166e11da493a3"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a1a0a93626ba1bf5c436166e11da493a3"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00017.html#ac4d27bf92869006caf1413e5d218e2f1">Matrix3</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00019.html#a1a0a93626ba1bf5c436166e11da493a3">sva::inertiaToOrigin</a> (const <a class="el" href="a00017.html#ac4d27bf92869006caf1413e5d218e2f1">Matrix3</a>&lt; T &gt; &amp;inertia, T mass, const <a class="el" href="a00017.html#a55408ba932fc7d1707bd7adc7e5e930f">Vector3</a>&lt; T &gt; &amp;com, const <a class="el" href="a00017.html#ac4d27bf92869006caf1413e5d218e2f1">Matrix3</a>&lt; T &gt; &amp;rotation)</td></tr>
-<tr class="separator:a1a0a93626ba1bf5c436166e11da493a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f9b7d46711ba95bd594d1a26cf933ea"><td class="memTemplParams" colspan="2">template&lt;typename T , typename T2 &gt; </td></tr>
-<tr class="memitem:a5f9b7d46711ba95bd594d1a26cf933ea"><td class="memTemplItemLeft" align="right" valign="top">RBInertia&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00019.html#a5f9b7d46711ba95bd594d1a26cf933ea">sva::operator*</a> (T2 scalar, const RBInertia&lt; T &gt; &amp;rbI)</td></tr>
-<tr class="separator:a5f9b7d46711ba95bd594d1a26cf933ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2693d2fc4c910d36477d6ec8b49ab7a9"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a2693d2fc4c910d36477d6ec8b49ab7a9"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00019.html#a2693d2fc4c910d36477d6ec8b49ab7a9">sva::operator&lt;&lt;</a> (std::ostream &amp;out, const RBInertia&lt; T &gt; &amp;rbI)</td></tr>
-<tr class="separator:a2693d2fc4c910d36477d6ec8b49ab7a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cad8a4ff91f4aace786395eaaef6834"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a3cad8a4ff91f4aace786395eaaef6834"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00023.html#a3cad8a4ff91f4aace786395eaaef6834">sva::sinc_inv</a> (const T x)</td></tr>
+<tr class="memdesc:a3cad8a4ff91f4aace786395eaaef6834"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute 1/sinc(x).  <a href="#a3cad8a4ff91f4aace786395eaaef6834">More...</a><br/></td></tr>
+<tr class="separator:a3cad8a4ff91f4aace786395eaaef6834"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -121,8 +109,8 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f34540a38fb6e22ecdf3e3ec82d1696a.html">SpaceVecAlg</a></li><li class="navelem"><a class="el" href="a00015.html">RBInertia.h</a></li>
-    <li class="footer">Generated on Fri Apr 13 2018 08:54:34 for SpaceVecAlg by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f34540a38fb6e22ecdf3e3ec82d1696a.html">SpaceVecAlg</a></li><li class="navelem"><a class="el" href="a00015.html">MathFunc.h</a></li>
+    <li class="footer">Generated on Wed Sep 5 2018 09:06:28 for SpaceVecAlg by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

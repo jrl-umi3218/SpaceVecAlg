@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>sva::conversions Namespace Reference</title>
+<title>SpaceVecAlg File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css">
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="jquery.js"></script>
@@ -27,9 +27,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
-      <li class="current"><a href="namespaces.html"><span>Namespaces</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
-      <li><a href="files.html"><span>Files</span></a></li>
+      <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -50,8 +50,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="namespaces.html"><span>Namespace&#160;List</span></a></li>
-      <li><a href="namespacemembers.html"><span>Namespace&#160;Members</span></a></li>
+      <li><a href="files.html"><span>File&#160;List</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -85,267 +84,77 @@ $(document).ready(function(){initNavTree('a00020.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#typedef-members">Typedefs</a>  </div>
   <div class="headertitle">
-<div class="title">sva::conversions Namespace Reference<div class="ingroups"><a class="el" href="a00022.html">Convert to and from sva types</a></div></div>  </div>
+<div class="title">SpaceVecAlg File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>Generic functions to convert to/from sva types.  
-<a href="#details">More...</a></p>
-<table class="memberdecls">
+<div class="textblock"><code>#include &lt;limits&gt;</code><br/>
+<code>#include &lt;ostream&gt;</code><br/>
+<code>#include &lt;Eigen/Core&gt;</code><br/>
+<code>#include &lt;Eigen/Geometry&gt;</code><br/>
+<code>#include &quot;<a class="el" href="a00011.html">EigenTypedef.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="a00012.html">EigenUtility.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="a00015.html">MathFunc.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="a00016.html">MotionVec.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="a00013.html">ForceVec.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="a00014.html">ImpedanceVec.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="a00009.html">AdmittanceVec.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="a00019.html">RBInertia.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="a00008.html">ABInertia.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="a00018.html">PTransform.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="a00017.html">Operators.h</a>&quot;</code><br/>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html">sva::MotionVec&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spatial Motion Vector compact representations.  <a href="a00005.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00003.html">sva::ForceVec&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spatial Force Vector compact representations.  <a href="a00003.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html">sva::RBInertia&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spatial Rigid Body Inertia compact representation.  <a href="a00007.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00001.html">sva::ABInertia&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spatial Articulated Body Inertia compact representation.  <a href="a00001.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00006.html">sva::PTransform&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plücker transform compact representation.  <a href="a00006.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:a00023"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html">sva</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a40ac77c343242ed84a860f10c7797cec"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a40ac77c343242ed84a860f10c7797cec"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00020.html#a40ac77c343242ed84a860f10c7797cec">affine3_t</a> = Eigen::Transform&lt; T, 3, Eigen::TransformTraits::Affine &gt;</td></tr>
-<tr class="memdesc:a40ac77c343242ed84a860f10c7797cec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define an Eigen::Affine3&lt;T&gt;  <a href="#a40ac77c343242ed84a860f10c7797cec">More...</a><br/></td></tr>
-<tr class="separator:a40ac77c343242ed84a860f10c7797cec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a164f93ece6bd476bdc388886711969c9"><td class="memTemplParams" colspan="2">template&lt;typename Derived &gt; </td></tr>
-<tr class="memitem:a164f93ece6bd476bdc388886711969c9"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00004.html">PTransform</a>&lt; typename <br class="typebreak"/>
-Derived::Scalar &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00020.html#a164f93ece6bd476bdc388886711969c9">fromHomogeneous</a> (const Eigen::MatrixBase&lt; Derived &gt; &amp;m, bool rightHandedness=<a class="el" href="a00020.html#adfa051e762e1b8048e916c9297df6ac9">RightHanded</a>)</td></tr>
-<tr class="memdesc:a164f93ece6bd476bdc388886711969c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert an homogeneous matrix into a Plucker Transform.  <a href="#a164f93ece6bd476bdc388886711969c9">More...</a><br/></td></tr>
-<tr class="separator:a164f93ece6bd476bdc388886711969c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abda8dfd75276624f91e5b8d6b6bbc238"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:abda8dfd75276624f91e5b8d6b6bbc238"><td class="memTemplItemLeft" align="right" valign="top">Eigen::Matrix&lt; T, 4, 4 &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00020.html#abda8dfd75276624f91e5b8d6b6bbc238">toHomogeneous</a> (const <a class="el" href="a00004.html">PTransform</a>&lt; T &gt; &amp;pt, bool rightHandedness=<a class="el" href="a00020.html#adfa051e762e1b8048e916c9297df6ac9">RightHanded</a>)</td></tr>
-<tr class="memdesc:abda8dfd75276624f91e5b8d6b6bbc238"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a Plucker Transform into an homogeneous matrix.  <a href="#abda8dfd75276624f91e5b8d6b6bbc238">More...</a><br/></td></tr>
-<tr class="separator:abda8dfd75276624f91e5b8d6b6bbc238"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8896657e5adc9a8e790e20f9b27a3c3"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:aa8896657e5adc9a8e790e20f9b27a3c3"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00004.html">PTransform</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00020.html#aa8896657e5adc9a8e790e20f9b27a3c3">fromAffine</a> (const <a class="el" href="a00020.html#a40ac77c343242ed84a860f10c7797cec">affine3_t</a>&lt; T &gt; &amp;a, bool rightHandedness=<a class="el" href="a00020.html#adfa051e762e1b8048e916c9297df6ac9">RightHanded</a>)</td></tr>
-<tr class="memdesc:aa8896657e5adc9a8e790e20f9b27a3c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert an Eigen::Affine3&lt;T&gt; into a Plucker Transform.  <a href="#aa8896657e5adc9a8e790e20f9b27a3c3">More...</a><br/></td></tr>
-<tr class="separator:aa8896657e5adc9a8e790e20f9b27a3c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf02f7d90175c1f87bd0b5ce5e626566"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:aaf02f7d90175c1f87bd0b5ce5e626566"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00020.html#a40ac77c343242ed84a860f10c7797cec">affine3_t</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00020.html#aaf02f7d90175c1f87bd0b5ce5e626566">toAffine</a> (const <a class="el" href="a00004.html">PTransform</a>&lt; T &gt; &amp;pt, bool rightHandedness=<a class="el" href="a00020.html#adfa051e762e1b8048e916c9297df6ac9">RightHanded</a>)</td></tr>
-<tr class="memdesc:aaf02f7d90175c1f87bd0b5ce5e626566"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a Plucker Transform into an Eigen::Affine3&lt;T&gt;  <a href="#aaf02f7d90175c1f87bd0b5ce5e626566">More...</a><br/></td></tr>
-<tr class="separator:aaf02f7d90175c1f87bd0b5ce5e626566"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:adfa051e762e1b8048e916c9297df6ac9"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#adfa051e762e1b8048e916c9297df6ac9">RightHanded</a> = true</td></tr>
-<tr class="memdesc:adfa051e762e1b8048e916c9297df6ac9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for right handedness (default)  <a href="#adfa051e762e1b8048e916c9297df6ac9">More...</a><br/></td></tr>
-<tr class="separator:adfa051e762e1b8048e916c9297df6ac9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6bf64591c3e46c0a00767a33150595d5"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a6bf64591c3e46c0a00767a33150595d5">LeftHanded</a> = false</td></tr>
-<tr class="memdesc:a6bf64591c3e46c0a00767a33150595d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for left handedness.  <a href="#a6bf64591c3e46c0a00767a33150595d5">More...</a><br/></td></tr>
-<tr class="separator:a6bf64591c3e46c0a00767a33150595d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc16c15a4fbcc2d8cf5676551b74816d"><td class="memItemLeft" align="right" valign="top">typedef MotionVec&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#afc16c15a4fbcc2d8cf5676551b74816d">sva::MotionVecd</a></td></tr>
+<tr class="separator:afc16c15a4fbcc2d8cf5676551b74816d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaea958106abfa742585ced52492029c4"><td class="memItemLeft" align="right" valign="top">typedef ForceVec&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#aaea958106abfa742585ced52492029c4">sva::ForceVecd</a></td></tr>
+<tr class="separator:aaea958106abfa742585ced52492029c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecdcfd928635da2bcaab0a4f363d0826"><td class="memItemLeft" align="right" valign="top">typedef ImpedanceVec&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#aecdcfd928635da2bcaab0a4f363d0826">sva::ImpedanceVecd</a></td></tr>
+<tr class="separator:aecdcfd928635da2bcaab0a4f363d0826"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0f35bedffbde7a751477b707e1f03c2"><td class="memItemLeft" align="right" valign="top">typedef AdmittanceVec&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#ac0f35bedffbde7a751477b707e1f03c2">sva::AdmittanceVecd</a></td></tr>
+<tr class="separator:ac0f35bedffbde7a751477b707e1f03c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac56f2d381429fa55047d24d79ac9ae82"><td class="memItemLeft" align="right" valign="top">typedef RBInertia&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#ac56f2d381429fa55047d24d79ac9ae82">sva::RBInertiad</a></td></tr>
+<tr class="separator:ac56f2d381429fa55047d24d79ac9ae82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8d39b02fe4802fabf41faf9d4676578"><td class="memItemLeft" align="right" valign="top">typedef ABInertia&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#aa8d39b02fe4802fabf41faf9d4676578">sva::ABInertiad</a></td></tr>
+<tr class="separator:aa8d39b02fe4802fabf41faf9d4676578"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a259dde998fab6de957995eedfdb4d179"><td class="memItemLeft" align="right" valign="top">typedef PTransform&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#a259dde998fab6de957995eedfdb4d179">sva::PTransformd</a></td></tr>
+<tr class="separator:a259dde998fab6de957995eedfdb4d179"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Generic functions to convert to/from sva types. </p>
-<p>Each function in the conversions namespace allows to convert to and from another type. An important point to note is that sva internally uses a left-handed convention. Hence, all functions will assume that the non-sva objects use a right-handed convention and convert accordingly. This is overridable by the "rightHandedness" argument. </p>
-</div><h2 class="groupheader">Typedef Documentation</h2>
-<a class="anchor" id="a40ac77c343242ed84a860f10c7797cec"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="a00020.html#a40ac77c343242ed84a860f10c7797cec">sva::conversions::affine3_t</a> = typedef Eigen::Transform&lt;T, 3, Eigen::TransformTraits::Affine&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Define an Eigen::Affine3&lt;T&gt; </p>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="aa8896657e5adc9a8e790e20f9b27a3c3"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00004.html">PTransform</a>&lt;T&gt; sva::conversions::fromAffine </td>
-          <td>(</td>
-          <td class="paramtype">const affine3_t&lt; T &gt; &amp;&#160;</td>
-          <td class="paramname"><em>a</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>rightHandedness</em> = <code>RightHanded</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Convert an Eigen::Affine3&lt;T&gt; into a Plucker Transform. </p>
-<dl class="section return"><dt>Returns</dt><dd>A Plucker Transform of the same type as the input Transform </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">a</td><td>Input <a class="el" href="a00017.html">Eigen</a> Transform. Only rotation and translation components are considered. </td></tr>
-    <tr><td class="paramname">RightHandedness</td><td>Handedness of the input <a class="el" href="a00017.html">Eigen</a> Transform. Defaults to right handedness. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a164f93ece6bd476bdc388886711969c9"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Derived &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00004.html">PTransform</a>&lt;typename Derived::Scalar&gt; sva::conversions::fromHomogeneous </td>
-          <td>(</td>
-          <td class="paramtype">const Eigen::MatrixBase&lt; Derived &gt; &amp;&#160;</td>
-          <td class="paramname"><em>m</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>rightHandedness</em> = <code>RightHanded</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Convert an homogeneous matrix into a Plucker Transform. </p>
-<dl class="section return"><dt>Returns</dt><dd>Plucker Transform equivalent to the input homogeneous matrix </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">m</td><td>A 4x4 <a class="el" href="a00017.html">Eigen</a> Matrix </td></tr>
-    <tr><td class="paramname">RightHandedness</td><td>Handedness of the input homogeneous matrix. Defaults to right handedness. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="aaf02f7d90175c1f87bd0b5ce5e626566"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00020.html#a40ac77c343242ed84a860f10c7797cec">affine3_t</a>&lt;T&gt; sva::conversions::toAffine </td>
-          <td>(</td>
-          <td class="paramtype">const PTransform&lt; T &gt; &amp;&#160;</td>
-          <td class="paramname"><em>pt</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>rightHandedness</em> = <code>RightHanded</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Convert a Plucker Transform into an Eigen::Affine3&lt;T&gt; </p>
-<dl class="section return"><dt>Returns</dt><dd>An Eigen::Transform of dimension 3, and same scalar type as the input <a class="el" href="a00004.html" title="Plücker transform compact representation. ">PTransform</a>. </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pt</td><td>Input Plucker Transform. </td></tr>
-    <tr><td class="paramname">RightHandedness</td><td>Handedness of the output <a class="el" href="a00017.html">Eigen</a> Transform. Defaults to right handedness. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>References <a class="el" href="a00004.html#ad8cf0f4f145b55c063d5a527a6c33b76">sva::PTransform&lt; T &gt;::rotation()</a>, and <a class="el" href="a00004.html#aa7aaf3327daf7b3984be6d2f5c3ef11b">sva::PTransform&lt; T &gt;::translation()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="abda8dfd75276624f91e5b8d6b6bbc238"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">Eigen::Matrix&lt;T, 4, 4&gt; sva::conversions::toHomogeneous </td>
-          <td>(</td>
-          <td class="paramtype">const PTransform&lt; T &gt; &amp;&#160;</td>
-          <td class="paramname"><em>pt</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>rightHandedness</em> = <code>RightHanded</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Convert a Plucker Transform into an homogeneous matrix. </p>
-<dl class="section return"><dt>Returns</dt><dd>An <a class="el" href="a00017.html">Eigen</a> 4x4 homogeneous matrix equivalent to the input Plucker Transform </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pt</td><td>Plucker Transform </td></tr>
-    <tr><td class="paramname">RightHandedness</td><td>Handedness of the output homogeneous matrix. Defaults to right handedness. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>References <a class="el" href="a00004.html#ad8cf0f4f145b55c063d5a527a6c33b76">sva::PTransform&lt; T &gt;::rotation()</a>, and <a class="el" href="a00004.html#aa7aaf3327daf7b3984be6d2f5c3ef11b">sva::PTransform&lt; T &gt;::translation()</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a class="anchor" id="a6bf64591c3e46c0a00767a33150595d5"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr bool sva::conversions::LeftHanded = false</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Alias for left handedness. </p>
-
-</div>
-</div>
-<a class="anchor" id="adfa051e762e1b8048e916c9297df6ac9"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr bool sva::conversions::RightHanded = true</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Alias for right handedness (default) </p>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.6-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00019.html">sva</a></li><li class="navelem"><a class="el" href="a00020.html">conversions</a></li>
-    <li class="footer">Generated on Fri Apr 13 2018 08:54:34 for SpaceVecAlg by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f34540a38fb6e22ecdf3e3ec82d1696a.html">SpaceVecAlg</a></li><li class="navelem"><a class="el" href="a00020.html">SpaceVecAlg</a></li>
+    <li class="footer">Generated on Wed Sep 5 2018 09:06:28 for SpaceVecAlg by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

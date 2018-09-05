@@ -1,10 +1,7 @@
 var a00019 =
 [
-    [ "conversions", "a00020.html", null ],
-    [ "sva_internal", "a00021.html", null ],
-    [ "ABInertia", "a00001.html", "a00001" ],
-    [ "ForceVec", "a00002.html", "a00002" ],
-    [ "MotionVec", "a00003.html", "a00003" ],
-    [ "PTransform", "a00004.html", "a00004" ],
-    [ "RBInertia", "a00005.html", "a00005" ]
+    [ "RBInertia", "a00007.html", "a00007" ],
+    [ "inertiaToOrigin", "a00019.html#a1a0a93626ba1bf5c436166e11da493a3", null ],
+    [ "operator*", "a00019.html#a5f9b7d46711ba95bd594d1a26cf933ea", null ],
+    [ "operator<<", "a00019.html#a2693d2fc4c910d36477d6ec8b49ab7a9", null ]
 ];

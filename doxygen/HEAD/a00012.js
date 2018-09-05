@@ -1,6 +1,6 @@
 var a00012 =
 [
-    [ "MotionVec", "a00003.html", "a00003" ],
-    [ "operator*", "a00012.html#a5034a19c802c5810244ff02b878cd0ba", null ],
-    [ "operator<<", "a00012.html#ab8fa7e4323ec04f5e03a350901c60258", null ]
+    [ "vector3ToCrossMatrix", "a00012.html#a34d0d0706dc16ae0358433af740a48fd", null ],
+    [ "vector6ToCrossDualMatrix", "a00012.html#a2964e2c4bbe44365032512d28ce500ee", null ],
+    [ "vector6ToCrossMatrix", "a00012.html#a843e61000f53c05966116a6dead6d7cb", null ]
 ];

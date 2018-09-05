@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>sva::RBInertia&lt; T &gt; Class Template Reference</title>
+<title>sva::MotionVec&lt; T &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css">
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="jquery.js"></script>
@@ -88,114 +88,120 @@ $(document).ready(function(){initNavTree('a00005.html','');});
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="a00027.html">List of all members</a>  </div>
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#friends">Friends</a> &#124;
+<a href="a00031.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">sva::RBInertia&lt; T &gt; Class Template Reference</div>  </div>
+<div class="title">sva::MotionVec&lt; T &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Spatial Rigid Body Inertia compact representation.  
+<p>Spatial Motion Vector compact representations.  
  <a href="a00005.html#details">More...</a></p>
 
-<p><code>#include &lt;SpaceVecAlg/RBInertia.h&gt;</code></p>
+<p><code>#include &lt;SpaceVecAlg/MotionVec.h&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a6768085b5d1fdb4e91ddb97a64dc00fb"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00017.html#a55408ba932fc7d1707bd7adc7e5e930f">Vector3</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a6768085b5d1fdb4e91ddb97a64dc00fb">vector3_t</a></td></tr>
-<tr class="separator:a6768085b5d1fdb4e91ddb97a64dc00fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa64e782b6a5a1278f0620fe272862aad"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00017.html#ac4d27bf92869006caf1413e5d218e2f1">Matrix3</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#aa64e782b6a5a1278f0620fe272862aad">matrix3_t</a></td></tr>
-<tr class="separator:aa64e782b6a5a1278f0620fe272862aad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8018cbadb20f77c9c1090ee6f0894ab9"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00017.html#aad6321e28b97dd47986f2187fa21be1e">Matrix6</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a8018cbadb20f77c9c1090ee6f0894ab9">matrix6_t</a></td></tr>
-<tr class="separator:a8018cbadb20f77c9c1090ee6f0894ab9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6c85df2523b3bfee84b6072397b6e1c"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00021.html#a55408ba932fc7d1707bd7adc7e5e930f">Vector3</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#ae6c85df2523b3bfee84b6072397b6e1c">vector3_t</a></td></tr>
+<tr class="separator:ae6c85df2523b3bfee84b6072397b6e1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2a777cd6140f53a263f1313d3ffbb31"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00021.html#a664778266262bbdb1d1b2776bef25c7d">Vector6</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#ac2a777cd6140f53a263f1313d3ffbb31">vector6_t</a></td></tr>
+<tr class="separator:ac2a777cd6140f53a263f1313d3ffbb31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a73b8ab1ffe411e38ed377d703fecc9c4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a73b8ab1ffe411e38ed377d703fecc9c4">RBInertia</a> ()</td></tr>
-<tr class="separator:a73b8ab1ffe411e38ed377d703fecc9c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c14050634eced8cf16c86bfff66a9e2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a9c14050634eced8cf16c86bfff66a9e2">RBInertia</a> (T m, const <a class="el" href="a00005.html#a6768085b5d1fdb4e91ddb97a64dc00fb">vector3_t</a> &amp;h, const <a class="el" href="a00005.html#aa64e782b6a5a1278f0620fe272862aad">matrix3_t</a> &amp;I)</td></tr>
-<tr class="separator:a9c14050634eced8cf16c86bfff66a9e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56a14051627e5e89bf06a8d8c979d56f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a56a14051627e5e89bf06a8d8c979d56f">RBInertia</a> (T m, const <a class="el" href="a00005.html#a6768085b5d1fdb4e91ddb97a64dc00fb">vector3_t</a> &amp;h, const TriangularView&lt; <a class="el" href="a00005.html#aa64e782b6a5a1278f0620fe272862aad">matrix3_t</a>, Lower &gt; &amp;ltI)</td></tr>
-<tr class="separator:a56a14051627e5e89bf06a8d8c979d56f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95a7437e72a1cb2f0f76c966d49cbe23"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a95a7437e72a1cb2f0f76c966d49cbe23">mass</a> () const </td></tr>
-<tr class="separator:a95a7437e72a1cb2f0f76c966d49cbe23"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5cedeb34319545322a29375562c836d9"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="a00005.html#a6768085b5d1fdb4e91ddb97a64dc00fb">vector3_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a5cedeb34319545322a29375562c836d9">momentum</a> () const </td></tr>
-<tr class="separator:a5cedeb34319545322a29375562c836d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5d19b0c647782bbd41fa235b87b483b"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="a00005.html#aa64e782b6a5a1278f0620fe272862aad">matrix3_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#ac5d19b0c647782bbd41fa235b87b483b">lowerTriangularInertia</a> () const </td></tr>
-<tr class="separator:ac5d19b0c647782bbd41fa235b87b483b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f6b89e38eac55982d48d8ac9efa38fd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00005.html#aa64e782b6a5a1278f0620fe272862aad">matrix3_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a1f6b89e38eac55982d48d8ac9efa38fd">inertia</a> () const </td></tr>
-<tr class="separator:a1f6b89e38eac55982d48d8ac9efa38fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a175ff0a93ded97638e29edabc636de0c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00005.html#a8018cbadb20f77c9c1090ee6f0894ab9">matrix6_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a175ff0a93ded97638e29edabc636de0c">matrix</a> () const </td></tr>
-<tr class="memdesc:a175ff0a93ded97638e29edabc636de0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Non compact spatial rigid body inertia matrix.  <a href="#a175ff0a93ded97638e29edabc636de0c">More...</a><br/></td></tr>
-<tr class="separator:a175ff0a93ded97638e29edabc636de0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a226d792b20bef31c321a4f8f27844699"><td class="memTemplParams" colspan="2">template&lt;typename T2 &gt; </td></tr>
-<tr class="memitem:a226d792b20bef31c321a4f8f27844699"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00005.html">RBInertia</a>&lt; T2 &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00005.html#a226d792b20bef31c321a4f8f27844699">cast</a> () const </td></tr>
-<tr class="separator:a226d792b20bef31c321a4f8f27844699"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2030a1ad399ea63c51bf2189f26fc627"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00005.html">RBInertia</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a2030a1ad399ea63c51bf2189f26fc627">operator+</a> (const <a class="el" href="a00005.html">RBInertia</a>&lt; T &gt; &amp;rbI) const </td></tr>
-<tr class="separator:a2030a1ad399ea63c51bf2189f26fc627"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a611f4f7469c6a9be0e1278b427fb344a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00005.html">RBInertia</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a611f4f7469c6a9be0e1278b427fb344a">operator-</a> (const <a class="el" href="a00005.html">RBInertia</a>&lt; T &gt; &amp;rbI) const </td></tr>
-<tr class="separator:a611f4f7469c6a9be0e1278b427fb344a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98c52daceef9db3fec76a197d4add106"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00005.html">RBInertia</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a98c52daceef9db3fec76a197d4add106">operator-</a> () const </td></tr>
-<tr class="separator:a98c52daceef9db3fec76a197d4add106"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7659cf7eea62c8f533cc321bbf49d73f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00005.html">RBInertia</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a7659cf7eea62c8f533cc321bbf49d73f">operator+=</a> (const <a class="el" href="a00005.html">RBInertia</a>&lt; T &gt; &amp;rbI)</td></tr>
-<tr class="separator:a7659cf7eea62c8f533cc321bbf49d73f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3367ca9346696c3b59a897ba515e66b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00005.html">RBInertia</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a3367ca9346696c3b59a897ba515e66b5">operator-=</a> (const <a class="el" href="a00005.html">RBInertia</a>&lt; T &gt; &amp;rbI)</td></tr>
-<tr class="separator:a3367ca9346696c3b59a897ba515e66b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae21ffbb68e7d2186cdc0dc13bfb6347a"><td class="memTemplParams" colspan="2">template&lt;typename T2 &gt; </td></tr>
-<tr class="memitem:ae21ffbb68e7d2186cdc0dc13bfb6347a"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00005.html">RBInertia</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00005.html#ae21ffbb68e7d2186cdc0dc13bfb6347a">operator*</a> (T2 scalar) const </td></tr>
-<tr class="separator:ae21ffbb68e7d2186cdc0dc13bfb6347a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad28cfb4018a8ac2f796b94e4ebac859b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00002.html">ForceVec</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#ad28cfb4018a8ac2f796b94e4ebac859b">operator*</a> (const <a class="el" href="a00003.html">MotionVec</a>&lt; T &gt; &amp;mv) const </td></tr>
-<tr class="separator:ad28cfb4018a8ac2f796b94e4ebac859b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f54f36d8e260d001ca825d09450d328"><td class="memTemplParams" colspan="2">template&lt;typename Derived &gt; </td></tr>
-<tr class="memitem:a0f54f36d8e260d001ca825d09450d328"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00005.html#a0f54f36d8e260d001ca825d09450d328">mul</a> (const Eigen::MatrixBase&lt; Derived &gt; &amp;mv, Eigen::MatrixBase&lt; Derived &gt; &amp;result) const </td></tr>
-<tr class="separator:a0f54f36d8e260d001ca825d09450d328"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a954c354ddccb0fa996e0cebd5cb78659"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a954c354ddccb0fa996e0cebd5cb78659">operator==</a> (const <a class="el" href="a00005.html">RBInertia</a>&lt; T &gt; &amp;rbI) const </td></tr>
-<tr class="separator:a954c354ddccb0fa996e0cebd5cb78659"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7cee4828654cc75a2561581a581e8adc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a7cee4828654cc75a2561581a581e8adc">operator!=</a> (const <a class="el" href="a00005.html">RBInertia</a>&lt; T &gt; &amp;rbI) const </td></tr>
-<tr class="separator:a7cee4828654cc75a2561581a581e8adc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9faa8295817ea0c3c28aa952f8ec6533"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a9faa8295817ea0c3c28aa952f8ec6533">MotionVec</a> ()</td></tr>
+<tr class="separator:a9faa8295817ea0c3c28aa952f8ec6533"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a943655b9d56014918439d5e5ce86762a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a943655b9d56014918439d5e5ce86762a">MotionVec</a> (const <a class="el" href="a00005.html#ac2a777cd6140f53a263f1313d3ffbb31">vector6_t</a> &amp;vec)</td></tr>
+<tr class="separator:a943655b9d56014918439d5e5ce86762a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d4335b618a5304beb024bc63cd5c04c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a9d4335b618a5304beb024bc63cd5c04c">MotionVec</a> (const <a class="el" href="a00005.html#ae6c85df2523b3bfee84b6072397b6e1c">vector3_t</a> &amp;<a class="el" href="a00005.html#a0b55525aa11296c8c2a4340af9e16826">angular</a>, const <a class="el" href="a00005.html#ae6c85df2523b3bfee84b6072397b6e1c">vector3_t</a> &amp;<a class="el" href="a00005.html#a535094508d6637aeaaa837eb8ff8b816">linear</a>)</td></tr>
+<tr class="separator:a9d4335b618a5304beb024bc63cd5c04c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b55525aa11296c8c2a4340af9e16826"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="a00005.html#ae6c85df2523b3bfee84b6072397b6e1c">vector3_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a0b55525aa11296c8c2a4340af9e16826">angular</a> () const </td></tr>
+<tr class="separator:a0b55525aa11296c8c2a4340af9e16826"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a257ae7a4157d2e3bfa857787e069f224"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00005.html#ae6c85df2523b3bfee84b6072397b6e1c">vector3_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a257ae7a4157d2e3bfa857787e069f224">angular</a> ()</td></tr>
+<tr class="separator:a257ae7a4157d2e3bfa857787e069f224"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a535094508d6637aeaaa837eb8ff8b816"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="a00005.html#ae6c85df2523b3bfee84b6072397b6e1c">vector3_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a535094508d6637aeaaa837eb8ff8b816">linear</a> () const </td></tr>
+<tr class="separator:a535094508d6637aeaaa837eb8ff8b816"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3abfa746c359d99964c609e96dab22a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00005.html#ae6c85df2523b3bfee84b6072397b6e1c">vector3_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a3abfa746c359d99964c609e96dab22a9">linear</a> ()</td></tr>
+<tr class="separator:a3abfa746c359d99964c609e96dab22a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76edf478c9a99e518590dfb7d8d50b94"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00005.html#ac2a777cd6140f53a263f1313d3ffbb31">vector6_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a76edf478c9a99e518590dfb7d8d50b94">vector</a> () const </td></tr>
+<tr class="separator:a76edf478c9a99e518590dfb7d8d50b94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac8bc10b39a7570d2c22909226dfc81e"><td class="memTemplParams" colspan="2">template&lt;typename T2 &gt; </td></tr>
+<tr class="memitem:aac8bc10b39a7570d2c22909226dfc81e"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00005.html">MotionVec</a>&lt; T2 &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00005.html#aac8bc10b39a7570d2c22909226dfc81e">cast</a> () const </td></tr>
+<tr class="separator:aac8bc10b39a7570d2c22909226dfc81e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5afe145a7af591b9482fb17e4aeef8cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00005.html">MotionVec</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a5afe145a7af591b9482fb17e4aeef8cf">operator+</a> (const <a class="el" href="a00005.html">MotionVec</a>&lt; T &gt; &amp;mv) const </td></tr>
+<tr class="separator:a5afe145a7af591b9482fb17e4aeef8cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57420e9dfb814dad8f40adae4d26dfbb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00005.html">MotionVec</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a57420e9dfb814dad8f40adae4d26dfbb">operator-</a> (const <a class="el" href="a00005.html">MotionVec</a>&lt; T &gt; &amp;mv) const </td></tr>
+<tr class="separator:a57420e9dfb814dad8f40adae4d26dfbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c15257be5860d588b54eca213dba3d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00005.html">MotionVec</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a3c15257be5860d588b54eca213dba3d0">operator-</a> () const </td></tr>
+<tr class="separator:a3c15257be5860d588b54eca213dba3d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50bdd4d463493eeb26f79ed101cc1a9b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00005.html">MotionVec</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a50bdd4d463493eeb26f79ed101cc1a9b">operator+=</a> (const <a class="el" href="a00005.html">MotionVec</a>&lt; T &gt; &amp;mv)</td></tr>
+<tr class="separator:a50bdd4d463493eeb26f79ed101cc1a9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad577e632b2bb9e3018e5761c5412e063"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00005.html">MotionVec</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#ad577e632b2bb9e3018e5761c5412e063">operator-=</a> (const <a class="el" href="a00005.html">MotionVec</a>&lt; T &gt; &amp;mv)</td></tr>
+<tr class="separator:ad577e632b2bb9e3018e5761c5412e063"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81bae1c413e089caab3b95865b45d4c1"><td class="memTemplParams" colspan="2">template&lt;typename T2 &gt; </td></tr>
+<tr class="memitem:a81bae1c413e089caab3b95865b45d4c1"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00005.html">MotionVec</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00005.html#a81bae1c413e089caab3b95865b45d4c1">operator*</a> (T2 scalar) const </td></tr>
+<tr class="separator:a81bae1c413e089caab3b95865b45d4c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a406bf81ccee766a67b8e21c3e11e9314"><td class="memTemplParams" colspan="2">template&lt;typename T2 &gt; </td></tr>
+<tr class="memitem:a406bf81ccee766a67b8e21c3e11e9314"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00005.html">MotionVec</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00005.html#a406bf81ccee766a67b8e21c3e11e9314">operator/</a> (T2 scalar) const </td></tr>
+<tr class="separator:a406bf81ccee766a67b8e21c3e11e9314"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc3e11c0cc01ed6717fe2b3d1e7c402c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00005.html">MotionVec</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#acc3e11c0cc01ed6717fe2b3d1e7c402c">cross</a> (const <a class="el" href="a00005.html">MotionVec</a>&lt; T &gt; &amp;mv2) const </td></tr>
+<tr class="separator:acc3e11c0cc01ed6717fe2b3d1e7c402c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2f2cce3d341a4de489d5180c51d253d"><td class="memTemplParams" colspan="2">template&lt;typename Derived &gt; </td></tr>
+<tr class="memitem:ab2f2cce3d341a4de489d5180c51d253d"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00005.html#ab2f2cce3d341a4de489d5180c51d253d">cross</a> (const Eigen::MatrixBase&lt; Derived &gt; &amp;mv2, Eigen::MatrixBase&lt; Derived &gt; &amp;result) const </td></tr>
+<tr class="separator:ab2f2cce3d341a4de489d5180c51d253d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f9b4e568bfb4b357dfdbaa0277ea8ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00003.html">ForceVec</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a1f9b4e568bfb4b357dfdbaa0277ea8ba">crossDual</a> (const <a class="el" href="a00003.html">ForceVec</a>&lt; T &gt; &amp;fv2) const </td></tr>
+<tr class="separator:a1f9b4e568bfb4b357dfdbaa0277ea8ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a0ea67b1e1599236265e0a24dad9949"><td class="memTemplParams" colspan="2">template&lt;typename Derived &gt; </td></tr>
+<tr class="memitem:a9a0ea67b1e1599236265e0a24dad9949"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00005.html#a9a0ea67b1e1599236265e0a24dad9949">crossDual</a> (const Eigen::MatrixBase&lt; Derived &gt; &amp;fv2, Eigen::MatrixBase&lt; Derived &gt; &amp;result) const </td></tr>
+<tr class="separator:a9a0ea67b1e1599236265e0a24dad9949"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a846f0ac67ef5ba97f1c84928b99f2ea2"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a846f0ac67ef5ba97f1c84928b99f2ea2">dot</a> (const <a class="el" href="a00003.html">ForceVec</a>&lt; T &gt; &amp;fv2) const </td></tr>
+<tr class="separator:a846f0ac67ef5ba97f1c84928b99f2ea2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a993778ff1608ca0f097f5718cb4bede7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a993778ff1608ca0f097f5718cb4bede7">operator==</a> (const <a class="el" href="a00005.html">MotionVec</a>&lt; T &gt; &amp;mv) const </td></tr>
+<tr class="separator:a993778ff1608ca0f097f5718cb4bede7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28b2bd6206e689829c073c111a7228cb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a28b2bd6206e689829c073c111a7228cb">operator!=</a> (const <a class="el" href="a00005.html">MotionVec</a>&lt; T &gt; &amp;mv) const </td></tr>
+<tr class="separator:a28b2bd6206e689829c073c111a7228cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a5ebbdd768786752203c24f5d476faaa0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="a00005.html">MotionVec</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a5ebbdd768786752203c24f5d476faaa0">Zero</a> ()</td></tr>
+<tr class="memdesc:a5ebbdd768786752203c24f5d476faaa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zero motion vector.  <a href="#a5ebbdd768786752203c24f5d476faaa0">More...</a><br/></td></tr>
+<tr class="separator:a5ebbdd768786752203c24f5d476faaa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:afd10841a85903063ea3c0cca84c209cd"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#afd10841a85903063ea3c0cca84c209cd">PTransform&lt; T &gt;</a></td></tr>
+<tr class="separator:afd10841a85903063ea3c0cca84c209cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename T&gt;<br/>
-class sva::RBInertia&lt; T &gt;</h3>
+class sva::MotionVec&lt; T &gt;</h3>
 
-<p>Spatial Rigid Body Inertia compact representation. </p>
+<p>Spatial Motion Vector compact representations. </p>
 <p>See Roy Featherstone «Rigid Body Dynamics Algorithms» page 247. </p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a class="anchor" id="aa64e782b6a5a1278f0620fe272862aad"></a>
+<a class="anchor" id="ae6c85df2523b3bfee84b6072397b6e1c"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="a00017.html#ac4d27bf92869006caf1413e5d218e2f1">Matrix3</a>&lt;T&gt; <a class="el" href="a00005.html">sva::RBInertia</a>&lt; T &gt;::<a class="el" href="a00005.html#aa64e782b6a5a1278f0620fe272862aad">matrix3_t</a></td>
+          <td class="memname">typedef <a class="el" href="a00021.html#a55408ba932fc7d1707bd7adc7e5e930f">Vector3</a>&lt;T&gt; <a class="el" href="a00005.html">sva::MotionVec</a>&lt; T &gt;::<a class="el" href="a00005.html#ae6c85df2523b3bfee84b6072397b6e1c">vector3_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a class="anchor" id="a8018cbadb20f77c9c1090ee6f0894ab9"></a>
+<a class="anchor" id="ac2a777cd6140f53a263f1313d3ffbb31"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="a00017.html#aad6321e28b97dd47986f2187fa21be1e">Matrix6</a>&lt;T&gt; <a class="el" href="a00005.html">sva::RBInertia</a>&lt; T &gt;::<a class="el" href="a00005.html#a8018cbadb20f77c9c1090ee6f0894ab9">matrix6_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a6768085b5d1fdb4e91ddb97a64dc00fb"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef <a class="el" href="a00017.html#a55408ba932fc7d1707bd7adc7e5e930f">Vector3</a>&lt;T&gt; <a class="el" href="a00005.html">sva::RBInertia</a>&lt; T &gt;::<a class="el" href="a00005.html#a6768085b5d1fdb4e91ddb97a64dc00fb">vector3_t</a></td>
+          <td class="memname">typedef <a class="el" href="a00021.html#a664778266262bbdb1d1b2776bef25c7d">Vector6</a>&lt;T&gt; <a class="el" href="a00005.html">sva::MotionVec</a>&lt; T &gt;::<a class="el" href="a00005.html#ac2a777cd6140f53a263f1313d3ffbb31">vector6_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -203,7 +209,7 @@ template&lt;typename T&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a73b8ab1ffe411e38ed377d703fecc9c4"></a>
+<a class="anchor" id="a9faa8295817ea0c3c28aa952f8ec6533"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -213,7 +219,7 @@ template&lt;typename T&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00005.html">sva::RBInertia</a>&lt; T &gt;::<a class="el" href="a00005.html">RBInertia</a> </td>
+          <td class="memname"><a class="el" href="a00005.html">sva::MotionVec</a>&lt; T &gt;::<a class="el" href="a00005.html">MotionVec</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -228,7 +234,7 @@ template&lt;typename T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a9c14050634eced8cf16c86bfff66a9e2"></a>
+<a class="anchor" id="a943655b9d56014918439d5e5ce86762a"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -238,27 +244,11 @@ template&lt;typename T&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00005.html">sva::RBInertia</a>&lt; T &gt;::<a class="el" href="a00005.html">RBInertia</a> </td>
+          <td class="memname"><a class="el" href="a00005.html">sva::MotionVec</a>&lt; T &gt;::<a class="el" href="a00005.html">MotionVec</a> </td>
           <td>(</td>
-          <td class="paramtype">T&#160;</td>
-          <td class="paramname"><em>m</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">const <a class="el" href="a00005.html#ac2a777cd6140f53a263f1313d3ffbb31">vector6_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>vec</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="a00005.html#a6768085b5d1fdb4e91ddb97a64dc00fb">vector3_t</a> &amp;&#160;</td>
-          <td class="paramname"><em>h</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="a00005.html#aa64e782b6a5a1278f0620fe272862aad">matrix3_t</a> &amp;&#160;</td>
-          <td class="paramname"><em>I</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -269,16 +259,14 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">m</td><td>Mass. </td></tr>
-    <tr><td class="paramname">h</td><td>Spatial momentum. </td></tr>
-    <tr><td class="paramname">I</td><td>Inertia matrix at body origin. </td></tr>
+    <tr><td class="paramname">vec</td><td>Spatial motion vector with angular motion in head and linear motion in tail. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a class="anchor" id="a56a14051627e5e89bf06a8d8c979d56f"></a>
+<a class="anchor" id="a9d4335b618a5304beb024bc63cd5c04c"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -288,22 +276,16 @@ template&lt;typename T&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00005.html">sva::RBInertia</a>&lt; T &gt;::<a class="el" href="a00005.html">RBInertia</a> </td>
+          <td class="memname"><a class="el" href="a00005.html">sva::MotionVec</a>&lt; T &gt;::<a class="el" href="a00005.html">MotionVec</a> </td>
           <td>(</td>
-          <td class="paramtype">T&#160;</td>
-          <td class="paramname"><em>m</em>, </td>
+          <td class="paramtype">const <a class="el" href="a00005.html#ae6c85df2523b3bfee84b6072397b6e1c">vector3_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>angular</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="a00005.html#a6768085b5d1fdb4e91ddb97a64dc00fb">vector3_t</a> &amp;&#160;</td>
-          <td class="paramname"><em>h</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const TriangularView&lt; <a class="el" href="a00005.html#aa64e782b6a5a1278f0620fe272862aad">matrix3_t</a>, Lower &gt; &amp;&#160;</td>
-          <td class="paramname"><em>ltI</em>&#160;</td>
+          <td class="paramtype">const <a class="el" href="a00005.html#ae6c85df2523b3bfee84b6072397b6e1c">vector3_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>linear</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -319,9 +301,8 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">m</td><td>Mass. </td></tr>
-    <tr><td class="paramname">h</td><td>Spatial momentum. </td></tr>
-    <tr><td class="paramname">I</td><td>Lower triangular view of Inertia matrix at body origin. </td></tr>
+    <tr><td class="paramname">angular</td><td>Angular motion. </td></tr>
+    <tr><td class="paramname">linear</td><td>Linear motion. </td></tr>
   </table>
   </dd>
 </dl>
@@ -329,7 +310,61 @@ template&lt;typename T&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a226d792b20bef31c321a4f8f27844699"></a>
+<a class="anchor" id="a0b55525aa11296c8c2a4340af9e16826"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="a00005.html#ae6c85df2523b3bfee84b6072397b6e1c">vector3_t</a>&amp; <a class="el" href="a00005.html">sva::MotionVec</a>&lt; T &gt;::angular </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Angular motion </dd></dl>
+
+<p>Referenced by <a class="el" href="a00006.html#a6c095822e0bb06039723071093289b63">sva::PTransform&lt; T &gt;::angularInvMul()</a>, <a class="el" href="a00006.html#a0b6cbb2d0d4b11a3f4f61a33e74c3773">sva::PTransform&lt; T &gt;::angularMul()</a>, <a class="el" href="a00005.html#acc3e11c0cc01ed6717fe2b3d1e7c402c">sva::MotionVec&lt; T &gt;::cross()</a>, <a class="el" href="a00006.html#a96dd698bb2600a1bb33e50b2a708c5ef">sva::PTransform&lt; T &gt;::linearInvMul()</a>, <a class="el" href="a00006.html#a4bd7a02959cd7354afe6adb53b3f1413">sva::PTransform&lt; T &gt;::linearMul()</a>, <a class="el" href="a00007.html#ad28cfb4018a8ac2f796b94e4ebac859b">sva::RBInertia&lt; T &gt;::operator*()</a>, <a class="el" href="a00001.html#aa95ed43de091fbc65bda9c731b2524a1">sva::ABInertia&lt; T &gt;::operator*()</a>, and <a class="el" href="a00023.html#a85728d1ec54d3ab16b525b5425c4c9d9">sva::operator*()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a257ae7a4157d2e3bfa857787e069f224"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00005.html#ae6c85df2523b3bfee84b6072397b6e1c">vector3_t</a>&amp; <a class="el" href="a00005.html">sva::MotionVec</a>&lt; T &gt;::angular </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Angular motion </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aac8bc10b39a7570d2c22909226dfc81e"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -341,7 +376,7 @@ template&lt;typename T2 &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00005.html">RBInertia</a>&lt;T2&gt; <a class="el" href="a00005.html">sva::RBInertia</a>&lt; T &gt;::cast </td>
+          <td class="memname"><a class="el" href="a00005.html">MotionVec</a>&lt;T2&gt; <a class="el" href="a00005.html">sva::MotionVec</a>&lt; T &gt;::cast </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -356,19 +391,20 @@ template&lt;typename T2 &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a1f6b89e38eac55982d48d8ac9efa38fd"></a>
+<a class="anchor" id="acc3e11c0cc01ed6717fe2b3d1e7c402c"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T&gt; </div>
+template&lt;typename T &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00005.html#aa64e782b6a5a1278f0620fe272862aad">matrix3_t</a> <a class="el" href="a00005.html">sva::RBInertia</a>&lt; T &gt;::inertia </td>
+          <td class="memname"><a class="el" href="a00005.html">MotionVec</a>&lt; T &gt; <a class="el" href="a00005.html">sva::MotionVec</a>&lt; T &gt;::cross </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="a00005.html">MotionVec</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>mv2</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -378,126 +414,13 @@ template&lt;typename T&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Inertia matrix. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>v x v </dd></dl>
 
-<p>Referenced by <a class="el" href="a00004.html#ac2020d451e4115a6b528d73948720cc0">sva::PTransform&lt; T &gt;::dualMul()</a>, <a class="el" href="a00001.html#a3f2b09d60511dadb0524415f7141d12b">sva::ABInertia&lt; T &gt;::operator+()</a>, and <a class="el" href="a00004.html#a6f2feaf9c7e889cf37b1d337882f28be">sva::PTransform&lt; T &gt;::transMul()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ac5d19b0c647782bbd41fa235b87b483b"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const <a class="el" href="a00005.html#aa64e782b6a5a1278f0620fe272862aad">matrix3_t</a>&amp; <a class="el" href="a00005.html">sva::RBInertia</a>&lt; T &gt;::lowerTriangularInertia </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Inertia matrix with a zero upper part. </dd></dl>
+<p>References <a class="el" href="a00005.html#a0b55525aa11296c8c2a4340af9e16826">sva::MotionVec&lt; T &gt;::angular()</a>, and <a class="el" href="a00005.html#a535094508d6637aeaaa837eb8ff8b816">sva::MotionVec&lt; T &gt;::linear()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a95a7437e72a1cb2f0f76c966d49cbe23"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">T <a class="el" href="a00005.html">sva::RBInertia</a>&lt; T &gt;::mass </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Mass. </dd></dl>
-
-<p>Referenced by <a class="el" href="a00004.html#ac2020d451e4115a6b528d73948720cc0">sva::PTransform&lt; T &gt;::dualMul()</a>, <a class="el" href="a00001.html#a3f2b09d60511dadb0524415f7141d12b">sva::ABInertia&lt; T &gt;::operator+()</a>, and <a class="el" href="a00004.html#a6f2feaf9c7e889cf37b1d337882f28be">sva::PTransform&lt; T &gt;::transMul()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a175ff0a93ded97638e29edabc636de0c"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00005.html#a8018cbadb20f77c9c1090ee6f0894ab9">matrix6_t</a> <a class="el" href="a00005.html">sva::RBInertia</a>&lt; T &gt;::matrix </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Non compact spatial rigid body inertia matrix. </p>
-
-<p>References <a class="el" href="a00017.html#a34d0d0706dc16ae0358433af740a48fd">Eigen::vector3ToCrossMatrix()</a>.</p>
-
-<p>Referenced by <a class="el" href="a00019.html#a2693d2fc4c910d36477d6ec8b49ab7a9">sva::operator&lt;&lt;()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a5cedeb34319545322a29375562c836d9"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const <a class="el" href="a00005.html#a6768085b5d1fdb4e91ddb97a64dc00fb">vector3_t</a>&amp; <a class="el" href="a00005.html">sva::RBInertia</a>&lt; T &gt;::momentum </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Spatial momentum. </dd></dl>
-
-<p>Referenced by <a class="el" href="a00004.html#ac2020d451e4115a6b528d73948720cc0">sva::PTransform&lt; T &gt;::dualMul()</a>, <a class="el" href="a00001.html#a3f2b09d60511dadb0524415f7141d12b">sva::ABInertia&lt; T &gt;::operator+()</a>, and <a class="el" href="a00004.html#a6f2feaf9c7e889cf37b1d337882f28be">sva::PTransform&lt; T &gt;::transMul()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a0f54f36d8e260d001ca825d09450d328"></a>
+<a class="anchor" id="ab2f2cce3d341a4de489d5180c51d253d"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -509,10 +432,10 @@ template&lt;typename Derived &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="a00005.html">sva::RBInertia</a>&lt; T &gt;::mul </td>
+          <td class="memname">void <a class="el" href="a00005.html">sva::MotionVec</a>&lt; T &gt;::cross </td>
           <td>(</td>
           <td class="paramtype">const Eigen::MatrixBase&lt; Derived &gt; &amp;&#160;</td>
-          <td class="paramname"><em>mv</em>, </td>
+          <td class="paramname"><em>mv2</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -532,13 +455,112 @@ template&lt;typename Derived &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="a00005.html#ad28cfb4018a8ac2f796b94e4ebac859b">operator*(const MotionVec&lt;T&gt;&amp; mv) const </a> </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="a00005.html#acc3e11c0cc01ed6717fe2b3d1e7c402c">cross</a> </dd></dl>
 
-<p>References <a class="el" href="a00021.html#aecd2872735a5a172e30de9246de058fa">sva::sva_internal::colwiseCrossMinusEq()</a>, <a class="el" href="a00021.html#ab737f4faada616c9e5c70f0485a9a7b6">sva::sva_internal::colwiseCrossPlusEq()</a>, <a class="el" href="a00019.html#a5bd057544a4e4715453d6b091287ec39">sva::forceCouple()</a>, <a class="el" href="a00019.html#a36ac26af5675540660450973f8ff331d">sva::forceForce()</a>, <a class="el" href="a00019.html#a2453bbce65af3c0244ddb1b6bd5d8ce2">sva::motionAngular()</a>, and <a class="el" href="a00019.html#a9b9539cbd6e4e2f2f3b0533712a583e3">sva::motionLinear()</a>.</p>
+<p>References <a class="el" href="a00025.html#a925b34e58bacdcc4481c5ff74eb7ddd4">sva::sva_internal::colwiseCrossEq()</a>, <a class="el" href="a00025.html#aecd2872735a5a172e30de9246de058fa">sva::sva_internal::colwiseCrossMinusEq()</a>, <a class="el" href="a00023.html#a2453bbce65af3c0244ddb1b6bd5d8ce2">sva::motionAngular()</a>, and <a class="el" href="a00023.html#a9b9539cbd6e4e2f2f3b0533712a583e3">sva::motionLinear()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a7cee4828654cc75a2561581a581e8adc"></a>
+<a class="anchor" id="a1f9b4e568bfb4b357dfdbaa0277ea8ba"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00003.html">ForceVec</a>&lt; T &gt; <a class="el" href="a00005.html">sva::MotionVec</a>&lt; T &gt;::crossDual </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00003.html">ForceVec</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>fv2</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>v x* f </dd></dl>
+
+<p>References <a class="el" href="a00003.html#a4cb565858a92641bf4aea0e59819919a">sva::ForceVec&lt; T &gt;::couple()</a>, and <a class="el" href="a00003.html#a24f8a65444a2150f2d0b1eaf988f6050">sva::ForceVec&lt; T &gt;::force()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9a0ea67b1e1599236265e0a24dad9949"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<div class="memtemplate">
+template&lt;typename Derived &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="a00005.html">sva::MotionVec</a>&lt; T &gt;::crossDual </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::MatrixBase&lt; Derived &gt; &amp;&#160;</td>
+          <td class="paramname"><em>fv2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Eigen::MatrixBase&lt; Derived &gt; &amp;&#160;</td>
+          <td class="paramname"><em>result</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="a00005.html#a1f9b4e568bfb4b357dfdbaa0277ea8ba">crossDual</a> </dd></dl>
+
+<p>References <a class="el" href="a00025.html#a925b34e58bacdcc4481c5ff74eb7ddd4">sva::sva_internal::colwiseCrossEq()</a>, <a class="el" href="a00025.html#aecd2872735a5a172e30de9246de058fa">sva::sva_internal::colwiseCrossMinusEq()</a>, <a class="el" href="a00023.html#a5bd057544a4e4715453d6b091287ec39">sva::forceCouple()</a>, and <a class="el" href="a00023.html#a36ac26af5675540660450973f8ff331d">sva::forceForce()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a846f0ac67ef5ba97f1c84928b99f2ea2"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T <a class="el" href="a00005.html">sva::MotionVec</a>&lt; T &gt;::dot </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00003.html">ForceVec</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>fv2</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>v.v </dd></dl>
+
+<p>References <a class="el" href="a00003.html#a4cb565858a92641bf4aea0e59819919a">sva::ForceVec&lt; T &gt;::couple()</a>, and <a class="el" href="a00003.html#a24f8a65444a2150f2d0b1eaf988f6050">sva::ForceVec&lt; T &gt;::force()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a535094508d6637aeaaa837eb8ff8b816"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -548,10 +570,64 @@ template&lt;typename T&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="a00005.html">sva::RBInertia</a>&lt; T &gt;::operator!= </td>
+          <td class="memname">const <a class="el" href="a00005.html#ae6c85df2523b3bfee84b6072397b6e1c">vector3_t</a>&amp; <a class="el" href="a00005.html">sva::MotionVec</a>&lt; T &gt;::linear </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00005.html">RBInertia</a>&lt; T &gt; &amp;&#160;</td>
-          <td class="paramname"><em>rbI</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Linear motion </dd></dl>
+
+<p>Referenced by <a class="el" href="a00005.html#acc3e11c0cc01ed6717fe2b3d1e7c402c">sva::MotionVec&lt; T &gt;::cross()</a>, <a class="el" href="a00006.html#a96dd698bb2600a1bb33e50b2a708c5ef">sva::PTransform&lt; T &gt;::linearInvMul()</a>, <a class="el" href="a00006.html#a4bd7a02959cd7354afe6adb53b3f1413">sva::PTransform&lt; T &gt;::linearMul()</a>, <a class="el" href="a00007.html#ad28cfb4018a8ac2f796b94e4ebac859b">sva::RBInertia&lt; T &gt;::operator*()</a>, <a class="el" href="a00001.html#aa95ed43de091fbc65bda9c731b2524a1">sva::ABInertia&lt; T &gt;::operator*()</a>, and <a class="el" href="a00023.html#a85728d1ec54d3ab16b525b5425c4c9d9">sva::operator*()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3abfa746c359d99964c609e96dab22a9"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00005.html#ae6c85df2523b3bfee84b6072397b6e1c">vector3_t</a>&amp; <a class="el" href="a00005.html">sva::MotionVec</a>&lt; T &gt;::linear </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Linear motion </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a28b2bd6206e689829c073c111a7228cb"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="a00005.html">sva::MotionVec</a>&lt; T &gt;::operator!= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00005.html">MotionVec</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>mv</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -564,7 +640,7 @@ template&lt;typename T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="ae21ffbb68e7d2186cdc0dc13bfb6347a"></a>
+<a class="anchor" id="a81bae1c413e089caab3b95865b45d4c1"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -576,7 +652,7 @@ template&lt;typename T2 &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00005.html">RBInertia</a>&lt;T&gt; <a class="el" href="a00005.html">sva::RBInertia</a>&lt; T &gt;::operator* </td>
+          <td class="memname"><a class="el" href="a00005.html">MotionVec</a>&lt;T&gt; <a class="el" href="a00005.html">sva::MotionVec</a>&lt; T &gt;::operator* </td>
           <td>(</td>
           <td class="paramtype">T2&#160;</td>
           <td class="paramname"><em>scalar</em></td><td>)</td>
@@ -592,19 +668,19 @@ template&lt;typename T2 &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="ad28cfb4018a8ac2f796b94e4ebac859b"></a>
+<a class="anchor" id="a5afe145a7af591b9482fb17e4aeef8cf"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00002.html">ForceVec</a>&lt; T &gt; <a class="el" href="a00005.html">sva::RBInertia</a>&lt; T &gt;::operator* </td>
+          <td class="memname"><a class="el" href="a00005.html">MotionVec</a>&lt;T&gt; <a class="el" href="a00005.html">sva::MotionVec</a>&lt; T &gt;::operator+ </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00003.html">MotionVec</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="a00005.html">MotionVec</a>&lt; T &gt; &amp;&#160;</td>
           <td class="paramname"><em>mv</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -615,13 +691,10 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>I*v </dd></dl>
-
-<p>References <a class="el" href="a00003.html#a0b55525aa11296c8c2a4340af9e16826">sva::MotionVec&lt; T &gt;::angular()</a>, and <a class="el" href="a00003.html#a535094508d6637aeaaa837eb8ff8b816">sva::MotionVec&lt; T &gt;::linear()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a2030a1ad399ea63c51bf2189f26fc627"></a>
+<a class="anchor" id="a50bdd4d463493eeb26f79ed101cc1a9b"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -631,36 +704,10 @@ template&lt;typename T&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00005.html">RBInertia</a>&lt;T&gt; <a class="el" href="a00005.html">sva::RBInertia</a>&lt; T &gt;::operator+ </td>
+          <td class="memname"><a class="el" href="a00005.html">MotionVec</a>&lt;T&gt;&amp; <a class="el" href="a00005.html">sva::MotionVec</a>&lt; T &gt;::operator+= </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00005.html">RBInertia</a>&lt; T &gt; &amp;&#160;</td>
-          <td class="paramname"><em>rbI</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a7659cf7eea62c8f533cc321bbf49d73f"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00005.html">RBInertia</a>&lt;T&gt;&amp; <a class="el" href="a00005.html">sva::RBInertia</a>&lt; T &gt;::operator+= </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00005.html">RBInertia</a>&lt; T &gt; &amp;&#160;</td>
-          <td class="paramname"><em>rbI</em></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="a00005.html">MotionVec</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>mv</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -673,7 +720,7 @@ template&lt;typename T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a611f4f7469c6a9be0e1278b427fb344a"></a>
+<a class="anchor" id="a57420e9dfb814dad8f40adae4d26dfbb"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -683,10 +730,10 @@ template&lt;typename T&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00005.html">RBInertia</a>&lt;T&gt; <a class="el" href="a00005.html">sva::RBInertia</a>&lt; T &gt;::operator- </td>
+          <td class="memname"><a class="el" href="a00005.html">MotionVec</a>&lt;T&gt; <a class="el" href="a00005.html">sva::MotionVec</a>&lt; T &gt;::operator- </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00005.html">RBInertia</a>&lt; T &gt; &amp;&#160;</td>
-          <td class="paramname"><em>rbI</em></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="a00005.html">MotionVec</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>mv</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -699,7 +746,7 @@ template&lt;typename T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a98c52daceef9db3fec76a197d4add106"></a>
+<a class="anchor" id="a3c15257be5860d588b54eca213dba3d0"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -709,7 +756,7 @@ template&lt;typename T&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00005.html">RBInertia</a>&lt;T&gt; <a class="el" href="a00005.html">sva::RBInertia</a>&lt; T &gt;::operator- </td>
+          <td class="memname"><a class="el" href="a00005.html">MotionVec</a>&lt;T&gt; <a class="el" href="a00005.html">sva::MotionVec</a>&lt; T &gt;::operator- </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -724,7 +771,7 @@ template&lt;typename T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a3367ca9346696c3b59a897ba515e66b5"></a>
+<a class="anchor" id="ad577e632b2bb9e3018e5761c5412e063"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -734,10 +781,10 @@ template&lt;typename T&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00005.html">RBInertia</a>&lt;T&gt;&amp; <a class="el" href="a00005.html">sva::RBInertia</a>&lt; T &gt;::operator-= </td>
+          <td class="memname"><a class="el" href="a00005.html">MotionVec</a>&lt;T&gt;&amp; <a class="el" href="a00005.html">sva::MotionVec</a>&lt; T &gt;::operator-= </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00005.html">RBInertia</a>&lt; T &gt; &amp;&#160;</td>
-          <td class="paramname"><em>rbI</em></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="a00005.html">MotionVec</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>mv</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -750,20 +797,22 @@ template&lt;typename T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a954c354ddccb0fa996e0cebd5cb78659"></a>
+<a class="anchor" id="a406bf81ccee766a67b8e21c3e11e9314"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T&gt; </div>
+<div class="memtemplate">
+template&lt;typename T2 &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="a00005.html">sva::RBInertia</a>&lt; T &gt;::operator== </td>
+          <td class="memname"><a class="el" href="a00005.html">MotionVec</a>&lt;T&gt; <a class="el" href="a00005.html">sva::MotionVec</a>&lt; T &gt;::operator/ </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00005.html">RBInertia</a>&lt; T &gt; &amp;&#160;</td>
-          <td class="paramname"><em>rbI</em></td><td>)</td>
+          <td class="paramtype">T2&#160;</td>
+          <td class="paramname"><em>scalar</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -776,14 +825,118 @@ template&lt;typename T&gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="a993778ff1608ca0f097f5718cb4bede7"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="a00005.html">sva::MotionVec</a>&lt; T &gt;::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00005.html">MotionVec</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>mv</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a76edf478c9a99e518590dfb7d8d50b94"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00005.html#ac2a777cd6140f53a263f1313d3ffbb31">vector6_t</a> <a class="el" href="a00005.html">sva::MotionVec</a>&lt; T &gt;::vector </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Non compact spatial motion vector. </dd></dl>
+
+<p>Referenced by <a class="el" href="a00023.html#a5f26526fcfadd53b40d08db5d077c193">sva::operator&lt;&lt;()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5ebbdd768786752203c24f5d476faaa0"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="a00005.html">MotionVec</a>&lt;T&gt; <a class="el" href="a00005.html">sva::MotionVec</a>&lt; T &gt;::Zero </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Zero motion vector. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a class="anchor" id="afd10841a85903063ea3c0cca84c209cd"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="a00006.html">PTransform</a>&lt; T &gt;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.6-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00019.html">sva</a></li><li class="navelem"><a class="el" href="a00005.html">RBInertia</a></li>
-    <li class="footer">Generated on Fri Apr 13 2018 08:54:34 for SpaceVecAlg by
+    <li class="navelem"><a class="el" href="a00023.html">sva</a></li><li class="navelem"><a class="el" href="a00005.html">MotionVec</a></li>
+    <li class="footer">Generated on Wed Sep 5 2018 09:06:28 for SpaceVecAlg by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

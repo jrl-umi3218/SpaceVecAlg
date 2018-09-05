@@ -20,6 +20,16 @@ cimport c_sva
 from libcpp.vector cimport vector
 from libcpp cimport bool as cppbool
 
+cdef class AdmittanceVecd(object):
+  cdef c_sva.AdmittanceVecd impl
+
+cdef AdmittanceVecd AdmittanceVecdFromC(const c_sva.AdmittanceVecd&)
+
+cdef class ImpedanceVecd(object):
+  cdef c_sva.ImpedanceVecd impl
+
+cdef ImpedanceVecd ImpedanceVecdFromC(const c_sva.ImpedanceVecd&)
+
 cdef class ForceVecd(object):
   cdef c_sva.ForceVecd * impl
   cdef cppbool __own_impl

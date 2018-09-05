@@ -22,6 +22,20 @@
 namespace sva
 {
 
+std::string AdmittanceVecdToString(const sva::AdmittanceVecd & av)
+{
+  std::stringstream ss;
+  ss << av;
+  return ss.str();
+}
+
+std::string ImpedanceVecdToString(const sva::ImpedanceVecd & iv)
+{
+  std::stringstream ss;
+  ss << iv;
+  return ss.str();
+}
+
 template<typename T>
 std::string ForceVecToString(const sva::ForceVec<T> & m)
 {
@@ -190,6 +204,70 @@ sva::PTransform<double>& const_cast_ptd(const sva::PTransform<double> & rhs)
 std::vector<sva::PTransformd>& const_cast_pt_vec(const std::vector<sva::PTransformd> & rhs)
 {
   return const_cast<std::vector<sva::PTransformd>&>(rhs);
+}
+
+ForceVecd ForceVecdZero()
+{
+  return ForceVecd::Zero();
+}
+
+MotionVecd MotionVecdZero()
+{
+  return MotionVecd::Zero();
+}
+
+AdmittanceVecd AdmittanceVecdZero()
+{
+  return AdmittanceVecd::Zero();
+}
+
+ImpedanceVecd ImpedanceVecdZero()
+{
+  return ImpedanceVecd::Zero();
+}
+
+AdmittanceVecd AdmittanceVecdHomo(double a, double l)
+{
+  return AdmittanceVecd(a, l);
+}
+
+ImpedanceVecd ImpedanceVecdHomo(double a, double l)
+{
+  return ImpedanceVecd(a, l);
+}
+
+MotionVecd mul_av_fv(AdmittanceVecd & lhs, ForceVecd & rhs)
+{
+  return lhs * rhs;
+}
+void av_iadd(AdmittanceVecd & lhs, AdmittanceVecd & rhs)
+{
+  lhs += rhs;
+}
+void av_imul(AdmittanceVecd & lhs, double s)
+{
+  lhs *= s;
+}
+void av_idiv(AdmittanceVecd & lhs, double s)
+{
+  lhs /= s;
+}
+
+ForceVecd mul_iv_mv(ImpedanceVecd & lhs, MotionVecd & rhs)
+{
+  return lhs * rhs;
+}
+void iv_iadd(ImpedanceVecd & lhs, ImpedanceVecd & rhs)
+{
+  lhs += rhs;
+}
+void iv_imul(ImpedanceVecd & lhs, double s)
+{
+  lhs *= s;
+}
+void iv_idiv(ImpedanceVecd & lhs, double s)
+{
+  lhs /= s;
 }
 
 }

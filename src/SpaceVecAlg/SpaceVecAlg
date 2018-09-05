@@ -42,6 +42,8 @@ namespace sva
 
 #include "MotionVec.h"
 #include "ForceVec.h"
+#include "ImpedanceVec.h"
+#include "AdmittanceVec.h"
 #include "RBInertia.h"
 #include "ABInertia.h"
 #include "PTransform.h"
@@ -52,6 +54,8 @@ namespace sva
 {
 	typedef MotionVec<double> MotionVecd;
 	typedef ForceVec<double> ForceVecd;
+	typedef ImpedanceVec<double> ImpedanceVecd;
+	typedef AdmittanceVec<double> AdmittanceVecd;
 	typedef RBInertia<double> RBInertiad;
 	typedef ABInertia<double> ABInertiad;
 	typedef PTransform<double> PTransformd;

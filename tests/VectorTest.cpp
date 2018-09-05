@@ -96,6 +96,9 @@ BOOST_AUTO_TEST_CASE(MotionVecdTest)
 	// !=
 	BOOST_CHECK(vec != (-vec));
 	BOOST_CHECK(!(vec != vec));
+
+	// zero
+	BOOST_CHECK_EQUAL(sva::MotionVecd::Zero().vector(), Eigen::Vector6d::Zero());
 }
 
 BOOST_AUTO_TEST_CASE(ForceVecdTest)
@@ -160,6 +163,9 @@ BOOST_AUTO_TEST_CASE(ForceVecdTest)
 	// !=
 	BOOST_CHECK(vec != (-vec));
 	BOOST_CHECK(!(vec != vec));
+
+	// zero
+	BOOST_CHECK_EQUAL(sva::ForceVecd::Zero().vector(), Eigen::Vector6d::Zero());
 }
 
 BOOST_AUTO_TEST_CASE(MotionVecdLeftOperatorsTest)
@@ -227,3 +233,168 @@ BOOST_AUTO_TEST_CASE(MotionVecdLeftOperatorsTest)
 	BOOST_CHECK_EQUAL(crossFVecRes.col(0), crossFVecRes.col(1));
 }
 
+BOOST_AUTO_TEST_CASE(ImpedanceVecdTest)
+{
+	using namespace Eigen;
+	Vector3d w, v;
+	Vector6d z;
+	w = Vector3d::Random();
+	v = Vector3d::Random();
+
+	sva::ImpedanceVecd vec(w, v);
+	z = vec.vector();
+
+	// angular
+	BOOST_CHECK_EQUAL(w, vec.angular());
+
+	// linear
+	BOOST_CHECK_EQUAL(v, vec.linear());
+
+	// vector
+	BOOST_CHECK_EQUAL(z, (Vector6d() << w, v).finished());
+
+	// alpha*M
+	BOOST_CHECK_EQUAL((5.*vec).vector(), (5.*z).eval());
+
+	// M*alpha
+	BOOST_CHECK_EQUAL((vec*5.).vector(), (5.*z).eval());
+
+	// M/alpha
+	BOOST_CHECK_EQUAL((vec/5.).vector(), (z/5.).eval());
+
+	// ==
+	BOOST_CHECK_EQUAL(vec, vec);
+
+	// !=
+	BOOST_CHECK(!(vec != vec));
+
+	// Copy
+	sva::ImpedanceVecd vec_tmp = vec;
+	BOOST_CHECK_EQUAL(vec, vec_tmp);
+
+	// *= alpha
+	vec_tmp *= 5.;
+	BOOST_CHECK_EQUAL(vec_tmp.vector(), (5.*z).eval());
+
+	// /= alpha
+	vec_tmp /= 5.;
+	BOOST_CHECK(vec_tmp.vector().isApprox(z));
+
+	Vector3d w2, v2;
+	w2 = Vector3d::Random();
+	v2 = Vector3d::Random();
+	Vector6d z2;
+	sva::ImpedanceVecd vec2(w2, v2);
+	z2 = vec2.vector();
+
+	// M + M
+	BOOST_CHECK_EQUAL((vec + vec2).vector(), (z + z2).eval());
+
+	// M += M
+	sva::ImpedanceVecd vec_pluseq(vec);
+	vec_pluseq += vec2;
+	BOOST_CHECK_EQUAL(vec_pluseq, vec + vec2);
+
+	w = Vector3d::Random();
+	v = Vector3d::Random();
+	sva::MotionVecd mv(w, v);
+
+	// operator *
+	sva::ForceVecd fv = vec * mv;
+	BOOST_CHECK_EQUAL(fv.force(), vec.linear().cwiseProduct(mv.linear()));
+	BOOST_CHECK_EQUAL(fv.couple(), vec.angular().cwiseProduct(mv.angular()));
+
+	sva::ForceVecd fv2 = mv * vec;
+	BOOST_CHECK_EQUAL(fv, fv2);
+
+	// homogeneous constructor
+	sva::ImpedanceVecd hiv(11., 42.);
+	BOOST_CHECK_EQUAL(hiv.angular(), Eigen::Vector3d(11., 11., 11.));
+	BOOST_CHECK_EQUAL(hiv.linear(), Eigen::Vector3d(42., 42., 42.));
+
+	// zero
+	BOOST_CHECK_EQUAL(sva::ImpedanceVecd::Zero().vector(), Eigen::Vector6d::Zero());
+}
+
+BOOST_AUTO_TEST_CASE(AdmittanceVecdTest)
+{
+	using namespace Eigen;
+	Vector3d w, v;
+	Vector6d a;
+	w = Vector3d::Random();
+	v = Vector3d::Random();
+
+	sva::AdmittanceVecd vec(w, v);
+	a = vec.vector();
+
+	// angular
+	BOOST_CHECK_EQUAL(w, vec.angular());
+
+	// linear
+	BOOST_CHECK_EQUAL(v, vec.linear());
+
+	// vector
+	BOOST_CHECK_EQUAL(a, (Vector6d() << w, v).finished());
+
+	// alpha*M
+	BOOST_CHECK_EQUAL((5.*vec).vector(), (5.*a).eval());
+
+	// M*alpha
+	BOOST_CHECK_EQUAL((vec*5.).vector(), (5.*a).eval());
+
+	// M/alpha
+	BOOST_CHECK_EQUAL((vec/5.).vector(), (a/5.).eval());
+
+	// ==
+	BOOST_CHECK_EQUAL(vec, vec);
+
+	// !=
+	BOOST_CHECK(!(vec != vec));
+
+	// Copy
+	sva::AdmittanceVecd vec_tmp = vec;
+	BOOST_CHECK_EQUAL(vec, vec_tmp);
+
+	// *= alpha
+	vec_tmp *= 5.;
+	BOOST_CHECK_EQUAL(vec_tmp.vector(), (5.*a).eval());
+
+	// /= alpha
+	vec_tmp /= 5.;
+	BOOST_CHECK(vec_tmp.vector().isApprox(a));
+
+	Vector3d w2, v2;
+	w2 = Vector3d::Random();
+	v2 = Vector3d::Random();
+	Vector6d a2;
+	sva::AdmittanceVecd vec2(w2, v2);
+	a2 = vec2.vector();
+
+	// M + M
+	BOOST_CHECK_EQUAL((vec + vec2).vector(), (a + a2).eval());
+
+	// M += M
+	sva::AdmittanceVecd vec_pluseq(vec);
+	vec_pluseq += vec2;
+	BOOST_CHECK_EQUAL(vec_pluseq, vec + vec2);
+
+	Vector3d n = Vector3d::Random();
+	Vector3d f = Vector3d::Random();
+	sva::ForceVecd fv(n, f);
+
+	// operator *
+	sva::MotionVecd mv = vec * fv;
+	BOOST_CHECK_EQUAL(mv.linear(), vec.linear().cwiseProduct(fv.force()));
+	BOOST_CHECK_EQUAL(mv.angular(), vec.angular().cwiseProduct(fv.couple()));
+
+	sva::MotionVecd mv2 = fv * vec;
+	BOOST_CHECK_EQUAL(mv, mv2);
+
+	// homogeneous constructor
+	sva::AdmittanceVecd hav(11., 42.);
+	BOOST_CHECK_EQUAL(hav.angular(), Eigen::Vector3d(11., 11., 11.));
+	BOOST_CHECK_EQUAL(hav.linear(), Eigen::Vector3d(42., 42., 42.));
+
+	// zero
+	BOOST_CHECK_EQUAL(sva::AdmittanceVecd::Zero().vector(), Eigen::Vector6d::Zero());
+}

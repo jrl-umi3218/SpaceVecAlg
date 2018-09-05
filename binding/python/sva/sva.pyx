@@ -24,6 +24,182 @@ cimport eigen.eigen as eigen
 from libcpp.vector cimport vector
 from cython.operator cimport dereference as deref
 
+cdef class AdmittanceVecd(object):
+  def __copyctor__(self, AdmittanceVecd other):
+    self.impl = c_sva.AdmittanceVecd(other.impl)
+  def __v6ctor__(self, eigen.Vector6d other):
+    self.impl = c_sva.AdmittanceVecd(other.impl)
+  def __v3v3ctor__(self, eigen.Vector3d angular, eigen.Vector3d linear):
+    self.impl = c_sva.AdmittanceVecd(angular.impl, linear.impl)
+  def __homoctor__(self, double angular, double linear):
+    self.impl = c_sva_private.AdmittanceVecdHomo(angular, linear)
+  def __cinit__(self, *args, skip_alloc = False):
+    if len(args) == 0:
+      self.impl = c_sva.AdmittanceVecd()
+    elif len(args) == 1 and isinstance(args[0], AdmittanceVecd):
+      self.__copyctor__(args[0])
+    elif len(args) == 1 and isinstance(args[0], eigen.Vector6d):
+      self.__v6ctor__(args[0])
+    elif len(args) == 2 and isinstance(args[0], eigen.Vector3d) and isinstance(args[1], eigen.Vector3d):
+      self.__v3v3ctor__(args[0], args[1])
+    elif len(args) == 2 and isinstance(args[0], list) and isinstance(args[1], list):
+      self.__v3v3ctor__(eigen.Vector3d(args[0]), eigen.Vector3d(args[1]))
+    elif len(args) == 2:
+      self.__homoctor__(args[0], args[1])
+    else:
+      raise TypeError("Invalid arguments passed to AdmittanceVecd ctor")
+
+  def angular(self):
+    return eigen.Vector3dFromC(<c_eigen.Vector3d>self.impl.angular())
+  def linear(self):
+    return eigen.Vector3dFromC(<c_eigen.Vector3d>self.impl.linear())
+  def vector(self):
+    return eigen.Vector6dFromC(<c_eigen.Vector6d>self.impl.vector())
+
+  def __repr__(self):
+    return "sva.AdmittanceVecd"
+  def __str__(self):
+    return c_sva_private.AdmittanceVecdToString(self.impl)
+
+  def __add__(AdmittanceVecd self, AdmittanceVecd other):
+    return AdmittanceVecdFromC(self.impl + other.impl)
+  def __iadd__(self, AdmittanceVecd other):
+    c_sva_private.av_iadd(self.impl, other.impl)
+    return self
+
+  def __mul(self, double s):
+    return AdmittanceVecdFromC(self.impl*s)
+  def __mul_fv(self, ForceVecd fv):
+    return MotionVecdFromC(c_sva_private.mul_av_fv(self.impl, deref(fv.impl)))
+  def __mul__(self, other):
+    if isinstance(self, AdmittanceVecd):
+      if isinstance(other, ForceVecd):
+        return self.__mul_fv(other)
+      return self.__mul(other)
+    else:
+      return other.__mul__(self)
+  def __imul__(self, double other):
+    c_sva_private.av_imul(self.impl, other)
+    return self
+
+  def __div__(AdmittanceVecd self, double other):
+    return self.__truediv__(other)
+  def __truediv__(AdmittanceVecd self, double other):
+    return AdmittanceVecdFromC(self.impl/other)
+  def __idiv__(self, double other):
+    return self.__itruediv__(other)
+  def __itruediv__(self, double other):
+    c_sva_private.av_idiv(self.impl, other)
+    return self
+
+  def __richcmp__(AdmittanceVecd self, AdmittanceVecd other, int op):
+    if op == 2:
+      return self.impl == other.impl
+    elif op == 3:
+      return self.impl != other.impl
+    else:
+      raise NotImplementedError("This comparison is not supported")
+
+  @staticmethod
+  def Zero():
+    return AdmittanceVecdFromC(c_sva_private.AdmittanceVecdZero())
+  @staticmethod
+  def pickle(mv):
+    return AdmittanceVecd, (list(mv.angular()), list(mv.linear()))
+
+cdef AdmittanceVecd AdmittanceVecdFromC(const c_sva.AdmittanceVecd& av):
+  cdef AdmittanceVecd ret = AdmittanceVecd()
+  ret.impl = av
+  return ret
+
+cdef class ImpedanceVecd(object):
+  def __copyctor__(self, ImpedanceVecd other):
+    self.impl = c_sva.ImpedanceVecd(other.impl)
+  def __v6ctor__(self, eigen.Vector6d other):
+    self.impl = c_sva.ImpedanceVecd(other.impl)
+  def __v3v3ctor__(self, eigen.Vector3d angular, eigen.Vector3d linear):
+    self.impl = c_sva.ImpedanceVecd(angular.impl, linear.impl)
+  def __homoctor__(self, double angular, double linear):
+    self.impl = c_sva_private.ImpedanceVecdHomo(angular, linear)
+  def __cinit__(self, *args, skip_alloc = False):
+    if len(args) == 0:
+      self.impl = c_sva.ImpedanceVecd()
+    elif len(args) == 1 and isinstance(args[0], ImpedanceVecd):
+      self.__copyctor__(args[0])
+    elif len(args) == 1 and isinstance(args[0], eigen.Vector6d):
+      self.__v6ctor__(args[0])
+    elif len(args) == 2 and isinstance(args[0], eigen.Vector3d) and isinstance(args[1], eigen.Vector3d):
+      self.__v3v3ctor__(args[0], args[1])
+    elif len(args) == 2 and isinstance(args[0], list) and isinstance(args[1], list):
+      self.__v3v3ctor__(eigen.Vector3d(args[0]), eigen.Vector3d(args[1]))
+    elif len(args) == 2:
+      self.__homoctor__(args[0], args[1])
+    else:
+      raise TypeError("Invalid arguments passed to ImpedanceVecd ctor")
+
+  def angular(self):
+    return eigen.Vector3dFromC(<c_eigen.Vector3d>self.impl.angular())
+  def linear(self):
+    return eigen.Vector3dFromC(<c_eigen.Vector3d>self.impl.linear())
+  def vector(self):
+    return eigen.Vector6dFromC(<c_eigen.Vector6d>self.impl.vector())
+
+  def __repr__(self):
+    return "sva.ImpedanceVecd"
+  def __str__(self):
+    return c_sva_private.ImpedanceVecdToString(self.impl)
+
+  def __add__(ImpedanceVecd self, ImpedanceVecd other):
+    return ImpedanceVecdFromC(self.impl + other.impl)
+  def __iadd__(self, ImpedanceVecd other):
+    c_sva_private.iv_iadd(self.impl, other.impl)
+    return self
+
+  def __mul(self, double s):
+    return ImpedanceVecdFromC(self.impl*s)
+  def __mul_mv(self, MotionVecd mv):
+    return ForceVecdFromC(c_sva_private.mul_iv_mv(self.impl, deref(mv.impl)))
+  def __mul__(self, other):
+    if isinstance(self, ImpedanceVecd):
+      if isinstance(other, MotionVecd):
+        return self.__mul_mv(other)
+      return self.__mul(other)
+    else:
+      return other.__mul__(self)
+  def __imul__(self, double other):
+    c_sva_private.iv_imul(self.impl, other)
+    return self
+
+  def __div__(ImpedanceVecd self, double other):
+    return self.__truediv__(other)
+  def __truediv__(ImpedanceVecd self, double other):
+    return ImpedanceVecdFromC(self.impl/other)
+  def __idiv__(self, double other):
+    return self.__itruediv__(other)
+  def __itruediv__(self, double other):
+    c_sva_private.iv_idiv(self.impl, other)
+    return self
+
+  def __richcmp__(ImpedanceVecd self, ImpedanceVecd other, int op):
+    if op == 2:
+      return self.impl == other.impl
+    elif op == 3:
+      return self.impl != other.impl
+    else:
+      raise NotImplementedError("This comparison is not supported")
+
+  @staticmethod
+  def Zero():
+    return ImpedanceVecdFromC(c_sva_private.ImpedanceVecdZero())
+  @staticmethod
+  def pickle(mv):
+    return ImpedanceVecd, (list(mv.angular()), list(mv.linear()))
+
+cdef ImpedanceVecd ImpedanceVecdFromC(const c_sva.ImpedanceVecd& iv):
+  cdef ImpedanceVecd ret = ImpedanceVecd()
+  ret.impl = iv
+  return ret
+
 cdef class ForceVecd(object):
   def __dealloc__(self):
     if self.__own_impl:
@@ -53,6 +229,10 @@ cdef class ForceVecd(object):
   def couple(self):
     cdef eigen.Vector3d ret = eigen.Vector3d()
     ret.impl = <c_eigen.Vector3d>(self.impl.couple())
+    return ret
+  def moment(self):
+    cdef eigen.Vector3d ret = eigen.Vector3d()
+    ret.impl = <c_eigen.Vector3d>(self.impl.moment())
     return ret
   def force(self):
     cdef eigen.Vector3d ret = eigen.Vector3d()
@@ -87,6 +267,8 @@ cdef class ForceVecd(object):
     return ForceVecdFromC(deref(self.impl)*s)
   def __mul__(self, other):
     if isinstance(self, ForceVecd):
+      if isinstance(other, AdmittanceVecd):
+        return other.__mul__(self)
       return self.__mul(other)
     else:
       return other.__mul__(self)
@@ -112,6 +294,9 @@ cdef class ForceVecd(object):
     else:
       raise NotImplementedError("This comparison is not supported")
 
+  @staticmethod
+  def Zero():
+    return ForceVecdFromC(c_sva_private.ForceVecdZero())
   @staticmethod
   def pickle(fv):
     return ForceVecd, (list(fv.couple()), list(fv.force()))
@@ -202,6 +387,8 @@ cdef class MotionVecd(object):
     return MotionVecdFromC(deref(self.impl)*s)
   def __mul__(self, other):
     if isinstance(self, MotionVecd):
+      if isinstance(other, ImpedanceVecd):
+        return other.__mul__(self)
       return self.__mul(other)
     else:
       return other.__mul__(self)
@@ -227,6 +414,9 @@ cdef class MotionVecd(object):
     else:
       raise NotImplementedError("This comparison is not supported")
 
+  @staticmethod
+  def Zero():
+    return MotionVecdFromC(c_sva_private.MotionVecdZero())
   @staticmethod
   def pickle(mv):
     return MotionVecd, (list(mv.angular()), list(mv.linear()))

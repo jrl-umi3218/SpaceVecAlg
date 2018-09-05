@@ -68,6 +68,9 @@ class TestMotionVecd(unittest.TestCase):
     self.assertTrue(vec != (-vec))
     self.assertTrue(not(vec != vec))
 
+    z = sva.MotionVecd([0, 0, 0], [0, 0, 0])
+    self.assertEqual(sva.MotionVecd.Zero(), z)
+
 class TestForceVecd(unittest.TestCase):
   def test(self):
     n = eigen.Vector3d.Random()
@@ -108,6 +111,9 @@ class TestForceVecd(unittest.TestCase):
     self.assertTrue(vec != (-vec))
     self.assertTrue(not(vec != vec))
 
+    z = sva.ForceVecd([0, 0, 0], [0, 0, 0])
+    self.assertEqual(sva.ForceVecd.Zero(), z)
+
 class TestMotionVecdLeftOperatorsTest(unittest.TestCase):
   def test(self):
     w = eigen.Vector3d.Random()*100
@@ -137,9 +143,120 @@ class TestMotionVecdLeftOperatorsTest(unittest.TestCase):
     self.assertTrue(isinstance(crossF, sva.ForceVecd))
     self.assertAlmostEqual((crossF.vector() - sva.vector6ToCrossDualMatrix(mm)*mf).norm(), 0, delta = TOL)
 
+class TestImpedanceVecd(unittest.TestCase):
+  def test(self):
+    w = eigen.Vector3d.Random()
+    v = eigen.Vector3d.Random()
+    vec = sva.ImpedanceVecd(w, v)
+    z = vec.vector()
+
+    self.assertEqual(w, vec.angular())
+    self.assertEqual(v, vec.linear())
+    self.assertEqual(z, eigen.Vector6d(w.x(), w.y(), w.z(), v.x(), v.y(), v.z()))
+
+    self.assertEqual((5.*vec).vector(), 5.*z)
+    self.assertEqual((vec*5.).vector(), 5.*z)
+    self.assertEqual((vec/5.).vector(), z/5.)
+
+    vec *= 5.
+    self.assertEqual(vec.vector(), 5.*z)
+    vec /= 5.
+    [ self.assertAlmostEqual(x, 0, delta = TOL) for x in vec.vector() - z ]
+
+    w2 = eigen.Vector3d.Random()
+    v2 = eigen.Vector3d.Random()
+    vec2 = sva.ImpedanceVecd(w2, v2)
+    z2 = vec2.vector()
+
+    self.assertEqual((vec + vec2).vector(), z + z2)
+
+    vec_pluseq = sva.ImpedanceVecd(vec)
+    self.assertEqual(vec_pluseq, vec)
+    vec_pluseq += vec2
+    self.assertEqual(vec_pluseq, vec + vec2)
+
+    self.assertEqual(vec, vec)
+    self.assertTrue(not (vec != vec))
+
+    w = eigen.Vector3d.Random()
+    v = eigen.Vector3d.Random()
+    mv = sva.MotionVecd(eigen.Vector3d.Random(), eigen.Vector3d.Random())
+
+    fv = vec * mv
+    self.assertTrue(isinstance(fv, sva.ForceVecd))
+    res = eigen.Vector6d([ x*y for x,y in zip(vec.vector(), mv.vector()) ])
+    self.assertEqual(res, fv.vector())
+
+    fv2 = mv * vec
+    self.assertEqual(fv, fv2)
+
+    hv = sva.ImpedanceVecd(11., 42.)
+    self.assertEqual(hv.angular(), eigen.Vector3d(11., 11., 11.))
+    self.assertEqual(hv.linear(), eigen.Vector3d(42., 42., 42.))
+
+    z = sva.ImpedanceVecd(0., 0.)
+    self.assertEqual(sva.ImpedanceVecd.Zero(), z)
+
+class TestAdmittanceVecd(unittest.TestCase):
+  def test(self):
+    w = eigen.Vector3d.Random()
+    v = eigen.Vector3d.Random()
+    vec = sva.AdmittanceVecd(w, v)
+    z = vec.vector()
+
+    self.assertEqual(w, vec.angular())
+    self.assertEqual(v, vec.linear())
+    self.assertEqual(z, eigen.Vector6d(w.x(), w.y(), w.z(), v.x(), v.y(), v.z()))
+
+    self.assertEqual((5.*vec).vector(), 5.*z)
+    self.assertEqual((vec*5.).vector(), 5.*z)
+    self.assertEqual((vec/5.).vector(), z/5.)
+
+    vec *= 5.
+    self.assertEqual(vec.vector(), 5.*z)
+    vec /= 5.
+    [ self.assertAlmostEqual(x, 0, delta = TOL) for x in vec.vector() - z ]
+
+    w2 = eigen.Vector3d.Random()
+    v2 = eigen.Vector3d.Random()
+    vec2 = sva.AdmittanceVecd(w2, v2)
+    z2 = vec2.vector()
+
+    self.assertEqual((vec + vec2).vector(), z + z2)
+
+    vec_pluseq = sva.AdmittanceVecd(vec)
+    self.assertEqual(vec_pluseq, vec)
+    vec_pluseq += vec2
+    self.assertEqual(vec_pluseq, vec + vec2)
+
+    self.assertEqual(vec, vec)
+    self.assertTrue(not (vec != vec))
+
+    w = eigen.Vector3d.Random()
+    v = eigen.Vector3d.Random()
+    fv = sva.ForceVecd(eigen.Vector3d.Random(), eigen.Vector3d.Random())
+
+    mv = vec * fv
+    self.assertTrue(isinstance(mv, sva.MotionVecd))
+    res = eigen.Vector6d([ x*y for x,y in zip(vec.vector(), fv.vector()) ])
+    self.assertEqual(res, mv.vector())
+
+    mv2 = fv * vec
+    self.assertEqual(mv, mv2)
+
+    hv = sva.AdmittanceVecd(11., 42.)
+    self.assertEqual(hv.angular(), eigen.Vector3d(11., 11., 11.))
+    self.assertEqual(hv.linear(), eigen.Vector3d(42., 42., 42.))
+
+    z = sva.AdmittanceVecd(0., 0.)
+    self.assertEqual(sva.AdmittanceVecd.Zero(), z)
+
+
 if __name__ == "__main__":
   suite = unittest.TestSuite()
   suite.addTest(TestMotionVecd('test'))
   suite.addTest(TestForceVecd('test'))
   suite.addTest(TestMotionVecdLeftOperatorsTest('test'))
+  suite.addTest(TestImpedanceVecd('test'))
+  suite.addTest(TestAdmittanceVecd('test'))
   unittest.TextTestRunner(verbosity=2).run(suite)

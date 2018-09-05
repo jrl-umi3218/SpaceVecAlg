@@ -36,6 +36,13 @@ public:
 	friend class PTransform<T>;
 
 public:
+	/// Zero motion vector
+	static MotionVec<T> Zero()
+	{
+		return MotionVec<T>(vector3_t::Zero(), vector3_t::Zero());
+	}
+
+public:
 	MotionVec():
 		angular_(),
 		linear_()

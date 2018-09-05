@@ -21,6 +21,42 @@ from libcpp.vector cimport vector
 from libcpp cimport bool
 
 cdef extern from "<SpaceVecAlg/SpaceVecAlg>" namespace "sva":
+  cdef cppclass AdmittanceVec[T]:
+    AdmittanceVec()
+    AdmittanceVec(const AdmittanceVec[T] &)
+    AdmittanceVec(const c_eigen.Matrix[T,c_eigen.six,c_eigen.one]&)
+    AdmittanceVec(const c_eigen.Matrix[T,c_eigen.three,c_eigen.one]&,
+                  const c_eigen.Matrix[T,c_eigen.three,c_eigen.one]&)
+
+    c_eigen.Matrix[T,c_eigen.three,c_eigen.one] angular() const
+    c_eigen.Matrix[T,c_eigen.three,c_eigen.one] linear() const
+    c_eigen.Matrix[T,c_eigen.six,c_eigen.one] vector() const
+
+    AdmittanceVec[T] operator+(const AdmittanceVec[T] &)
+    AdmittanceVec[T] operator*(const T &)
+    AdmittanceVec[T] operator/(const T &)
+
+    bool operator==(const AdmittanceVec[T] &)
+    bool operator!=(const AdmittanceVec[T] &)
+
+  cdef cppclass ImpedanceVec[T]:
+    ImpedanceVec()
+    ImpedanceVec(const ImpedanceVec[T] &)
+    ImpedanceVec(const c_eigen.Matrix[T,c_eigen.six,c_eigen.one]&)
+    ImpedanceVec(const c_eigen.Matrix[T,c_eigen.three,c_eigen.one]&,
+                 const c_eigen.Matrix[T,c_eigen.three,c_eigen.one]&)
+
+    c_eigen.Matrix[T,c_eigen.three,c_eigen.one] angular() const
+    c_eigen.Matrix[T,c_eigen.three,c_eigen.one] linear() const
+    c_eigen.Matrix[T,c_eigen.six,c_eigen.one] vector() const
+
+    ImpedanceVec[T] operator+(const ImpedanceVec[T] &)
+    ImpedanceVec[T] operator*(const T &)
+    ImpedanceVec[T] operator/(const T &)
+
+    bool operator==(const ImpedanceVec[T] &)
+    bool operator!=(const ImpedanceVec[T] &)
+
   cdef cppclass ForceVec[T]:
     ForceVec()
     ForceVec(const ForceVec[T] &)
@@ -29,6 +65,7 @@ cdef extern from "<SpaceVecAlg/SpaceVecAlg>" namespace "sva":
              const c_eigen.Matrix[T,c_eigen.three,c_eigen.one]&)
 
     c_eigen.Matrix[T,c_eigen.three,c_eigen.one] couple() const
+    c_eigen.Matrix[T,c_eigen.three,c_eigen.one] moment() const
     c_eigen.Matrix[T,c_eigen.three,c_eigen.one] force() const
     c_eigen.Matrix[T,c_eigen.six,c_eigen.one] vector() const
 
@@ -156,6 +193,8 @@ cdef extern from "<SpaceVecAlg/SpaceVecAlg>" namespace "sva":
     bool operator==(const PTransform[T]&)
     bool operator!=(const PTransform[T]&)
 
+  ctypedef AdmittanceVec[double] AdmittanceVecd
+  ctypedef ImpedanceVec[double] ImpedanceVecd
   ctypedef ForceVec[double] ForceVecd
   ctypedef MotionVec[double] MotionVecd
   ctypedef RBInertia[double] RBInertiad

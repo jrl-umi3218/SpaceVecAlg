@@ -18,6 +18,8 @@
 set(SOURCES lib.cpp)
 set(HEADERS SpaceVecAlg/MotionVec.h
             SpaceVecAlg/ForceVec.h
+            SpaceVecAlg/ImpedanceVec.h
+            SpaceVecAlg/AdmittanceVec.h
             SpaceVecAlg/PTransform.h
             SpaceVecAlg/RBInertia.h
             SpaceVecAlg/ABInertia.h

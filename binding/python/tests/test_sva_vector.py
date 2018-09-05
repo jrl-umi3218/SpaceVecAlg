@@ -187,6 +187,9 @@ class TestImpedanceVecd(unittest.TestCase):
     res = eigen.Vector6d([ x*y for x,y in zip(vec.vector(), mv.vector()) ])
     self.assertEqual(res, fv.vector())
 
+    fv2 = mv * vec
+    self.assertEqual(fv, fv2)
+
     hv = sva.ImpedanceVecd(11., 42.)
     self.assertEqual(hv.angular(), eigen.Vector3d(11., 11., 11.))
     self.assertEqual(hv.linear(), eigen.Vector3d(42., 42., 42.))
@@ -237,6 +240,9 @@ class TestAdmittanceVecd(unittest.TestCase):
     self.assertTrue(isinstance(mv, sva.MotionVecd))
     res = eigen.Vector6d([ x*y for x,y in zip(vec.vector(), fv.vector()) ])
     self.assertEqual(res, mv.vector())
+
+    mv2 = fv * vec
+    self.assertEqual(mv, mv2)
 
     hv = sva.AdmittanceVecd(11., 42.)
     self.assertEqual(hv.angular(), eigen.Vector3d(11., 11., 11.))

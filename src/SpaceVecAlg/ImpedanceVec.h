@@ -186,6 +186,12 @@ inline ForceVec<T> operator*(const ImpedanceVec<T>& iv, const MotionVec<T>& mv)
 }
 
 template<typename T>
+inline ForceVec<T> operator*(const MotionVec<T> & mv, const ImpedanceVec<T> & iv)
+{
+	return iv * mv;
+}
+
+template<typename T>
 inline std::ostream& operator<<(std::ostream& out, const ImpedanceVec<T>& iv)
 {
 	out << iv.vector().transpose();

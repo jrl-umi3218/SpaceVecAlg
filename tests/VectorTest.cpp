@@ -304,6 +304,9 @@ BOOST_AUTO_TEST_CASE(ImpedanceVecdTest)
 	BOOST_CHECK_EQUAL(fv.force(), vec.linear().cwiseProduct(mv.linear()));
 	BOOST_CHECK_EQUAL(fv.couple(), vec.angular().cwiseProduct(mv.angular()));
 
+	sva::ForceVecd fv2 = mv * vec;
+	BOOST_CHECK_EQUAL(fv, fv2);
+
 	// homogeneous constructor
 	sva::ImpedanceVecd hiv(11., 42.);
 	BOOST_CHECK_EQUAL(hiv.angular(), Eigen::Vector3d(11., 11., 11.));
@@ -383,6 +386,9 @@ BOOST_AUTO_TEST_CASE(AdmittanceVecdTest)
 	sva::MotionVecd mv = vec * fv;
 	BOOST_CHECK_EQUAL(mv.linear(), vec.linear().cwiseProduct(fv.force()));
 	BOOST_CHECK_EQUAL(mv.angular(), vec.angular().cwiseProduct(fv.couple()));
+
+	sva::MotionVecd mv2 = fv * vec;
+	BOOST_CHECK_EQUAL(mv, mv2);
 
 	// homogeneous constructor
 	sva::AdmittanceVecd hav(11., 42.);

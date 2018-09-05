@@ -267,6 +267,8 @@ cdef class ForceVecd(object):
     return ForceVecdFromC(deref(self.impl)*s)
   def __mul__(self, other):
     if isinstance(self, ForceVecd):
+      if isinstance(other, AdmittanceVecd):
+        return other.__mul__(self)
       return self.__mul(other)
     else:
       return other.__mul__(self)
@@ -385,6 +387,8 @@ cdef class MotionVecd(object):
     return MotionVecdFromC(deref(self.impl)*s)
   def __mul__(self, other):
     if isinstance(self, MotionVecd):
+      if isinstance(other, ImpedanceVecd):
+        return other.__mul__(self)
       return self.__mul(other)
     else:
       return other.__mul__(self)

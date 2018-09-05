@@ -138,9 +138,25 @@ public:
 	}
 
 	template<typename T2>
+	AdmittanceVec<T> & operator*=(T2 scalar)
+	{
+		angular_ *= scalar;
+		linear_ *= scalar;
+		return *this;
+	}
+
+	template<typename T2>
 	AdmittanceVec<T> operator/(T2 scalar) const
 	{
 		return AdmittanceVec<T>(angular_/scalar, linear_/scalar);
+	}
+
+	template<typename T2>
+	AdmittanceVec<T> & operator/=(T2 scalar)
+	{
+		angular_ /= scalar;
+		linear_ /= scalar;
+		return *this;
 	}
 
 	bool operator==(const AdmittanceVec<T>& av) const

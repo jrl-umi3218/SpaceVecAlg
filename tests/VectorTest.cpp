@@ -262,6 +262,24 @@ BOOST_AUTO_TEST_CASE(ImpedanceVecdTest)
 	// M/alpha
 	BOOST_CHECK_EQUAL((vec/5.).vector(), (z/5.).eval());
 
+	// ==
+	BOOST_CHECK_EQUAL(vec, vec);
+
+	// !=
+	BOOST_CHECK(!(vec != vec));
+
+	// Copy
+	sva::ImpedanceVecd vec_tmp = vec;
+	BOOST_CHECK_EQUAL(vec, vec_tmp);
+
+	// *= alpha
+	vec_tmp *= 5.;
+	BOOST_CHECK_EQUAL(vec_tmp.vector(), (5.*z).eval());
+
+	// /= alpha
+	vec_tmp /= 5.;
+	BOOST_CHECK(vec_tmp.vector().isApprox(z));
+
 	Vector3d w2, v2;
 	w2 = Vector3d::Random();
 	v2 = Vector3d::Random();
@@ -276,12 +294,6 @@ BOOST_AUTO_TEST_CASE(ImpedanceVecdTest)
 	sva::ImpedanceVecd vec_pluseq(vec);
 	vec_pluseq += vec2;
 	BOOST_CHECK_EQUAL(vec_pluseq, vec + vec2);
-
-	// ==
-	BOOST_CHECK_EQUAL(vec, vec);
-
-	// !=
-	BOOST_CHECK(!(vec != vec));
 
 	w = Vector3d::Random();
 	v = Vector3d::Random();
@@ -330,6 +342,24 @@ BOOST_AUTO_TEST_CASE(AdmittanceVecdTest)
 	// M/alpha
 	BOOST_CHECK_EQUAL((vec/5.).vector(), (a/5.).eval());
 
+	// ==
+	BOOST_CHECK_EQUAL(vec, vec);
+
+	// !=
+	BOOST_CHECK(!(vec != vec));
+
+	// Copy
+	sva::AdmittanceVecd vec_tmp = vec;
+	BOOST_CHECK_EQUAL(vec, vec_tmp);
+
+	// *= alpha
+	vec_tmp *= 5.;
+	BOOST_CHECK_EQUAL(vec_tmp.vector(), (5.*a).eval());
+
+	// /= alpha
+	vec_tmp /= 5.;
+	BOOST_CHECK(vec_tmp.vector().isApprox(a));
+
 	Vector3d w2, v2;
 	w2 = Vector3d::Random();
 	v2 = Vector3d::Random();
@@ -344,12 +374,6 @@ BOOST_AUTO_TEST_CASE(AdmittanceVecdTest)
 	sva::AdmittanceVecd vec_pluseq(vec);
 	vec_pluseq += vec2;
 	BOOST_CHECK_EQUAL(vec_pluseq, vec + vec2);
-
-	// ==
-	BOOST_CHECK_EQUAL(vec, vec);
-
-	// !=
-	BOOST_CHECK(!(vec != vec));
 
 	Vector3d n = Vector3d::Random();
 	Vector3d f = Vector3d::Random();

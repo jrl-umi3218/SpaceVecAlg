@@ -137,9 +137,25 @@ public:
 	}
 
 	template<typename T2>
+	ImpedanceVec<T> & operator*=(T2 scalar)
+	{
+		angular_ *= scalar;
+		linear_ *= scalar;
+		return *this;
+	}
+
+	template<typename T2>
 	ImpedanceVec<T> operator/(T2 scalar) const
 	{
 		return ImpedanceVec<T>(angular_/scalar, linear_/scalar);
+	}
+
+	template<typename T2>
+	ImpedanceVec<T> & operator/=(T2 scalar)
+	{
+		angular_ /= scalar;
+		linear_ /= scalar;
+		return *this;
 	}
 
 	bool operator==(const ImpedanceVec<T>& iv) const

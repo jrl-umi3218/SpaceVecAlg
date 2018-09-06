@@ -37,6 +37,12 @@ set(HEADERS SpaceVecAlg/MotionVec.h
 # !!! Don't link against it !!!
 add_library(SpaceVecAlg ${SOURCES} ${HEADERS})
 
+if(DEFINED Eigen_INCLUDE_DIR)
+  target_include_directories(SpaceVecAlg SYSTEM INTERFACE "${Eigen_INCLUDE_DIR}")
+else()
+  target_include_directories(SpaceVecAlg SYSTEM INTERFACE "${_Eigen_INCLUDE_DIRS}")
+endif()
+
 # Targets:
 #   * <prefix>/lib/libbar.a
 #   * <prefix>/lib/libbaz.a

@@ -21,7 +21,9 @@ branches:
   except:
     - debian
 language: cpp
-compiler: gcc
+compiler:
+- gcc
+- clang
 env:
   global:
   - APT_DEPENDENCIES="doxygen doxygen-latex libboost-all-dev"

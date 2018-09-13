@@ -17,6 +17,8 @@
 
 #pragma once
 
+#include <type_traits>
+
 namespace sva
 {
 
@@ -130,7 +132,7 @@ public:
 		return *this;
 	}
 
-	template<typename T2>
+	template<typename T2, typename std::enable_if<std::is_arithmetic<T2>::value, int>::type = 0>
 	ImpedanceVec<T> operator*(T2 scalar) const
 	{
 		return ImpedanceVec<T>(scalar*angular_, scalar*linear_);

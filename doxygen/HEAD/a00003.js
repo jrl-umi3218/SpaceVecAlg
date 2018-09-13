@@ -13,7 +13,7 @@ var a00003 =
     [ "moment", "a00003.html#a8c076a7556516236f004b9a0548d534c", null ],
     [ "moment", "a00003.html#aed200378aeafda85323973c2f0bce4b2", null ],
     [ "operator!=", "a00003.html#abb947129737da2bb6fc973c694f4959a", null ],
-    [ "operator*", "a00003.html#aea6f4bf4fd5203c02242632a7b3a2c2f", null ],
+    [ "operator*", "a00003.html#ab4851782cba8b236ba76deb76919308e", null ],
     [ "operator+", "a00003.html#aab0b01ed3e67617fc5b6d75989116ec1", null ],
     [ "operator+=", "a00003.html#ab130da1c2b94fece993f56f039bdc070", null ],
     [ "operator-", "a00003.html#a08f69aa68ac7c842921cadc240386263", null ],

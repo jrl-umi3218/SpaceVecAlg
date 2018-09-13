@@ -139,9 +139,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a50bdd4d463493eeb26f79ed101cc1a9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad577e632b2bb9e3018e5761c5412e063"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00005.html">MotionVec</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#ad577e632b2bb9e3018e5761c5412e063">operator-=</a> (const <a class="el" href="a00005.html">MotionVec</a>&lt; T &gt; &amp;mv)</td></tr>
 <tr class="separator:ad577e632b2bb9e3018e5761c5412e063"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a81bae1c413e089caab3b95865b45d4c1"><td class="memTemplParams" colspan="2">template&lt;typename T2 &gt; </td></tr>
-<tr class="memitem:a81bae1c413e089caab3b95865b45d4c1"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00005.html">MotionVec</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00005.html#a81bae1c413e089caab3b95865b45d4c1">operator*</a> (T2 scalar) const </td></tr>
-<tr class="separator:a81bae1c413e089caab3b95865b45d4c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c454f35f4d1c803c35f9a7fa4ac1548"><td class="memTemplParams" colspan="2">template&lt;typename T2 , typename std::enable_if&lt; std::is_arithmetic&lt; T2 &gt;::value, int &gt;::type  = 0&gt; </td></tr>
+<tr class="memitem:a2c454f35f4d1c803c35f9a7fa4ac1548"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00005.html">MotionVec</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00005.html#a2c454f35f4d1c803c35f9a7fa4ac1548">operator*</a> (T2 scalar) const </td></tr>
+<tr class="separator:a2c454f35f4d1c803c35f9a7fa4ac1548"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a406bf81ccee766a67b8e21c3e11e9314"><td class="memTemplParams" colspan="2">template&lt;typename T2 &gt; </td></tr>
 <tr class="memitem:a406bf81ccee766a67b8e21c3e11e9314"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00005.html">MotionVec</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00005.html#a406bf81ccee766a67b8e21c3e11e9314">operator/</a> (T2 scalar) const </td></tr>
 <tr class="separator:a406bf81ccee766a67b8e21c3e11e9314"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -640,13 +640,13 @@ template&lt;typename T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a81bae1c413e089caab3b95865b45d4c1"></a>
+<a class="anchor" id="a2c454f35f4d1c803c35f9a7fa4ac1548"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T&gt; </div>
 <div class="memtemplate">
-template&lt;typename T2 &gt; </div>
+template&lt;typename T2 , typename std::enable_if&lt; std::is_arithmetic&lt; T2 &gt;::value, int &gt;::type  = 0&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -936,7 +936,7 @@ template&lt;typename T&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="a00023.html">sva</a></li><li class="navelem"><a class="el" href="a00005.html">MotionVec</a></li>
-    <li class="footer">Generated on Thu Sep 6 2018 02:14:06 for SpaceVecAlg by
+    <li class="footer">Generated on Thu Sep 13 2018 12:51:28 for SpaceVecAlg by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

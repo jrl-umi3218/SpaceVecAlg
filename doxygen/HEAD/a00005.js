@@ -16,7 +16,7 @@ var a00005 =
     [ "linear", "a00005.html#a535094508d6637aeaaa837eb8ff8b816", null ],
     [ "linear", "a00005.html#a3abfa746c359d99964c609e96dab22a9", null ],
     [ "operator!=", "a00005.html#a28b2bd6206e689829c073c111a7228cb", null ],
-    [ "operator*", "a00005.html#a81bae1c413e089caab3b95865b45d4c1", null ],
+    [ "operator*", "a00005.html#a2c454f35f4d1c803c35f9a7fa4ac1548", null ],
     [ "operator+", "a00005.html#a5afe145a7af591b9482fb17e4aeef8cf", null ],
     [ "operator+=", "a00005.html#a50bdd4d463493eeb26f79ed101cc1a9b", null ],
     [ "operator-", "a00005.html#a57420e9dfb814dad8f40adae4d26dfbb", null ],

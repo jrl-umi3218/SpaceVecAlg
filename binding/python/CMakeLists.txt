@@ -41,6 +41,7 @@ ADD_CUSTOM_TARGET(sva-python-bindings ALL
   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
   COMMENT "Generating local SpaceVecAlg Python bindings"
   DEPENDS include/sva_wrapper.hpp sva/c_sva.pxd sva/sva.pxd sva/sva.pyx
+  SOURCES include/sva_wrapper.hpp sva/c_sva.pxd sva/sva.pxd sva/sva.pyx
 )
 
 IF(NOT ${DISABLE_TESTS})
@@ -49,6 +50,7 @@ IF(NOT ${DISABLE_TESTS})
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     COMMENT "Test SpaceVecAlg Python bindings"
     DEPENDS tests/test_sva_containers.py tests/test_sva_inertia.py tests/test_sva_pickle.py tests/test_sva_ptransform.py tests/test_sva_vector.py
+    SOURCES tests/test_sva_containers.py tests/test_sva_inertia.py tests/test_sva_pickle.py tests/test_sva_ptransform.py tests/test_sva_vector.py
   )
   ADD_TEST(NAME PythonBindingsTest
     COMMAND nosetests

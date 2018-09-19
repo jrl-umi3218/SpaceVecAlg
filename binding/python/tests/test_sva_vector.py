@@ -168,7 +168,7 @@ class TestImpedanceVecd(unittest.TestCase):
     vec2 = sva.ImpedanceVecd(w2, v2)
     z2 = vec2.vector()
 
-    self.assertEqual((vec + vec2).vector(), z + z2)
+    self.assertAlmostEqual(((vec + vec2).vector() - (z + z2)).norm(), 0, delta = TOL)
 
     vec_pluseq = sva.ImpedanceVecd(vec)
     self.assertEqual(vec_pluseq, vec)

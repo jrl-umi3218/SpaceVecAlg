@@ -59,7 +59,7 @@ cdef class AdmittanceVecd(object):
   def __repr__(self):
     return "sva.AdmittanceVecd"
   def __str__(self):
-    return c_sva_private.AdmittanceVecdToString(self.impl)
+    return c_sva_private.AdmittanceVecdToString(self.impl).decode('utf-8')
 
   def __add__(AdmittanceVecd self, AdmittanceVecd other):
     return AdmittanceVecdFromC(self.impl + other.impl)
@@ -147,7 +147,7 @@ cdef class ImpedanceVecd(object):
   def __repr__(self):
     return "sva.ImpedanceVecd"
   def __str__(self):
-    return c_sva_private.ImpedanceVecdToString(self.impl)
+    return c_sva_private.ImpedanceVecdToString(self.impl).decode('utf-8')
 
   def __add__(ImpedanceVecd self, ImpedanceVecd other):
     return ImpedanceVecdFromC(self.impl + other.impl)
@@ -246,7 +246,7 @@ cdef class ForceVecd(object):
   def __repr__(self):
     return "sva.ForceVecd"
   def __str__(self):
-    return c_sva_private.ForceVecToString[double](deref(self.impl))
+    return c_sva_private.ForceVecToString[double](deref(self.impl)).decode('utf-8')
 
   def __add__(ForceVecd self, ForceVecd other):
     return ForceVecdFromC(deref(self.impl) + deref(other.impl))
@@ -366,7 +366,7 @@ cdef class MotionVecd(object):
   def __repr__(self):
     return "sva.MotionVecd"
   def __str__(self):
-    return c_sva_private.MotionVecToString[double](deref(self.impl))
+    return c_sva_private.MotionVecToString[double](deref(self.impl)).decode('utf-8')
 
   def __add__(MotionVecd self, MotionVecd other):
     return MotionVecdFromC(deref(self.impl) + deref(other.impl))
@@ -495,7 +495,7 @@ cdef class RBInertiad(object):
   def __repr__(self):
     return "sva.RBInertiad"
   def __str__(self):
-    return c_sva_private.RBInertiaToString[double](deref(self.impl))
+    return c_sva_private.RBInertiaToString[double](deref(self.impl)).decode('utf-8')
 
   def __add__(RBInertiad self, RBInertiad other):
     return RBInertiadFromC(deref(self.impl) + deref(other.impl))
@@ -587,7 +587,7 @@ cdef class ABInertiad(object):
   def __repr__(self):
     return "sva.ABInertiad"
   def __str__(self):
-    return c_sva_private.ABInertiaToString[double](deref(self.impl))
+    return c_sva_private.ABInertiaToString[double](deref(self.impl)).decode('utf-8')
 
   def __abinertia_add(self, ABInertiad other):
     return ABInertiadFromC(deref(self.impl) + deref(other.impl))
@@ -726,7 +726,7 @@ cdef class PTransformd(object):
   def __repr__(self):
     return "sva.PTransformd"
   def __str__(self):
-    return c_sva_private.PTransformToString[double](deref(self.impl))
+    return c_sva_private.PTransformToString[double](deref(self.impl)).decode('utf-8')
 
   def __pt_mul(self, PTransformd pt):
     return PTransformdFromC(deref(self.impl)*deref(pt.impl))

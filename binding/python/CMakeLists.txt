@@ -74,4 +74,4 @@ ELSE()
     COMMENT "Install SpaceVecAlg Python bindings"
   )
 ENDIF()
-INSTALL(CODE "EXECUTE_PROCESS(COMMAND ${CMAKE_MAKE_PROGRAM} install-sva-python-bindings)")
+INSTALL(CODE "EXECUTE_PROCESS(COMMAND ${CMAKE_COMMAND} --build ${CMAKE_BINARY_DIR} --target install-sva-python-bindings)")

@@ -328,16 +328,16 @@ BOOST_AUTO_TEST_CASE(TransformError)
 	PTransformd X_a_b(Quaterniond(Vector4d::Random()).normalized(), Vector3d::Random());
 	PTransformd X_a_c(Quaterniond(Vector4d::Random()).normalized(), Vector3d::Random());
 
-	MotionVecd V_a_b = transformVelocity(X_a_b, 1e-7);
-	MotionVecd V_a_c = transformVelocity(X_a_c, 1e-7);
+	MotionVecd V_a_b = transformVelocity(X_a_b);
+	MotionVecd V_a_c = transformVelocity(X_a_c);
 
 	BOOST_CHECK_SMALL((V_a_b.angular() - rotationVelocity(X_a_b.rotation())).norm(), TOL);
 	BOOST_CHECK_SMALL((V_a_b.linear() - X_a_b.translation()).norm(), TOL);
 	BOOST_CHECK_SMALL((V_a_c.angular() - rotationVelocity(X_a_c.rotation())).norm(), TOL);
 	BOOST_CHECK_SMALL((V_a_c.linear() - X_a_c.translation()).norm(), TOL);
 
-	MotionVecd V_b_c_a = transformError(X_a_b, X_a_c, 1e-7);
-	Vector3d w_b_c_a = rotationError(X_a_b.rotation(), X_a_c.rotation(), 1e-7);
+	MotionVecd V_b_c_a = transformError(X_a_b, X_a_c);
+	Vector3d w_b_c_a = rotationError(X_a_b.rotation(), X_a_c.rotation());
 	Vector3d v_b_c_a = X_a_c.translation() - X_a_b.translation();
 
 	BOOST_CHECK_SMALL((V_b_c_a.angular() - w_b_c_a).norm(), TOL);

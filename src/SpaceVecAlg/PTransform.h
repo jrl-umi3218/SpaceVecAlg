@@ -51,34 +51,29 @@ Matrix3<T> RotZ(T theta);
 	* This method convert the 3D rotation matrix E_b_c into a rotation vector.
 	* The matrix E_b_c is computed as follow E_a_c = E_b_c*E_a_b.
 	* Then the error is computed with E_b_a*rotationVelocity(E_b_c).
-	* @param prec Deprecated.
 	* @return XYZ rotation in radian.
 	*/
 template<typename T>
-Vector3<T> rotationError(const Matrix3<T>& E_a_b, const Matrix3<T>& E_a_c,
-	double prec=1e-8);
+Vector3<T> rotationError(const Matrix3<T>& E_a_b, const Matrix3<T>& E_a_c);
 
 /**
 	* Compute the 3D rotation vector of the rotation matrix E_a_b in the 'a' frame.
 	* If we integrate this rotation vector for 1 second we must
 	* have the rotation matrix E_a_b.
 	* (see exponential matrix and logarithmic matrix).
-	* @param prec Deprecated.
 	*/
 template<typename T>
-Vector3<T> rotationVelocity(const Matrix3<T>& E_a_b, double prec=1e-8);
+Vector3<T> rotationVelocity(const Matrix3<T>& E_a_b);
 
 /**
 	* Compute the 6D error between two PTransform in the 'a' frame.
 	* This method convert the 6D transformation matrix X_b_c into a motion vector.
 	* The matrix X_b_c is computed as follow X_a_c = X_b_c*X_a_b.
 	* Then the error is computed with PTransform(E_b_a)*transformVelocity(X_b_c).
-	* @param prec Deprecated.
 	* @return XYZ rotation in radian.
 	*/
 template<typename T>
-MotionVec<T> transformError(const PTransform<T>& X_a_b, const PTransform<T>& X_a_c,
-	double prec=1e-8);
+MotionVec<T> transformError(const PTransform<T>& X_a_b, const PTransform<T>& X_a_c);
 
 /**
 	* Compute the motion vector of the matrix X_a_b in the 'a' frame.
@@ -87,10 +82,9 @@ MotionVec<T> transformError(const PTransform<T>& X_a_b, const PTransform<T>& X_a
 	* This function can be see as an implementation of the function XtoV
 	* (see Featherstone appendix) but with the use of logarithmic
 	* matrix to compute the rotational error.
-	* @param prec Deprecated.
 	*/
 template<typename T>
-MotionVec<T> transformVelocity(const PTransform<T>& X_a_b, double prec=1e-8);
+MotionVec<T> transformVelocity(const PTransform<T>& X_a_b);
 
 
 /**
@@ -344,16 +338,15 @@ inline Matrix3<T> RotZ(T theta)
 
 
 template<typename T>
-inline Vector3<T> rotationError(const Matrix3<T>& E_a_b, const Matrix3<T>& E_a_c,
-	double prec)
+inline Vector3<T> rotationError(const Matrix3<T>& E_a_b, const Matrix3<T>& E_a_c)
 {
 	Matrix3<T> E_b_c = E_a_c*E_a_b.transpose();
-	return Vector3<T>(E_a_b.transpose()*rotationVelocity(E_b_c, prec));
+	return Vector3<T>(E_a_b.transpose()*rotationVelocity(E_b_c));
 }
 
 
 template<typename T>
-inline Vector3<T> rotationVelocity(const Matrix3<T>& E_a_b, double /* prec */)
+inline Vector3<T> rotationVelocity(const Matrix3<T>& E_a_b)
 {
 	Vector3<T> w;
 	T acosV = (E_a_b(0,0) + E_a_b(1,1) + E_a_b(2,2) - 1.)*0.5;
@@ -369,18 +362,17 @@ inline Vector3<T> rotationVelocity(const Matrix3<T>& E_a_b, double /* prec */)
 
 
 template<typename T>
-inline MotionVec<T> transformError(const PTransform<T>& X_a_b,
-	const PTransform<T>& X_a_c, double prec)
+inline MotionVec<T> transformError(const PTransform<T>& X_a_b, const PTransform<T>& X_a_c)
 {
 	PTransform<T> X_b_c = X_a_c*X_a_b.inv();
-	return PTransform<T>(Matrix3<T>(X_a_b.rotation().transpose()))*transformVelocity(X_b_c, prec);
+	return PTransform<T>(Matrix3<T>(X_a_b.rotation().transpose()))*transformVelocity(X_b_c);
 }
 
 
 template<typename T>
-inline MotionVec<T> transformVelocity(const PTransform<T>& X_a_b, double prec)
+inline MotionVec<T> transformVelocity(const PTransform<T>& X_a_b)
 {
-	return MotionVec<T>(rotationVelocity(X_a_b.rotation(), prec),
+	return MotionVec<T>(rotationVelocity(X_a_b.rotation()),
 		X_a_b.translation());
 }
 

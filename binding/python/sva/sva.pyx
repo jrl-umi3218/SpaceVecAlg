@@ -871,20 +871,18 @@ def RotY(double theta):
 def RotZ(double theta):
   return eigen.Matrix3dFromC(<c_eigen.Matrix3d>(c_sva.RotZ[double](theta)))
 
-def rotationError(eigen.Matrix3d E_a_b, eigen.Matrix3d E_a_c, double prec = 1e-8):
-  return eigen.Vector3dFromC(<c_eigen.Vector3d>(c_sva.rotationError[double](E_a_b.impl, E_a_c.impl, prec)))
+def rotationError(eigen.Matrix3d E_a_b, eigen.Matrix3d E_a_c):
+  return eigen.Vector3dFromC(<c_eigen.Vector3d>(c_sva.rotationError[double](E_a_b.impl, E_a_c.impl)))
 
-def rotationVelocity(eigen.Matrix3d E_a_b, double prec = 1e-8):
-  return eigen.Vector3dFromC(<c_eigen.Vector3d>(c_sva.rotationVelocity[double](E_a_b.impl,
-      prec)))
+def rotationVelocity(eigen.Matrix3d E_a_b):
+  return eigen.Vector3dFromC(<c_eigen.Vector3d>(c_sva.rotationVelocity[double](E_a_b.impl)))
 
-def transformError(PTransformd X_a_b, PTransformd X_a_c, double prec = 1e-8):
+def transformError(PTransformd X_a_b, PTransformd X_a_c):
   return MotionVecdFromC(c_sva.transformError[double](deref(X_a_b.impl),
-      deref(X_a_c.impl),
-      prec))
+      deref(X_a_c.impl)))
 
-def transformVelocity(PTransformd X_a_b, double prec = 1e-8):
-  return MotionVecdFromC(c_sva.transformVelocity[double](deref(X_a_b.impl), prec))
+def transformVelocity(PTransformd X_a_b):
+  return MotionVecdFromC(c_sva.transformVelocity[double](deref(X_a_b.impl)))
 
 def vector3ToCrossMatrix(eigen.Vector3d v):
   return eigen.Matrix3dFromC(<c_eigen.Matrix3d>(c_sva.vector3ToCrossMatrix[double](v.impl)))

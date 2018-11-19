@@ -205,11 +205,11 @@ cdef extern from "<SpaceVecAlg/SpaceVecAlg>" namespace "sva":
   c_eigen.Matrix[T,c_eigen.three,c_eigen.three] RotY[T](T)
   c_eigen.Matrix[T,c_eigen.three,c_eigen.three] RotZ[T](T)
 
-  c_eigen.Matrix[T,c_eigen.three,c_eigen.three] rotationError[T](const c_eigen.Matrix[T,c_eigen.three,c_eigen.three]&, const c_eigen.Matrix[T,c_eigen.three,c_eigen.three]&, T)
-  c_eigen.Matrix[T,c_eigen.three,c_eigen.three] rotationVelocity[T](const c_eigen.Matrix[T,c_eigen.three,c_eigen.three]&, T)
+  c_eigen.Matrix[T,c_eigen.three,c_eigen.three] rotationError[T](const c_eigen.Matrix[T,c_eigen.three,c_eigen.three]&, const c_eigen.Matrix[T,c_eigen.three,c_eigen.three]&)
+  c_eigen.Matrix[T,c_eigen.three,c_eigen.three] rotationVelocity[T](const c_eigen.Matrix[T,c_eigen.three,c_eigen.three]&)
 
-  MotionVec[T] transformError[T](const PTransform[T]&, const PTransform[T]&, T)
-  MotionVec[T] transformVelocity[T](const PTransform[T]&, T)
+  MotionVec[T] transformError[T](const PTransform[T]&, const PTransform[T]&)
+  MotionVec[T] transformVelocity[T](const PTransform[T]&)
 
   c_eigen.Matrix[T,c_eigen.three,c_eigen.three] vector3ToCrossMatrix[T](const c_eigen.Matrix[T,c_eigen.three,c_eigen.one]&)
   c_eigen.Matrix[T,c_eigen.six,c_eigen.six] vector6ToCrossMatrix[T](const c_eigen.Matrix[T,c_eigen.six,c_eigen.one]&)

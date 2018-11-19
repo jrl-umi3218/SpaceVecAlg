@@ -195,16 +195,16 @@ class TestTransformError(unittest.TestCase):
     X_a_b = sva.PTransformd(eigen.Quaterniond(eigen.Vector4d.Random()).normalized(), eigen.Vector3d.Random())
     X_a_c = sva.PTransformd(eigen.Quaterniond(eigen.Vector4d.Random()).normalized(), eigen.Vector3d.Random())
 
-    V_a_b = sva.transformVelocity(X_a_b, 1e-7)
-    V_a_c = sva.transformVelocity(X_a_c, 1e-7)
+    V_a_b = sva.transformVelocity(X_a_b)
+    V_a_c = sva.transformVelocity(X_a_c)
 
     self.assertAlmostEqual((V_a_b.angular() - sva.rotationVelocity(X_a_b.rotation())).norm(), 0, delta = TOL)
     self.assertAlmostEqual((V_a_b.linear() - X_a_b.translation()).norm(), 0, delta = TOL)
     self.assertAlmostEqual((V_a_c.angular() - sva.rotationVelocity(X_a_c.rotation())).norm(), 0, delta = TOL)
     self.assertAlmostEqual((V_a_c.linear() - X_a_c.translation()).norm(), 0, delta = TOL)
 
-    V_b_c_a = sva.transformError(X_a_b, X_a_c, 1e-7)
-    w_b_c_a = sva.rotationError(X_a_b.rotation(), X_a_c.rotation(), 1e-7)
+    V_b_c_a = sva.transformError(X_a_b, X_a_c)
+    w_b_c_a = sva.rotationError(X_a_b.rotation(), X_a_c.rotation())
     v_b_c_a = X_a_c.translation() - X_a_b.translation()
 
     self.assertAlmostEqual((V_b_c_a.angular() - w_b_c_a).norm(), 0, delta = TOL)

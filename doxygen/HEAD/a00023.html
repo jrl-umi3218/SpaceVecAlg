@@ -231,22 +231,22 @@ Functions</h2></td></tr>
 <tr class="memitem:a945b27220fb3db512a24939c8cc1b5ee"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00021.html#ac4d27bf92869006caf1413e5d218e2f1">Matrix3</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00023.html#a945b27220fb3db512a24939c8cc1b5ee">RotZ</a> (T theta)</td></tr>
 <tr class="memdesc:a945b27220fb3db512a24939c8cc1b5ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a rotation matrix about the Z axis.  <a href="#a945b27220fb3db512a24939c8cc1b5ee">More...</a><br/></td></tr>
 <tr class="separator:a945b27220fb3db512a24939c8cc1b5ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a19fbf7e2be8a0b0f4549fa9055c442b2"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a19fbf7e2be8a0b0f4549fa9055c442b2"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00021.html#a55408ba932fc7d1707bd7adc7e5e930f">Vector3</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00023.html#a19fbf7e2be8a0b0f4549fa9055c442b2">rotationError</a> (const <a class="el" href="a00021.html#ac4d27bf92869006caf1413e5d218e2f1">Matrix3</a>&lt; T &gt; &amp;E_a_b, const <a class="el" href="a00021.html#ac4d27bf92869006caf1413e5d218e2f1">Matrix3</a>&lt; T &gt; &amp;E_a_c, double prec=1e-8)</td></tr>
-<tr class="memdesc:a19fbf7e2be8a0b0f4549fa9055c442b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the 3D rotation error between two matrix E_a_b and E_a_c in the 'a' frame.  <a href="#a19fbf7e2be8a0b0f4549fa9055c442b2">More...</a><br/></td></tr>
-<tr class="separator:a19fbf7e2be8a0b0f4549fa9055c442b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a69e918e3dc71b93c3f4a2136c525f2a0"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a69e918e3dc71b93c3f4a2136c525f2a0"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00021.html#a55408ba932fc7d1707bd7adc7e5e930f">Vector3</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00023.html#a69e918e3dc71b93c3f4a2136c525f2a0">rotationVelocity</a> (const <a class="el" href="a00021.html#ac4d27bf92869006caf1413e5d218e2f1">Matrix3</a>&lt; T &gt; &amp;E_a_b, double prec=1e-8)</td></tr>
-<tr class="memdesc:a69e918e3dc71b93c3f4a2136c525f2a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the 3D rotation vector of the rotation matrix E_a_b in the 'a' frame.  <a href="#a69e918e3dc71b93c3f4a2136c525f2a0">More...</a><br/></td></tr>
-<tr class="separator:a69e918e3dc71b93c3f4a2136c525f2a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6fbac271475e71e5c72fa8ba6c01fdf5"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a6fbac271475e71e5c72fa8ba6c01fdf5"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00005.html">MotionVec</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00023.html#a6fbac271475e71e5c72fa8ba6c01fdf5">transformError</a> (const <a class="el" href="a00006.html">PTransform</a>&lt; T &gt; &amp;X_a_b, const <a class="el" href="a00006.html">PTransform</a>&lt; T &gt; &amp;X_a_c, double prec=1e-8)</td></tr>
-<tr class="memdesc:a6fbac271475e71e5c72fa8ba6c01fdf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the 6D error between two <a class="el" href="a00006.html" title="Plücker transform compact representation. ">PTransform</a> in the 'a' frame.  <a href="#a6fbac271475e71e5c72fa8ba6c01fdf5">More...</a><br/></td></tr>
-<tr class="separator:a6fbac271475e71e5c72fa8ba6c01fdf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc9e3175704107c30feb6c0204ca2086"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:acc9e3175704107c30feb6c0204ca2086"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00005.html">MotionVec</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00023.html#acc9e3175704107c30feb6c0204ca2086">transformVelocity</a> (const <a class="el" href="a00006.html">PTransform</a>&lt; T &gt; &amp;X_a_b, double prec=1e-8)</td></tr>
-<tr class="memdesc:acc9e3175704107c30feb6c0204ca2086"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the motion vector of the matrix X_a_b in the 'a' frame.  <a href="#acc9e3175704107c30feb6c0204ca2086">More...</a><br/></td></tr>
-<tr class="separator:acc9e3175704107c30feb6c0204ca2086"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac65899b8e5843b7c7b41093ce38a74d1"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ac65899b8e5843b7c7b41093ce38a74d1"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00021.html#a55408ba932fc7d1707bd7adc7e5e930f">Vector3</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00023.html#ac65899b8e5843b7c7b41093ce38a74d1">rotationError</a> (const <a class="el" href="a00021.html#ac4d27bf92869006caf1413e5d218e2f1">Matrix3</a>&lt; T &gt; &amp;E_a_b, const <a class="el" href="a00021.html#ac4d27bf92869006caf1413e5d218e2f1">Matrix3</a>&lt; T &gt; &amp;E_a_c)</td></tr>
+<tr class="memdesc:ac65899b8e5843b7c7b41093ce38a74d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the 3D rotation error between two matrix E_a_b and E_a_c in the 'a' frame.  <a href="#ac65899b8e5843b7c7b41093ce38a74d1">More...</a><br/></td></tr>
+<tr class="separator:ac65899b8e5843b7c7b41093ce38a74d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44b687fe1934a2289d32f6f5e0eed1db"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a44b687fe1934a2289d32f6f5e0eed1db"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00021.html#a55408ba932fc7d1707bd7adc7e5e930f">Vector3</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00023.html#a44b687fe1934a2289d32f6f5e0eed1db">rotationVelocity</a> (const <a class="el" href="a00021.html#ac4d27bf92869006caf1413e5d218e2f1">Matrix3</a>&lt; T &gt; &amp;E_a_b)</td></tr>
+<tr class="memdesc:a44b687fe1934a2289d32f6f5e0eed1db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the 3D rotation vector of the rotation matrix E_a_b in the 'a' frame.  <a href="#a44b687fe1934a2289d32f6f5e0eed1db">More...</a><br/></td></tr>
+<tr class="separator:a44b687fe1934a2289d32f6f5e0eed1db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a835d4f04eaf5d87dc9cc9b8d011f06a0"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a835d4f04eaf5d87dc9cc9b8d011f06a0"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00005.html">MotionVec</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00023.html#a835d4f04eaf5d87dc9cc9b8d011f06a0">transformError</a> (const <a class="el" href="a00006.html">PTransform</a>&lt; T &gt; &amp;X_a_b, const <a class="el" href="a00006.html">PTransform</a>&lt; T &gt; &amp;X_a_c)</td></tr>
+<tr class="memdesc:a835d4f04eaf5d87dc9cc9b8d011f06a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the 6D error between two <a class="el" href="a00006.html" title="Plücker transform compact representation. ">PTransform</a> in the 'a' frame.  <a href="#a835d4f04eaf5d87dc9cc9b8d011f06a0">More...</a><br/></td></tr>
+<tr class="separator:a835d4f04eaf5d87dc9cc9b8d011f06a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78005b4f61a4c40bffd3e002e7a9ba54"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a78005b4f61a4c40bffd3e002e7a9ba54"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00005.html">MotionVec</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00023.html#a78005b4f61a4c40bffd3e002e7a9ba54">transformVelocity</a> (const <a class="el" href="a00006.html">PTransform</a>&lt; T &gt; &amp;X_a_b)</td></tr>
+<tr class="memdesc:a78005b4f61a4c40bffd3e002e7a9ba54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the motion vector of the matrix X_a_b in the 'a' frame.  <a href="#a78005b4f61a4c40bffd3e002e7a9ba54">More...</a><br/></td></tr>
+<tr class="separator:a78005b4f61a4c40bffd3e002e7a9ba54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a381dd489edaba2181144933166257665"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a381dd489edaba2181144933166257665"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00006.html">PTransform</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00023.html#a381dd489edaba2181144933166257665">interpolate</a> (const <a class="el" href="a00006.html">PTransform</a>&lt; T &gt; &amp;from, const <a class="el" href="a00006.html">PTransform</a>&lt; T &gt; &amp;to, double t)</td></tr>
 <tr class="separator:a381dd489edaba2181144933166257665"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1271,7 +1271,7 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a19fbf7e2be8a0b0f4549fa9055c442b2"></a>
+<a class="anchor" id="ac65899b8e5843b7c7b41093ce38a74d1"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -1290,13 +1290,7 @@ template&lt;typename T &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const <a class="el" href="a00021.html#ac4d27bf92869006caf1413e5d218e2f1">Matrix3</a>&lt; T &gt; &amp;&#160;</td>
-          <td class="paramname"><em>E_a_c</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>prec</em> = <code>1e-8</code>&#160;</td>
+          <td class="paramname"><em>E_a_c</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1313,19 +1307,13 @@ template&lt;typename T &gt; </div>
 
 <p>Compute the 3D rotation error between two matrix E_a_b and E_a_c in the 'a' frame. </p>
 <p>This method convert the 3D rotation matrix E_b_c into a rotation vector. The matrix E_b_c is computed as follow E_a_c = E_b_c*E_a_b. Then the error is computed with E_b_a*rotationVelocity(E_b_c). </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">prec</td><td>Deprecated. </td></tr>
-  </table>
-  </dd>
-</dl>
 <dl class="section return"><dt>Returns</dt><dd>XYZ rotation in radian. </dd></dl>
 
-<p>References <a class="el" href="a00023.html#a69e918e3dc71b93c3f4a2136c525f2a0">rotationVelocity()</a>.</p>
+<p>References <a class="el" href="a00023.html#a44b687fe1934a2289d32f6f5e0eed1db">rotationVelocity()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a69e918e3dc71b93c3f4a2136c525f2a0"></a>
+<a class="anchor" id="a44b687fe1934a2289d32f6f5e0eed1db"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -1338,18 +1326,8 @@ template&lt;typename T &gt; </div>
           <td class="memname"><a class="el" href="a00021.html#a55408ba932fc7d1707bd7adc7e5e930f">Vector3</a>&lt; T &gt; sva::rotationVelocity </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="a00021.html#ac4d27bf92869006caf1413e5d218e2f1">Matrix3</a>&lt; T &gt; &amp;&#160;</td>
-          <td class="paramname"><em>E_a_b</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>E_a_b</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>prec</em> = <code>1e-8</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -1361,16 +1339,10 @@ template&lt;typename T &gt; </div>
 
 <p>Compute the 3D rotation vector of the rotation matrix E_a_b in the 'a' frame. </p>
 <p>If we integrate this rotation vector for 1 second we must have the rotation matrix E_a_b. (see exponential matrix and logarithmic matrix). </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">prec</td><td>Deprecated. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 <p>References <a class="el" href="a00023.html#a3cad8a4ff91f4aace786395eaaef6834">sinc_inv()</a>.</p>
 
-<p>Referenced by <a class="el" href="a00023.html#a19fbf7e2be8a0b0f4549fa9055c442b2">rotationError()</a>, and <a class="el" href="a00023.html#acc9e3175704107c30feb6c0204ca2086">transformVelocity()</a>.</p>
+<p>Referenced by <a class="el" href="a00023.html#ac65899b8e5843b7c7b41093ce38a74d1">rotationError()</a>, and <a class="el" href="a00023.html#a78005b4f61a4c40bffd3e002e7a9ba54">transformVelocity()</a>.</p>
 
 </div>
 </div>
@@ -1498,11 +1470,11 @@ template&lt;typename T &gt; </div>
 <p>Compute 1/sinc(x). </p>
 <p>This code is inspired by boost/math/special_functions/sinc.hpp. </p>
 
-<p>Referenced by <a class="el" href="a00023.html#a69e918e3dc71b93c3f4a2136c525f2a0">rotationVelocity()</a>.</p>
+<p>Referenced by <a class="el" href="a00023.html#a44b687fe1934a2289d32f6f5e0eed1db">rotationVelocity()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a6fbac271475e71e5c72fa8ba6c01fdf5"></a>
+<a class="anchor" id="a835d4f04eaf5d87dc9cc9b8d011f06a0"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -1521,13 +1493,7 @@ template&lt;typename T &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const PTransform&lt; T &gt; &amp;&#160;</td>
-          <td class="paramname"><em>X_a_c</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>prec</em> = <code>1e-8</code>&#160;</td>
+          <td class="paramname"><em>X_a_c</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1544,19 +1510,13 @@ template&lt;typename T &gt; </div>
 
 <p>Compute the 6D error between two <a class="el" href="a00006.html" title="Plücker transform compact representation. ">PTransform</a> in the 'a' frame. </p>
 <p>This method convert the 6D transformation matrix X_b_c into a motion vector. The matrix X_b_c is computed as follow X_a_c = X_b_c*X_a_b. Then the error is computed with PTransform(E_b_a)*transformVelocity(X_b_c). </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">prec</td><td>Deprecated. </td></tr>
-  </table>
-  </dd>
-</dl>
 <dl class="section return"><dt>Returns</dt><dd>XYZ rotation in radian. </dd></dl>
 
-<p>References <a class="el" href="a00006.html#a320c78785763774b308c13b2d168f14a">sva::PTransform&lt; T &gt;::inv()</a>, <a class="el" href="a00006.html#ad8cf0f4f145b55c063d5a527a6c33b76">sva::PTransform&lt; T &gt;::rotation()</a>, and <a class="el" href="a00023.html#acc9e3175704107c30feb6c0204ca2086">transformVelocity()</a>.</p>
+<p>References <a class="el" href="a00006.html#a320c78785763774b308c13b2d168f14a">sva::PTransform&lt; T &gt;::inv()</a>, <a class="el" href="a00006.html#ad8cf0f4f145b55c063d5a527a6c33b76">sva::PTransform&lt; T &gt;::rotation()</a>, and <a class="el" href="a00023.html#a78005b4f61a4c40bffd3e002e7a9ba54">transformVelocity()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="acc9e3175704107c30feb6c0204ca2086"></a>
+<a class="anchor" id="a78005b4f61a4c40bffd3e002e7a9ba54"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -1569,18 +1529,8 @@ template&lt;typename T &gt; </div>
           <td class="memname"><a class="el" href="a00005.html">MotionVec</a>&lt; T &gt; sva::transformVelocity </td>
           <td>(</td>
           <td class="paramtype">const PTransform&lt; T &gt; &amp;&#160;</td>
-          <td class="paramname"><em>X_a_b</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>X_a_b</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>prec</em> = <code>1e-8</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -1592,16 +1542,10 @@ template&lt;typename T &gt; </div>
 
 <p>Compute the motion vector of the matrix X_a_b in the 'a' frame. </p>
 <p>If we integrate this motion vector for 1 second we must have the transformation matrix X_a_b. This function can be see as an implementation of the function XtoV (see Featherstone appendix) but with the use of logarithmic matrix to compute the rotational error. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">prec</td><td>Deprecated. </td></tr>
-  </table>
-  </dd>
-</dl>
 
-<p>References <a class="el" href="a00006.html#ad8cf0f4f145b55c063d5a527a6c33b76">sva::PTransform&lt; T &gt;::rotation()</a>, <a class="el" href="a00023.html#a69e918e3dc71b93c3f4a2136c525f2a0">rotationVelocity()</a>, and <a class="el" href="a00006.html#aa7aaf3327daf7b3984be6d2f5c3ef11b">sva::PTransform&lt; T &gt;::translation()</a>.</p>
+<p>References <a class="el" href="a00006.html#ad8cf0f4f145b55c063d5a527a6c33b76">sva::PTransform&lt; T &gt;::rotation()</a>, <a class="el" href="a00023.html#a44b687fe1934a2289d32f6f5e0eed1db">rotationVelocity()</a>, and <a class="el" href="a00006.html#aa7aaf3327daf7b3984be6d2f5c3ef11b">sva::PTransform&lt; T &gt;::translation()</a>.</p>
 
-<p>Referenced by <a class="el" href="a00023.html#a6fbac271475e71e5c72fa8ba6c01fdf5">transformError()</a>.</p>
+<p>Referenced by <a class="el" href="a00023.html#a835d4f04eaf5d87dc9cc9b8d011f06a0">transformError()</a>.</p>
 
 </div>
 </div>
@@ -1612,7 +1556,7 @@ template&lt;typename T &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="a00023.html">sva</a></li>
-    <li class="footer">Generated on Thu Sep 13 2018 12:52:30 for SpaceVecAlg by
+    <li class="footer">Generated on Mon Nov 19 2018 07:35:03 for SpaceVecAlg by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

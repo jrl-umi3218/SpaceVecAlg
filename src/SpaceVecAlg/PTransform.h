@@ -383,7 +383,7 @@ PTransform<T> interpolate(const PTransform<T>& from, const PTransform<T>& to, do
 {
 	Eigen::Quaternion<T> qfrom(from.rotation());
 	Eigen::Quaternion<T> qto(to.rotation());
-	PTransform<T> result(qfrom.slerp(t, qto), (from.translation()*t + to.translation()*(1.-t)));
+	PTransform<T> result(qfrom.slerp(t, qto), (from.translation()*(1.-t) + to.translation()*t));
 	return result;
 }
 

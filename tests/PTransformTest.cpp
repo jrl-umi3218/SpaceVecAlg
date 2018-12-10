@@ -317,6 +317,14 @@ BOOST_AUTO_TEST_CASE(InterpolateTest)
 	BOOST_CHECK_SMALL((res.rotation() -
 		AngleAxisd(cst::pi<double>()/2., Vector3d::UnitZ()).toRotationMatrix()).norm(), TOL);
 	BOOST_CHECK_SMALL((res.translation() - Vector3d(0.5, 1., -1.5)).norm(), TOL);
+
+	res = interpolate<double>(from, to, 0);
+	BOOST_CHECK_SMALL((res.rotation() - from.rotation()).norm(), TOL);
+	BOOST_CHECK_SMALL((res.translation() - from.translation()).norm(), TOL);
+
+	res = interpolate<double>(from, to, 1);
+	BOOST_CHECK_SMALL((res.rotation() - to.rotation()).norm(), TOL);
+	BOOST_CHECK_SMALL((res.translation() - to.translation()).norm(), TOL);
 }
 
 BOOST_AUTO_TEST_CASE(TransformError)

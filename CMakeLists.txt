@@ -40,6 +40,7 @@ option(PYTHON_BINDING_USER_INSTALL "Install the Python bindings in user space" O
 option(PYTHON_BINDING_FORCE_PYTHON3 "Use pip3/python3 instead of pip/python" OFF)
 option(DISABLE_TESTS "Disable unit tests." OFF)
 option(BENCHMARKS "Generate benchmark." OFF)
+option(ENABLE_SIMD "Build with all SIMD instructions on the current local machine" OFF)
 
 SET(Eigen_REQUIRED "eigen3 >= 3.2.0")
 SEARCH_FOR_EIGEN()

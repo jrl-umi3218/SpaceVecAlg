@@ -32,6 +32,11 @@
 #include <SpaceVecAlg/SpaceVecAlg>
 #include <SpaceVecAlg/Conversions.h>
 
+namespace sva
+{
+  static constexpr double PI = boost::math::constants::pi<double>();
+}
+
 BOOST_AUTO_TEST_CASE(ConversionsHomogeneous)
 {
     using namespace Eigen;
@@ -64,7 +69,7 @@ BOOST_AUTO_TEST_CASE(ConversionsEigenTransform)
     using namespace Eigen;
     using namespace sva;
 
-    PTransformd pt(sva::RotX(M_PI/2)*sva::RotZ(M_PI/4), Eigen::Vector3d(1., 2., 3.));
+    PTransformd pt(sva::RotX(sva::PI/2)*sva::RotZ(sva::PI/4), Eigen::Vector3d(1., 2., 3.));
     conversions::affine3_t<double> et = conversions::toAffine(pt, conversions::RightHanded);
     PTransformd pt2 = conversions::fromAffine(et, conversions::RightHanded);
 

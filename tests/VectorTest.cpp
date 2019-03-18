@@ -301,8 +301,8 @@ BOOST_AUTO_TEST_CASE(ImpedanceVecdTest)
 
 	// operator *
 	sva::ForceVecd fv = vec * mv;
-	BOOST_CHECK_EQUAL(fv.force(), vec.linear().cwiseProduct(mv.linear()));
-	BOOST_CHECK_EQUAL(fv.couple(), vec.angular().cwiseProduct(mv.angular()));
+	BOOST_CHECK_SMALL((fv.force() - vec.linear().cwiseProduct(mv.linear())).array().abs().sum(), TOL);
+	BOOST_CHECK_SMALL((fv.couple() - vec.angular().cwiseProduct(mv.angular())).array().abs().sum(), TOL);
 
 	sva::ForceVecd fv2 = mv * vec;
 	BOOST_CHECK_EQUAL(fv, fv2);
@@ -384,8 +384,8 @@ BOOST_AUTO_TEST_CASE(AdmittanceVecdTest)
 
 	// operator *
 	sva::MotionVecd mv = vec * fv;
-	BOOST_CHECK_EQUAL(mv.linear(), vec.linear().cwiseProduct(fv.force()));
-	BOOST_CHECK_EQUAL(mv.angular(), vec.angular().cwiseProduct(fv.couple()));
+	BOOST_CHECK_SMALL((mv.linear() - vec.linear().cwiseProduct(fv.force())).array().abs().sum(), TOL);
+	BOOST_CHECK_SMALL((mv.angular() - vec.angular().cwiseProduct(fv.couple())).array().abs().sum(), TOL);
 
 	sva::MotionVecd mv2 = fv * vec;
 	BOOST_CHECK_EQUAL(mv, mv2);

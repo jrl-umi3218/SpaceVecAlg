@@ -17,19 +17,12 @@
 
 ENABLE_TESTING()
 
-set(BOOST_COMPONENTS unit_test_framework timer system)
-SEARCH_FOR_BOOST()
-
-include_directories(${Boost_INCLUDE_DIRS})
-link_directories(${Boost_LIBRARY_DIRS})
+find_package(Boost REQUIRED COMPONENTS unit_test_framework timer)
 
 macro(addUnitTest name)
   if(NOT ${DISABLE_TESTS})
-    add_executable(${name} ${name}.cpp ${HEADERS})
-    if(NOT MSVC)
-      # for msvc, we let boost auto-link do the work
-      target_link_libraries(${name} ${Boost_LIBRARIES})
-    endif(NOT MSVC)
+    add_executable(${name} ${name}.cpp)
+    target_link_libraries(${name} PUBLIC SpaceVecAlg Boost::unit_test_framework)
     add_test(${name}Unit ${name})
     # Adding a project configuration file (for MSVC only)
     GENERATE_MSVC_DOT_USER_FILE(${name})
@@ -38,11 +31,8 @@ endmacro(addUnitTest)
 
 macro(addBenchmark name)
   if(${BENCHMARKS})
-    add_executable(${name} ${name}.cpp ${HEADERS})
-    if(NOT MSVC)
-      # for msvc, we let boost auto-link do the work
-      target_link_libraries(${name} ${Boost_LIBRARIES})
-    endif(NOT MSVC)
+    add_executable(${name} ${name}.cpp)
+    target_link_libraries(${name} PUBLIC SpaceVecAlg Boost::unit_test_framework Boost::timer)
     # Adding a project configuration file (for MSVC only)
     GENERATE_MSVC_DOT_USER_FILE(${name})
   endif()

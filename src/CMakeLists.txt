@@ -15,46 +15,38 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with SpaceVecAlg.  If not, see <http://www.gnu.org/licenses/>.
 
-set(SOURCES lib.cpp)
-set(HEADERS SpaceVecAlg/MotionVec.h
-            SpaceVecAlg/ForceVec.h
-            SpaceVecAlg/ImpedanceVec.h
-            SpaceVecAlg/AdmittanceVec.h
-            SpaceVecAlg/PTransform.h
-            SpaceVecAlg/RBInertia.h
-            SpaceVecAlg/ABInertia.h
-            SpaceVecAlg/EigenTypedef.h
-            SpaceVecAlg/EigenUtility.h
-            SpaceVecAlg/Operators.h
-            SpaceVecAlg/MathFunc.h
-            SpaceVecAlg/Conversions.h
-            SpaceVecAlg/SpaceVecAlg)
+set(HEADERS_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/include")
 
+set(HEADERS_INCLUDE_DIR
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>$<INSTALL_INTERFACE:${HEADERS_INSTALL_DIR}>)
 
+set(HEADERS
+  ${HEADERS_INCLUDE_DIR}/SpaceVecAlg/MotionVec.h
+  ${HEADERS_INCLUDE_DIR}/SpaceVecAlg/ForceVec.h
+  ${HEADERS_INCLUDE_DIR}/SpaceVecAlg/ImpedanceVec.h
+  ${HEADERS_INCLUDE_DIR}/SpaceVecAlg/AdmittanceVec.h
+  ${HEADERS_INCLUDE_DIR}/SpaceVecAlg/PTransform.h
+  ${HEADERS_INCLUDE_DIR}/SpaceVecAlg/RBInertia.h
+  ${HEADERS_INCLUDE_DIR}/SpaceVecAlg/ABInertia.h
+  ${HEADERS_INCLUDE_DIR}/SpaceVecAlg/EigenTypedef.h
+  ${HEADERS_INCLUDE_DIR}/SpaceVecAlg/EigenUtility.h
+  ${HEADERS_INCLUDE_DIR}/SpaceVecAlg/Operators.h
+  ${HEADERS_INCLUDE_DIR}/SpaceVecAlg/MathFunc.h
+  ${HEADERS_INCLUDE_DIR}/SpaceVecAlg/Conversions.h
+  ${HEADERS_INCLUDE_DIR}/SpaceVecAlg/SpaceVecAlg
+)
 
-# !!! SpaceVecAlg is an empty library !!!
-# !!! Its aim is to test header file and have an IDE integration !!!
-# !!! Don't link against it !!!
-add_library(SpaceVecAlg ${SOURCES} ${HEADERS})
-
-if(DEFINED Eigen_INCLUDE_DIR)
-  target_include_directories(SpaceVecAlg SYSTEM INTERFACE "${Eigen_INCLUDE_DIR}")
-else()
-  target_include_directories(SpaceVecAlg SYSTEM INTERFACE "${_Eigen_INCLUDE_DIRS}")
+add_library(SpaceVecAlg INTERFACE)
+if(COMMAND target_sources)
+  target_sources(SpaceVecAlg INTERFACE ${HEADERS})
 endif()
+target_compile_features(SpaceVecAlg INTERFACE cxx_auto_type cxx_constexpr)
+target_include_directories(SpaceVecAlg SYSTEM INTERFACE "${Eigen_INCLUDE_DIRS}")
+target_include_directories(SpaceVecAlg INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> $<INSTALL_INTERFACE:include>)
 
-# Targets:
-#   * <prefix>/lib/libbar.a
-#   * <prefix>/lib/libbaz.a
-#   * header location after install: <prefix>/include/foo/Bar.hpp
-#   * headers can be included by C++ code `#include <foo/Bar.hpp>`
 install(
     TARGETS SpaceVecAlg
     EXPORT "${TARGETS_EXPORT_NAME}"
-    LIBRARY DESTINATION "lib"
-    ARCHIVE DESTINATION "lib"
-    RUNTIME DESTINATION "bin"
-    INCLUDES DESTINATION "${INCLUDE_INSTALL_DIR}"
 )
-install(FILES ${HEADERS} DESTINATION ${INCLUDE_INSTALL_DESTINATION})
+install(DIRECTORY SpaceVecAlg DESTINATION ${INCLUDE_INSTALL_DIR})
 

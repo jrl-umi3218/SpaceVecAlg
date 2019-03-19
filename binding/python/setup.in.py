@@ -53,10 +53,10 @@ version_hash = sha512.hexdigest()[:7]
 
 class pkg_config(object):
   def __init__(self):
-    self.compile_args = [ x for x in '@SVA_COMPILE_FLAGS@'.split(';') if len(x) ]
-    self.include_dirs = [ x for x in '@SVA_INCLUDE_DIRECTORIES@'.split(';') if len(x) ]
-    self.library_dirs = [ x for x in '@SVA_LINK_FLAGS@'.split(';') if len(x) ]
-    self.libraries = [ x for x in '@SVA_LINK_LIBRARIES@'.split(';') if len(x) ]
+    self.compile_args = []
+    self.include_dirs = [ x for x in '@Eigen_INCLUDE_DIRS@;@CMAKE_CURRENT_SOURCE_DIR@/../../src'.split(';') if len(x) ]
+    self.library_dirs = []
+    self.libraries = []
     self.found = True
 
 config = pkg_config()

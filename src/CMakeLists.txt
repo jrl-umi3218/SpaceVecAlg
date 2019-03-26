@@ -37,6 +37,22 @@ set(HEADERS SpaceVecAlg/MotionVec.h
 # !!! Don't link against it !!!
 add_library(SpaceVecAlg ${SOURCES} ${HEADERS})
 
+if(ENABLE_SIMD)
+  if(MSVC)
+    target_compile_options(SpaceVecAlg PUBLIC /arch:SSE2 /arch:AVX /arch:AVX2)
+  elseif(CMAKE_COMPILER_IS_GNUCXX)
+    execute_process(
+      COMMAND ${CMAKE_CXX_COMPILER} -dumpfullversion -dumpversion OUTPUT_VARIABLE GCC_VERSION)
+    set(CXX_COMPILER_VERSION ${GCC_VERSION})
+    target_compile_options(SpaceVecAlg PUBLIC -march=native)
+    if(GCC_VERSION VERSION_GREATER 7.0)
+      target_compile_options(SpaceVecAlg PUBLIC -faligned-new)
+    endif()
+  elseif("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
+    target_compile_options(SpaceVecAlg PUBLIC -march=native -faligned-new)
+  endif()
+endif()
+
 if(DEFINED Eigen_INCLUDE_DIR)
   target_include_directories(SpaceVecAlg SYSTEM INTERFACE "${Eigen_INCLUDE_DIR}")
 else()

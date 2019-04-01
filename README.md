@@ -1,7 +1,7 @@
 SpaceVecAlg
 ========
 
-[![License LGPL 3](https://img.shields.io/badge/license-LGPLv3-green.svg)](http://www.gnu.org/licenses/lgpl-3.0.txt)
+[![License](https://img.shields.io/badge/License-BSD%202--Clause-green.svg)](https://opensource.org/licenses/BSD-2-Clause)
 [![Build Status](https://travis-ci.org/jrl-umi3218/SpaceVecAlg.svg?branch=master)](https://travis-ci.org/jrl-umi3218/SpaceVecAlg)
 [![AppVeyor status](https://ci.appveyor.com/api/projects/status/m58vf1fke7nc9k95/branch/master?svg=true)](https://ci.appveyor.com/project/gergondet/spacevecalg/branch/master)
 

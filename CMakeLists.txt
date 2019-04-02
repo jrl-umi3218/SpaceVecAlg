@@ -4,6 +4,8 @@
 
 cmake_minimum_required(VERSION 3.1.3)
 
+set(CMAKE_CXX_STANDARD 11)
+
 set(PROJECT_NAME SpaceVecAlg)
 set(PROJECT_DESCRIPTION "Implementation of spatial vector algebra with the Eigen3 linear algebra library.")
 set(PROJECT_URL "https://github.com/jrl-umi3218/SpaceVecAlg")
@@ -29,7 +31,7 @@ option(PYTHON_BINDING_FORCE_PYTHON3 "Use pip3/python3 instead of pip/python" OFF
 option(DISABLE_TESTS "Disable unit tests." OFF)
 option(BENCHMARKS "Generate benchmark." OFF)
 
-find_package(Eigen3 REQUIRED)
+add_project_dependency(Eigen3 REQUIRED)
 
 # For MSVC, set local environment variable to enable finding the built dll
 # of the main library when launching ctest with RUN_TESTS
@@ -48,5 +50,4 @@ if(${PYTHON_BINDING})
 endif()
 
 setup_project_finalize()
-setup_project_cpack()
 setup_project_package_finalize()

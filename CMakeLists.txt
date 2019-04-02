@@ -4,20 +4,19 @@
 
 cmake_minimum_required(VERSION 3.1.3)
 
-SET(PROJECT_NAME SpaceVecAlg)
-SET(PROJECT_DESCRIPTION "Implementation of spatial vector algebra with the Eigen3 linear algebra library.")
-SET(PROJECT_URL "https://github.com/jrl-umi3218/SpaceVecAlg")
+set(PROJECT_NAME SpaceVecAlg)
+set(PROJECT_DESCRIPTION "Implementation of spatial vector algebra with the Eigen3 linear algebra library.")
+set(PROJECT_URL "https://github.com/jrl-umi3218/SpaceVecAlg")
 
-INCLUDE(cmake/base.cmake)
-INCLUDE(cmake/boost.cmake)
-INCLUDE(cmake/cpack.cmake)
-INCLUDE(cmake/eigen.cmake)
-INCLUDE(cmake/msvc-specific.cmake)
+include(cmake/base.cmake)
+include(cmake/boost.cmake)
+include(cmake/cpack.cmake)
+include(cmake/msvc-specific.cmake)
 
 # Disable -Werror on Unix for now.
-SET(CXX_DISABLE_WERROR True)
-SETUP_PROJECT()
-SET(PROJECT_VERSION 1.1.0)
+set(CXX_DISABLE_WERROR True)
+setup_project()
+set(PROJECT_VERSION 1.1.0)
 
 option(PYTHON_BINDING "Generate python binding." ON)
 if(WIN32)
@@ -30,17 +29,13 @@ option(PYTHON_BINDING_FORCE_PYTHON3 "Use pip3/python3 instead of pip/python" OFF
 option(DISABLE_TESTS "Disable unit tests." OFF)
 option(BENCHMARKS "Generate benchmark." OFF)
 
-SET(Eigen_REQUIRED "eigen3 >= 3.2.0")
-SEARCH_FOR_EIGEN()
-IF(NOT DEFINED Eigen_INCLUDE_DIRS)
-  SET(Eigen_INCLUDE_DIRS "${_Eigen_INCLUDE_DIRS}")
-ENDIF()
+find_package(Eigen3 REQUIRED)
 
 # For MSVC, set local environment variable to enable finding the built dll
 # of the main library when launching ctest with RUN_TESTS
-IF(MSVC)
-  SET(CMAKE_MSVCIDE_RUN_PATH "\$(SolutionDir)/src/\$(Configuration)")
-ENDIF(MSVC)
+if(MSVC)
+  set(CMAKE_MSVCIDE_RUN_PATH "\$(SolutionDir)/src/\$(Configuration)")
+endif(MSVC)
 
 add_subdirectory(src)
 
@@ -52,6 +47,6 @@ if(${PYTHON_BINDING})
   add_subdirectory(binding/python)
 endif()
 
-SETUP_PROJECT_FINALIZE()
-SETUP_PROJECT_CPACK()
-SETUP_PROJECT_PACKAGE_FINALIZE()
+setup_project_finalize()
+setup_project_cpack()
+setup_project_package_finalize()

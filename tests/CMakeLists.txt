@@ -2,7 +2,7 @@
 # Copyright 2012-2019 CNRS-UM LIRMM, CNRS-AIST JRL
 #
 
-ENABLE_TESTING()
+enable_testing()
 
 find_package(Boost REQUIRED COMPONENTS unit_test_framework timer)
 

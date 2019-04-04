@@ -1,22 +1,17 @@
-# Copyright 2012-2017 CNRS-UM LIRMM, CNRS-AIST JRL
 #
-# This file is part of SpaceVecAlg.
+# Copyright 2012-2019 CNRS-UM LIRMM, CNRS-AIST JRL
 #
-# SpaceVecAlg is free software: you can redistribute it and/or modify
-# it under the terms of the GNU Lesser General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# SpaceVecAlg is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU Lesser General Public License for more details.
-#
-# You should have received a copy of the GNU Lesser General Public License
-# along with SpaceVecAlg.  If not, see <http://www.gnu.org/licenses/>.
 
-sudo: required
-dist: trusty
+dist: xenial
+addons:
+  apt:
+    packages:
+    - doxygen
+    - doxygen-latex
+    - libboost-all-dev
+    - libeigen3-dev
+    - python-pip
+    - python3-pip
 branches:
   except:
     - debian
@@ -26,11 +21,11 @@ compiler:
 - clang
 env:
   global:
-  - APT_DEPENDENCIES="doxygen doxygen-latex libboost-all-dev"
+  - APT_DEPENDENCIES=""
   - GIT_DEPENDENCIES="jrl-umi3218/Eigen3ToPython"
   - GH_USERNAME=gergondet
   - GH_REPO=jrl-umi3218/SpaceVecAlg
-  - secure: FWu5+09qN8j8CF6ecpX81eX/gC6QkmXcps3jHyHfhggoKHXLIGL1qN6bICXgjVzhpJbmmAEEJUtbN5UMOSPnJ/kInVR36eR1VwUAQUL81PJazH5XVDgznF8stCbow6lG0WQ9xCZzVfW77V9DXv4QL5K2tfOtRmStbtUiTdf4ZUs=
+  - secure: FWu5+09qN8j8CF6ecpX81eX/gC6QkmXcps3jHyHfhggoKHXLIGL1qN6bICXgjVzhpJbmmAEEJUtbN5UMOSPnJ/kInVR36eR1VwUAQUL81PJazH5XVDgznF8shontCbow6lG0WQ9xCZzVfW77V9DXv4QL5K2tfOtRmStbtUiTdf4ZUs=
   matrix:
     - USE_PYTHON34=false
     - USE_PYTHON34=true
@@ -41,7 +36,6 @@ script: ./.travis/run build
 after_success: ./.travis/run after_success
 after_failure: ./.travis/run after_failure
 before_install:
-- if [ $USE_PYTHON34 = true ]; then pushd .; pip install virtualenv; mkdir -p /tmp/_ci/virtualenv; virtualenv -p python3.4 3.4; source 3.4/bin/activate; popd; fi
+- if [ $USE_PYTHON34 = true ]; then pushd .; pip install virtualenv; mkdir -p /tmp/_ci/virtualenv; virtualenv -p python3.5 3.5; source 3.5/bin/activate; popd; fi
 - if [ $USE_PYTHON34 = false ]; then export CMAKE_ADDITIONAL_OPTIONS="-DPYTHON_BINDING_USER_INSTALL:BOOL=ON"; fi
-- ./.travis/dependencies/eigen-3.2
 - ./.travis/run  before_install

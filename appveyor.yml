@@ -22,11 +22,13 @@ environment:
   MINGW_GFORTRAN: C:\msys64\mingw64\bin\gfortran.exe
 build_script:
 - ps: >-
+    git submodule -q update --init
+
     . ./.travis/functions.ps1
 
     setup_build
 
-    ./.travis/dependencies/eigen-3.2.ps1
+    ./.travis/dependencies/eigen-3.3.ps1
 
     install_dependencies
 

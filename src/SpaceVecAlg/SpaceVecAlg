@@ -20,30 +20,38 @@
 // forward declaration
 namespace sva
 {
-	template<typename T> class MotionVec;
-	template<typename T> class ForceVec;
-	template<typename T> class RBInertia;
-	template<typename T> class ABInertia;
-	template<typename T> class PTransform;
-}
+template<typename T>
+class MotionVec;
+template<typename T>
+class ForceVec;
+template<typename T>
+class RBInertia;
+template<typename T>
+class ABInertia;
+template<typename T>
+class PTransform;
+} // namespace sva
 
-#include "MotionVec.h"
+// types
+#include "ABInertia.h"
+#include "AdmittanceVec.h"
 #include "ForceVec.h"
 #include "ImpedanceVec.h"
-#include "AdmittanceVec.h"
-#include "RBInertia.h"
-#include "ABInertia.h"
+#include "MotionVec.h"
 #include "PTransform.h"
+#include "RBInertia.h"
+
+// operators
 #include "Operators.h"
 
 // typedef
 namespace sva
 {
-	typedef MotionVec<double> MotionVecd;
-	typedef ForceVec<double> ForceVecd;
-	typedef ImpedanceVec<double> ImpedanceVecd;
-	typedef AdmittanceVec<double> AdmittanceVecd;
-	typedef RBInertia<double> RBInertiad;
-	typedef ABInertia<double> ABInertiad;
-	typedef PTransform<double> PTransformd;
-}
+typedef MotionVec<double> MotionVecd;
+typedef ForceVec<double> ForceVecd;
+typedef ImpedanceVec<double> ImpedanceVecd;
+typedef AdmittanceVec<double> AdmittanceVecd;
+typedef RBInertia<double> RBInertiad;
+typedef ABInertia<double> ABInertiad;
+typedef PTransform<double> PTransformd;
+} // namespace sva

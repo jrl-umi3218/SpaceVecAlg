@@ -352,7 +352,6 @@ BOOST_AUTO_TEST_CASE(TransformError)
 	BOOST_CHECK_SMALL((V_b_c_a.linear() - v_b_c_a).norm(), TOL);
 }
 
-
 BOOST_AUTO_TEST_CASE(sincTest)
 {
 	auto dummy_sinc = [](double x){return std::sin(x)/x;};
@@ -376,7 +375,6 @@ BOOST_AUTO_TEST_CASE(sincTest)
 	BOOST_CHECK_EQUAL(dummy_sinc(std::sqrt(std::sqrt(eps))),
 								 sva::sinc(std::sqrt(std::sqrt(eps))));
 }
-
 
 BOOST_AUTO_TEST_CASE(sinc_invTest)
 {

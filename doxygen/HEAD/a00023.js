@@ -1,7 +1,8 @@
 var a00023 =
 [
     [ "conversions", "a00024.html", null ],
-    [ "sva_internal", "a00025.html", null ],
+    [ "details", "a00025.html", null ],
+    [ "sva_internal", "a00026.html", null ],
     [ "ABInertia", "a00001.html", "a00001" ],
     [ "AdmittanceVec", "a00002.html", "a00002" ],
     [ "ForceVec", "a00003.html", "a00003" ],

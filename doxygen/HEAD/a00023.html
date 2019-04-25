@@ -99,7 +99,9 @@ Namespaces</h2></td></tr>
 <tr class="memitem:a00024"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00024.html">conversions</a></td></tr>
 <tr class="memdesc:a00024"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generic functions to convert to/from sva types. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00025"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00025.html">sva_internal</a></td></tr>
+<tr class="memitem:a00025"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00025.html">details</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00026"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html">sva_internal</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
@@ -181,6 +183,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a5f26526fcfadd53b40d08db5d077c193"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a5f26526fcfadd53b40d08db5d077c193"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00023.html#a5f26526fcfadd53b40d08db5d077c193">operator&lt;&lt;</a> (std::ostream &amp;out, const <a class="el" href="a00004.html">ImpedanceVec</a>&lt; T &gt; &amp;iv)</td></tr>
 <tr class="separator:a5f26526fcfadd53b40d08db5d077c193"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a123844a3edbd3f1e68aacc22225a2a07"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a123844a3edbd3f1e68aacc22225a2a07"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00023.html#a123844a3edbd3f1e68aacc22225a2a07">sinc</a> (const T x)</td></tr>
+<tr class="memdesc:a123844a3edbd3f1e68aacc22225a2a07"><td class="mdescLeft">&#160;</td><td class="mdescRight">sinus cardinal: sin(x)/x Code adapted from boost::math::detail::sinc  <a href="#a123844a3edbd3f1e68aacc22225a2a07">More...</a><br/></td></tr>
+<tr class="separator:a123844a3edbd3f1e68aacc22225a2a07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3cad8a4ff91f4aace786395eaaef6834"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a3cad8a4ff91f4aace786395eaaef6834"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00023.html#a3cad8a4ff91f4aace786395eaaef6834">sinc_inv</a> (const T x)</td></tr>
 <tr class="memdesc:a3cad8a4ff91f4aace786395eaaef6834"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute 1/sinc(x).  <a href="#a3cad8a4ff91f4aace786395eaaef6834">More...</a><br/></td></tr>
@@ -641,42 +647,6 @@ template&lt;typename Derived &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="ab785e99aeb91b91f623af09d00b5506c"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , typename T2 &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00004.html">ImpedanceVec</a>&lt;T&gt; sva::operator* </td>
-          <td>(</td>
-          <td class="paramtype">T2&#160;</td>
-          <td class="paramname"><em>scalar</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const ImpedanceVec&lt; T &gt; &amp;&#160;</td>
-          <td class="paramname"><em>iv</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a class="anchor" id="a1afa81055cff14671456d0b626d3c1ad"></a>
 <div class="memitem">
 <div class="memproto">
@@ -697,6 +667,42 @@ template&lt;typename T , typename T2 &gt; </div>
           <td></td>
           <td class="paramtype">const ForceVec&lt; T &gt; &amp;&#160;</td>
           <td class="paramname"><em>fv</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ab785e99aeb91b91f623af09d00b5506c"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename T2 &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00004.html">ImpedanceVec</a>&lt;T&gt; sva::operator* </td>
+          <td>(</td>
+          <td class="paramtype">T2&#160;</td>
+          <td class="paramname"><em>scalar</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const ImpedanceVec&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>iv</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1449,6 +1455,28 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="a123844a3edbd3f1e68aacc22225a2a07"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T sva::sinc </td>
+          <td>(</td>
+          <td class="paramtype">const T&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>sinus cardinal: sin(x)/x Code adapted from boost::math::detail::sinc </p>
+
+<p>References <a class="el" href="a00025.html#a1bd0cdea56a8740a2d3279f11685cb79">sva::details::sqrt()</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a3cad8a4ff91f4aace786395eaaef6834"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1467,6 +1495,8 @@ template&lt;typename T &gt; </div>
 
 <p>Compute 1/sinc(x). </p>
 <p>This code is inspired by boost/math/special_functions/sinc.hpp. </p>
+
+<p>References <a class="el" href="a00025.html#a1bd0cdea56a8740a2d3279f11685cb79">sva::details::sqrt()</a>.</p>
 
 <p>Referenced by <a class="el" href="a00023.html#a44b687fe1934a2289d32f6f5e0eed1db">rotationVelocity()</a>.</p>
 
@@ -1554,7 +1584,7 @@ template&lt;typename T &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="a00023.html">sva</a></li>
-    <li class="footer">Generated on Mon Mar 18 2019 10:18:41 for SpaceVecAlg by
+    <li class="footer">Generated on Thu Apr 25 2019 09:38:00 for SpaceVecAlg by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

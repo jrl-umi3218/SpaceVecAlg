@@ -17,8 +17,75 @@
 
 #pragma once
 
+#include <limits>
+
 namespace sva
 {
+
+namespace details 
+{
+
+template <typename T>
+T constexpr sqrtNewtonRaphson(T x, T curr, T prev)
+{
+	return curr == prev
+		? curr
+		: sqrtNewtonRaphson(x, static_cast<T>(0.5) * (curr + x / curr), curr);
+}
+
+/**
+* Constexpr version of the square root
+* Return value:
+*   - For a finite and non-negative value of "x", returns an approximation for the square root of "x"
+*   - Otherwise, returns NaN
+* Copied from https://stackoverflow.com/a/34134071
+*/
+template <typename T>
+T constexpr sqrt(T x)
+{
+	return x >= static_cast<T>(0) && x < std::numeric_limits<T>::infinity()
+		? sqrtNewtonRaphson(x, x, static_cast<T>(0))
+		: std::numeric_limits<T>::quiet_NaN();
+}
+
+} // namespace details 
+
+/** sinus cardinal: sin(x)/x
+	* Code adapted from boost::math::detail::sinc
+	*/
+template<typename T>
+T sinc(const T x)
+{
+	constexpr T taylor_0_bound = std::numeric_limits<double>::epsilon();
+	constexpr T taylor_2_bound = details::sqrt(taylor_0_bound);
+	constexpr T taylor_n_bound = details::sqrt(taylor_2_bound);
+
+	if (std::abs(x) >= taylor_n_bound)
+	{
+		return(std::sin(x) / x);
+	}
+	else
+	{
+		// approximation by taylor series in x at 0 up to order 0
+		T result = static_cast<T>(1);
+
+		if (std::abs(x) >= taylor_0_bound)
+		{
+			T x2 = x*x;
+
+			// approximation by taylor series in x at 0 up to order 2
+			result -= x2 / static_cast<T>(6);
+
+			if (std::abs(x) >= taylor_2_bound)
+			{
+				// approximation by taylor series in x at 0 up to order 4
+				result += (x2*x2) / static_cast<T>(120);
+			}
+		}
+
+		return(result);
+	}
+}
 
 /**
 	* Compute 1/sinc(x).
@@ -27,9 +94,9 @@ namespace sva
 template<typename T>
 T sinc_inv(const T x)
 {
-	const T taylor_0_bound = std::numeric_limits<T>::epsilon();
-	const T taylor_2_bound = std::sqrt(taylor_0_bound);
-	const T taylor_n_bound = std::sqrt(taylor_2_bound);
+	constexpr T taylor_0_bound = std::numeric_limits<T>::epsilon();
+	constexpr T taylor_2_bound = details::sqrt(taylor_0_bound);
+	constexpr T taylor_n_bound = details::sqrt(taylor_2_bound);
 
 	// We use the 4th order taylor series around 0 of x/sin(x) to compute
 	// this function:
@@ -71,4 +138,4 @@ T sinc_inv(const T x)
 	}
 }
 
-}
+} // namespace sva

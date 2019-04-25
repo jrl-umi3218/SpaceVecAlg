@@ -25,11 +25,12 @@ namespace sva
 namespace details 
 {
 
-double constexpr sqrtNewtonRaphson(double x, double curr, double prev)
+template <typename T>
+T constexpr sqrtNewtonRaphson(T x, T curr, T prev)
 {
 	return curr == prev
 		? curr
-		: sqrtNewtonRaphson(x, 0.5 * (curr + x / curr), curr);
+		: sqrtNewtonRaphson(x, static_cast<T>(0.5) * (curr + x / curr), curr);
 }
 
 /**
@@ -39,11 +40,12 @@ double constexpr sqrtNewtonRaphson(double x, double curr, double prev)
 *   - Otherwise, returns NaN
 * Copied from https://stackoverflow.com/a/34134071
 */
-double constexpr sqrt(double x)
+template <typename T>
+T constexpr sqrt(T x)
 {
-	return x >= 0 && x < std::numeric_limits<double>::infinity()
-		? sqrtNewtonRaphson(x, x, 0)
-		: std::numeric_limits<double>::quiet_NaN();
+	return x >= static_cast<T>(0) && x < std::numeric_limits<T>::infinity()
+		? sqrtNewtonRaphson(x, x, static_cast<T>(0))
+		: std::numeric_limits<T>::quiet_NaN();
 }
 
 } // namespace details 

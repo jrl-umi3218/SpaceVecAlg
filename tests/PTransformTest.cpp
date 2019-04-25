@@ -353,6 +353,31 @@ BOOST_AUTO_TEST_CASE(TransformError)
 }
 
 
+BOOST_AUTO_TEST_CASE(sincTest)
+{
+	auto dummy_sinc = [](double x){return std::sin(x)/x;};
+	double eps = std::numeric_limits<double>::epsilon();
+
+	// test equality between -1 and 1 (avoid 0)
+	double t = -1.;
+	const int nrIter = 333;
+	for(int i = 0; i < nrIter; ++i)
+	{
+		BOOST_CHECK_EQUAL(dummy_sinc(t), sva::sinc(t));
+		t += 2./nrIter;
+	}
+	BOOST_CHECK(std::isnan(dummy_sinc(0.)));
+	BOOST_CHECK_EQUAL(sva::sinc(0.), 1.);
+
+	// not sure thoses test will work on all architectures
+	BOOST_CHECK_EQUAL(dummy_sinc(eps), sva::sinc(eps));
+	BOOST_CHECK_EQUAL(dummy_sinc(std::sqrt(eps)),
+								 sva::sinc(std::sqrt(eps)));
+	BOOST_CHECK_EQUAL(dummy_sinc(std::sqrt(std::sqrt(eps))),
+								 sva::sinc(std::sqrt(std::sqrt(eps))));
+}
+
+
 BOOST_AUTO_TEST_CASE(sinc_invTest)
 {
 	auto dummy_sinc_inv = [](double x){return x/std::sin(x);};
@@ -376,7 +401,6 @@ BOOST_AUTO_TEST_CASE(sinc_invTest)
 	BOOST_CHECK_EQUAL(dummy_sinc_inv(std::sqrt(std::sqrt(eps))),
 									 sva::sinc_inv(std::sqrt(std::sqrt(eps))));
 }
-
 
 template<typename T>
 inline Eigen::Vector3<T> oldRotationVelocity(const Eigen::Matrix3<T>& E_a_b, double prec)

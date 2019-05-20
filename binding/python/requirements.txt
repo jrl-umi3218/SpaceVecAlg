@@ -1,4 +1,0 @@
-cython>=0.25
-coverage>=4.0
-nose
-numpy

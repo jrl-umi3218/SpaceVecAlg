@@ -12,6 +12,15 @@ addons:
     - libeigen3-dev
     - python-pip
     - python3-pip
+    - cython
+    - python-nose
+    - python-numpy
+    - python-coverage
+    - cython3
+    - python3-nose
+    - python3-numpy
+    - python3-coverage
+    - python3-setuptools
 branches:
   except:
     - debian
@@ -26,16 +35,11 @@ env:
   - GH_USERNAME=gergondet
   - GH_REPO=jrl-umi3218/SpaceVecAlg
   - secure: FWu5+09qN8j8CF6ecpX81eX/gC6QkmXcps3jHyHfhggoKHXLIGL1qN6bICXgjVzhpJbmmAEEJUtbN5UMOSPnJ/kInVR36eR1VwUAQUL81PJazH5XVDgznF8shontCbow6lG0WQ9xCZzVfW77V9DXv4QL5K2tfOtRmStbtUiTdf4ZUs=
-  matrix:
-    - USE_PYTHON34=false
-    - USE_PYTHON34=true
+  - CMAKE_ADDITIONAL_OPTIONS="-DPYTHON_BINDING_BUILD_PYTHON2_AND_PYTHON3:BOOL=ON -DPYTHON_BINDING_USER_INSTALL:BOOL=ON"
 notifications:
   slack:
     secure: gCrurakYrdf1A2VxY3eDotv2JGfXQd07ELV3vKoBXBEu3bmv5qfwrqV05FSkZG6rK/O55DRC6KkIftGu79Tk+gCD+iPMXJtKMcdMaEPeO17jB/vPTWHtpGLnC0FevyqQGq0AfGAPjRbUEs1dB9WKBVPCu1KUmnl7sODe3WFYBPs=
+before_install: ./.travis/run  before_install
 script: ./.travis/run build
 after_success: ./.travis/run after_success
 after_failure: ./.travis/run after_failure
-before_install:
-- if [ $USE_PYTHON34 = true ]; then pushd .; pip install virtualenv; mkdir -p /tmp/_ci/virtualenv; virtualenv -p python3.5 3.5; source 3.5/bin/activate; popd; fi
-- if [ $USE_PYTHON34 = false ]; then export CMAKE_ADDITIONAL_OPTIONS="-DPYTHON_BINDING_USER_INSTALL:BOOL=ON"; fi
-- ./.travis/run  before_install

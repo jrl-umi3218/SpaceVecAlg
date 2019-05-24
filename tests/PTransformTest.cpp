@@ -99,7 +99,8 @@ BOOST_AUTO_TEST_CASE(PTransformdTest)
 
   // inv
   PTransformd pt8 = pt2.inv();
-  BOOST_CHECK_SMALL((pt8.matrix() - pt2.matrix().inverse()).array().abs().sum(), TOL);
+  Matrix6d pt8_minus_pt2_inv = pt8.matrix() - pt2.matrix().inverse();
+  BOOST_CHECK_SMALL(pt8_minus_pt2_inv.array().abs().sum(), TOL);
 
   // ==
   BOOST_CHECK_EQUAL(pt2, pt2);

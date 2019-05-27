@@ -4,10 +4,85 @@ SpaceVecAlg
 [![License](https://img.shields.io/badge/License-BSD%202--Clause-green.svg)](https://opensource.org/licenses/BSD-2-Clause)
 [![Build Status](https://travis-ci.org/jrl-umi3218/SpaceVecAlg.svg?branch=master)](https://travis-ci.org/jrl-umi3218/SpaceVecAlg)
 [![AppVeyor status](https://ci.appveyor.com/api/projects/status/m58vf1fke7nc9k95/branch/master?svg=true)](https://ci.appveyor.com/project/gergondet/spacevecalg/branch/master)
+[ ![Download](https://api.bintray.com/packages/gergondet/multi-contact/SpaceVecAlg%3Agergondet/images/download.svg) ](https://bintray.com/gergondet/multi-contact/SpaceVecAlg%3Agergondet/_latestVersion)
 
 SpaceVecAlg aim to implement Spatial Vector Algebra with the Eigen3 linear algebra library.
 
 All this implementation is based on appendix A of [Roy Featherstone Rigid Body Dynamics Algorithms book](http://www.springer.com/fr/book/9780387743141).
+
+Installing
+------
+
+## Ubuntu LTS (14.04, 16.04, 18.04): PPA
+
+Use the [multi-contact-unstable](https://launchpad.net/~pierre-gergondet+ppa/+archive/ubuntu/multi-contact-unstable) ppa:
+```bash
+sudo add-apt-repository ppa:pierre-gergondet+ppa/multi-contact-unstable
+sudo apt-get update
+sudo apt-get install libspacevecalg-dev libspacevecalg-doc python-spacevecalg python3-spacevecalg
+```
+
+## Homebrew OS X install
+
+Install from the command line using [Homebrew](brew.sh):
+
+```bash
+# install homebrew package manager
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# install caskroom application manager
+brew install caskroom/cask/brew-cask
+# tap homebrew-science package repository
+brew tap homebrew/science
+# tap ahundt-robotics repository
+brew tap ahundt/robotics
+# install tasks and all its dependencies
+brew install spacevecalg
+```
+
+## Manually build from source
+
+### Dependencies
+
+To compile you need the following tools:
+
+ * [Git]()
+ * [CMake]() >= 2.8
+ * [pkg-config]()
+ * [doxygen]()
+ * [g++]() >= 4.7 (for C++11 support)
+ * [Boost](http://www.boost.org/doc/libs/1_58_0/more/getting_started/unix-variants.html) >= 1.49
+ * [Eigen](http://eigen.tuxfamily.org/index.php?title=Main_Page) >= 3.2
+
+For Python bindings:
+
+ * [Cython](http://cython.org/) >= 0.25
+ * [Eigen3ToPython](https://github.com/jrl-umi3218/Eigen3ToPython) (to use the Python binding)
+
+### Building
+
+```sh
+git clone --recursive https://github.com/jrl-umi3218/SpaceVecAlg
+cd SpaceVecAlg
+mkdir build
+cd build
+cmake [options] ..
+make && make intall
+```
+
+#### CMake options
+
+By default, the build will use the `python` and `pip` command to install the bindings for the default system version (this behaviour can be used to build the bindings in a given virtualenv). The following options allow to control this behaviour:
+
+ * `PYTHON_BINDING` Build the python binding (ON/OFF, default: ON)
+ * `PYTHON_BINDING_FORCE_PYTHON2`: use `python2` and `pip2` instead of `python` and `pip`
+ * `PYTHON_BINDING_FORCE_PYTHON3`: use `python3` and `pip3` instead of `python` and `pip`
+ * `PYTHON_BINDING_BUILD_PYTHON2_AND_PYTHON2`: builds two sets of bindings one with `python2` and `pip2`, the other with `python3` and `pip3`
+ * `DISABLE_TESTS` Disable unit tests building (ON/OFF, default: OFF)
+
+### Arch Linux
+
+You can use the following [AUR package](https://aur.archlinux.org/packages/spacevecalg-git).
+
 
 Documentation
 -----
@@ -108,87 +183,3 @@ plx(E, r)                    | `sva::PTransform(E, r)`
 plx(q, r)                    | `sva::PTransform(q, r)`
 rbi(m, h, I)                 | `sva::RBInertia(m, h, I)`
 abi(M, H, I)                 | `sva::ABInertia(M, H, I)`
-
-
-Installing
-------
-
-### Ubuntu 14.04 and 16.04 binary ppa install
-
-Use the [multi-contact-unstable](https://launchpad.net/~pierre-gergondet+ppa/+archive/ubuntu/multi-contact-unstable) ppa:
-```bash
-sudo add-apt-repository ppa:pierre-gergondet+ppa/multi-contact-unstable
-sudo apt-get update
-sudo apt-get install libspacevecalg-dev libspacevecalg-doc
-```
-
-### Homebrew OS X install
-
-Install from the command line using [Homebrew](brew.sh):
-
-```bash
-# install homebrew package manager
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-# install caskroom application manager
-brew install caskroom/cask/brew-cask
-# tap homebrew-science package repository
-brew tap homebrew/science
-# tap ahundt-robotics repository
-brew tap ahundt/robotics
-# install tasks and all its dependencies
-brew install spacevecalg
-```
-
-## Manually build from source
-
-#### Dependencies
-
-To compile you need the following tools:
-
- * [Git]()
- * [CMake]() >= 2.8
- * [pkg-config]()
- * [doxygen]()
- * [g++]() >= 4.7 (for C++11 support)
- * [Boost](http://www.boost.org/doc/libs/1_58_0/more/getting_started/unix-variants.html) >= 1.49
- * [Eigen](http://eigen.tuxfamily.org/index.php?title=Main_Page) >= 3.2
-
-For Python bindings:
-
- * [Cython](http://cython.org/) >= 0.25
- * [Eigen3ToPython](https://github.com/jorisv/Eigen3ToPython) (to use the Python binding)
-
-#### Building
-
-```sh
-git clone --recursive https://github.com/jrl-umi3218/SpaceVecAlg
-cd SpaceVecAlg
-mkdir _build
-cd _build
-cmake [options] ..
-make && make intall
-```
-
-Where the main options are:
-
- * `-DCMAKE_BUIlD_TYPE=Release` Build in Release mode
- * `-DCMAKE_INSTALL_PREFIX=some/path/to/install` default is `/usr/local`
- * `-DPYTHON_BINDING=ON` Build the python binding
- * `-DUNIT_TESTS=ON` Build unit tests.
- * `-DPYTHON_DEB_LAYOUT=OFF` install python library in `site-packages` (ON will install in `dist-packages`)
-
-### Arch Linux
-
-You can use the following [AUR package](https://aur.archlinux.org/packages/spacevecalg-git).
-
-
-Pulling git subtree
-------
-
-To update sync cmake or .travis directory with their upstream git repository:
-
-	git fetch git://github.com/jrl-umi3218/jrl-cmakemodules.git master
-	git subtree pull --prefix cmake git://github.com/jrl-umi3218/jrl-cmakemodules.git master --squash
-
-	git fetch git://github.com/jrl-umi3218/jrl-travis.git master
-	git subtree pull --prefix .travis git://github.com/jrl-umi3218/jrl-travis.git master --squash

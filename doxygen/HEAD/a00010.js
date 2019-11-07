@@ -1,10 +1,8 @@
 var a00010 =
 [
-    [ "affine3_t", "a00010.html#a40ac77c343242ed84a860f10c7797cec", null ],
-    [ "fromAffine", "a00010.html#aa8896657e5adc9a8e790e20f9b27a3c3", null ],
-    [ "fromHomogeneous", "a00010.html#a164f93ece6bd476bdc388886711969c9", null ],
-    [ "toAffine", "a00010.html#aaf02f7d90175c1f87bd0b5ce5e626566", null ],
-    [ "toHomogeneous", "a00010.html#abda8dfd75276624f91e5b8d6b6bbc238", null ],
-    [ "LeftHanded", "a00010.html#a6bf64591c3e46c0a00767a33150595d5", null ],
-    [ "RightHanded", "a00010.html#adfa051e762e1b8048e916c9297df6ac9", null ]
+    [ "AdmittanceVec", "a00003.html", "a00003" ],
+    [ "operator*", "a00010.html#a2e99342b8d929b8332ba011121313133", null ],
+    [ "operator*", "a00010.html#abb0d4fa8c0eb6968d3b2ea3142494720", null ],
+    [ "operator*", "a00010.html#ae12686d0fdd52dde6be4f1e3a0cec090", null ],
+    [ "operator<<", "a00010.html#ad29878ff946e629d7e8e29c7ea537f5f", null ]
 ];

@@ -1,6 +1,9 @@
 var a00012 =
 [
-    [ "vector3ToCrossMatrix", "a00012.html#a34d0d0706dc16ae0358433af740a48fd", null ],
-    [ "vector6ToCrossDualMatrix", "a00012.html#a2964e2c4bbe44365032512d28ce500ee", null ],
-    [ "vector6ToCrossMatrix", "a00012.html#a843e61000f53c05966116a6dead6d7cb", null ]
+    [ "Matrix3", "a00012.html#ac4d27bf92869006caf1413e5d218e2f1", null ],
+    [ "Matrix6", "a00012.html#aad6321e28b97dd47986f2187fa21be1e", null ],
+    [ "Matrix6d", "a00012.html#a3e65eb0c6b911896bd105a6e84b0a187", null ],
+    [ "Vector3", "a00012.html#a55408ba932fc7d1707bd7adc7e5e930f", null ],
+    [ "Vector6", "a00012.html#a664778266262bbdb1d1b2776bef25c7d", null ],
+    [ "Vector6d", "a00012.html#acdb6a5c038a9c26a61b0187b696b2630", null ]
 ];

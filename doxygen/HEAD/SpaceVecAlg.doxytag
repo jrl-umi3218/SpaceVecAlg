@@ -1,0 +1,2345 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<tagfile>
+  <compound kind="file">
+    <name>ABInertia.h</name>
+    <path>/home/travis/build/jrl-umi3218/SpaceVecAlg/src/SpaceVecAlg/</path>
+    <filename>a00009</filename>
+    <class kind="class">sva::ABInertia</class>
+    <namespace>sva</namespace>
+    <member kind="function">
+      <type>ABInertia&lt; T &gt;</type>
+      <name>operator*</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a848b3652216f3166993854e02d5751a5</anchor>
+      <arglist>(T2 scalar, const ABInertia&lt; T &gt; &amp;abI)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::ostream &amp;</type>
+      <name>operator&lt;&lt;</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a307ecc2f3edbcf2e8bc942e657dcfa67</anchor>
+      <arglist>(std::ostream &amp;out, const ABInertia&lt; T &gt; &amp;abI)</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>AdmittanceVec.h</name>
+    <path>/home/travis/build/jrl-umi3218/SpaceVecAlg/src/SpaceVecAlg/</path>
+    <filename>a00010</filename>
+    <class kind="class">sva::AdmittanceVec</class>
+    <namespace>sva</namespace>
+    <member kind="function">
+      <type>AdmittanceVec&lt; T &gt;</type>
+      <name>operator*</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a2e99342b8d929b8332ba011121313133</anchor>
+      <arglist>(T2 scalar, const AdmittanceVec&lt; T &gt; &amp;av)</arglist>
+    </member>
+    <member kind="function">
+      <type>MotionVec&lt; T &gt;</type>
+      <name>operator*</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>abb0d4fa8c0eb6968d3b2ea3142494720</anchor>
+      <arglist>(const AdmittanceVec&lt; T &gt; &amp;av, const ForceVec&lt; T &gt; &amp;fv)</arglist>
+    </member>
+    <member kind="function">
+      <type>MotionVec&lt; T &gt;</type>
+      <name>operator*</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>ae12686d0fdd52dde6be4f1e3a0cec090</anchor>
+      <arglist>(const ForceVec&lt; T &gt; &amp;fv, const AdmittanceVec&lt; T &gt; &amp;av)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::ostream &amp;</type>
+      <name>operator&lt;&lt;</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>ad29878ff946e629d7e8e29c7ea537f5f</anchor>
+      <arglist>(std::ostream &amp;out, const AdmittanceVec&lt; T &gt; &amp;av)</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>Conversions.h</name>
+    <path>/home/travis/build/jrl-umi3218/SpaceVecAlg/src/SpaceVecAlg/</path>
+    <filename>a00011</filename>
+    <includes id="a00022" name="SpaceVecAlg" local="yes" imported="no">SpaceVecAlg</includes>
+    <namespace>sva</namespace>
+    <namespace>sva::conversions</namespace>
+    <member kind="typedef">
+      <type>Eigen::Transform&lt; T, 3, Eigen::TransformTraits::Affine &gt;</type>
+      <name>affine3_t</name>
+      <anchorfile>a00026.html</anchorfile>
+      <anchor>a40ac77c343242ed84a860f10c7797cec</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>PTransform&lt; typename Derived::Scalar &gt;</type>
+      <name>fromHomogeneous</name>
+      <anchorfile>a00026.html</anchorfile>
+      <anchor>a164f93ece6bd476bdc388886711969c9</anchor>
+      <arglist>(const Eigen::MatrixBase&lt; Derived &gt; &amp;m, bool rightHandedness=RightHanded)</arglist>
+    </member>
+    <member kind="function">
+      <type>Eigen::Matrix&lt; T, 4, 4 &gt;</type>
+      <name>toHomogeneous</name>
+      <anchorfile>a00026.html</anchorfile>
+      <anchor>abda8dfd75276624f91e5b8d6b6bbc238</anchor>
+      <arglist>(const PTransform&lt; T &gt; &amp;pt, bool rightHandedness=RightHanded)</arglist>
+    </member>
+    <member kind="function">
+      <type>PTransform&lt; T &gt;</type>
+      <name>fromAffine</name>
+      <anchorfile>a00026.html</anchorfile>
+      <anchor>aa8896657e5adc9a8e790e20f9b27a3c3</anchor>
+      <arglist>(const affine3_t&lt; T &gt; &amp;a, bool rightHandedness=RightHanded)</arglist>
+    </member>
+    <member kind="function">
+      <type>affine3_t&lt; T &gt;</type>
+      <name>toAffine</name>
+      <anchorfile>a00026.html</anchorfile>
+      <anchor>aaf02f7d90175c1f87bd0b5ce5e626566</anchor>
+      <arglist>(const PTransform&lt; T &gt; &amp;pt, bool rightHandedness=RightHanded)</arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr bool</type>
+      <name>RightHanded</name>
+      <anchorfile>a00026.html</anchorfile>
+      <anchor>adfa051e762e1b8048e916c9297df6ac9</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr bool</type>
+      <name>LeftHanded</name>
+      <anchorfile>a00026.html</anchorfile>
+      <anchor>a6bf64591c3e46c0a00767a33150595d5</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>EigenTypedef.h</name>
+    <path>/home/travis/build/jrl-umi3218/SpaceVecAlg/src/SpaceVecAlg/</path>
+    <filename>a00012</filename>
+    <namespace>Eigen</namespace>
+    <member kind="typedef">
+      <type>Matrix&lt; T, 6, 1 &gt;</type>
+      <name>Vector6</name>
+      <anchorfile>a00023.html</anchorfile>
+      <anchor>a664778266262bbdb1d1b2776bef25c7d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>Matrix&lt; T, 6, 6 &gt;</type>
+      <name>Matrix6</name>
+      <anchorfile>a00023.html</anchorfile>
+      <anchor>aad6321e28b97dd47986f2187fa21be1e</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>Matrix&lt; T, 3, 1 &gt;</type>
+      <name>Vector3</name>
+      <anchorfile>a00023.html</anchorfile>
+      <anchor>a55408ba932fc7d1707bd7adc7e5e930f</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>Matrix&lt; T, 3, 3 &gt;</type>
+      <name>Matrix3</name>
+      <anchorfile>a00023.html</anchorfile>
+      <anchor>ac4d27bf92869006caf1413e5d218e2f1</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>Vector6&lt; double &gt;</type>
+      <name>Vector6d</name>
+      <anchorfile>a00023.html</anchorfile>
+      <anchor>acdb6a5c038a9c26a61b0187b696b2630</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>Matrix6&lt; double &gt;</type>
+      <name>Matrix6d</name>
+      <anchorfile>a00023.html</anchorfile>
+      <anchor>a3e65eb0c6b911896bd105a6e84b0a187</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>EigenUtility.h</name>
+    <path>/home/travis/build/jrl-umi3218/SpaceVecAlg/src/SpaceVecAlg/</path>
+    <filename>a00013</filename>
+    <namespace>Eigen</namespace>
+    <member kind="function">
+      <type>Matrix3&lt; T &gt;</type>
+      <name>vector3ToCrossMatrix</name>
+      <anchorfile>a00023.html</anchorfile>
+      <anchor>a34d0d0706dc16ae0358433af740a48fd</anchor>
+      <arglist>(const Vector3&lt; T &gt; &amp;vec)</arglist>
+    </member>
+    <member kind="function">
+      <type>Matrix6&lt; T &gt;</type>
+      <name>vector6ToCrossMatrix</name>
+      <anchorfile>a00023.html</anchorfile>
+      <anchor>a843e61000f53c05966116a6dead6d7cb</anchor>
+      <arglist>(const Vector6&lt; T &gt; &amp;vec)</arglist>
+    </member>
+    <member kind="function">
+      <type>Matrix6&lt; T &gt;</type>
+      <name>vector6ToCrossDualMatrix</name>
+      <anchorfile>a00023.html</anchorfile>
+      <anchor>a2964e2c4bbe44365032512d28ce500ee</anchor>
+      <arglist>(const Vector6&lt; T &gt; &amp;vec)</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>ForceVec.h</name>
+    <path>/home/travis/build/jrl-umi3218/SpaceVecAlg/src/SpaceVecAlg/</path>
+    <filename>a00014</filename>
+    <class kind="class">sva::ForceVec</class>
+    <namespace>sva</namespace>
+    <member kind="function">
+      <type>ForceVec&lt; T &gt;</type>
+      <name>operator*</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a1afa81055cff14671456d0b626d3c1ad</anchor>
+      <arglist>(T2 scalar, const ForceVec&lt; T &gt; &amp;fv)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::ostream &amp;</type>
+      <name>operator&lt;&lt;</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>af6a9cf3044dd068be66723b8c14f7af4</anchor>
+      <arglist>(std::ostream &amp;out, const ForceVec&lt; T &gt; &amp;fv)</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>ImpedanceVec.h</name>
+    <path>/home/travis/build/jrl-umi3218/SpaceVecAlg/src/SpaceVecAlg/</path>
+    <filename>a00015</filename>
+    <class kind="class">sva::ImpedanceVec</class>
+    <namespace>sva</namespace>
+    <member kind="function">
+      <type>ImpedanceVec&lt; T &gt;</type>
+      <name>operator*</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>ab785e99aeb91b91f623af09d00b5506c</anchor>
+      <arglist>(T2 scalar, const ImpedanceVec&lt; T &gt; &amp;iv)</arglist>
+    </member>
+    <member kind="function">
+      <type>ForceVec&lt; T &gt;</type>
+      <name>operator*</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a85728d1ec54d3ab16b525b5425c4c9d9</anchor>
+      <arglist>(const ImpedanceVec&lt; T &gt; &amp;iv, const MotionVec&lt; T &gt; &amp;mv)</arglist>
+    </member>
+    <member kind="function">
+      <type>ForceVec&lt; T &gt;</type>
+      <name>operator*</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a4c3d26cbc28bd86a38c67bcc5c0fcdbe</anchor>
+      <arglist>(const MotionVec&lt; T &gt; &amp;mv, const ImpedanceVec&lt; T &gt; &amp;iv)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::ostream &amp;</type>
+      <name>operator&lt;&lt;</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a5f26526fcfadd53b40d08db5d077c193</anchor>
+      <arglist>(std::ostream &amp;out, const ImpedanceVec&lt; T &gt; &amp;iv)</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>MathFunc.h</name>
+    <path>/home/travis/build/jrl-umi3218/SpaceVecAlg/src/SpaceVecAlg/</path>
+    <filename>a00016</filename>
+    <namespace>sva</namespace>
+    <namespace>sva::details</namespace>
+    <member kind="function">
+      <type>T constexpr</type>
+      <name>sqrtNewtonRaphson</name>
+      <anchorfile>a00027.html</anchorfile>
+      <anchor>a260012a0c7888be38334b192a44c5dd3</anchor>
+      <arglist>(T x, T curr, T prev)</arglist>
+    </member>
+    <member kind="function">
+      <type>T constexpr</type>
+      <name>sqrt</name>
+      <anchorfile>a00027.html</anchorfile>
+      <anchor>a1bd0cdea56a8740a2d3279f11685cb79</anchor>
+      <arglist>(T x)</arglist>
+    </member>
+    <member kind="function">
+      <type>T</type>
+      <name>sinc</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a123844a3edbd3f1e68aacc22225a2a07</anchor>
+      <arglist>(const T x)</arglist>
+    </member>
+    <member kind="function">
+      <type>T</type>
+      <name>sinc_inv</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a3cad8a4ff91f4aace786395eaaef6834</anchor>
+      <arglist>(const T x)</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>MotionVec.h</name>
+    <path>/home/travis/build/jrl-umi3218/SpaceVecAlg/src/SpaceVecAlg/</path>
+    <filename>a00017</filename>
+    <class kind="class">sva::MotionVec</class>
+    <namespace>sva</namespace>
+    <member kind="function">
+      <type>MotionVec&lt; T &gt;</type>
+      <name>operator*</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a5034a19c802c5810244ff02b878cd0ba</anchor>
+      <arglist>(T2 scalar, const MotionVec&lt; T &gt; &amp;mv)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::ostream &amp;</type>
+      <name>operator&lt;&lt;</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>ab8fa7e4323ec04f5e03a350901c60258</anchor>
+      <arglist>(std::ostream &amp;out, const MotionVec&lt; T &gt; &amp;mv)</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>Operators.h</name>
+    <path>/home/travis/build/jrl-umi3218/SpaceVecAlg/src/SpaceVecAlg/</path>
+    <filename>a00018</filename>
+    <namespace>sva</namespace>
+    <namespace>sva::sva_internal</namespace>
+    <member kind="function">
+      <type>void</type>
+      <name>colwiseCrossEq</name>
+      <anchorfile>a00028.html</anchorfile>
+      <anchor>a925b34e58bacdcc4481c5ff74eb7ddd4</anchor>
+      <arglist>(const Eigen::MatrixBase&lt; Derived1 &gt; &amp;m1, const Eigen::MatrixBase&lt; Derived2 &gt; &amp;m2, Eigen::MatrixBase&lt; Derived3 &gt; const &amp;result)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>colwiseCrossPlusEq</name>
+      <anchorfile>a00028.html</anchorfile>
+      <anchor>ab737f4faada616c9e5c70f0485a9a7b6</anchor>
+      <arglist>(const Eigen::MatrixBase&lt; Derived1 &gt; &amp;m1, const Eigen::MatrixBase&lt; Derived2 &gt; &amp;m2, Eigen::MatrixBase&lt; Derived3 &gt; const &amp;result)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>colwiseCrossMinusEq</name>
+      <anchorfile>a00028.html</anchorfile>
+      <anchor>aecd2872735a5a172e30de9246de058fa</anchor>
+      <arglist>(const Eigen::MatrixBase&lt; Derived1 &gt; &amp;m1, const Eigen::MatrixBase&lt; Derived2 &gt; &amp;m2, Eigen::MatrixBase&lt; Derived3 &gt; const &amp;result)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>colwiseLeftMultEq</name>
+      <anchorfile>a00028.html</anchorfile>
+      <anchor>a82175c48dc1b87580b82ef5a071d786f</anchor>
+      <arglist>(const Eigen::MatrixBase&lt; Derived1 &gt; &amp;m1, const Eigen::MatrixBase&lt; Derived2 &gt; &amp;m2, Eigen::MatrixBase&lt; Derived3 &gt; const &amp;result)</arglist>
+    </member>
+    <member kind="function">
+      <type>Eigen::Block&lt; Derived, 3, Dynamic &gt;</type>
+      <name>motionAngular</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a2453bbce65af3c0244ddb1b6bd5d8ce2</anchor>
+      <arglist>(Eigen::MatrixBase&lt; Derived &gt; &amp;mv)</arglist>
+    </member>
+    <member kind="function">
+      <type>Eigen::Block&lt; const Derived, 3, Dynamic &gt;</type>
+      <name>motionAngular</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a4559ada646b1360e454b8e4c111b7f30</anchor>
+      <arglist>(const Eigen::MatrixBase&lt; Derived &gt; &amp;mv)</arglist>
+    </member>
+    <member kind="function">
+      <type>Eigen::Block&lt; Derived, 3, Dynamic &gt;</type>
+      <name>motionLinear</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a9b9539cbd6e4e2f2f3b0533712a583e3</anchor>
+      <arglist>(Eigen::MatrixBase&lt; Derived &gt; &amp;mv)</arglist>
+    </member>
+    <member kind="function">
+      <type>Eigen::Block&lt; const Derived, 3, Dynamic &gt;</type>
+      <name>motionLinear</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>aba1d07bbb03512ddff15e2141a3b4a62</anchor>
+      <arglist>(const Eigen::MatrixBase&lt; Derived &gt; &amp;mv)</arglist>
+    </member>
+    <member kind="function">
+      <type>Eigen::Block&lt; Derived, 3, Dynamic &gt;</type>
+      <name>forceCouple</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a5bd057544a4e4715453d6b091287ec39</anchor>
+      <arglist>(Eigen::MatrixBase&lt; Derived &gt; &amp;mv)</arglist>
+    </member>
+    <member kind="function">
+      <type>Eigen::Block&lt; const Derived, 3, Dynamic &gt;</type>
+      <name>forceCouple</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a16294cce1fad1b8fef911e95dc069441</anchor>
+      <arglist>(const Eigen::MatrixBase&lt; Derived &gt; &amp;mv)</arglist>
+    </member>
+    <member kind="function">
+      <type>Eigen::Block&lt; Derived, 3, Dynamic &gt;</type>
+      <name>forceForce</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a36ac26af5675540660450973f8ff331d</anchor>
+      <arglist>(Eigen::MatrixBase&lt; Derived &gt; &amp;mv)</arglist>
+    </member>
+    <member kind="function">
+      <type>Eigen::Block&lt; const Derived, 3, Dynamic &gt;</type>
+      <name>forceForce</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a17667abbecd2160e2919e032c8c3d941</anchor>
+      <arglist>(const Eigen::MatrixBase&lt; Derived &gt; &amp;mv)</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>PTransform.h</name>
+    <path>/home/travis/build/jrl-umi3218/SpaceVecAlg/src/SpaceVecAlg/</path>
+    <filename>a00019</filename>
+    <class kind="class">sva::PTransform</class>
+    <namespace>sva</namespace>
+    <member kind="function">
+      <type>Matrix3&lt; T &gt;</type>
+      <name>RotX</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a3d8592bd972b6bdd69677f5a620daa73</anchor>
+      <arglist>(T theta)</arglist>
+    </member>
+    <member kind="function">
+      <type>Matrix3&lt; T &gt;</type>
+      <name>RotY</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a72dd05ef42d5f3f01e76aecd3c769658</anchor>
+      <arglist>(T theta)</arglist>
+    </member>
+    <member kind="function">
+      <type>Matrix3&lt; T &gt;</type>
+      <name>RotZ</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a945b27220fb3db512a24939c8cc1b5ee</anchor>
+      <arglist>(T theta)</arglist>
+    </member>
+    <member kind="function">
+      <type>Vector3&lt; T &gt;</type>
+      <name>rotationError</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>ac65899b8e5843b7c7b41093ce38a74d1</anchor>
+      <arglist>(const Matrix3&lt; T &gt; &amp;E_a_b, const Matrix3&lt; T &gt; &amp;E_a_c)</arglist>
+    </member>
+    <member kind="function">
+      <type>Vector3&lt; T &gt;</type>
+      <name>rotationVelocity</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a44b687fe1934a2289d32f6f5e0eed1db</anchor>
+      <arglist>(const Matrix3&lt; T &gt; &amp;E_a_b)</arglist>
+    </member>
+    <member kind="function">
+      <type>MotionVec&lt; T &gt;</type>
+      <name>transformError</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a835d4f04eaf5d87dc9cc9b8d011f06a0</anchor>
+      <arglist>(const PTransform&lt; T &gt; &amp;X_a_b, const PTransform&lt; T &gt; &amp;X_a_c)</arglist>
+    </member>
+    <member kind="function">
+      <type>MotionVec&lt; T &gt;</type>
+      <name>transformVelocity</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a78005b4f61a4c40bffd3e002e7a9ba54</anchor>
+      <arglist>(const PTransform&lt; T &gt; &amp;X_a_b)</arglist>
+    </member>
+    <member kind="function">
+      <type>PTransform&lt; T &gt;</type>
+      <name>interpolate</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a381dd489edaba2181144933166257665</anchor>
+      <arglist>(const PTransform&lt; T &gt; &amp;from, const PTransform&lt; T &gt; &amp;to, double t)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::ostream &amp;</type>
+      <name>operator&lt;&lt;</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a69f52ec476fdbe9a8449b8f168b0a873</anchor>
+      <arglist>(std::ostream &amp;out, const PTransform&lt; T &gt; &amp;pt)</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>RBInertia.h</name>
+    <path>/home/travis/build/jrl-umi3218/SpaceVecAlg/src/SpaceVecAlg/</path>
+    <filename>a00020</filename>
+    <class kind="class">sva::RBInertia</class>
+    <namespace>sva</namespace>
+    <member kind="function">
+      <type>Matrix3&lt; T &gt;</type>
+      <name>inertiaToOrigin</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a1a0a93626ba1bf5c436166e11da493a3</anchor>
+      <arglist>(const Matrix3&lt; T &gt; &amp;inertia, T mass, const Vector3&lt; T &gt; &amp;com, const Matrix3&lt; T &gt; &amp;rotation)</arglist>
+    </member>
+    <member kind="function">
+      <type>RBInertia&lt; T &gt;</type>
+      <name>operator*</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a5f9b7d46711ba95bd594d1a26cf933ea</anchor>
+      <arglist>(T2 scalar, const RBInertia&lt; T &gt; &amp;rbI)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::ostream &amp;</type>
+      <name>operator&lt;&lt;</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a2693d2fc4c910d36477d6ec8b49ab7a9</anchor>
+      <arglist>(std::ostream &amp;out, const RBInertia&lt; T &gt; &amp;rbI)</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>README.md</name>
+    <path>/home/travis/build/jrl-umi3218/SpaceVecAlg/</path>
+    <filename>a00021</filename>
+  </compound>
+  <compound kind="file">
+    <name>SpaceVecAlg</name>
+    <path>/home/travis/build/jrl-umi3218/SpaceVecAlg/src/SpaceVecAlg/</path>
+    <filename>a00022</filename>
+    <includes id="a00012" name="EigenTypedef.h" local="yes" imported="no">EigenTypedef.h</includes>
+    <includes id="a00013" name="EigenUtility.h" local="yes" imported="no">EigenUtility.h</includes>
+    <includes id="a00016" name="MathFunc.h" local="yes" imported="no">MathFunc.h</includes>
+    <includes id="a00009" name="ABInertia.h" local="yes" imported="no">ABInertia.h</includes>
+    <includes id="a00010" name="AdmittanceVec.h" local="yes" imported="no">AdmittanceVec.h</includes>
+    <includes id="a00014" name="ForceVec.h" local="yes" imported="no">ForceVec.h</includes>
+    <includes id="a00015" name="ImpedanceVec.h" local="yes" imported="no">ImpedanceVec.h</includes>
+    <includes id="a00017" name="MotionVec.h" local="yes" imported="no">MotionVec.h</includes>
+    <includes id="a00019" name="PTransform.h" local="yes" imported="no">PTransform.h</includes>
+    <includes id="a00020" name="RBInertia.h" local="yes" imported="no">RBInertia.h</includes>
+    <includes id="a00018" name="Operators.h" local="yes" imported="no">Operators.h</includes>
+    <class kind="class">sva::MotionVec</class>
+    <class kind="class">sva::ForceVec</class>
+    <class kind="class">sva::RBInertia</class>
+    <class kind="class">sva::ABInertia</class>
+    <class kind="class">sva::PTransform</class>
+    <namespace>sva</namespace>
+    <member kind="typedef">
+      <type>MotionVec&lt; double &gt;</type>
+      <name>MotionVecd</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>afc16c15a4fbcc2d8cf5676551b74816d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>ForceVec&lt; double &gt;</type>
+      <name>ForceVecd</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>aaea958106abfa742585ced52492029c4</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>ImpedanceVec&lt; double &gt;</type>
+      <name>ImpedanceVecd</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>aecdcfd928635da2bcaab0a4f363d0826</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>AdmittanceVec&lt; double &gt;</type>
+      <name>AdmittanceVecd</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>ac0f35bedffbde7a751477b707e1f03c2</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>RBInertia&lt; double &gt;</type>
+      <name>RBInertiad</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>ac56f2d381429fa55047d24d79ac9ae82</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>ABInertia&lt; double &gt;</type>
+      <name>ABInertiad</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>aa8d39b02fe4802fabf41faf9d4676578</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>PTransform&lt; double &gt;</type>
+      <name>PTransformd</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a259dde998fab6de957995eedfdb4d179</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>sva::ABInertia</name>
+    <filename>a00002.html</filename>
+    <templarg>T</templarg>
+    <member kind="typedef">
+      <type>Vector3&lt; T &gt;</type>
+      <name>vector3_t</name>
+      <anchorfile>a00002.html</anchorfile>
+      <anchor>af6494a1b137cebc80e12c8685c0bf66e</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>Matrix3&lt; T &gt;</type>
+      <name>matrix3_t</name>
+      <anchorfile>a00002.html</anchorfile>
+      <anchor>ae40c0cafa7cdd5cb65984a5528c96919</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>Matrix6&lt; T &gt;</type>
+      <name>matrix6_t</name>
+      <anchorfile>a00002.html</anchorfile>
+      <anchor>afd85a8fbdf63def66cec795933a3998f</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>ABInertia</name>
+      <anchorfile>a00002.html</anchorfile>
+      <anchor>ae51502bdba3992faf5663ed87e4f6a35</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>ABInertia</name>
+      <anchorfile>a00002.html</anchorfile>
+      <anchor>a4be54cecaa1b47061f230fc5ba58e963</anchor>
+      <arglist>(const matrix3_t &amp;M, const matrix3_t &amp;H, const matrix3_t &amp;I)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>ABInertia</name>
+      <anchorfile>a00002.html</anchorfile>
+      <anchor>a26f1d88a24d807c3c3e499194ade2428</anchor>
+      <arglist>(const TriangularView&lt; matrix3_t, Lower &gt; &amp;ltM, const matrix3_t &amp;H, const TriangularView&lt; matrix3_t, Lower &gt; &amp;ltI)</arglist>
+    </member>
+    <member kind="function">
+      <type>const matrix3_t &amp;</type>
+      <name>lowerTriangularMassMatrix</name>
+      <anchorfile>a00002.html</anchorfile>
+      <anchor>a964b47b81d707bb663a9316d89c3e8a0</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>matrix3_t</type>
+      <name>massMatrix</name>
+      <anchorfile>a00002.html</anchorfile>
+      <anchor>a5564cb8ad83b29b2c051dd20f6492f8f</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>const matrix3_t &amp;</type>
+      <name>gInertia</name>
+      <anchorfile>a00002.html</anchorfile>
+      <anchor>adce206891b27c2eafead23da033d0e4e</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>const matrix3_t &amp;</type>
+      <name>lowerTriangularInertia</name>
+      <anchorfile>a00002.html</anchorfile>
+      <anchor>aa8a4e87f5be24c6908d391900fbc12ab</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>matrix3_t</type>
+      <name>inertia</name>
+      <anchorfile>a00002.html</anchorfile>
+      <anchor>a9a91192039c5479fcea7f4eecb4e2f91</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>matrix6_t</type>
+      <name>matrix</name>
+      <anchorfile>a00002.html</anchorfile>
+      <anchor>a6de052f0c556b42ce886c97a3a71d72c</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>ABInertia&lt; T2 &gt;</type>
+      <name>cast</name>
+      <anchorfile>a00002.html</anchorfile>
+      <anchor>a1031f53a88c9ed792139d05437c556c7</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>ABInertia&lt; T &gt;</type>
+      <name>operator+</name>
+      <anchorfile>a00002.html</anchorfile>
+      <anchor>a9801362cdb9bdd4dbfc18c9db8358cfa</anchor>
+      <arglist>(const ABInertia&lt; T &gt; &amp;rbI) const </arglist>
+    </member>
+    <member kind="function">
+      <type>ABInertia&lt; T &gt;</type>
+      <name>operator-</name>
+      <anchorfile>a00002.html</anchorfile>
+      <anchor>a41d51359838ccd24be0581d36fc16f75</anchor>
+      <arglist>(const ABInertia&lt; T &gt; &amp;rbI) const </arglist>
+    </member>
+    <member kind="function">
+      <type>ABInertia&lt; T &gt;</type>
+      <name>operator-</name>
+      <anchorfile>a00002.html</anchorfile>
+      <anchor>a7b28651c0ad10ff82c95d61c48d0e690</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>ABInertia&lt; T &gt; &amp;</type>
+      <name>operator+=</name>
+      <anchorfile>a00002.html</anchorfile>
+      <anchor>af4887341bb906f27035f3fca3683c861</anchor>
+      <arglist>(const ABInertia&lt; T &gt; &amp;rbI)</arglist>
+    </member>
+    <member kind="function">
+      <type>ABInertia&lt; T &gt; &amp;</type>
+      <name>operator-=</name>
+      <anchorfile>a00002.html</anchorfile>
+      <anchor>adebb00a9759dbc37f0e0420a738c0a0b</anchor>
+      <arglist>(const ABInertia&lt; T &gt; &amp;rbI)</arglist>
+    </member>
+    <member kind="function">
+      <type>ABInertia&lt; T &gt;</type>
+      <name>operator*</name>
+      <anchorfile>a00002.html</anchorfile>
+      <anchor>af6d10db1b71c3d4e17ed849097dc0860</anchor>
+      <arglist>(T2 scalar) const </arglist>
+    </member>
+    <member kind="function">
+      <type>ABInertia&lt; T &gt;</type>
+      <name>operator+</name>
+      <anchorfile>a00002.html</anchorfile>
+      <anchor>a3f2b09d60511dadb0524415f7141d12b</anchor>
+      <arglist>(const RBInertia&lt; T &gt; &amp;rbI) const </arglist>
+    </member>
+    <member kind="function">
+      <type>ForceVec&lt; T &gt;</type>
+      <name>operator*</name>
+      <anchorfile>a00002.html</anchorfile>
+      <anchor>aa95ed43de091fbc65bda9c731b2524a1</anchor>
+      <arglist>(const MotionVec&lt; T &gt; &amp;mv) const </arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mul</name>
+      <anchorfile>a00002.html</anchorfile>
+      <anchor>a4eb4eb5b4fc388cc0e52491c95e119de</anchor>
+      <arglist>(const Eigen::MatrixBase&lt; Derived &gt; &amp;mv, Eigen::MatrixBase&lt; Derived &gt; &amp;result) const </arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator==</name>
+      <anchorfile>a00002.html</anchorfile>
+      <anchor>a2d668c163520bfcf141254080604a205</anchor>
+      <arglist>(const ABInertia&lt; T &gt; &amp;abI) const </arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator!=</name>
+      <anchorfile>a00002.html</anchorfile>
+      <anchor>ad8c3dcf5b025aa74d5f46d1d9eba58e8</anchor>
+      <arglist>(const ABInertia&lt; T &gt; &amp;abI) const </arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>sva::AdmittanceVec</name>
+    <filename>a00003.html</filename>
+    <templarg>T</templarg>
+    <member kind="typedef">
+      <type>Vector3&lt; T &gt;</type>
+      <name>vector3_t</name>
+      <anchorfile>a00003.html</anchorfile>
+      <anchor>acd066ce0d134c16976d817e497a482d6</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>Vector6&lt; T &gt;</type>
+      <name>vector6_t</name>
+      <anchorfile>a00003.html</anchorfile>
+      <anchor>a735a97c047ab128473f551374671bcb4</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>AdmittanceVec</name>
+      <anchorfile>a00003.html</anchorfile>
+      <anchor>a34854b64eb3b1bc83e1d5838038a0302</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>AdmittanceVec</name>
+      <anchorfile>a00003.html</anchorfile>
+      <anchor>a32bf09c968ac2f9aba6a3961b87035b8</anchor>
+      <arglist>(const vector6_t &amp;vec)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>AdmittanceVec</name>
+      <anchorfile>a00003.html</anchorfile>
+      <anchor>a23b759afca5f0de97e279197fe627302</anchor>
+      <arglist>(const vector3_t &amp;angular, const vector3_t &amp;linear)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>AdmittanceVec</name>
+      <anchorfile>a00003.html</anchorfile>
+      <anchor>a6288cdb8f1931a9c161974848a7d61a0</anchor>
+      <arglist>(T angular, T linear)</arglist>
+    </member>
+    <member kind="function">
+      <type>const vector3_t &amp;</type>
+      <name>angular</name>
+      <anchorfile>a00003.html</anchorfile>
+      <anchor>aba6c5b0cdb648ba3ab52917fe7881f5f</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>vector3_t &amp;</type>
+      <name>angular</name>
+      <anchorfile>a00003.html</anchorfile>
+      <anchor>a4a8a6a87f090a5b81578644160627861</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>const vector3_t &amp;</type>
+      <name>linear</name>
+      <anchorfile>a00003.html</anchorfile>
+      <anchor>abf5463009e539d07d5f4b6774da52989</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>vector3_t &amp;</type>
+      <name>linear</name>
+      <anchorfile>a00003.html</anchorfile>
+      <anchor>aa974d3d01f37077f8db76c9357d53095</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>vector6_t</type>
+      <name>vector</name>
+      <anchorfile>a00003.html</anchorfile>
+      <anchor>aa3c1c523158d24c230d93b6ca629328d</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>AdmittanceVec&lt; T2 &gt;</type>
+      <name>cast</name>
+      <anchorfile>a00003.html</anchorfile>
+      <anchor>a26671be7960770ff70ffacb6e7e0a1ca</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>AdmittanceVec&lt; T &gt;</type>
+      <name>operator+</name>
+      <anchorfile>a00003.html</anchorfile>
+      <anchor>a5ad8cce9ce67ddbbde755590a7df6ba7</anchor>
+      <arglist>(const AdmittanceVec&lt; T &gt; &amp;av) const </arglist>
+    </member>
+    <member kind="function">
+      <type>AdmittanceVec&lt; T &gt; &amp;</type>
+      <name>operator+=</name>
+      <anchorfile>a00003.html</anchorfile>
+      <anchor>aaaa80b1cf99e897fcf0c5f5fac2937a9</anchor>
+      <arglist>(const AdmittanceVec&lt; T &gt; &amp;av)</arglist>
+    </member>
+    <member kind="function">
+      <type>AdmittanceVec&lt; T &gt;</type>
+      <name>operator*</name>
+      <anchorfile>a00003.html</anchorfile>
+      <anchor>ada1ecdafff4591830529297af90c1cf2</anchor>
+      <arglist>(T2 scalar) const </arglist>
+    </member>
+    <member kind="function">
+      <type>AdmittanceVec&lt; T &gt; &amp;</type>
+      <name>operator*=</name>
+      <anchorfile>a00003.html</anchorfile>
+      <anchor>a8935ccf5367ee7260407557115c2c300</anchor>
+      <arglist>(T2 scalar)</arglist>
+    </member>
+    <member kind="function">
+      <type>AdmittanceVec&lt; T &gt;</type>
+      <name>operator/</name>
+      <anchorfile>a00003.html</anchorfile>
+      <anchor>a471131bfa93828b78d314becf401d392</anchor>
+      <arglist>(T2 scalar) const </arglist>
+    </member>
+    <member kind="function">
+      <type>AdmittanceVec&lt; T &gt; &amp;</type>
+      <name>operator/=</name>
+      <anchorfile>a00003.html</anchorfile>
+      <anchor>a5708a362ffa1b03dc5015b69d14ea4e9</anchor>
+      <arglist>(T2 scalar)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator==</name>
+      <anchorfile>a00003.html</anchorfile>
+      <anchor>a426f4e5eb4df1ce25ff6d345450f0a1b</anchor>
+      <arglist>(const AdmittanceVec&lt; T &gt; &amp;av) const </arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator!=</name>
+      <anchorfile>a00003.html</anchorfile>
+      <anchor>aa7a4f0dbc662a3ed076096406543ce9c</anchor>
+      <arglist>(const AdmittanceVec&lt; T &gt; &amp;av) const </arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static AdmittanceVec&lt; T &gt;</type>
+      <name>Zero</name>
+      <anchorfile>a00003.html</anchorfile>
+      <anchor>a9a9574fbd61b11af495d7f5ebf6cf6e5</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>sva::ForceVec</name>
+    <filename>a00004.html</filename>
+    <templarg>T</templarg>
+    <member kind="typedef">
+      <type>Vector3&lt; T &gt;</type>
+      <name>vector3_t</name>
+      <anchorfile>a00004.html</anchorfile>
+      <anchor>a3f771fa492ae2c9f35c075bfe41ff990</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>Vector6&lt; T &gt;</type>
+      <name>vector6_t</name>
+      <anchorfile>a00004.html</anchorfile>
+      <anchor>a3d2902bb90cc5a47091cc2c9bdb60800</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>ForceVec</name>
+      <anchorfile>a00004.html</anchorfile>
+      <anchor>a730f83bfa7210e24707c39bd3902da61</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>ForceVec</name>
+      <anchorfile>a00004.html</anchorfile>
+      <anchor>a7e9d1c4ca61297af37a34de6b27d505b</anchor>
+      <arglist>(const vector6_t &amp;vec)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>ForceVec</name>
+      <anchorfile>a00004.html</anchorfile>
+      <anchor>a9b3a676a68d07834110c8094c9c33620</anchor>
+      <arglist>(const vector3_t &amp;couple, const vector3_t &amp;force)</arglist>
+    </member>
+    <member kind="function">
+      <type>vector3_t &amp;</type>
+      <name>couple</name>
+      <anchorfile>a00004.html</anchorfile>
+      <anchor>a4cb565858a92641bf4aea0e59819919a</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>const vector3_t &amp;</type>
+      <name>couple</name>
+      <anchorfile>a00004.html</anchorfile>
+      <anchor>a4e4ecfbcecb7d3f6ccc4e899ed8ec7ca</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>vector3_t &amp;</type>
+      <name>moment</name>
+      <anchorfile>a00004.html</anchorfile>
+      <anchor>a8c076a7556516236f004b9a0548d534c</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>const vector3_t &amp;</type>
+      <name>moment</name>
+      <anchorfile>a00004.html</anchorfile>
+      <anchor>aed200378aeafda85323973c2f0bce4b2</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>vector3_t &amp;</type>
+      <name>force</name>
+      <anchorfile>a00004.html</anchorfile>
+      <anchor>a24f8a65444a2150f2d0b1eaf988f6050</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>const vector3_t &amp;</type>
+      <name>force</name>
+      <anchorfile>a00004.html</anchorfile>
+      <anchor>ae01fcc6745935483456ce1fa450ce84a</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>vector6_t</type>
+      <name>vector</name>
+      <anchorfile>a00004.html</anchorfile>
+      <anchor>a80a9f43ca5332f256d5eaa23122cc467</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>ForceVec&lt; T2 &gt;</type>
+      <name>cast</name>
+      <anchorfile>a00004.html</anchorfile>
+      <anchor>a87dc3553e5a5a6fab1657cbf5f884b04</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>ForceVec&lt; T &gt;</type>
+      <name>operator+</name>
+      <anchorfile>a00004.html</anchorfile>
+      <anchor>aab0b01ed3e67617fc5b6d75989116ec1</anchor>
+      <arglist>(const ForceVec&lt; T &gt; &amp;fv) const </arglist>
+    </member>
+    <member kind="function">
+      <type>ForceVec&lt; T &gt;</type>
+      <name>operator-</name>
+      <anchorfile>a00004.html</anchorfile>
+      <anchor>a08f69aa68ac7c842921cadc240386263</anchor>
+      <arglist>(const ForceVec&lt; T &gt; &amp;fv) const </arglist>
+    </member>
+    <member kind="function">
+      <type>ForceVec&lt; T &gt;</type>
+      <name>operator-</name>
+      <anchorfile>a00004.html</anchorfile>
+      <anchor>a9cbe1f9d227c2d142e542ca2e9bc9889</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>ForceVec&lt; T &gt; &amp;</type>
+      <name>operator+=</name>
+      <anchorfile>a00004.html</anchorfile>
+      <anchor>ab130da1c2b94fece993f56f039bdc070</anchor>
+      <arglist>(const ForceVec&lt; T &gt; &amp;fv)</arglist>
+    </member>
+    <member kind="function">
+      <type>ForceVec&lt; T &gt; &amp;</type>
+      <name>operator-=</name>
+      <anchorfile>a00004.html</anchorfile>
+      <anchor>a79b84bb24e1cc389608a8b1ac277871a</anchor>
+      <arglist>(const ForceVec&lt; T &gt; &amp;fv)</arglist>
+    </member>
+    <member kind="function">
+      <type>ForceVec&lt; T &gt;</type>
+      <name>operator*</name>
+      <anchorfile>a00004.html</anchorfile>
+      <anchor>ab4851782cba8b236ba76deb76919308e</anchor>
+      <arglist>(T2 scalar) const </arglist>
+    </member>
+    <member kind="function">
+      <type>ForceVec&lt; T &gt;</type>
+      <name>operator/</name>
+      <anchorfile>a00004.html</anchorfile>
+      <anchor>a02ca7e0d36023121af6db7f7125fa71a</anchor>
+      <arglist>(T2 scalar) const </arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator==</name>
+      <anchorfile>a00004.html</anchorfile>
+      <anchor>a8804fd6876ce6b4602414ce01af8bafd</anchor>
+      <arglist>(const ForceVec&lt; T &gt; &amp;fv) const </arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator!=</name>
+      <anchorfile>a00004.html</anchorfile>
+      <anchor>abb947129737da2bb6fc973c694f4959a</anchor>
+      <arglist>(const ForceVec&lt; T &gt; &amp;fv) const </arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static ForceVec&lt; T &gt;</type>
+      <name>Zero</name>
+      <anchorfile>a00004.html</anchorfile>
+      <anchor>aaeb95999d383653c0c848fc57e47c913</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="friend">
+      <type>friend class</type>
+      <name>PTransform&lt; T &gt;</name>
+      <anchorfile>a00004.html</anchorfile>
+      <anchor>afd10841a85903063ea3c0cca84c209cd</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>sva::ImpedanceVec</name>
+    <filename>a00005.html</filename>
+    <templarg>T</templarg>
+    <member kind="typedef">
+      <type>Vector3&lt; T &gt;</type>
+      <name>vector3_t</name>
+      <anchorfile>a00005.html</anchorfile>
+      <anchor>acc416734f64a6a5f234823772fec81ae</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>Vector6&lt; T &gt;</type>
+      <name>vector6_t</name>
+      <anchorfile>a00005.html</anchorfile>
+      <anchor>ae98597deb79c534e4bd84c2bfa4bd6fc</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>ImpedanceVec</name>
+      <anchorfile>a00005.html</anchorfile>
+      <anchor>a883d518b905e9f5713032106108b6f07</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>ImpedanceVec</name>
+      <anchorfile>a00005.html</anchorfile>
+      <anchor>a521286301a765cfe57cdc773bd6fdf96</anchor>
+      <arglist>(const vector6_t &amp;vec)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>ImpedanceVec</name>
+      <anchorfile>a00005.html</anchorfile>
+      <anchor>abcdc938fd51bb1ce9c993a7587990b1a</anchor>
+      <arglist>(const vector3_t &amp;angular, const vector3_t &amp;linear)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>ImpedanceVec</name>
+      <anchorfile>a00005.html</anchorfile>
+      <anchor>af3c5f6573c5551196f116f3f76f0c5d7</anchor>
+      <arglist>(T angular, T linear)</arglist>
+    </member>
+    <member kind="function">
+      <type>const vector3_t &amp;</type>
+      <name>angular</name>
+      <anchorfile>a00005.html</anchorfile>
+      <anchor>a5facf41aa3b23c7e662bd258bcae87af</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>vector3_t &amp;</type>
+      <name>angular</name>
+      <anchorfile>a00005.html</anchorfile>
+      <anchor>a6b775a9d184474948bcfc21b27c8b3b3</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>const vector3_t &amp;</type>
+      <name>linear</name>
+      <anchorfile>a00005.html</anchorfile>
+      <anchor>a524fcb6a5d2f76f4a01ab362a0047856</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>vector3_t &amp;</type>
+      <name>linear</name>
+      <anchorfile>a00005.html</anchorfile>
+      <anchor>a4d6c7d31005ba39c381b91633cb63ac6</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>vector6_t</type>
+      <name>vector</name>
+      <anchorfile>a00005.html</anchorfile>
+      <anchor>a5022dbc39162dba735ade7fe32ec56c1</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>ImpedanceVec&lt; T2 &gt;</type>
+      <name>cast</name>
+      <anchorfile>a00005.html</anchorfile>
+      <anchor>a3c78cf7fdb5c19c30bf7185934bcd538</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>ImpedanceVec&lt; T &gt;</type>
+      <name>operator+</name>
+      <anchorfile>a00005.html</anchorfile>
+      <anchor>a87f0b3124448ac227453e8552a1aa7c4</anchor>
+      <arglist>(const ImpedanceVec&lt; T &gt; &amp;iv) const </arglist>
+    </member>
+    <member kind="function">
+      <type>ImpedanceVec&lt; T &gt; &amp;</type>
+      <name>operator+=</name>
+      <anchorfile>a00005.html</anchorfile>
+      <anchor>affa659688da60587c172faf620e1bf8e</anchor>
+      <arglist>(const ImpedanceVec&lt; T &gt; &amp;iv)</arglist>
+    </member>
+    <member kind="function">
+      <type>ImpedanceVec&lt; T &gt;</type>
+      <name>operator*</name>
+      <anchorfile>a00005.html</anchorfile>
+      <anchor>afbd5c77d21e1b93d9c6e6f11c0ce28aa</anchor>
+      <arglist>(T2 scalar) const </arglist>
+    </member>
+    <member kind="function">
+      <type>ImpedanceVec&lt; T &gt; &amp;</type>
+      <name>operator*=</name>
+      <anchorfile>a00005.html</anchorfile>
+      <anchor>a40e4517eb297c1482d7f0c8f3715f2e5</anchor>
+      <arglist>(T2 scalar)</arglist>
+    </member>
+    <member kind="function">
+      <type>ImpedanceVec&lt; T &gt;</type>
+      <name>operator/</name>
+      <anchorfile>a00005.html</anchorfile>
+      <anchor>aaaf62c340ae2184160814148bb784217</anchor>
+      <arglist>(T2 scalar) const </arglist>
+    </member>
+    <member kind="function">
+      <type>ImpedanceVec&lt; T &gt; &amp;</type>
+      <name>operator/=</name>
+      <anchorfile>a00005.html</anchorfile>
+      <anchor>adb7c65d762c735319b37eba83bcf8013</anchor>
+      <arglist>(T2 scalar)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator==</name>
+      <anchorfile>a00005.html</anchorfile>
+      <anchor>a9ca183f2a980fb74472d5cd9a952e24e</anchor>
+      <arglist>(const ImpedanceVec&lt; T &gt; &amp;iv) const </arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator!=</name>
+      <anchorfile>a00005.html</anchorfile>
+      <anchor>a7c2f05b35a192833af6bbac966f2eec2</anchor>
+      <arglist>(const ImpedanceVec&lt; T &gt; &amp;iv) const </arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static ImpedanceVec&lt; T &gt;</type>
+      <name>Zero</name>
+      <anchorfile>a00005.html</anchorfile>
+      <anchor>a9bf662fc388e861b5a6196c5ae84366d</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>sva::MotionVec</name>
+    <filename>a00006.html</filename>
+    <templarg>T</templarg>
+    <member kind="typedef">
+      <type>Vector3&lt; T &gt;</type>
+      <name>vector3_t</name>
+      <anchorfile>a00006.html</anchorfile>
+      <anchor>ae6c85df2523b3bfee84b6072397b6e1c</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>Vector6&lt; T &gt;</type>
+      <name>vector6_t</name>
+      <anchorfile>a00006.html</anchorfile>
+      <anchor>ac2a777cd6140f53a263f1313d3ffbb31</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>MotionVec</name>
+      <anchorfile>a00006.html</anchorfile>
+      <anchor>a9faa8295817ea0c3c28aa952f8ec6533</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>MotionVec</name>
+      <anchorfile>a00006.html</anchorfile>
+      <anchor>a943655b9d56014918439d5e5ce86762a</anchor>
+      <arglist>(const vector6_t &amp;vec)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>MotionVec</name>
+      <anchorfile>a00006.html</anchorfile>
+      <anchor>a9d4335b618a5304beb024bc63cd5c04c</anchor>
+      <arglist>(const vector3_t &amp;angular, const vector3_t &amp;linear)</arglist>
+    </member>
+    <member kind="function">
+      <type>const vector3_t &amp;</type>
+      <name>angular</name>
+      <anchorfile>a00006.html</anchorfile>
+      <anchor>a0b55525aa11296c8c2a4340af9e16826</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>vector3_t &amp;</type>
+      <name>angular</name>
+      <anchorfile>a00006.html</anchorfile>
+      <anchor>a257ae7a4157d2e3bfa857787e069f224</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>const vector3_t &amp;</type>
+      <name>linear</name>
+      <anchorfile>a00006.html</anchorfile>
+      <anchor>a535094508d6637aeaaa837eb8ff8b816</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>vector3_t &amp;</type>
+      <name>linear</name>
+      <anchorfile>a00006.html</anchorfile>
+      <anchor>a3abfa746c359d99964c609e96dab22a9</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>vector6_t</type>
+      <name>vector</name>
+      <anchorfile>a00006.html</anchorfile>
+      <anchor>a76edf478c9a99e518590dfb7d8d50b94</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>MotionVec&lt; T2 &gt;</type>
+      <name>cast</name>
+      <anchorfile>a00006.html</anchorfile>
+      <anchor>aac8bc10b39a7570d2c22909226dfc81e</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>MotionVec&lt; T &gt;</type>
+      <name>operator+</name>
+      <anchorfile>a00006.html</anchorfile>
+      <anchor>a5afe145a7af591b9482fb17e4aeef8cf</anchor>
+      <arglist>(const MotionVec&lt; T &gt; &amp;mv) const </arglist>
+    </member>
+    <member kind="function">
+      <type>MotionVec&lt; T &gt;</type>
+      <name>operator-</name>
+      <anchorfile>a00006.html</anchorfile>
+      <anchor>a57420e9dfb814dad8f40adae4d26dfbb</anchor>
+      <arglist>(const MotionVec&lt; T &gt; &amp;mv) const </arglist>
+    </member>
+    <member kind="function">
+      <type>MotionVec&lt; T &gt;</type>
+      <name>operator-</name>
+      <anchorfile>a00006.html</anchorfile>
+      <anchor>a3c15257be5860d588b54eca213dba3d0</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>MotionVec&lt; T &gt; &amp;</type>
+      <name>operator+=</name>
+      <anchorfile>a00006.html</anchorfile>
+      <anchor>a50bdd4d463493eeb26f79ed101cc1a9b</anchor>
+      <arglist>(const MotionVec&lt; T &gt; &amp;mv)</arglist>
+    </member>
+    <member kind="function">
+      <type>MotionVec&lt; T &gt; &amp;</type>
+      <name>operator-=</name>
+      <anchorfile>a00006.html</anchorfile>
+      <anchor>ad577e632b2bb9e3018e5761c5412e063</anchor>
+      <arglist>(const MotionVec&lt; T &gt; &amp;mv)</arglist>
+    </member>
+    <member kind="function">
+      <type>MotionVec&lt; T &gt;</type>
+      <name>operator*</name>
+      <anchorfile>a00006.html</anchorfile>
+      <anchor>a2c454f35f4d1c803c35f9a7fa4ac1548</anchor>
+      <arglist>(T2 scalar) const </arglist>
+    </member>
+    <member kind="function">
+      <type>MotionVec&lt; T &gt;</type>
+      <name>operator/</name>
+      <anchorfile>a00006.html</anchorfile>
+      <anchor>a406bf81ccee766a67b8e21c3e11e9314</anchor>
+      <arglist>(T2 scalar) const </arglist>
+    </member>
+    <member kind="function">
+      <type>MotionVec&lt; T &gt;</type>
+      <name>cross</name>
+      <anchorfile>a00006.html</anchorfile>
+      <anchor>acc3e11c0cc01ed6717fe2b3d1e7c402c</anchor>
+      <arglist>(const MotionVec&lt; T &gt; &amp;mv2) const </arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>cross</name>
+      <anchorfile>a00006.html</anchorfile>
+      <anchor>ab2f2cce3d341a4de489d5180c51d253d</anchor>
+      <arglist>(const Eigen::MatrixBase&lt; Derived &gt; &amp;mv2, Eigen::MatrixBase&lt; Derived &gt; &amp;result) const </arglist>
+    </member>
+    <member kind="function">
+      <type>ForceVec&lt; T &gt;</type>
+      <name>crossDual</name>
+      <anchorfile>a00006.html</anchorfile>
+      <anchor>a1f9b4e568bfb4b357dfdbaa0277ea8ba</anchor>
+      <arglist>(const ForceVec&lt; T &gt; &amp;fv2) const </arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>crossDual</name>
+      <anchorfile>a00006.html</anchorfile>
+      <anchor>a9a0ea67b1e1599236265e0a24dad9949</anchor>
+      <arglist>(const Eigen::MatrixBase&lt; Derived &gt; &amp;fv2, Eigen::MatrixBase&lt; Derived &gt; &amp;result) const </arglist>
+    </member>
+    <member kind="function">
+      <type>T</type>
+      <name>dot</name>
+      <anchorfile>a00006.html</anchorfile>
+      <anchor>a846f0ac67ef5ba97f1c84928b99f2ea2</anchor>
+      <arglist>(const ForceVec&lt; T &gt; &amp;fv2) const </arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator==</name>
+      <anchorfile>a00006.html</anchorfile>
+      <anchor>a993778ff1608ca0f097f5718cb4bede7</anchor>
+      <arglist>(const MotionVec&lt; T &gt; &amp;mv) const </arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator!=</name>
+      <anchorfile>a00006.html</anchorfile>
+      <anchor>a28b2bd6206e689829c073c111a7228cb</anchor>
+      <arglist>(const MotionVec&lt; T &gt; &amp;mv) const </arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static MotionVec&lt; T &gt;</type>
+      <name>Zero</name>
+      <anchorfile>a00006.html</anchorfile>
+      <anchor>a5ebbdd768786752203c24f5d476faaa0</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="friend">
+      <type>friend class</type>
+      <name>PTransform&lt; T &gt;</name>
+      <anchorfile>a00006.html</anchorfile>
+      <anchor>afd10841a85903063ea3c0cca84c209cd</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>sva::PTransform</name>
+    <filename>a00007.html</filename>
+    <templarg>T</templarg>
+    <member kind="function">
+      <type></type>
+      <name>PTransform</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>a7d096e7f3a231a6b059d300a7289f52f</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>PTransform</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>a930b8a61fc9f500c55fd3313f34d9f71</anchor>
+      <arglist>(const PTransform&lt; T2 &gt; &amp;pt)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>PTransform</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>a9fcfb68d5aee00cf6ea4159a66f98cec</anchor>
+      <arglist>(const matrix3_t &amp;rot, const vector3_t &amp;trans)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>PTransform</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>ae826c9c81861ec64fbaa7e615f5db05a</anchor>
+      <arglist>(const quaternion_t &amp;rot, const vector3_t &amp;trans)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>PTransform</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>a769255f0ef1e0c28c8779de8ea84e634</anchor>
+      <arglist>(const quaternion_t &amp;rot)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>PTransform</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>a968cca30c0e21d7ebafd8ac97c8494f9</anchor>
+      <arglist>(const matrix3_t &amp;rot)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>PTransform</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>ac69c898a238d9028245f19521a0e7541</anchor>
+      <arglist>(const vector3_t &amp;trans)</arglist>
+    </member>
+    <member kind="function">
+      <type>const matrix3_t &amp;</type>
+      <name>rotation</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>ad8cf0f4f145b55c063d5a527a6c33b76</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>matrix3_t &amp;</type>
+      <name>rotation</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>a6c66d2b5851aa5092b6645b88c2978aa</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>const vector3_t &amp;</type>
+      <name>translation</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>aa7aaf3327daf7b3984be6d2f5c3ef11b</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>vector3_t &amp;</type>
+      <name>translation</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>a3f61aded680a06f2d23c4059d444bb89</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>matrix6_t</type>
+      <name>matrix</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>a54562972abd09161aee465c592c14047</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>matrix6_t</type>
+      <name>dualMatrix</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>afa7630aebda72170cb723e245d3d733f</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>PTransform&lt; T2 &gt;</type>
+      <name>cast</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>a6cb4d7a3886f77d7dafa9cd23e541966</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>PTransform&lt; T &gt;</type>
+      <name>operator*</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>a678bf639683b8809b819a925f2b6649c</anchor>
+      <arglist>(const PTransform&lt; T &gt; &amp;pt) const </arglist>
+    </member>
+    <member kind="function">
+      <type>MotionVec&lt; T &gt;</type>
+      <name>operator*</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>afba1eadfd756c81fb3fad78b7eba61a2</anchor>
+      <arglist>(const MotionVec&lt; T &gt; &amp;mv) const </arglist>
+    </member>
+    <member kind="function">
+      <type>Eigen::Vector3&lt; T &gt;</type>
+      <name>angularMul</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>a0b6cbb2d0d4b11a3f4f61a33e74c3773</anchor>
+      <arglist>(const MotionVec&lt; T &gt; &amp;mv) const </arglist>
+    </member>
+    <member kind="function">
+      <type>Eigen::Vector3&lt; T &gt;</type>
+      <name>linearMul</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>a4bd7a02959cd7354afe6adb53b3f1413</anchor>
+      <arglist>(const MotionVec&lt; T &gt; &amp;mv) const </arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mul</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>a5e3393005e73f887384d5b11b82fed92</anchor>
+      <arglist>(const Eigen::MatrixBase&lt; Derived &gt; &amp;mv, Eigen::MatrixBase&lt; Derived &gt; &amp;result) const </arglist>
+    </member>
+    <member kind="function">
+      <type>MotionVec&lt; T &gt;</type>
+      <name>invMul</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>afb27f74adce949fece0e92f8bf930742</anchor>
+      <arglist>(const MotionVec&lt; T &gt; &amp;mv) const </arglist>
+    </member>
+    <member kind="function">
+      <type>Eigen::Vector3&lt; T &gt;</type>
+      <name>angularInvMul</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>a6c095822e0bb06039723071093289b63</anchor>
+      <arglist>(const MotionVec&lt; T &gt; &amp;mv) const </arglist>
+    </member>
+    <member kind="function">
+      <type>Eigen::Vector3&lt; T &gt;</type>
+      <name>linearInvMul</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>a96dd698bb2600a1bb33e50b2a708c5ef</anchor>
+      <arglist>(const MotionVec&lt; T &gt; &amp;mv) const </arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>invMul</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>a7fab06ef5a422e4e3d99e6e641dc153b</anchor>
+      <arglist>(const Eigen::MatrixBase&lt; Derived &gt; &amp;mv, Eigen::MatrixBase&lt; Derived &gt; &amp;result) const </arglist>
+    </member>
+    <member kind="function">
+      <type>ForceVec&lt; T &gt;</type>
+      <name>dualMul</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>a343813be8a4a1cc3e042cba95334da8e</anchor>
+      <arglist>(const ForceVec&lt; T &gt; &amp;fv) const </arglist>
+    </member>
+    <member kind="function">
+      <type>Eigen::Vector3&lt; T &gt;</type>
+      <name>coupleDualMul</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>a6fee292fc09fe9261edbc2fbb64244ae</anchor>
+      <arglist>(const ForceVec&lt; T &gt; &amp;fv) const </arglist>
+    </member>
+    <member kind="function">
+      <type>Eigen::Vector3&lt; T &gt;</type>
+      <name>forceDualMul</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>adc2cdbb443fa8b8fe630d48c3cbec159</anchor>
+      <arglist>(const ForceVec&lt; T &gt; &amp;fv) const </arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>dualMul</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>a66fdedea351ae8db4980b31c2df45663</anchor>
+      <arglist>(const Eigen::MatrixBase&lt; Derived &gt; &amp;fv, Eigen::MatrixBase&lt; Derived &gt; &amp;result) const </arglist>
+    </member>
+    <member kind="function">
+      <type>ForceVec&lt; T &gt;</type>
+      <name>transMul</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>a111d25b1b6d6870c1faed137b4de02aa</anchor>
+      <arglist>(const ForceVec&lt; T &gt; &amp;fv) const </arglist>
+    </member>
+    <member kind="function">
+      <type>Eigen::Vector3&lt; T &gt;</type>
+      <name>coupleTransMul</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>a4f5bd0721653797b1ef53aa0be556ec5</anchor>
+      <arglist>(const ForceVec&lt; T &gt; &amp;fv) const </arglist>
+    </member>
+    <member kind="function">
+      <type>Eigen::Vector3&lt; T &gt;</type>
+      <name>forceTransMul</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>adb8d7ca11b05c22d64ae1f18669f8917</anchor>
+      <arglist>(const ForceVec&lt; T &gt; &amp;fv) const </arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>transMul</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>afce335b0a22c899419567c6d364aac8c</anchor>
+      <arglist>(const Eigen::MatrixBase&lt; Derived &gt; &amp;fv, Eigen::MatrixBase&lt; Derived &gt; &amp;result) const </arglist>
+    </member>
+    <member kind="function">
+      <type>RBInertia&lt; T &gt;</type>
+      <name>dualMul</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>ac2020d451e4115a6b528d73948720cc0</anchor>
+      <arglist>(const RBInertia&lt; T &gt; &amp;rbI) const </arglist>
+    </member>
+    <member kind="function">
+      <type>RBInertia&lt; T &gt;</type>
+      <name>transMul</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>a6f2feaf9c7e889cf37b1d337882f28be</anchor>
+      <arglist>(const RBInertia&lt; T &gt; &amp;rbI) const </arglist>
+    </member>
+    <member kind="function">
+      <type>ABInertia&lt; T &gt;</type>
+      <name>dualMul</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>a51394f448963b0009970a14db044afe1</anchor>
+      <arglist>(const ABInertia&lt; T &gt; &amp;rbI) const </arglist>
+    </member>
+    <member kind="function">
+      <type>ABInertia&lt; T &gt;</type>
+      <name>transMul</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>ae3928765d649b03b9fdfb61fc0f2eca4</anchor>
+      <arglist>(const ABInertia&lt; T &gt; &amp;rbI) const </arglist>
+    </member>
+    <member kind="function">
+      <type>PTransform&lt; T &gt;</type>
+      <name>inv</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>a320c78785763774b308c13b2d168f14a</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator==</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>a5aa41be9f76f29ee42173c8db6156e74</anchor>
+      <arglist>(const PTransform&lt; T &gt; &amp;pt) const </arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator!=</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>a1be9de9cf00692b6e3916b923e30a6f4</anchor>
+      <arglist>(const PTransform&lt; T &gt; &amp;pt) const </arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static PTransform&lt; T &gt;</type>
+      <name>Identity</name>
+      <anchorfile>a00007.html</anchorfile>
+      <anchor>a8f9781828ebc80b8c89a6e9bfba6ea4d</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>sva::RBInertia</name>
+    <filename>a00008.html</filename>
+    <templarg>T</templarg>
+    <member kind="typedef">
+      <type>Vector3&lt; T &gt;</type>
+      <name>vector3_t</name>
+      <anchorfile>a00008.html</anchorfile>
+      <anchor>a6768085b5d1fdb4e91ddb97a64dc00fb</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>Matrix3&lt; T &gt;</type>
+      <name>matrix3_t</name>
+      <anchorfile>a00008.html</anchorfile>
+      <anchor>aa64e782b6a5a1278f0620fe272862aad</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>Matrix6&lt; T &gt;</type>
+      <name>matrix6_t</name>
+      <anchorfile>a00008.html</anchorfile>
+      <anchor>a8018cbadb20f77c9c1090ee6f0894ab9</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>RBInertia</name>
+      <anchorfile>a00008.html</anchorfile>
+      <anchor>a73b8ab1ffe411e38ed377d703fecc9c4</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>RBInertia</name>
+      <anchorfile>a00008.html</anchorfile>
+      <anchor>a9c14050634eced8cf16c86bfff66a9e2</anchor>
+      <arglist>(T m, const vector3_t &amp;h, const matrix3_t &amp;I)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>RBInertia</name>
+      <anchorfile>a00008.html</anchorfile>
+      <anchor>a56a14051627e5e89bf06a8d8c979d56f</anchor>
+      <arglist>(T m, const vector3_t &amp;h, const TriangularView&lt; matrix3_t, Lower &gt; &amp;ltI)</arglist>
+    </member>
+    <member kind="function">
+      <type>T</type>
+      <name>mass</name>
+      <anchorfile>a00008.html</anchorfile>
+      <anchor>a95a7437e72a1cb2f0f76c966d49cbe23</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>const vector3_t &amp;</type>
+      <name>momentum</name>
+      <anchorfile>a00008.html</anchorfile>
+      <anchor>a5cedeb34319545322a29375562c836d9</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>const matrix3_t &amp;</type>
+      <name>lowerTriangularInertia</name>
+      <anchorfile>a00008.html</anchorfile>
+      <anchor>ac5d19b0c647782bbd41fa235b87b483b</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>matrix3_t</type>
+      <name>inertia</name>
+      <anchorfile>a00008.html</anchorfile>
+      <anchor>a1f6b89e38eac55982d48d8ac9efa38fd</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>matrix6_t</type>
+      <name>matrix</name>
+      <anchorfile>a00008.html</anchorfile>
+      <anchor>a175ff0a93ded97638e29edabc636de0c</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>RBInertia&lt; T2 &gt;</type>
+      <name>cast</name>
+      <anchorfile>a00008.html</anchorfile>
+      <anchor>a226d792b20bef31c321a4f8f27844699</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>RBInertia&lt; T &gt;</type>
+      <name>operator+</name>
+      <anchorfile>a00008.html</anchorfile>
+      <anchor>a2030a1ad399ea63c51bf2189f26fc627</anchor>
+      <arglist>(const RBInertia&lt; T &gt; &amp;rbI) const </arglist>
+    </member>
+    <member kind="function">
+      <type>RBInertia&lt; T &gt;</type>
+      <name>operator-</name>
+      <anchorfile>a00008.html</anchorfile>
+      <anchor>a611f4f7469c6a9be0e1278b427fb344a</anchor>
+      <arglist>(const RBInertia&lt; T &gt; &amp;rbI) const </arglist>
+    </member>
+    <member kind="function">
+      <type>RBInertia&lt; T &gt;</type>
+      <name>operator-</name>
+      <anchorfile>a00008.html</anchorfile>
+      <anchor>a98c52daceef9db3fec76a197d4add106</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>RBInertia&lt; T &gt; &amp;</type>
+      <name>operator+=</name>
+      <anchorfile>a00008.html</anchorfile>
+      <anchor>a7659cf7eea62c8f533cc321bbf49d73f</anchor>
+      <arglist>(const RBInertia&lt; T &gt; &amp;rbI)</arglist>
+    </member>
+    <member kind="function">
+      <type>RBInertia&lt; T &gt; &amp;</type>
+      <name>operator-=</name>
+      <anchorfile>a00008.html</anchorfile>
+      <anchor>a3367ca9346696c3b59a897ba515e66b5</anchor>
+      <arglist>(const RBInertia&lt; T &gt; &amp;rbI)</arglist>
+    </member>
+    <member kind="function">
+      <type>RBInertia&lt; T &gt;</type>
+      <name>operator*</name>
+      <anchorfile>a00008.html</anchorfile>
+      <anchor>ae21ffbb68e7d2186cdc0dc13bfb6347a</anchor>
+      <arglist>(T2 scalar) const </arglist>
+    </member>
+    <member kind="function">
+      <type>ForceVec&lt; T &gt;</type>
+      <name>operator*</name>
+      <anchorfile>a00008.html</anchorfile>
+      <anchor>ad28cfb4018a8ac2f796b94e4ebac859b</anchor>
+      <arglist>(const MotionVec&lt; T &gt; &amp;mv) const </arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mul</name>
+      <anchorfile>a00008.html</anchorfile>
+      <anchor>a0f54f36d8e260d001ca825d09450d328</anchor>
+      <arglist>(const Eigen::MatrixBase&lt; Derived &gt; &amp;mv, Eigen::MatrixBase&lt; Derived &gt; &amp;result) const </arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator==</name>
+      <anchorfile>a00008.html</anchorfile>
+      <anchor>a954c354ddccb0fa996e0cebd5cb78659</anchor>
+      <arglist>(const RBInertia&lt; T &gt; &amp;rbI) const </arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator!=</name>
+      <anchorfile>a00008.html</anchorfile>
+      <anchor>a7cee4828654cc75a2561581a581e8adc</anchor>
+      <arglist>(const RBInertia&lt; T &gt; &amp;rbI) const </arglist>
+    </member>
+  </compound>
+  <compound kind="namespace">
+    <name>Eigen</name>
+    <filename>a00023.html</filename>
+    <member kind="typedef">
+      <type>Matrix&lt; T, 6, 1 &gt;</type>
+      <name>Vector6</name>
+      <anchorfile>a00023.html</anchorfile>
+      <anchor>a664778266262bbdb1d1b2776bef25c7d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>Matrix&lt; T, 6, 6 &gt;</type>
+      <name>Matrix6</name>
+      <anchorfile>a00023.html</anchorfile>
+      <anchor>aad6321e28b97dd47986f2187fa21be1e</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>Matrix&lt; T, 3, 1 &gt;</type>
+      <name>Vector3</name>
+      <anchorfile>a00023.html</anchorfile>
+      <anchor>a55408ba932fc7d1707bd7adc7e5e930f</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>Matrix&lt; T, 3, 3 &gt;</type>
+      <name>Matrix3</name>
+      <anchorfile>a00023.html</anchorfile>
+      <anchor>ac4d27bf92869006caf1413e5d218e2f1</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>Vector6&lt; double &gt;</type>
+      <name>Vector6d</name>
+      <anchorfile>a00023.html</anchorfile>
+      <anchor>acdb6a5c038a9c26a61b0187b696b2630</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>Matrix6&lt; double &gt;</type>
+      <name>Matrix6d</name>
+      <anchorfile>a00023.html</anchorfile>
+      <anchor>a3e65eb0c6b911896bd105a6e84b0a187</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>Matrix3&lt; T &gt;</type>
+      <name>vector3ToCrossMatrix</name>
+      <anchorfile>a00023.html</anchorfile>
+      <anchor>a34d0d0706dc16ae0358433af740a48fd</anchor>
+      <arglist>(const Vector3&lt; T &gt; &amp;vec)</arglist>
+    </member>
+    <member kind="function">
+      <type>Matrix6&lt; T &gt;</type>
+      <name>vector6ToCrossMatrix</name>
+      <anchorfile>a00023.html</anchorfile>
+      <anchor>a843e61000f53c05966116a6dead6d7cb</anchor>
+      <arglist>(const Vector6&lt; T &gt; &amp;vec)</arglist>
+    </member>
+    <member kind="function">
+      <type>Matrix6&lt; T &gt;</type>
+      <name>vector6ToCrossDualMatrix</name>
+      <anchorfile>a00023.html</anchorfile>
+      <anchor>a2964e2c4bbe44365032512d28ce500ee</anchor>
+      <arglist>(const Vector6&lt; T &gt; &amp;vec)</arglist>
+    </member>
+  </compound>
+  <compound kind="namespace">
+    <name>sva</name>
+    <filename>a00025.html</filename>
+    <namespace>sva::conversions</namespace>
+    <namespace>sva::details</namespace>
+    <namespace>sva::sva_internal</namespace>
+    <class kind="class">sva::ABInertia</class>
+    <class kind="class">sva::AdmittanceVec</class>
+    <class kind="class">sva::ForceVec</class>
+    <class kind="class">sva::ImpedanceVec</class>
+    <class kind="class">sva::MotionVec</class>
+    <class kind="class">sva::PTransform</class>
+    <class kind="class">sva::RBInertia</class>
+    <member kind="typedef">
+      <type>MotionVec&lt; double &gt;</type>
+      <name>MotionVecd</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>afc16c15a4fbcc2d8cf5676551b74816d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>ForceVec&lt; double &gt;</type>
+      <name>ForceVecd</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>aaea958106abfa742585ced52492029c4</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>ImpedanceVec&lt; double &gt;</type>
+      <name>ImpedanceVecd</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>aecdcfd928635da2bcaab0a4f363d0826</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>AdmittanceVec&lt; double &gt;</type>
+      <name>AdmittanceVecd</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>ac0f35bedffbde7a751477b707e1f03c2</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>RBInertia&lt; double &gt;</type>
+      <name>RBInertiad</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>ac56f2d381429fa55047d24d79ac9ae82</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>ABInertia&lt; double &gt;</type>
+      <name>ABInertiad</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>aa8d39b02fe4802fabf41faf9d4676578</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>PTransform&lt; double &gt;</type>
+      <name>PTransformd</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a259dde998fab6de957995eedfdb4d179</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>ABInertia&lt; T &gt;</type>
+      <name>operator*</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a848b3652216f3166993854e02d5751a5</anchor>
+      <arglist>(T2 scalar, const ABInertia&lt; T &gt; &amp;abI)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::ostream &amp;</type>
+      <name>operator&lt;&lt;</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a307ecc2f3edbcf2e8bc942e657dcfa67</anchor>
+      <arglist>(std::ostream &amp;out, const ABInertia&lt; T &gt; &amp;abI)</arglist>
+    </member>
+    <member kind="function">
+      <type>AdmittanceVec&lt; T &gt;</type>
+      <name>operator*</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a2e99342b8d929b8332ba011121313133</anchor>
+      <arglist>(T2 scalar, const AdmittanceVec&lt; T &gt; &amp;av)</arglist>
+    </member>
+    <member kind="function">
+      <type>MotionVec&lt; T &gt;</type>
+      <name>operator*</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>abb0d4fa8c0eb6968d3b2ea3142494720</anchor>
+      <arglist>(const AdmittanceVec&lt; T &gt; &amp;av, const ForceVec&lt; T &gt; &amp;fv)</arglist>
+    </member>
+    <member kind="function">
+      <type>MotionVec&lt; T &gt;</type>
+      <name>operator*</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>ae12686d0fdd52dde6be4f1e3a0cec090</anchor>
+      <arglist>(const ForceVec&lt; T &gt; &amp;fv, const AdmittanceVec&lt; T &gt; &amp;av)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::ostream &amp;</type>
+      <name>operator&lt;&lt;</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>ad29878ff946e629d7e8e29c7ea537f5f</anchor>
+      <arglist>(std::ostream &amp;out, const AdmittanceVec&lt; T &gt; &amp;av)</arglist>
+    </member>
+    <member kind="function">
+      <type>ForceVec&lt; T &gt;</type>
+      <name>operator*</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a1afa81055cff14671456d0b626d3c1ad</anchor>
+      <arglist>(T2 scalar, const ForceVec&lt; T &gt; &amp;fv)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::ostream &amp;</type>
+      <name>operator&lt;&lt;</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>af6a9cf3044dd068be66723b8c14f7af4</anchor>
+      <arglist>(std::ostream &amp;out, const ForceVec&lt; T &gt; &amp;fv)</arglist>
+    </member>
+    <member kind="function">
+      <type>ImpedanceVec&lt; T &gt;</type>
+      <name>operator*</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>ab785e99aeb91b91f623af09d00b5506c</anchor>
+      <arglist>(T2 scalar, const ImpedanceVec&lt; T &gt; &amp;iv)</arglist>
+    </member>
+    <member kind="function">
+      <type>ForceVec&lt; T &gt;</type>
+      <name>operator*</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a85728d1ec54d3ab16b525b5425c4c9d9</anchor>
+      <arglist>(const ImpedanceVec&lt; T &gt; &amp;iv, const MotionVec&lt; T &gt; &amp;mv)</arglist>
+    </member>
+    <member kind="function">
+      <type>ForceVec&lt; T &gt;</type>
+      <name>operator*</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a4c3d26cbc28bd86a38c67bcc5c0fcdbe</anchor>
+      <arglist>(const MotionVec&lt; T &gt; &amp;mv, const ImpedanceVec&lt; T &gt; &amp;iv)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::ostream &amp;</type>
+      <name>operator&lt;&lt;</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a5f26526fcfadd53b40d08db5d077c193</anchor>
+      <arglist>(std::ostream &amp;out, const ImpedanceVec&lt; T &gt; &amp;iv)</arglist>
+    </member>
+    <member kind="function">
+      <type>T</type>
+      <name>sinc</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a123844a3edbd3f1e68aacc22225a2a07</anchor>
+      <arglist>(const T x)</arglist>
+    </member>
+    <member kind="function">
+      <type>T</type>
+      <name>sinc_inv</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a3cad8a4ff91f4aace786395eaaef6834</anchor>
+      <arglist>(const T x)</arglist>
+    </member>
+    <member kind="function">
+      <type>MotionVec&lt; T &gt;</type>
+      <name>operator*</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a5034a19c802c5810244ff02b878cd0ba</anchor>
+      <arglist>(T2 scalar, const MotionVec&lt; T &gt; &amp;mv)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::ostream &amp;</type>
+      <name>operator&lt;&lt;</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>ab8fa7e4323ec04f5e03a350901c60258</anchor>
+      <arglist>(std::ostream &amp;out, const MotionVec&lt; T &gt; &amp;mv)</arglist>
+    </member>
+    <member kind="function">
+      <type>Eigen::Block&lt; Derived, 3, Dynamic &gt;</type>
+      <name>motionAngular</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a2453bbce65af3c0244ddb1b6bd5d8ce2</anchor>
+      <arglist>(Eigen::MatrixBase&lt; Derived &gt; &amp;mv)</arglist>
+    </member>
+    <member kind="function">
+      <type>Eigen::Block&lt; const Derived, 3, Dynamic &gt;</type>
+      <name>motionAngular</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a4559ada646b1360e454b8e4c111b7f30</anchor>
+      <arglist>(const Eigen::MatrixBase&lt; Derived &gt; &amp;mv)</arglist>
+    </member>
+    <member kind="function">
+      <type>Eigen::Block&lt; Derived, 3, Dynamic &gt;</type>
+      <name>motionLinear</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a9b9539cbd6e4e2f2f3b0533712a583e3</anchor>
+      <arglist>(Eigen::MatrixBase&lt; Derived &gt; &amp;mv)</arglist>
+    </member>
+    <member kind="function">
+      <type>Eigen::Block&lt; const Derived, 3, Dynamic &gt;</type>
+      <name>motionLinear</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>aba1d07bbb03512ddff15e2141a3b4a62</anchor>
+      <arglist>(const Eigen::MatrixBase&lt; Derived &gt; &amp;mv)</arglist>
+    </member>
+    <member kind="function">
+      <type>Eigen::Block&lt; Derived, 3, Dynamic &gt;</type>
+      <name>forceCouple</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a5bd057544a4e4715453d6b091287ec39</anchor>
+      <arglist>(Eigen::MatrixBase&lt; Derived &gt; &amp;mv)</arglist>
+    </member>
+    <member kind="function">
+      <type>Eigen::Block&lt; const Derived, 3, Dynamic &gt;</type>
+      <name>forceCouple</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a16294cce1fad1b8fef911e95dc069441</anchor>
+      <arglist>(const Eigen::MatrixBase&lt; Derived &gt; &amp;mv)</arglist>
+    </member>
+    <member kind="function">
+      <type>Eigen::Block&lt; Derived, 3, Dynamic &gt;</type>
+      <name>forceForce</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a36ac26af5675540660450973f8ff331d</anchor>
+      <arglist>(Eigen::MatrixBase&lt; Derived &gt; &amp;mv)</arglist>
+    </member>
+    <member kind="function">
+      <type>Eigen::Block&lt; const Derived, 3, Dynamic &gt;</type>
+      <name>forceForce</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a17667abbecd2160e2919e032c8c3d941</anchor>
+      <arglist>(const Eigen::MatrixBase&lt; Derived &gt; &amp;mv)</arglist>
+    </member>
+    <member kind="function">
+      <type>Matrix3&lt; T &gt;</type>
+      <name>RotX</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a3d8592bd972b6bdd69677f5a620daa73</anchor>
+      <arglist>(T theta)</arglist>
+    </member>
+    <member kind="function">
+      <type>Matrix3&lt; T &gt;</type>
+      <name>RotY</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a72dd05ef42d5f3f01e76aecd3c769658</anchor>
+      <arglist>(T theta)</arglist>
+    </member>
+    <member kind="function">
+      <type>Matrix3&lt; T &gt;</type>
+      <name>RotZ</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a945b27220fb3db512a24939c8cc1b5ee</anchor>
+      <arglist>(T theta)</arglist>
+    </member>
+    <member kind="function">
+      <type>Vector3&lt; T &gt;</type>
+      <name>rotationError</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>ac65899b8e5843b7c7b41093ce38a74d1</anchor>
+      <arglist>(const Matrix3&lt; T &gt; &amp;E_a_b, const Matrix3&lt; T &gt; &amp;E_a_c)</arglist>
+    </member>
+    <member kind="function">
+      <type>Vector3&lt; T &gt;</type>
+      <name>rotationVelocity</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a44b687fe1934a2289d32f6f5e0eed1db</anchor>
+      <arglist>(const Matrix3&lt; T &gt; &amp;E_a_b)</arglist>
+    </member>
+    <member kind="function">
+      <type>MotionVec&lt; T &gt;</type>
+      <name>transformError</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a835d4f04eaf5d87dc9cc9b8d011f06a0</anchor>
+      <arglist>(const PTransform&lt; T &gt; &amp;X_a_b, const PTransform&lt; T &gt; &amp;X_a_c)</arglist>
+    </member>
+    <member kind="function">
+      <type>MotionVec&lt; T &gt;</type>
+      <name>transformVelocity</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a78005b4f61a4c40bffd3e002e7a9ba54</anchor>
+      <arglist>(const PTransform&lt; T &gt; &amp;X_a_b)</arglist>
+    </member>
+    <member kind="function">
+      <type>PTransform&lt; T &gt;</type>
+      <name>interpolate</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a381dd489edaba2181144933166257665</anchor>
+      <arglist>(const PTransform&lt; T &gt; &amp;from, const PTransform&lt; T &gt; &amp;to, double t)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::ostream &amp;</type>
+      <name>operator&lt;&lt;</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a69f52ec476fdbe9a8449b8f168b0a873</anchor>
+      <arglist>(std::ostream &amp;out, const PTransform&lt; T &gt; &amp;pt)</arglist>
+    </member>
+    <member kind="function">
+      <type>Matrix3&lt; T &gt;</type>
+      <name>inertiaToOrigin</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a1a0a93626ba1bf5c436166e11da493a3</anchor>
+      <arglist>(const Matrix3&lt; T &gt; &amp;inertia, T mass, const Vector3&lt; T &gt; &amp;com, const Matrix3&lt; T &gt; &amp;rotation)</arglist>
+    </member>
+    <member kind="function">
+      <type>RBInertia&lt; T &gt;</type>
+      <name>operator*</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a5f9b7d46711ba95bd594d1a26cf933ea</anchor>
+      <arglist>(T2 scalar, const RBInertia&lt; T &gt; &amp;rbI)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::ostream &amp;</type>
+      <name>operator&lt;&lt;</name>
+      <anchorfile>a00025.html</anchorfile>
+      <anchor>a2693d2fc4c910d36477d6ec8b49ab7a9</anchor>
+      <arglist>(std::ostream &amp;out, const RBInertia&lt; T &gt; &amp;rbI)</arglist>
+    </member>
+  </compound>
+  <compound kind="namespace">
+    <name>sva::conversions</name>
+    <filename>a00026.html</filename>
+    <member kind="typedef">
+      <type>Eigen::Transform&lt; T, 3, Eigen::TransformTraits::Affine &gt;</type>
+      <name>affine3_t</name>
+      <anchorfile>a00026.html</anchorfile>
+      <anchor>a40ac77c343242ed84a860f10c7797cec</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>PTransform&lt; typename Derived::Scalar &gt;</type>
+      <name>fromHomogeneous</name>
+      <anchorfile>a00026.html</anchorfile>
+      <anchor>a164f93ece6bd476bdc388886711969c9</anchor>
+      <arglist>(const Eigen::MatrixBase&lt; Derived &gt; &amp;m, bool rightHandedness=RightHanded)</arglist>
+    </member>
+    <member kind="function">
+      <type>Eigen::Matrix&lt; T, 4, 4 &gt;</type>
+      <name>toHomogeneous</name>
+      <anchorfile>a00026.html</anchorfile>
+      <anchor>abda8dfd75276624f91e5b8d6b6bbc238</anchor>
+      <arglist>(const PTransform&lt; T &gt; &amp;pt, bool rightHandedness=RightHanded)</arglist>
+    </member>
+    <member kind="function">
+      <type>PTransform&lt; T &gt;</type>
+      <name>fromAffine</name>
+      <anchorfile>a00026.html</anchorfile>
+      <anchor>aa8896657e5adc9a8e790e20f9b27a3c3</anchor>
+      <arglist>(const affine3_t&lt; T &gt; &amp;a, bool rightHandedness=RightHanded)</arglist>
+    </member>
+    <member kind="function">
+      <type>affine3_t&lt; T &gt;</type>
+      <name>toAffine</name>
+      <anchorfile>a00026.html</anchorfile>
+      <anchor>aaf02f7d90175c1f87bd0b5ce5e626566</anchor>
+      <arglist>(const PTransform&lt; T &gt; &amp;pt, bool rightHandedness=RightHanded)</arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr bool</type>
+      <name>RightHanded</name>
+      <anchorfile>a00026.html</anchorfile>
+      <anchor>adfa051e762e1b8048e916c9297df6ac9</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr bool</type>
+      <name>LeftHanded</name>
+      <anchorfile>a00026.html</anchorfile>
+      <anchor>a6bf64591c3e46c0a00767a33150595d5</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="namespace">
+    <name>sva::details</name>
+    <filename>a00027.html</filename>
+    <member kind="function">
+      <type>T constexpr</type>
+      <name>sqrtNewtonRaphson</name>
+      <anchorfile>a00027.html</anchorfile>
+      <anchor>a260012a0c7888be38334b192a44c5dd3</anchor>
+      <arglist>(T x, T curr, T prev)</arglist>
+    </member>
+    <member kind="function">
+      <type>T constexpr</type>
+      <name>sqrt</name>
+      <anchorfile>a00027.html</anchorfile>
+      <anchor>a1bd0cdea56a8740a2d3279f11685cb79</anchor>
+      <arglist>(T x)</arglist>
+    </member>
+  </compound>
+  <compound kind="namespace">
+    <name>sva::sva_internal</name>
+    <filename>a00028.html</filename>
+    <member kind="function">
+      <type>void</type>
+      <name>colwiseCrossEq</name>
+      <anchorfile>a00028.html</anchorfile>
+      <anchor>a925b34e58bacdcc4481c5ff74eb7ddd4</anchor>
+      <arglist>(const Eigen::MatrixBase&lt; Derived1 &gt; &amp;m1, const Eigen::MatrixBase&lt; Derived2 &gt; &amp;m2, Eigen::MatrixBase&lt; Derived3 &gt; const &amp;result)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>colwiseCrossPlusEq</name>
+      <anchorfile>a00028.html</anchorfile>
+      <anchor>ab737f4faada616c9e5c70f0485a9a7b6</anchor>
+      <arglist>(const Eigen::MatrixBase&lt; Derived1 &gt; &amp;m1, const Eigen::MatrixBase&lt; Derived2 &gt; &amp;m2, Eigen::MatrixBase&lt; Derived3 &gt; const &amp;result)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>colwiseCrossMinusEq</name>
+      <anchorfile>a00028.html</anchorfile>
+      <anchor>aecd2872735a5a172e30de9246de058fa</anchor>
+      <arglist>(const Eigen::MatrixBase&lt; Derived1 &gt; &amp;m1, const Eigen::MatrixBase&lt; Derived2 &gt; &amp;m2, Eigen::MatrixBase&lt; Derived3 &gt; const &amp;result)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>colwiseLeftMultEq</name>
+      <anchorfile>a00028.html</anchorfile>
+      <anchor>a82175c48dc1b87580b82ef5a071d786f</anchor>
+      <arglist>(const Eigen::MatrixBase&lt; Derived1 &gt; &amp;m1, const Eigen::MatrixBase&lt; Derived2 &gt; &amp;m2, Eigen::MatrixBase&lt; Derived3 &gt; const &amp;result)</arglist>
+    </member>
+  </compound>
+  <compound kind="group">
+    <name>Conversions</name>
+    <title>Convert to and from sva types</title>
+    <filename>a00029.html</filename>
+    <namespace>sva::conversions</namespace>
+  </compound>
+  <compound kind="page">
+    <name>index</name>
+    <title>SpaceVecAlg</title>
+    <filename>index</filename>
+  </compound>
+</tagfile>

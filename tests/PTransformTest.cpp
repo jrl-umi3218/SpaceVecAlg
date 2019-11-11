@@ -408,8 +408,8 @@ BOOST_AUTO_TEST_CASE(oldVsNewRotationVelocity)
   Matrix3d r3(RotX(-0.8348) * RotY(-0.2344) * RotZ(0.2344));
   Matrix3d r4(Matrix3d::Identity());
 
-  BOOST_CHECK_EQUAL(oldRotationVelocity(r1, 1e-7), rotationVelocity(r1));
-  BOOST_CHECK_EQUAL(oldRotationVelocity(r2, 1e-7), rotationVelocity(r2));
-  BOOST_CHECK_EQUAL(oldRotationVelocity(r3, 1e-7), rotationVelocity(r3));
-  BOOST_CHECK_EQUAL(oldRotationVelocity(r4, 1e-7), rotationVelocity(r4));
+  BOOST_CHECK(oldRotationVelocity(r1, 1e-7).isApprox(rotationVelocity(r1)));
+  BOOST_CHECK(oldRotationVelocity(r2, 1e-7).isApprox(rotationVelocity(r2)));
+  BOOST_CHECK(oldRotationVelocity(r3, 1e-7).isApprox(rotationVelocity(r3)));
+  BOOST_CHECK(oldRotationVelocity(r4, 1e-7).isApprox(rotationVelocity(r4)));
 }

@@ -39,7 +39,9 @@ env:
 notifications:
   slack:
     secure: gCrurakYrdf1A2VxY3eDotv2JGfXQd07ELV3vKoBXBEu3bmv5qfwrqV05FSkZG6rK/O55DRC6KkIftGu79Tk+gCD+iPMXJtKMcdMaEPeO17jB/vPTWHtpGLnC0FevyqQGq0AfGAPjRbUEs1dB9WKBVPCu1KUmnl7sODe3WFYBPs=
-before_install: ./.travis/run  before_install
+before_install:
+  - if [ $CC = gcc ]; then export DO_DOC_UPDATE=true; else export DO_DOC_UPDATE=false; fi
+  - ./.travis/run  before_install
 script: ./.travis/run build
 after_success: ./.travis/run after_success
 after_failure: ./.travis/run after_failure

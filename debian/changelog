@@ -1,0 +1,29 @@
+spacevecalg (1.1.0-1ubuntu1) unstable; urgency=medium
+
+  * Match current upstream version
+
+ -- Pierre Gergondet <pierre.gergondet+ppa@gmail.com>  Wed, 27 Nov 2019 19:01:51 +0800
+
+spacevecalg (1.0.2-1ubuntu1) unstable; urgency=medium
+
+  * Update ustream version to force upload
+
+ -- Pierre Gergondet <pierre.gergondet+ppa@gmail.com>  Fri, 09 Jun 2017 13:23:05 +0900
+
+spacevecalg (1.0.1-1ubuntu2) unstable; urgency=medium
+
+  * Add Python bindings to the package
+
+ -- Pierre Gergondet <pierre.gergondet+ppa@gmail.com>  Fri, 09 Jun 2017 11:54:54 +0900
+
+spacevecalg (1.0.1-1ubuntu1) trusty; urgency=low
+
+  * Upstream update fix versioning
+
+ -- Pierre Gergondet <pierre.gergondet+ppa@gmail.com>  Wed, 09 Mar 2016 13:46:48 +0900
+
+spacevecalg (1.0.0-1ubuntu1) trusty; urgency=low
+
+  * Initial release
+
+ -- Pierre Gergondet <pierre.gergondet+ppa@gmail.com>  Wed, 09 Mar 2016 13:46:48 +0900

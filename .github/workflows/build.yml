@@ -60,7 +60,7 @@ jobs:
         git config --global user.name "JRL/IDH Continuous Integration Tool"
         git config --global user.email "jrl-idh+ci@gmail.com"
         cd $GITHUB_WORKSPACE
-        git remote set-url origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository}}"
+        git remote set-url origin "https://gergondet:${{ secrets.GH_PAGES_TOKEN }}@github.com/${{ github.repository}}"
         if `git fetch --depth=1 origin gh-pages:gh-pages`; then
           sudo chown -R `whoami` build/
           cd build/doc && $GITHUB_WORKSPACE/cmake/github/update-doxygen-doc.sh -r $GITHUB_WORKSPACE -b $GITHUB_WORKSPACE/build

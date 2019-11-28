@@ -41,6 +41,8 @@ jobs:
         echo "::set-env name=REJECTION::Upstream version in debian/changelog does not match tag"
         head -n 1 debian/changelog | grep -q "spacevecalg (${VERSION}"
         echo "::set-env name=REJECTION::"
+        export TAG=`echo ${{ github.ref }} | sed -e 's@refs/tags/@@'`
+        echo "::set-env name=RELEASE_TAG::${TAG}"
       if: github.ref != 'refs/heads/master'
     - name: Delete tag
       run: |
@@ -56,6 +58,11 @@ jobs:
           Tag *${{ github.ref }}* in *${{ github.repository }}* was deleted:
             ${{ env.REJECTION}}
       if: failure()
+    - name: Create release
+      uses: jrl-umi3218/github-actions/create-release@master
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        tag: ${{ env.RELEASE_TAG }}
   # This job build binary packages for Ubuntu
   build-packages:
     needs: check-tag

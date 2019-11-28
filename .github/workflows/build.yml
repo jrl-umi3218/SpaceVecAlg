@@ -62,6 +62,7 @@ jobs:
         cd $GITHUB_WORKSPACE
         git remote set-url origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository}}"
         if `git fetch --depth=1 origin gh-pages:gh-pages`; then
+          sudo chown -R `whoami` build/
           cd build/doc && $GITHUB_WORKSPACE/cmake/github/update-doxygen-doc.sh -r $GITHUB_WORKSPACE -b $GITHUB_WORKSPACE/build
         fi
     - name: Slack Notification

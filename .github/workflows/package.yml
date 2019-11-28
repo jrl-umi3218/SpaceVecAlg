@@ -31,6 +31,8 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
     - uses: actions/checkout@v1
+      with:
+        submodules: recursive
       if: github.ref != 'refs/heads/master'
     - name: Check version coherency
       run: |
@@ -63,6 +65,7 @@ jobs:
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         tag: ${{ env.RELEASE_TAG }}
+      if: github.ref != 'refs/heads/master'
   # This job build binary packages for Ubuntu
   build-packages:
     needs: check-tag

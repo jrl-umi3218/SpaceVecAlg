@@ -52,6 +52,18 @@ jobs:
       with:
         compiler: ${{ matrix.compiler }}
         build-type: ${{ matrix.build-type }}
+    - name: Upload documentation
+      # Only run on master branch and for one configuration
+      if: matrix.os == 'ubuntu-18.04' && matrix.build-type == 'RelWithDebInfo' && matrix.compiler == 'gcc' && github.ref == 'refs/heads/master'
+      run: |
+        set -x
+        git config --global http.extraheader "AUTHORIZATION: Bearer ${{ secrets.GITHUB_TOKEN }}"
+        git config --global user.name "JRL/IDH Continuous Integration Tool"
+        git config --global user.email "jrl-idh+ci@gmail.com"
+        cd $GITHUB_WORKSPACE
+        if `git fetch --depth=1 origin gh-pages:gh-pages`; then
+          cd build/doc && $GITHUB_WORKSPACE/cmake/github/update-doxygen-doc.sh -r $GITHUB_WORKSPACE -b $GITHUB_WORKSPACE/build
+        fi
     - name: Slack Notification
       if: failure()
       uses: archive/github-actions-slack@master

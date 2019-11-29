@@ -1,15 +1,15 @@
 var searchData=
 [
-  ['cast',['cast',['../a00002.html#a1031f53a88c9ed792139d05437c556c7',1,'sva::ABInertia::cast()'],['../a00003.html#a26671be7960770ff70ffacb6e7e0a1ca',1,'sva::AdmittanceVec::cast()'],['../a00004.html#a87dc3553e5a5a6fab1657cbf5f884b04',1,'sva::ForceVec::cast()'],['../a00005.html#a3c78cf7fdb5c19c30bf7185934bcd538',1,'sva::ImpedanceVec::cast()'],['../a00006.html#aac8bc10b39a7570d2c22909226dfc81e',1,'sva::MotionVec::cast()'],['../a00007.html#a6cb4d7a3886f77d7dafa9cd23e541966',1,'sva::PTransform::cast()'],['../a00008.html#a226d792b20bef31c321a4f8f27844699',1,'sva::RBInertia::cast()']]],
-  ['colwisecrosseq',['colwiseCrossEq',['../a00028.html#a925b34e58bacdcc4481c5ff74eb7ddd4',1,'sva::sva_internal']]],
-  ['colwisecrossminuseq',['colwiseCrossMinusEq',['../a00028.html#aecd2872735a5a172e30de9246de058fa',1,'sva::sva_internal']]],
-  ['colwisecrosspluseq',['colwiseCrossPlusEq',['../a00028.html#ab737f4faada616c9e5c70f0485a9a7b6',1,'sva::sva_internal']]],
-  ['colwiseleftmulteq',['colwiseLeftMultEq',['../a00028.html#a82175c48dc1b87580b82ef5a071d786f',1,'sva::sva_internal']]],
-  ['convert_20to_20and_20from_20sva_20types',['Convert to and from sva types',['../a00029.html',1,'']]],
-  ['conversions_2eh',['Conversions.h',['../a00011.html',1,'']]],
-  ['couple',['couple',['../a00004.html#a4cb565858a92641bf4aea0e59819919a',1,'sva::ForceVec::couple()'],['../a00004.html#a4e4ecfbcecb7d3f6ccc4e899ed8ec7ca',1,'sva::ForceVec::couple() const ']]],
-  ['coupledualmul',['coupleDualMul',['../a00007.html#a6fee292fc09fe9261edbc2fbb64244ae',1,'sva::PTransform']]],
-  ['coupletransmul',['coupleTransMul',['../a00007.html#a4f5bd0721653797b1ef53aa0be556ec5',1,'sva::PTransform']]],
-  ['cross',['cross',['../a00006.html#acc3e11c0cc01ed6717fe2b3d1e7c402c',1,'sva::MotionVec::cross(const MotionVec&lt; T &gt; &amp;mv2) const '],['../a00006.html#ab2f2cce3d341a4de489d5180c51d253d',1,'sva::MotionVec::cross(const Eigen::MatrixBase&lt; Derived &gt; &amp;mv2, Eigen::MatrixBase&lt; Derived &gt; &amp;result) const ']]],
-  ['crossdual',['crossDual',['../a00006.html#a1f9b4e568bfb4b357dfdbaa0277ea8ba',1,'sva::MotionVec::crossDual(const ForceVec&lt; T &gt; &amp;fv2) const '],['../a00006.html#a9a0ea67b1e1599236265e0a24dad9949',1,'sva::MotionVec::crossDual(const Eigen::MatrixBase&lt; Derived &gt; &amp;fv2, Eigen::MatrixBase&lt; Derived &gt; &amp;result) const ']]]
+  ['cast',['cast',['../a00619.html#add002f88212819ef8c9a6372ae0276a4',1,'sva::ABInertia::cast()'],['../a00623.html#a0f7e60cf887e9ba4a3132ab1f82c5db6',1,'sva::AdmittanceVec::cast()'],['../a00627.html#a3e39df45e15447984c3edff5f0247c31',1,'sva::ForceVec::cast()'],['../a00631.html#aaa58cae47c7faff21bb53a338dd7d423',1,'sva::ImpedanceVec::cast()'],['../a00635.html#af211404149608fa713b8ee8f236e1e67',1,'sva::MotionVec::cast()'],['../a00639.html#aa7eefd2e9f85091143e2e9293c4eba09',1,'sva::PTransform::cast()'],['../a00643.html#a2d3a58bf68dfb27c3cce38debd4419c6',1,'sva::RBInertia::cast()']]],
+  ['colwisecrosseq',['colwiseCrossEq',['../a00071.html#a925b34e58bacdcc4481c5ff74eb7ddd4',1,'sva::sva_internal']]],
+  ['colwisecrossminuseq',['colwiseCrossMinusEq',['../a00071.html#aecd2872735a5a172e30de9246de058fa',1,'sva::sva_internal']]],
+  ['colwisecrosspluseq',['colwiseCrossPlusEq',['../a00071.html#ab737f4faada616c9e5c70f0485a9a7b6',1,'sva::sva_internal']]],
+  ['colwiseleftmulteq',['colwiseLeftMultEq',['../a00071.html#a82175c48dc1b87580b82ef5a071d786f',1,'sva::sva_internal']]],
+  ['convert_20to_20and_20from_20sva_20types',['Convert to and from sva types',['../a00065.html',1,'']]],
+  ['conversions_2eh',['Conversions.h',['../a00029.html',1,'']]],
+  ['couple',['couple',['../a00627.html#a4cb565858a92641bf4aea0e59819919a',1,'sva::ForceVec::couple()'],['../a00627.html#ad14305ff97baed552aa574a84f706286',1,'sva::ForceVec::couple() const']]],
+  ['coupledualmul',['coupleDualMul',['../a00639.html#a829b0b16dca18846be1fcc2df6675344',1,'sva::PTransform']]],
+  ['coupletransmul',['coupleTransMul',['../a00639.html#a4c7cbfc3defb281e28aa6a1d8be593e7',1,'sva::PTransform']]],
+  ['cross',['cross',['../a00635.html#ab4bc4e781d716243d7ceeb8c27df0d22',1,'sva::MotionVec::cross(const MotionVec&lt; T &gt; &amp;mv2) const'],['../a00635.html#a3b9b4f232ca5eb596b17b447a9575313',1,'sva::MotionVec::cross(const Eigen::MatrixBase&lt; Derived &gt; &amp;mv2, Eigen::MatrixBase&lt; Derived &gt; &amp;result) const']]],
+  ['crossdual',['crossDual',['../a00635.html#ab7ec5b7fb07d7d7ab851aec1ff931cbb',1,'sva::MotionVec::crossDual(const ForceVec&lt; T &gt; &amp;fv2) const'],['../a00635.html#af8dc82c9e96aac4c1fcfb37219fb027e',1,'sva::MotionVec::crossDual(const Eigen::MatrixBase&lt; Derived &gt; &amp;fv2, Eigen::MatrixBase&lt; Derived &gt; &amp;result) const']]]
 ];

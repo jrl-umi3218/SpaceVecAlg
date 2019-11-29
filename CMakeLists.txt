@@ -23,7 +23,12 @@ project(${PROJECT_NAME} CXX)
 
 option(BENCHMARKS "Generate benchmark." OFF)
 
-add_project_dependency(Eigen3 REQUIRED NO_CMAKE_PACKAGE_REGISTRY)
+find_package(Eigen3 QUIET NO_CMAKE_PACKAGE_REGISTRY)
+if(Eigen3_FOUND)
+  add_project_dependency(Eigen3 REQUIRED NO_CMAKE_PACKAGE_REGISTRY)
+else()
+  add_project_dependency(Eigen3 MODULE REQUIRED)
+endif()
 
 # For MSVC, set local environment variable to enable finding the built dll
 # of the main library when launching ctest with RUN_TESTS

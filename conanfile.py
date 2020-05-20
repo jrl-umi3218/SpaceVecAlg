@@ -9,7 +9,7 @@ import shutil
 import subprocess
 import sys
 
-base = python_requires("Eigen3ToPython/1.0.0@gergondet/stable")
+base = python_requires("Eigen3ToPython/latest@multi-contact/dev")
 
 
 class SpaceVecAlgConan(base.Eigen3ToPythonConan):
@@ -24,12 +24,15 @@ class SpaceVecAlgConan(base.Eigen3ToPythonConan):
     exports = ["LICENSE"]
     exports_sources = ["CMakeLists.txt", "conan/CMakeLists.txt", "binding/*", "cmake/*", "doc/*", "src/*", "tests/*"]
     generators = "cmake"
-    settings = "os", "arch"
-    options = { "python_version": ["2.7", "3.3", "3.4", "3.5", "3.6", "3.7"] }
-    default_options = { "python_version": base.get_python_version() }
+    settings = "os", "arch", "compiler"
+    options = {
+            "python2_version": [None, "2.7"],
+            "python3_version": [None, "3.3", "3.4", "3.5", "3.6", "3.7", "3.8"]
+    }
+    default_options = base.get_default_options()
 
     requires = (
-        "Eigen3ToPython/1.0.0@gergondet/stable"
+        "Eigen3ToPython/latest@multi-contact/dev"
     )
 
     def package_info(self):

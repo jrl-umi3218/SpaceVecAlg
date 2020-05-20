@@ -5,6 +5,9 @@ on:
     types:
     - package-master
     - package-release
+  pull_request:
+    branches:
+    - "**"
   push:
     paths-ignore:
     - doc/**
@@ -14,9 +17,6 @@ on:
     - "**"
     tags:
     - v*
-  pull_request:
-    branches:
-    - "**"
 jobs:
   check-tag:
     runs-on: ubuntu-18.04
@@ -79,11 +79,14 @@ jobs:
         submodules: recursive
     - name: Choose extra mirror
       run: |
+        # We upload in all conditions except when building on PR or branch other than master
         export PACKAGE_UPLOAD=true
-        export USE_HEAD=true
-        if [ "${{ github.event.action }}" == "package-master" ]
+        if ${{ startsWith(github.ref, 'refs/tags/') }}
         then
-          export REF=master
+          export USE_HEAD=false
+        elif [ "${{ github.event.action }}" == "package-master" ]
+        then
+          export USE_HEAD=true
         elif [ "${{ github.event.action }}" == "package-release" ]
         then
           export USE_HEAD=false
@@ -92,6 +95,7 @@ jobs:
           git submodule sync && git submodule update
         else
           export REF=`echo ${{ github.ref }} | sed -e 's@refs/[a-z]*/@@'`
+          export USE_HEAD=true
           if [ $REF != "master" ]
           then
             export PACKAGE_UPLOAD=false
@@ -142,11 +146,14 @@ jobs:
     steps:
     - name: Choose extra mirror
       run: |
+        # We upload in all conditions except when building on PR or branch other than master
         export PACKAGE_UPLOAD=true
-        export USE_HEAD=true
-        if [ "${{ github.event.action }}" == "package-master" ]
+        if ${{ startsWith(github.ref, 'refs/tags/') }}
         then
-          export REF=master
+          export USE_HEAD=false
+        elif [ "${{ github.event.action }}" == "package-master" ]
+        then
+          export USE_HEAD=true
         elif [ "${{ github.event.action }}" == "package-release" ]
         then
           export USE_HEAD=false
@@ -155,6 +162,7 @@ jobs:
           git submodule sync && git submodule update
         else
           export REF=`echo ${{ github.ref }} | sed -e 's@refs/[a-z]*/@@'`
+          export USE_HEAD=true
           if [ $REF != "master" ]
           then
             export PACKAGE_UPLOAD=false
@@ -204,11 +212,14 @@ jobs:
         submodules: recursive
     - name: Choose extra mirror
       run: |
+        # We upload in all conditions except when building on PR or branch other than master
         export PACKAGE_UPLOAD=true
-        export USE_HEAD=true
-        if [ "${{ github.event.action }}" == "package-master" ]
+        if ${{ startsWith(github.ref, 'refs/tags/') }}
         then
-          export REF=master
+          export USE_HEAD=false
+        elif [ "${{ github.event.action }}" == "package-master" ]
+        then
+          export USE_HEAD=true
         elif [ "${{ github.event.action }}" == "package-release" ]
         then
           export USE_HEAD=false
@@ -217,6 +228,7 @@ jobs:
           git submodule sync && git submodule update
         else
           export REF=`echo ${{ github.ref }} | sed -e 's@refs/[a-z]*/@@'`
+          export USE_HEAD=true
           if [ $REF != "master" ]
           then
             export PACKAGE_UPLOAD=false

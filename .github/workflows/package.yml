@@ -125,7 +125,7 @@ jobs:
       with:
         name: packages-${{ matrix.dist }}-${{ matrix.arch }}
         path: "/tmp/packages-${{ matrix.dist }}-${{ matrix.arch }}/"
-      if: env.PACKAGE_UPLOAD
+      if: env.PACKAGE_UPLOAD == 'true'
   upload-packages:
     needs: build-packages
     strategy:
@@ -185,7 +185,7 @@ jobs:
       uses: actions/download-artifact@v1
       with:
         name: packages-${{ matrix.dist }}-${{ matrix.arch }}
-      if: env.PACKAGE_UPLOAD
+      if: env.PACKAGE_UPLOAD == 'true'
     - name: Upload
       uses: jrl-umi3218/github-actions/upload-package@master
       with:
@@ -202,7 +202,7 @@ jobs:
         path: packages-${{ matrix.dist }}-${{ matrix.arch }}
         BINTRAY_API_KEY: "${{ secrets.BINTRAY_API_KEY }}"
         GPG_PASSPHRASE: "${{ secrets.GPG_PASSPHRASE }}"
-      if: env.PACKAGE_UPLOAD
+      if: env.PACKAGE_UPLOAD == 'true'
   mirror-sync-and-trigger:
     needs: upload-packages
     runs-on: ubuntu-18.04
@@ -251,9 +251,9 @@ jobs:
       run: 'curl -ugergondet:${{ secrets.BINTRAY_API_KEY }} --header "X-GPG-PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}" -X POST https://api.bintray.com/calc_metadata/gergondet/${{ env.BINTRAY_REPO }}
 
 '
-      if: env.PACKAGE_UPLOAD
+      if: env.PACKAGE_UPLOAD == 'true'
     - name: Trigger dependents rebuild
       run: 'curl -H "Accept: application/vnd.github.everest-preview+json" -H "Authorization: token ${{ secrets.GH_PAGES_TOKEN }}" --request POST --data "{\"event_type\": \"${PACKAGE_JOB}\"}" https://api.github.com/repos/jrl-umi3218/RBDyn/dispatches
 
 '
-      if: env.PACKAGE_UPLOAD
+      if: env.PACKAGE_UPLOAD == 'true'

@@ -2,7 +2,7 @@ SpaceVecAlg
 ========
 
 [![License](https://img.shields.io/badge/License-BSD%202--Clause-green.svg)](https://opensource.org/licenses/BSD-2-Clause)
-[ ![Download](https://api.bintray.com/packages/gergondet/multi-contact/SpaceVecAlg%3Agergondet/images/download.svg) ](https://bintray.com/gergondet/multi-contact/SpaceVecAlg%3Agergondet/_latestVersion)
+[ ![Download](https://api.bintray.com/packages/gergondet/multi-contact/SpaceVecAlg%3Amulti-contact/images/download.svg) ](https://bintray.com/gergondet/multi-contact/SpaceVecAlg%3Amulti-contact/_latestVersion)
 [![CI](https://github.com/jrl-umi3218/SpaceVecAlg/workflows/CI%20of%20SpaceVecAlg/badge.svg?branch=master)](https://github.com/jrl-umi3218/SpaceVecAlg/actions?query=workflow%3A%22CI+of+SpaceVecAlg%22)
 
 SpaceVecAlg aim to implement Spatial Vector Algebra with the Eigen3 linear algebra library.
@@ -29,6 +29,18 @@ You can then install the package:
 ```bash
 sudo apt update
 sudo apt install libspacevecalg-dev python-spacevecalg python3-spacevecalg
+```
+
+## Conan
+
+Install the latest version using [conan](https://conan.io/)
+
+```bash
+conan remote add multi-contact https://api.bintray.com/conan/gergondet/multi-contact
+# Install the latest release
+conan install Eigen3ToPython/latest@multi-contact/stable
+# Or install the latest development version
+# conan install Eigen3ToPython/latest@multi-contact/dev
 ```
 
 ## Homebrew OS X install

@@ -170,10 +170,10 @@ jobs:
         subject: gergondet
         repo: ${{ env.BINTRAY_REPO }}
         package: |
-          name: RBDyn
-          desc: "RBDyn provides a set of classes and functions to model the dynamics of rigid body systems"
+          name: SpaceVecAlg
+          desc: "Spatial Vector Algebra with Eigen"
           licenses: [BSD 2-Clause]
-          vcs_url: https://github.com/jrl-umi3218/RBDyn
+          vcs_url: https://github.com/jrl-umi3218/SpaceVecAlg
         version: ${{ env.BINTRAY_VERSION }}
         path: packages-${{ matrix.dist }}-${{ matrix.arch }}
         BINTRAY_API_KEY: ${{ secrets.BINTRAY_API_KEY }}

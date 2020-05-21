@@ -71,7 +71,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="title">SpaceVecAlg </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a href="https://opensource.org/licenses/BSD-2-Clause"></a> <a href="https://bintray.com/gergondet/multi-contact/SpaceVecAlg%3Agergondet/_latestVersion"></a> <a href="https://github.com/jrl-umi3218/SpaceVecAlg/actions?query=workflow%3A%22CI+of+SpaceVecAlg%22"></a></p>
+<div class="textblock"><p><a href="https://opensource.org/licenses/BSD-2-Clause"></a> <a href="https://bintray.com/gergondet/multi-contact/SpaceVecAlg%3Amulti-contact/_latestVersion"></a> <a href="https://github.com/jrl-umi3218/SpaceVecAlg/actions?query=workflow%3A%22CI+of+SpaceVecAlg%22"></a></p>
 <p>SpaceVecAlg aim to implement Spatial Vector Algebra with the Eigen3 linear algebra library.</p>
 <p>All this implementation is based on appendix A of <a href="http://www.springer.com/fr/book/9780387743141">Roy Featherstone Rigid Body Dynamics Algorithms book</a>.</p>
 <h2>Installing </h2>
@@ -87,7 +87,9 @@ $(document).ready(function(){initNavTree('index.html','');});
 <li>(HEAD) Setup your sources.list (<code>sudo sh -c 'echo "deb https://dl.bintray.com/gergondet/multi-contact-head $(lsb_release -sc) main" | sudo tee -a /etc/apt/sources.list.d/multi-contact.list'</code>)</li>
 </ol>
 <p>You can then install the package:</p>
-<div class="fragment"><div class="line">sudo apt update</div><div class="line">sudo apt install libspacevecalg-dev python-spacevecalg python3-spacevecalg</div></div><!-- fragment --><h2>Homebrew OS X install</h2>
+<div class="fragment"><div class="line">sudo apt update</div><div class="line">sudo apt install libspacevecalg-dev python-spacevecalg python3-spacevecalg</div></div><!-- fragment --><h2>Conan</h2>
+<p>Install the latest version using <a href="https://conan.io/">conan</a></p>
+<div class="fragment"><div class="line">conan remote add multi-contact https://api.bintray.com/conan/gergondet/multi-contact</div><div class="line"># Install the latest release</div><div class="line">conan install Eigen3ToPython/latest@multi-contact/stable</div><div class="line"># Or install the latest development version</div><div class="line"># conan install Eigen3ToPython/latest@multi-contact/dev</div></div><!-- fragment --><h2>Homebrew OS X install</h2>
 <p>Install from the command line using <a href="brew.sh">Homebrew</a>:</p>
 <div class="fragment"><div class="line"># install homebrew package manager</div><div class="line">ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</div><div class="line"># install caskroom application manager</div><div class="line">brew install caskroom/cask/brew-cask</div><div class="line"># tap homebrew-science package repository</div><div class="line">brew tap homebrew/science</div><div class="line"># tap ahundt-robotics repository</div><div class="line">brew tap ahundt/robotics</div><div class="line"># install tasks and all its dependencies</div><div class="line">brew install spacevecalg</div></div><!-- fragment --><h2>Manually build from source</h2>
 <h3>Dependencies</h3>

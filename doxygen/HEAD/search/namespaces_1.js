@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['conversions',['conversions',['../a00068.html',1,'sva']]],
-  ['details',['details',['../a00070.html',1,'sva']]],
-  ['sva',['sva',['../a00067.html',1,'']]],
-  ['sva_5finternal',['sva_internal',['../a00071.html',1,'sva']]]
+  ['conversions',['conversions',['../namespacesva_1_1conversions.html',1,'sva']]],
+  ['details',['details',['../namespacesva_1_1details.html',1,'sva']]],
+  ['sva',['sva',['../namespacesva.html',1,'']]],
+  ['sva_5finternal',['sva_internal',['../namespacesva_1_1sva__internal.html',1,'sva']]]
 ];

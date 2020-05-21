@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['abinertia',['ABInertia',['../a00619.html',1,'sva']]],
-  ['admittancevec',['AdmittanceVec',['../a00623.html',1,'sva']]]
+  ['abinertia',['ABInertia',['../classsva_1_1ABInertia.html',1,'sva']]],
+  ['admittancevec',['AdmittanceVec',['../classsva_1_1AdmittanceVec.html',1,'sva']]]
 ];

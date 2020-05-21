@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['rbinertia',['RBInertia',['../a00643.html',1,'sva']]]
+  ['rbinertia',['RBInertia',['../classsva_1_1RBInertia.html',1,'sva']]]
 ];

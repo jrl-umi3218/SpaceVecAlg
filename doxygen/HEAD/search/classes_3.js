@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['motionvec',['MotionVec',['../a00635.html',1,'sva']]]
+  ['motionvec',['MotionVec',['../classsva_1_1MotionVec.html',1,'sva']]]
 ];

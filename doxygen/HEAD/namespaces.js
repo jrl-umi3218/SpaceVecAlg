@@ -1,5 +1,5 @@
 var namespaces =
 [
-    [ "Eigen", "a00069.html", null ],
-    [ "sva", "a00067.html", "a00067" ]
+    [ "Eigen", "namespaceEigen.html", null ],
+    [ "sva", "namespacesva.html", "namespacesva" ]
 ];

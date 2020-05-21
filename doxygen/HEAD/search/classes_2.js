@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['impedancevec',['ImpedanceVec',['../a00631.html',1,'sva']]]
+  ['impedancevec',['ImpedanceVec',['../classsva_1_1ImpedanceVec.html',1,'sva']]]
 ];

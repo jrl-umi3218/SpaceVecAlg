@@ -1,4 +1,4 @@
 var modules =
 [
-    [ "Convert to and from sva types", "a00065.html", "a00065" ]
+    [ "Convert to and from sva types", "group__Conversions.html", "group__Conversions" ]
 ];

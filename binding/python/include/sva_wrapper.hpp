@@ -93,13 +93,13 @@ void fv_isub(sva::ForceVec<T> * lhs, sva::ForceVec<T> * rhs)
 template<typename T>
 void fv_imul(sva::ForceVec<T> * lhs, double s)
 {
-  *lhs = (*lhs)*s;
+  *lhs *= s;
 }
 
 template<typename T>
 void fv_idiv(sva::ForceVec<T> * lhs, double s)
 {
-  *lhs = (*lhs)/s;
+  *lhs /= s;
 }
 
 sva::MotionVec<double>& const_cast_mvd(const sva::MotionVec<double> & rhs)
@@ -122,13 +122,13 @@ void mv_isub(sva::MotionVec<T> * lhs, sva::MotionVec<T> * rhs)
 template<typename T>
 void mv_imul(sva::MotionVec<T> * lhs, double s)
 {
-  *lhs = (*lhs)*s;
+  *lhs *= s;
 }
 
 template<typename T>
 void mv_idiv(sva::MotionVec<T> * lhs, double s)
 {
-  *lhs = (*lhs)/s;
+  *lhs /= s;
 }
 
 sva::RBInertia<double>& const_cast_rbid(const sva::RBInertia<double> & rhs)

@@ -119,6 +119,22 @@ public:
     return MotionVec<T>(scalar * angular_, scalar * linear_);
   }
 
+  template<typename T2, typename std::enable_if<std::is_arithmetic<T2>::value, int>::type = 0>
+  MotionVec<T> & operator*=(T2 scalar)
+  {
+    angular_ *= scalar;
+    linear_ *= scalar;
+    return *this;
+  }
+
+  template<typename T2>
+  MotionVec<T> & operator/=(T2 scalar)
+  {
+    angular_ /= scalar;
+    linear_ /= scalar;
+    return *this;
+  }
+
   template<typename T2>
   MotionVec<T> operator/(T2 scalar) const
   {

@@ -138,6 +138,22 @@ public:
     return ForceVec<T>(couple_ / scalar, force_ / scalar);
   }
 
+  template<typename T2, typename std::enable_if<std::is_arithmetic<T2>::value, int>::type = 0>
+  ForceVec<T> & operator*=(T2 scalar)
+  {
+    couple_ *= scalar;
+    force_ *= scalar;
+    return *this;
+  }
+
+  template<typename T2>
+  ForceVec<T> & operator/=(T2 scalar)
+  {
+    couple_ /= scalar;
+    force_ /= scalar;
+    return *this;
+  }
+
   bool operator==(const ForceVec<T> & fv) const
   {
     return (couple_ == fv.couple_) && (force_ == fv.force_);

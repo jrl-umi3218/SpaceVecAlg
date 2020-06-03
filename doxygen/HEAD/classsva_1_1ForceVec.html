@@ -128,6 +128,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a34c5c2bddd3aca0bf6d4549327e16e46"><td class="memTemplParams" colspan="2">template&lt;typename T2 &gt; </td></tr>
 <tr class="memitem:a34c5c2bddd3aca0bf6d4549327e16e46"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classsva_1_1ForceVec.html">ForceVec</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classsva_1_1ForceVec.html#a34c5c2bddd3aca0bf6d4549327e16e46">operator/</a> (T2 scalar) const</td></tr>
 <tr class="separator:a34c5c2bddd3aca0bf6d4549327e16e46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee54aae56070c8ea0034cb3f0f4cd2f3"><td class="memTemplParams" colspan="2">template&lt;typename T2 , typename std::enable_if&lt; std::is_arithmetic&lt; T2 &gt;::value, int &gt;::type  = 0&gt; </td></tr>
+<tr class="memitem:aee54aae56070c8ea0034cb3f0f4cd2f3"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classsva_1_1ForceVec.html">ForceVec</a>&lt; T &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classsva_1_1ForceVec.html#aee54aae56070c8ea0034cb3f0f4cd2f3">operator*=</a> (T2 scalar)</td></tr>
+<tr class="separator:aee54aae56070c8ea0034cb3f0f4cd2f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0396a925aa52c1393fbadeef08e9b25"><td class="memTemplParams" colspan="2">template&lt;typename T2 &gt; </td></tr>
+<tr class="memitem:af0396a925aa52c1393fbadeef08e9b25"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classsva_1_1ForceVec.html">ForceVec</a>&lt; T &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classsva_1_1ForceVec.html#af0396a925aa52c1393fbadeef08e9b25">operator/=</a> (T2 scalar)</td></tr>
+<tr class="separator:af0396a925aa52c1393fbadeef08e9b25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a251a164dbd04b22e0e8cb248a6dc6d08"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsva_1_1ForceVec.html#a251a164dbd04b22e0e8cb248a6dc6d08">operator==</a> (const <a class="el" href="classsva_1_1ForceVec.html">ForceVec</a>&lt; T &gt; &amp;fv) const</td></tr>
 <tr class="separator:a251a164dbd04b22e0e8cb248a6dc6d08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3f57327e1574a1e9018b6a85f787cb2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsva_1_1ForceVec.html#ac3f57327e1574a1e9018b6a85f787cb2">operator!=</a> (const <a class="el" href="classsva_1_1ForceVec.html">ForceVec</a>&lt; T &gt; &amp;fv) const</td></tr>
@@ -544,6 +550,36 @@ template&lt;typename T2 , typename std::enable_if&lt; std::is_arithmetic&lt; T2 
 
 </div>
 </div>
+<a id="aee54aae56070c8ea0034cb3f0f4cd2f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee54aae56070c8ea0034cb3f0f4cd2f3">&#9670;&nbsp;</a></span>operator*=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<div class="memtemplate">
+template&lt;typename T2 , typename std::enable_if&lt; std::is_arithmetic&lt; T2 &gt;::value, int &gt;::type  = 0&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsva_1_1ForceVec.html">ForceVec</a>&lt;T&gt;&amp; <a class="el" href="classsva_1_1ForceVec.html">sva::ForceVec</a>&lt; T &gt;::operator*= </td>
+          <td>(</td>
+          <td class="paramtype">T2&#160;</td>
+          <td class="paramname"><em>scalar</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="adc6d4bce0e52f893b1ae32fd926eeb9e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adc6d4bce0e52f893b1ae32fd926eeb9e">&#9670;&nbsp;</a></span>operator+()</h2>
 
@@ -702,6 +738,36 @@ template&lt;typename T2 &gt; </div>
           <td class="paramtype">T2&#160;</td>
           <td class="paramname"><em>scalar</em></td><td>)</td>
           <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af0396a925aa52c1393fbadeef08e9b25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0396a925aa52c1393fbadeef08e9b25">&#9670;&nbsp;</a></span>operator/=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<div class="memtemplate">
+template&lt;typename T2 &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsva_1_1ForceVec.html">ForceVec</a>&lt;T&gt;&amp; <a class="el" href="classsva_1_1ForceVec.html">sva::ForceVec</a>&lt; T &gt;::operator/= </td>
+          <td>(</td>
+          <td class="paramtype">T2&#160;</td>
+          <td class="paramname"><em>scalar</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>

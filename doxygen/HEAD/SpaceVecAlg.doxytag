@@ -1035,6 +1035,20 @@
       <arglist>(T2 scalar) const</arglist>
     </member>
     <member kind="function">
+      <type>ForceVec&lt; T &gt; &amp;</type>
+      <name>operator*=</name>
+      <anchorfile>classsva_1_1ForceVec.html</anchorfile>
+      <anchor>aee54aae56070c8ea0034cb3f0f4cd2f3</anchor>
+      <arglist>(T2 scalar)</arglist>
+    </member>
+    <member kind="function">
+      <type>ForceVec&lt; T &gt; &amp;</type>
+      <name>operator/=</name>
+      <anchorfile>classsva_1_1ForceVec.html</anchorfile>
+      <anchor>af0396a925aa52c1393fbadeef08e9b25</anchor>
+      <arglist>(T2 scalar)</arglist>
+    </member>
+    <member kind="function">
       <type>bool</type>
       <name>operator==</name>
       <anchorfile>classsva_1_1ForceVec.html</anchorfile>
@@ -1337,6 +1351,20 @@
       <anchorfile>classsva_1_1MotionVec.html</anchorfile>
       <anchor>a3581758dd8706b6a0df5c69ab4cb0c07</anchor>
       <arglist>(T2 scalar) const</arglist>
+    </member>
+    <member kind="function">
+      <type>MotionVec&lt; T &gt; &amp;</type>
+      <name>operator*=</name>
+      <anchorfile>classsva_1_1MotionVec.html</anchorfile>
+      <anchor>a36f721034d570bfbfcc5a9676b6498d2</anchor>
+      <arglist>(T2 scalar)</arglist>
+    </member>
+    <member kind="function">
+      <type>MotionVec&lt; T &gt; &amp;</type>
+      <name>operator/=</name>
+      <anchorfile>classsva_1_1MotionVec.html</anchorfile>
+      <anchor>a0bfb8a71e7466cc1ff5e27b0ad097ecd</anchor>
+      <arglist>(T2 scalar)</arglist>
     </member>
     <member kind="function">
       <type>MotionVec&lt; T &gt;</type>

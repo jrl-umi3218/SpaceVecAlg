@@ -58,7 +58,7 @@ BOOST_AUTO_TEST_CASE(MotionVecdTest)
   // M /= M
   sva::MotionVecd vec_diveq(vec);
   vec_diveq /= 5.;
-  BOOST_CHECK_EQUAL(vec_diveq.vector(), (m / 5.).eval());
+  BOOST_CHECK(vec_diveq.vector().isApprox(m / 5.));
 
   // -M
   BOOST_CHECK_EQUAL((-vec).vector(), -m);
@@ -135,7 +135,7 @@ BOOST_AUTO_TEST_CASE(ForceVecdTest)
   // F /= F
   sva::ForceVecd vec_diveq(vec);
   vec_diveq /= 5.;
-  BOOST_CHECK_EQUAL(vec_diveq.vector(), (m / 5.).eval());
+  BOOST_CHECK(vec_diveq.vector().isApprox(m / 5.));
 
   // -F
   BOOST_CHECK_EQUAL((-vec).vector(), -m);

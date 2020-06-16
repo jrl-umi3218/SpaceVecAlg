@@ -84,13 +84,13 @@ T sinc_inv(const T x)
 
   // We use the 4th order taylor series around 0 of x/sin(x) to compute
   // this function:
-  //      2      4
-  //     x    7⋅x     ⎛ 6⎞
-  // 1 + ── + ──── + O⎝x ⎠
+  //
+  //     x^2  7x^4
+  // 1 + ── + ──── + O(x^6)
   //     6    360
   // this approximation is valid around 0.
   // if x is far from 0, our approximation is not valid
-  // since x^6 becomes non negligable we use the normal computation of the function
+  // since x^6 becomes non neglectable we use the normal computation of the function
   // (i.e. taylor_2_bound^6 + taylor_0_bound == taylor_0_bound but
   //       taylor_n_bound^6 + taylor_0_bound != taylor_0).
 

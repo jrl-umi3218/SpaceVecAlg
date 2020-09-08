@@ -1,3 +1,9 @@
+spacevecalg (1.1.1-1ubuntu1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Pierre Gergondet <pierre.gergondet+ppa@gmail.com>  Tue, 08 Sep 2020 18:36:49 +0800
+
 spacevecalg (1.1.0-1ubuntu1) unstable; urgency=medium
 
   * Match current upstream version

@@ -200,7 +200,7 @@ public:
   template<typename Derived>
   void mul(const Eigen::MatrixBase<Derived> & mv, Eigen::MatrixBase<Derived> & result) const;
 
-  /// @return X⁻¹v
+  /// @return X^-1 v
   MotionVec<T> invMul(const MotionVec<T> & mv) const;
   /// @return compute angular part of @see invMul
   Eigen::Vector3<T> angularInvMul(const MotionVec<T> & mv) const;
@@ -230,12 +230,12 @@ public:
   template<typename Derived>
   void transMul(const Eigen::MatrixBase<Derived> & fv, Eigen::MatrixBase<Derived> & result) const;
 
-  /// @return X*IX⁻¹
+  /// @return X*IX^-1
   RBInertia<T> dualMul(const RBInertia<T> & rbI) const;
   /// @return XtIX
   RBInertia<T> transMul(const RBInertia<T> & rbI) const;
 
-  /// @return X*IX⁻¹
+  /// @return X*IX^-1
   ABInertia<T> dualMul(const ABInertia<T> & rbI) const;
   /// @return XtIX
   ABInertia<T> transMul(const ABInertia<T> & rbI) const;

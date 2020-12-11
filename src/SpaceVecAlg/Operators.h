@@ -11,7 +11,7 @@ namespace sva
 
 // Operators implementation
 
-namespace internal
+namespace sva_internal
 {
 
 template<typename Derived1, typename Derived2, typename Derived3>
@@ -59,7 +59,7 @@ inline void colwiseLeftMultEq(const Eigen::MatrixBase<Derived1> & m1,
   }
 }
 
-} // namespace internal
+} // namespace sva_internal
 
 template<typename Derived>
 inline Eigen::Block<Derived, 3, Eigen::Dynamic> motionAngular(Eigen::MatrixBase<Derived> & mv)
@@ -122,10 +122,10 @@ inline void MotionVec<T>::cross(const Eigen::MatrixBase<Derived> & mv2, Eigen::M
   static_assert(Derived::RowsAtCompileTime == 6, "the matrix must have exactly 6 rows");
   static_assert(std::is_same<typename Derived::Scalar, T>::value, "motion vec and matrix must be the same type");
 
-  internal::colwiseCrossEq(motionAngular(mv2), -angular_, motionAngular(result));
+  sva_internal::colwiseCrossEq(motionAngular(mv2), -angular_, motionAngular(result));
 
-  internal::colwiseCrossEq(motionLinear(mv2), -angular_, motionLinear(result));
-  internal::colwiseCrossMinusEq(motionAngular(mv2), linear_, motionLinear(result));
+  sva_internal::colwiseCrossEq(motionLinear(mv2), -angular_, motionLinear(result));
+  sva_internal::colwiseCrossMinusEq(motionAngular(mv2), linear_, motionLinear(result));
 }
 
 template<typename T>
@@ -141,10 +141,10 @@ inline void MotionVec<T>::crossDual(const Eigen::MatrixBase<Derived> & fv2, Eige
   static_assert(Derived::RowsAtCompileTime == 6, "the matrix must have exactly 6 rows");
   static_assert(std::is_same<typename Derived::Scalar, T>::value, "motion vec and matrix must be the same type");
 
-  internal::colwiseCrossEq(forceCouple(fv2), -angular_, forceCouple(result));
-  internal::colwiseCrossMinusEq(forceForce(fv2), linear_, forceCouple(result));
+  sva_internal::colwiseCrossEq(forceCouple(fv2), -angular_, forceCouple(result));
+  sva_internal::colwiseCrossMinusEq(forceForce(fv2), linear_, forceCouple(result));
 
-  internal::colwiseCrossEq(forceForce(fv2), -angular_, forceForce(result));
+  sva_internal::colwiseCrossEq(forceForce(fv2), -angular_, forceForce(result));
 }
 
 template<typename T>
@@ -168,10 +168,10 @@ inline void RBInertia<T>::mul(const Eigen::MatrixBase<Derived> & mv, Eigen::Matr
   static_assert(std::is_same<typename Derived::Scalar, T>::value, "motion vec and matrix must be the same type");
 
   forceCouple(result).noalias() = inertia() * motionAngular(mv);
-  internal::colwiseCrossMinusEq(motionLinear(mv), momentum(), forceCouple(result));
+  sva_internal::colwiseCrossMinusEq(motionLinear(mv), momentum(), forceCouple(result));
 
   forceForce(result).noalias() = motionLinear(mv) * mass();
-  internal::colwiseCrossPlusEq(motionAngular(mv), momentum(), forceForce(result));
+  sva_internal::colwiseCrossPlusEq(motionAngular(mv), momentum(), forceForce(result));
 }
 
 template<typename T>
@@ -238,8 +238,8 @@ inline void PTransform<T>::mul(const Eigen::MatrixBase<Derived> & mv, Eigen::Mat
   motionAngular(result).noalias() = E * motionAngular(mv);
 
   motionLinear(result).noalias() = motionLinear(mv);
-  internal::colwiseCrossPlusEq(motionAngular(mv), r, motionLinear(result));
-  internal::colwiseLeftMultEq(motionLinear(result), E, motionLinear(result));
+  sva_internal::colwiseCrossPlusEq(motionAngular(mv), r, motionLinear(result));
+  sva_internal::colwiseLeftMultEq(motionLinear(result), E, motionLinear(result));
 }
 
 template<typename T>
@@ -282,7 +282,7 @@ inline void PTransform<T>::invMul(const Eigen::MatrixBase<Derived> & mv, Eigen::
   motionAngular(result).noalias() = E.transpose() * motionAngular(mv);
 
   motionLinear(result).noalias() = E.transpose() * motionLinear(mv);
-  internal::colwiseCrossMinusEq(motionAngular(result), r, motionLinear(result));
+  sva_internal::colwiseCrossMinusEq(motionAngular(result), r, motionLinear(result));
 }
 
 template<typename T>
@@ -317,8 +317,8 @@ inline void PTransform<T>::dualMul(const Eigen::MatrixBase<Derived> & fv, Eigen:
   const Eigen::Vector3<T> & r = translation();
 
   forceCouple(result).noalias() = forceCouple(fv);
-  internal::colwiseCrossPlusEq(forceForce(fv), r, forceCouple(result));
-  internal::colwiseLeftMultEq(forceCouple(result), E, forceCouple(result));
+  sva_internal::colwiseCrossPlusEq(forceForce(fv), r, forceCouple(result));
+  sva_internal::colwiseLeftMultEq(forceCouple(result), E, forceCouple(result));
 
   forceForce(result).noalias() = E * forceForce(fv);
 }
@@ -364,7 +364,7 @@ inline void PTransform<T>::transMul(const Eigen::MatrixBase<Derived> & fv, Eigen
   forceForce(result).noalias() = E.transpose() * forceForce(fv);
 
   forceCouple(result).noalias() = E.transpose() * forceCouple(fv);
-  internal::colwiseCrossMinusEq(forceForce(result), r, forceCouple(result));
+  sva_internal::colwiseCrossMinusEq(forceForce(result), r, forceCouple(result));
 }
 
 template<typename T>

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2019 CNRS-UM LIRMM, CNRS-AIST JRL
+ * Copyright 2012-2020 CNRS-UM LIRMM, CNRS-AIST JRL
  */
 
 // check memory allocation in some method
@@ -237,9 +237,9 @@ BOOST_AUTO_TEST_CASE(RBInertiadLeftOperatorsTest)
   Matrix6Xd fVecRes6Xd(6, 2);
   mVec6Xd << mVec.vector(), mVec.vector();
 
-  internal::set_is_malloc_allowed(false);
+  Eigen::internal::set_is_malloc_allowed(false);
   rb.mul(mVec6Xd, fVecRes6Xd);
-  internal::set_is_malloc_allowed(true);
+  Eigen::internal::set_is_malloc_allowed(true);
 
 #ifdef __i386__
   BOOST_CHECK_SMALL((fVec.vector() - fVecRes6Xd.col(0)).array().abs().sum(), TOL);
@@ -291,9 +291,9 @@ BOOST_AUTO_TEST_CASE(ABInertiadLeftOperatorsTest)
   Matrix6Xd fVecRes6Xd(6, 2);
   mVec6Xd << mVec.vector(), mVec.vector();
 
-  internal::set_is_malloc_allowed(false);
+  Eigen::internal::set_is_malloc_allowed(false);
   ab.mul(mVec6Xd, fVecRes6Xd);
-  internal::set_is_malloc_allowed(true);
+  Eigen::internal::set_is_malloc_allowed(true);
 
 #ifdef __i386__
   BOOST_CHECK_SMALL((fVec.vector() - fVecRes6Xd.col(0)).array().abs().sum(), TOL);

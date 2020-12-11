@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2019 CNRS-UM LIRMM, CNRS-AIST JRL
+ * Copyright 2012-2020 CNRS-UM LIRMM, CNRS-AIST JRL
  */
 
 // check memory allocation in some method
@@ -215,9 +215,9 @@ BOOST_AUTO_TEST_CASE(MotionVecdLeftOperatorsTest)
   Matrix6Xd crossMVecRes(6, 2);
   crossMVec << mVec2.vector(), mVec2.vector();
 
-  internal::set_is_malloc_allowed(false);
+  Eigen::internal::set_is_malloc_allowed(false);
   mVec.cross(crossMVec, crossMVecRes);
-  internal::set_is_malloc_allowed(true);
+  Eigen::internal::set_is_malloc_allowed(true);
 
 #ifdef __i386__
   BOOST_CHECK_SMALL((crossM.vector() - crossMVecRes.col(0)).array().abs().sum(), TOL);
@@ -230,9 +230,9 @@ BOOST_AUTO_TEST_CASE(MotionVecdLeftOperatorsTest)
   Matrix6Xd crossFVecRes(6, 2);
   crossFVec << fVec.vector(), fVec.vector();
 
-  internal::set_is_malloc_allowed(false);
+  Eigen::internal::set_is_malloc_allowed(false);
   mVec.crossDual(crossFVec, crossFVecRes);
-  internal::set_is_malloc_allowed(true);
+  Eigen::internal::set_is_malloc_allowed(true);
 
   BOOST_CHECK_EQUAL(crossF.vector(), crossFVecRes.col(0));
   BOOST_CHECK_EQUAL(crossFVecRes.col(0), crossFVecRes.col(1));

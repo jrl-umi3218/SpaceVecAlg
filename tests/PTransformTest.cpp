@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2019 CNRS-UM LIRMM, CNRS-AIST JRL
+ * Copyright 2012-2020 CNRS-UM LIRMM, CNRS-AIST JRL
  */
 
 // check memory allocation in some method
@@ -166,9 +166,9 @@ BOOST_AUTO_TEST_CASE(PTransformdLeftOperatorsTest)
   Matrix6Xd mvRes1Vec6Xd(6, 2);
   mv1Vec6Xd << mVec.vector(), mVec.vector();
 
-  internal::set_is_malloc_allowed(false);
+  Eigen::internal::set_is_malloc_allowed(false);
   pt.mul(mv1Vec6Xd, mvRes1Vec6Xd);
-  internal::set_is_malloc_allowed(true);
+  Eigen::internal::set_is_malloc_allowed(true);
 
   BOOST_CHECK_SMALL((mvRes1.vector() - mvRes1Vec6Xd.col(0)).norm(), TOL);
   BOOST_CHECK_EQUAL(mvRes1Vec6Xd.col(0), mvRes1Vec6Xd.col(1));
@@ -188,9 +188,9 @@ BOOST_AUTO_TEST_CASE(PTransformdLeftOperatorsTest)
   Matrix6Xd mvRes2Vec6Xd(6, 2);
   mv2Vec6Xd << mVec.vector(), mVec.vector();
 
-  internal::set_is_malloc_allowed(false);
+  Eigen::internal::set_is_malloc_allowed(false);
   pt.invMul(mv2Vec6Xd, mvRes2Vec6Xd);
-  internal::set_is_malloc_allowed(true);
+  Eigen::internal::set_is_malloc_allowed(true);
 
   BOOST_CHECK_SMALL((mvRes2.vector() - mvRes2Vec6Xd.col(0)).norm(), TOL);
   BOOST_CHECK_EQUAL(mvRes2Vec6Xd.col(0), mvRes2Vec6Xd.col(1));
@@ -210,9 +210,9 @@ BOOST_AUTO_TEST_CASE(PTransformdLeftOperatorsTest)
   Matrix6Xd fvRes1Vec6Xd(6, 2);
   fv1Vec6Xd << fVec.vector(), fVec.vector();
 
-  internal::set_is_malloc_allowed(false);
+  Eigen::internal::set_is_malloc_allowed(false);
   pt.dualMul(fv1Vec6Xd, fvRes1Vec6Xd);
-  internal::set_is_malloc_allowed(true);
+  Eigen::internal::set_is_malloc_allowed(true);
 
   BOOST_CHECK_SMALL((fvRes1.vector() - fvRes1Vec6Xd.col(0)).norm(), TOL);
   BOOST_CHECK_EQUAL(fvRes1Vec6Xd.col(0), fvRes1Vec6Xd.col(1));
@@ -232,9 +232,9 @@ BOOST_AUTO_TEST_CASE(PTransformdLeftOperatorsTest)
   Matrix6Xd fvRes2Vec6Xd(6, 2);
   fv2Vec6Xd << fVec.vector(), fVec.vector();
 
-  internal::set_is_malloc_allowed(false);
+  Eigen::internal::set_is_malloc_allowed(false);
   pt.transMul(fv2Vec6Xd, fvRes2Vec6Xd);
-  internal::set_is_malloc_allowed(true);
+  Eigen::internal::set_is_malloc_allowed(true);
 
   BOOST_CHECK_SMALL((fvRes2.vector() - fvRes2Vec6Xd.col(0)).norm(), TOL);
   BOOST_CHECK_EQUAL(fvRes2Vec6Xd.col(0), fvRes2Vec6Xd.col(1));

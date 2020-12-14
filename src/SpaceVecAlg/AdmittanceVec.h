@@ -1,15 +1,15 @@
 /*
- * Copyright 2012-2019 CNRS-UM LIRMM, CNRS-AIST JRL
+ * Copyright 2012-2020 CNRS-UM LIRMM, CNRS-AIST JRL
  */
 
 #pragma once
 
+#include "EigenTypedef.h"
+#include "fwd.h"
 #include <type_traits>
 
 namespace sva
 {
-
-using namespace Eigen;
 
 /**
  * Admittance Vector.
@@ -26,8 +26,8 @@ template<typename T>
 class AdmittanceVec
 {
 public:
-  typedef Vector3<T> vector3_t;
-  typedef Vector6<T> vector6_t;
+  typedef Eigen::Vector3<T> vector3_t;
+  typedef Eigen::Vector6<T> vector6_t;
 
 public:
   /// Zero admittance vector

@@ -1,13 +1,14 @@
 /*
- * Copyright 2012-2019 CNRS-UM LIRMM, CNRS-AIST JRL
+ * Copyright 2012-2020 CNRS-UM LIRMM, CNRS-AIST JRL
  */
 
 #pragma once
 
+#include "EigenTypedef.h"
+#include "fwd.h"
+
 namespace sva
 {
-
-using namespace Eigen;
 
 /**
  * Spatial Articulated Body Inertia compact representation.
@@ -17,9 +18,9 @@ template<typename T>
 class ABInertia
 {
 public:
-  typedef Vector3<T> vector3_t;
-  typedef Matrix3<T> matrix3_t;
-  typedef Matrix6<T> matrix6_t;
+  typedef Eigen::Vector3<T> vector3_t;
+  typedef Eigen::Matrix3<T> matrix3_t;
+  typedef Eigen::Matrix6<T> matrix6_t;
 
 public:
   ABInertia() : M_(), H_(), I_() {}
@@ -32,8 +33,8 @@ public:
   ABInertia(const matrix3_t & M, const matrix3_t & H, const matrix3_t & I)
   : M_(matrix3_t::Zero()), H_(H), I_(matrix3_t::Zero())
   {
-    M_.template triangularView<Lower>() = M;
-    I_.template triangularView<Lower>() = I;
+    M_.template triangularView<Eigen::Lower>() = M;
+    I_.template triangularView<Eigen::Lower>() = I;
   }
 
   /**
@@ -41,9 +42,9 @@ public:
    * @param H Generalized inertia matrix.
    * @param I Lower triangular view Inertia matrix.
    */
-  ABInertia(const TriangularView<matrix3_t, Lower> & ltM,
+  ABInertia(const Eigen::TriangularView<matrix3_t, Eigen::Lower> & ltM,
             const matrix3_t & H,
-            const TriangularView<matrix3_t, Lower> & ltI)
+            const Eigen::TriangularView<matrix3_t, Eigen::Lower> & ltI)
   : M_(ltM), H_(H), I_(ltI)
   {
   }
@@ -59,8 +60,8 @@ public:
   matrix3_t massMatrix() const
   {
     matrix3_t M;
-    M.template triangularView<Upper>() = M_.transpose();
-    M.template triangularView<StrictlyLower>() = M_;
+    M.template triangularView<Eigen::Upper>() = M_.transpose();
+    M.template triangularView<Eigen::StrictlyLower>() = M_;
     return M;
   }
 
@@ -80,8 +81,8 @@ public:
   matrix3_t inertia() const
   {
     matrix3_t I;
-    I.template triangularView<Upper>() = I_.transpose();
-    I.template triangularView<StrictlyLower>() = I_;
+    I.template triangularView<Eigen::Upper>() = I_.transpose();
+    I.template triangularView<Eigen::StrictlyLower>() = I_;
     return I;
   }
 
@@ -103,16 +104,16 @@ public:
   ABInertia<T> operator+(const ABInertia<T> & rbI) const
   {
     matrix3_t M, I;
-    M.template triangularView<Lower>() = M_ + rbI.M_;
-    I.template triangularView<Lower>() = I_ + rbI.I_;
+    M.template triangularView<Eigen::Lower>() = M_ + rbI.M_;
+    I.template triangularView<Eigen::Lower>() = I_ + rbI.I_;
     return ABInertia<T>(M, H_ + rbI.H_, I);
   }
 
   ABInertia<T> operator-(const ABInertia<T> & rbI) const
   {
     matrix3_t M, I;
-    M.template triangularView<Lower>() = M_ - rbI.M_;
-    I.template triangularView<Lower>() = I_ - rbI.I_;
+    M.template triangularView<Eigen::Lower>() = M_ - rbI.M_;
+    I.template triangularView<Eigen::Lower>() = I_ - rbI.I_;
     return ABInertia<T>(M, H_ - rbI.H_, I);
   }
 
@@ -123,17 +124,17 @@ public:
 
   ABInertia<T> & operator+=(const ABInertia<T> & rbI)
   {
-    M_.template triangularView<Lower>() += rbI.M_;
+    M_.template triangularView<Eigen::Lower>() += rbI.M_;
     H_ += rbI.H_;
-    I_.template triangularView<Lower>() += rbI.I_;
+    I_.template triangularView<Eigen::Lower>() += rbI.I_;
     return *this;
   }
 
   ABInertia<T> & operator-=(const ABInertia<T> & rbI)
   {
-    M_.template triangularView<Lower>() -= rbI.M_;
+    M_.template triangularView<Eigen::Lower>() -= rbI.M_;
     H_ -= rbI.H_;
-    I_.template triangularView<Lower>() -= rbI.I_;
+    I_.template triangularView<Eigen::Lower>() -= rbI.I_;
     return *this;
   }
 
@@ -141,8 +142,8 @@ public:
   ABInertia<T> operator*(T2 scalar) const
   {
     matrix3_t M, I;
-    M.template triangularView<Lower>() = scalar * M_;
-    I.template triangularView<Lower>() = scalar * I_;
+    M.template triangularView<Eigen::Lower>() = scalar * M_;
+    I.template triangularView<Eigen::Lower>() = scalar * I_;
     return ABInertia<T>(M, scalar * H_, I);
   }
 

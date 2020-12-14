@@ -1,13 +1,14 @@
 /*
- * Copyright 2012-2019 CNRS-UM LIRMM, CNRS-AIST JRL
+ * Copyright 2012-2020 CNRS-UM LIRMM, CNRS-AIST JRL
  */
 
 #pragma once
 
+#include "EigenTypedef.h"
+#include "fwd.h"
+
 namespace sva
 {
-
-using namespace Eigen;
 
 /**
  * Create a rotation matrix about the X axis.
@@ -15,7 +16,7 @@ using namespace Eigen;
  * @param theta rotation in radian.
  */
 template<typename T>
-Matrix3<T> RotX(T theta);
+Eigen::Matrix3<T> RotX(T theta);
 
 /**
  * Create a rotation matrix about the Y axis.
@@ -23,7 +24,7 @@ Matrix3<T> RotX(T theta);
  * @param theta rotation in radian.
  */
 template<typename T>
-Matrix3<T> RotY(T theta);
+Eigen::Matrix3<T> RotY(T theta);
 
 /**
  * Create a rotation matrix about the Z axis.
@@ -31,7 +32,7 @@ Matrix3<T> RotY(T theta);
  * @param theta rotation in radian.
  */
 template<typename T>
-Matrix3<T> RotZ(T theta);
+Eigen::Matrix3<T> RotZ(T theta);
 
 /**
  * Compute the 3D rotation error between two matrix E_a_b and E_a_c in the 'a' frame.
@@ -41,7 +42,7 @@ Matrix3<T> RotZ(T theta);
  * @return XYZ rotation in radian.
  */
 template<typename T>
-Vector3<T> rotationError(const Matrix3<T> & E_a_b, const Matrix3<T> & E_a_c);
+Eigen::Vector3<T> rotationError(const Eigen::Matrix3<T> & E_a_b, const Eigen::Matrix3<T> & E_a_c);
 
 /**
  * Compute the 3D rotation vector of the rotation matrix E_a_b in the 'a' frame.
@@ -50,7 +51,7 @@ Vector3<T> rotationError(const Matrix3<T> & E_a_b, const Matrix3<T> & E_a_c);
  * (see exponential matrix and logarithmic matrix).
  */
 template<typename T>
-Vector3<T> rotationVelocity(const Matrix3<T> & E_a_b);
+Eigen::Vector3<T> rotationVelocity(const Eigen::Matrix3<T> & E_a_b);
 
 /**
  * Compute the 6D error between two PTransform in the 'a' frame.
@@ -82,10 +83,10 @@ MotionVec<T> transformVelocity(const PTransform<T> & X_a_b);
 template<typename T>
 class PTransform
 {
-  typedef Vector3<T> vector3_t;
-  typedef Matrix3<T> matrix3_t;
-  typedef Matrix6<T> matrix6_t;
-  typedef Quaternion<T> quaternion_t;
+  typedef Eigen::Vector3<T> vector3_t;
+  typedef Eigen::Matrix3<T> matrix3_t;
+  typedef Eigen::Matrix6<T> matrix6_t;
+  typedef Eigen::Quaternion<T> quaternion_t;
 
 public:
   /// Identity transformation.
@@ -262,41 +263,41 @@ private:
 };
 
 template<typename T>
-inline Matrix3<T> RotX(T theta)
+inline Eigen::Matrix3<T> RotX(T theta)
 {
   T s = std::sin(theta), c = std::cos(theta);
-  return (Matrix3<T>() << 1., 0., 0., 0., c, s, 0., -s, c).finished();
+  return (Eigen::Matrix3<T>() << 1., 0., 0., 0., c, s, 0., -s, c).finished();
 }
 
 template<typename T>
-inline Matrix3<T> RotY(T theta)
+inline Eigen::Matrix3<T> RotY(T theta)
 {
   T s = std::sin(theta), c = std::cos(theta);
-  return (Matrix3<T>() << c, 0., -s, 0., 1., 0., s, 0., c).finished();
+  return (Eigen::Matrix3<T>() << c, 0., -s, 0., 1., 0., s, 0., c).finished();
 }
 
 template<typename T>
-inline Matrix3<T> RotZ(T theta)
+inline Eigen::Matrix3<T> RotZ(T theta)
 {
   T s = std::sin(theta), c = std::cos(theta);
-  return (Matrix3<T>() << c, s, 0., -s, c, 0., 0., 0., 1.).finished();
+  return (Eigen::Matrix3<T>() << c, s, 0., -s, c, 0., 0., 0., 1.).finished();
 }
 
 template<typename T>
-inline Vector3<T> rotationError(const Matrix3<T> & E_a_b, const Matrix3<T> & E_a_c)
+inline Eigen::Vector3<T> rotationError(const Eigen::Matrix3<T> & E_a_b, const Eigen::Matrix3<T> & E_a_c)
 {
-  Matrix3<T> E_b_c = E_a_c * E_a_b.transpose();
-  return Vector3<T>(E_a_b.transpose() * rotationVelocity(E_b_c));
+  Eigen::Matrix3<T> E_b_c = E_a_c * E_a_b.transpose();
+  return Eigen::Vector3<T>(E_a_b.transpose() * rotationVelocity(E_b_c));
 }
 
 template<typename T>
-inline Vector3<T> rotationVelocity(const Matrix3<T> & E_a_b)
+inline Eigen::Vector3<T> rotationVelocity(const Eigen::Matrix3<T> & E_a_b)
 {
-  Vector3<T> w;
+  Eigen::Vector3<T> w;
   T acosV = (E_a_b(0, 0) + E_a_b(1, 1) + E_a_b(2, 2) - 1.) * 0.5;
   T theta = std::acos(std::min(std::max(acosV, -1.), 1.));
 
-  w = Vector3<T>(-E_a_b(2, 1) + E_a_b(1, 2), -E_a_b(0, 2) + E_a_b(2, 0), -E_a_b(1, 0) + E_a_b(0, 1));
+  w = Eigen::Vector3<T>(-E_a_b(2, 1) + E_a_b(1, 2), -E_a_b(0, 2) + E_a_b(2, 0), -E_a_b(1, 0) + E_a_b(0, 1));
   w *= sinc_inv(theta) * 0.5;
 
   return w;
@@ -306,7 +307,7 @@ template<typename T>
 inline MotionVec<T> transformError(const PTransform<T> & X_a_b, const PTransform<T> & X_a_c)
 {
   PTransform<T> X_b_c = X_a_c * X_a_b.inv();
-  return PTransform<T>(Matrix3<T>(X_a_b.rotation().transpose())) * transformVelocity(X_b_c);
+  return PTransform<T>(Eigen::Matrix3<T>(X_a_b.rotation().transpose())) * transformVelocity(X_b_c);
 }
 
 template<typename T>

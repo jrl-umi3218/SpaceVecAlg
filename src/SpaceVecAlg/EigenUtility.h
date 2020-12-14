@@ -1,8 +1,10 @@
 /*
- * Copyright 2012-2019 CNRS-UM LIRMM, CNRS-AIST JRL
+ * Copyright 2012-2020 CNRS-UM LIRMM, CNRS-AIST JRL
  */
 
 #pragma once
+
+#include "EigenTypedef.h"
 
 namespace Eigen
 {
@@ -40,3 +42,12 @@ inline Matrix6<T> vector6ToCrossDualMatrix(const Vector6<T> & vec)
 }
 
 } // namespace Eigen
+
+namespace sva
+{
+
+using Eigen::vector3ToCrossMatrix;
+using Eigen::vector6ToCrossDualMatrix;
+using Eigen::vector6ToCrossMatrix;
+
+} // namespace sva

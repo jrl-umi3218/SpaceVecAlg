@@ -1,16 +1,20 @@
 /*
- * Copyright 2012-2019 CNRS-UM LIRMM, CNRS-AIST JRL
+ * Copyright 2012-2020 CNRS-UM LIRMM, CNRS-AIST JRL
  */
 
 #pragma once
 
+#include "EigenUtility.h"
+#include "fwd.h"
+
 namespace sva
 {
 
-using namespace Eigen;
-
 template<typename T>
-Matrix3<T> inertiaToOrigin(const Matrix3<T> & inertia, T mass, const Vector3<T> & com, const Matrix3<T> & rotation);
+Eigen::Matrix3<T> inertiaToOrigin(const Eigen::Matrix3<T> & inertia,
+                                  T mass,
+                                  const Eigen::Vector3<T> & com,
+                                  const Eigen::Matrix3<T> & rotation);
 
 /**
  * Spatial Rigid Body Inertia compact representation.
@@ -20,9 +24,9 @@ template<typename T>
 class RBInertia
 {
 public:
-  typedef Vector3<T> vector3_t;
-  typedef Matrix3<T> matrix3_t;
-  typedef Matrix6<T> matrix6_t;
+  typedef Eigen::Vector3<T> vector3_t;
+  typedef Eigen::Matrix3<T> matrix3_t;
+  typedef Eigen::Matrix6<T> matrix6_t;
 
 public:
   RBInertia() : m_(), h_(), I_() {}
@@ -34,15 +38,18 @@ public:
    */
   RBInertia(T m, const vector3_t & h, const matrix3_t & I) : m_(m), h_(h), I_(matrix3_t::Zero())
   {
-    I_.template triangularView<Lower>() = I;
+    I_.template triangularView<Eigen::Lower>() = I;
   }
 
   /**
    * @param m Mass.
    * @param h Spatial momentum.
-   * @param I Lower triangular view of Inertia matrix at body origin.
+   * @param I Eigen::Lower triangular view of Inertia matrix at body origin.
    */
-  RBInertia(T m, const vector3_t & h, const TriangularView<matrix3_t, Lower> & ltI) : m_(m), h_(h), I_(ltI) {}
+  RBInertia(T m, const vector3_t & h, const Eigen::TriangularView<matrix3_t, Eigen::Lower> & ltI)
+  : m_(m), h_(h), I_(ltI)
+  {
+  }
 
   // Accessor
   /// @return Mass.
@@ -67,8 +74,8 @@ public:
   matrix3_t inertia() const
   {
     matrix3_t I;
-    I.template triangularView<Upper>() = I_.transpose();
-    I.template triangularView<StrictlyLower>() = I_;
+    I.template triangularView<Eigen::Upper>() = I_.transpose();
+    I.template triangularView<Eigen::StrictlyLower>() = I_;
     return I;
   }
 
@@ -91,14 +98,14 @@ public:
   RBInertia<T> operator+(const RBInertia<T> & rbI) const
   {
     matrix3_t I;
-    I.template triangularView<Lower>() = I_ + rbI.I_;
+    I.template triangularView<Eigen::Lower>() = I_ + rbI.I_;
     return RBInertia<T>(m_ + rbI.m_, h_ + rbI.h_, I);
   }
 
   RBInertia<T> operator-(const RBInertia<T> & rbI) const
   {
     matrix3_t I;
-    I.template triangularView<Lower>() = I_ - rbI.I_;
+    I.template triangularView<Eigen::Lower>() = I_ - rbI.I_;
     return RBInertia<T>(m_ - rbI.m_, h_ - rbI.h_, I);
   }
 
@@ -109,7 +116,7 @@ public:
 
   RBInertia<T> & operator+=(const RBInertia<T> & rbI)
   {
-    I_.template triangularView<Lower>() += rbI.I_;
+    I_.template triangularView<Eigen::Lower>() += rbI.I_;
     m_ += rbI.m_;
     h_ += rbI.h_;
     return *this;
@@ -117,7 +124,7 @@ public:
 
   RBInertia<T> & operator-=(const RBInertia<T> & rbI)
   {
-    I_.template triangularView<Lower>() -= rbI.I_;
+    I_.template triangularView<Eigen::Lower>() -= rbI.I_;
     m_ -= rbI.m_;
     h_ -= rbI.h_;
     return *this;
@@ -127,7 +134,7 @@ public:
   RBInertia<T> operator*(T2 scalar) const
   {
     matrix3_t I;
-    I.template triangularView<Lower>() = scalar * I_;
+    I.template triangularView<Eigen::Lower>() = scalar * I_;
     return RBInertia<T>(scalar * m_, scalar * h_, I);
   }
 
@@ -168,9 +175,13 @@ inline std::ostream & operator<<(std::ostream & out, const RBInertia<T> & rbI)
 }
 
 template<typename T>
-Matrix3<T> inertiaToOrigin(const Matrix3<T> & inertia, T mass, const Vector3<T> & com, const Matrix3<T> & rotation)
+Eigen::Matrix3<T> inertiaToOrigin(const Eigen::Matrix3<T> & inertia,
+                                  T mass,
+                                  const Eigen::Vector3<T> & com,
+                                  const Eigen::Matrix3<T> & rotation)
 {
-  Matrix3<T> trans = vector3ToCrossMatrix<T>(mass * com) * vector3ToCrossMatrix<T>(com).transpose();
+  Eigen::Matrix3<T> trans =
+      Eigen::vector3ToCrossMatrix<T>(mass * com) * Eigen::vector3ToCrossMatrix<T>(com).transpose();
   return rotation * (inertia + trans) * rotation.transpose();
 }
 

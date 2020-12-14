@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2019 CNRS-UM LIRMM, CNRS-AIST JRL
+ * Copyright 2012-2020 CNRS-UM LIRMM, CNRS-AIST JRL
  */
 
 // includes
@@ -39,7 +39,7 @@ scalar_t cos(const scalar_t& t)
 namespace sva
 {
 template<>
-inline Matrix3<scalar_t> RotZ<scalar_t>(scalar_t theta)
+inline Eigen::Matrix3<scalar_t> RotZ<scalar_t>(scalar_t theta)
 {
   using namespace Eigen;
 

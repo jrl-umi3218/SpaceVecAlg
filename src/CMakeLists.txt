@@ -1,11 +1,12 @@
 #
-# Copyright 2012-2019 CNRS-UM LIRMM, CNRS-AIST JRL
+# Copyright 2012-2020 CNRS-UM LIRMM, CNRS-AIST JRL
 #
 
 set(HEADERS_INCLUDE_DIR
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>$<INSTALL_INTERFACE:include>)
 
 set(HEADERS
+  ${HEADERS_INCLUDE_DIR}/SpaceVecAlg/fwd.h
   ${HEADERS_INCLUDE_DIR}/SpaceVecAlg/MotionVec.h
   ${HEADERS_INCLUDE_DIR}/SpaceVecAlg/ForceVec.h
   ${HEADERS_INCLUDE_DIR}/SpaceVecAlg/ImpedanceVec.h
@@ -26,6 +27,9 @@ if(COMMAND target_sources)
   target_sources(SpaceVecAlg INTERFACE ${HEADERS})
 endif()
 target_compile_features(SpaceVecAlg INTERFACE cxx_auto_type cxx_constexpr)
+if(MSVC)
+  target_compile_options(SpaceVecAlg PRIVATE /source-charset:utf-8)
+endif()
 if(TARGET Eigen3::Eigen)
   target_link_libraries(SpaceVecAlg INTERFACE Eigen3::Eigen)
 else()

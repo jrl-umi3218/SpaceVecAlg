@@ -1,11 +1,11 @@
 var classsva_1_1RBInertia =
 [
-    [ "matrix3_t", "classsva_1_1RBInertia.html#aa64e782b6a5a1278f0620fe272862aad", null ],
-    [ "matrix6_t", "classsva_1_1RBInertia.html#a8018cbadb20f77c9c1090ee6f0894ab9", null ],
-    [ "vector3_t", "classsva_1_1RBInertia.html#a6768085b5d1fdb4e91ddb97a64dc00fb", null ],
+    [ "matrix3_t", "classsva_1_1RBInertia.html#a4fe0c40731b9e40cb692101fb33a1dfe", null ],
+    [ "matrix6_t", "classsva_1_1RBInertia.html#aaa1a4aed4a83b2e36b4b5adc0ebfa6e0", null ],
+    [ "vector3_t", "classsva_1_1RBInertia.html#a4dd0a423cba5ac5cb104e1b0ab570e47", null ],
     [ "RBInertia", "classsva_1_1RBInertia.html#a73b8ab1ffe411e38ed377d703fecc9c4", null ],
     [ "RBInertia", "classsva_1_1RBInertia.html#a9c14050634eced8cf16c86bfff66a9e2", null ],
-    [ "RBInertia", "classsva_1_1RBInertia.html#a56a14051627e5e89bf06a8d8c979d56f", null ],
+    [ "RBInertia", "classsva_1_1RBInertia.html#aaada1412b73b025064c577e99cf427bc", null ],
     [ "cast", "classsva_1_1RBInertia.html#a2d3a58bf68dfb27c3cce38debd4419c6", null ],
     [ "inertia", "classsva_1_1RBInertia.html#a9bd37d109db9a02a6adc7ee4173568ed", null ],
     [ "lowerTriangularInertia", "classsva_1_1RBInertia.html#adb8f94396fc170593cb258ebc5a674f9", null ],

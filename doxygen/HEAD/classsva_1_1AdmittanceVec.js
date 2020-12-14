@@ -1,7 +1,7 @@
 var classsva_1_1AdmittanceVec =
 [
-    [ "vector3_t", "classsva_1_1AdmittanceVec.html#acd066ce0d134c16976d817e497a482d6", null ],
-    [ "vector6_t", "classsva_1_1AdmittanceVec.html#a735a97c047ab128473f551374671bcb4", null ],
+    [ "vector3_t", "classsva_1_1AdmittanceVec.html#abacbe90e5ea7c308315b061371fb2c73", null ],
+    [ "vector6_t", "classsva_1_1AdmittanceVec.html#a3b5eed10858fb65e25df8675f6723261", null ],
     [ "AdmittanceVec", "classsva_1_1AdmittanceVec.html#a34854b64eb3b1bc83e1d5838038a0302", null ],
     [ "AdmittanceVec", "classsva_1_1AdmittanceVec.html#a32bf09c968ac2f9aba6a3961b87035b8", null ],
     [ "AdmittanceVec", "classsva_1_1AdmittanceVec.html#a23b759afca5f0de97e279197fe627302", null ],

@@ -5,7 +5,7 @@ var searchData=
   ['impedancevec_2eh',['ImpedanceVec.h',['../ImpedanceVec_8h.html',1,'']]],
   ['impedancevecd',['ImpedanceVecd',['../namespacesva.html#aecdcfd928635da2bcaab0a4f363d0826',1,'sva']]],
   ['inertia',['inertia',['../classsva_1_1ABInertia.html#af29d625f832c2b8eae2e3d5b92a0d8df',1,'sva::ABInertia::inertia()'],['../classsva_1_1RBInertia.html#a9bd37d109db9a02a6adc7ee4173568ed',1,'sva::RBInertia::inertia()']]],
-  ['inertiatoorigin',['inertiaToOrigin',['../namespacesva.html#a1a0a93626ba1bf5c436166e11da493a3',1,'sva']]],
+  ['inertiatoorigin',['inertiaToOrigin',['../namespacesva.html#a2f5983e09521352f0d1ac7927e6a7c04',1,'sva']]],
   ['interpolate',['interpolate',['../namespacesva.html#a381dd489edaba2181144933166257665',1,'sva']]],
   ['inv',['inv',['../classsva_1_1PTransform.html#add59f3951305cbb4fdc7ab0692e2e37e',1,'sva::PTransform']]],
   ['invmul',['invMul',['../classsva_1_1PTransform.html#a14a63cb9912562a00d761f53d18be649',1,'sva::PTransform::invMul(const MotionVec&lt; T &gt; &amp;mv) const'],['../classsva_1_1PTransform.html#a926b1150bacc8c4136c165a9ee5aae93',1,'sva::PTransform::invMul(const Eigen::MatrixBase&lt; Derived &gt; &amp;mv, Eigen::MatrixBase&lt; Derived &gt; &amp;result) const']]]

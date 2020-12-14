@@ -1,7 +1,7 @@
 var classsva_1_1ImpedanceVec =
 [
-    [ "vector3_t", "classsva_1_1ImpedanceVec.html#acc416734f64a6a5f234823772fec81ae", null ],
-    [ "vector6_t", "classsva_1_1ImpedanceVec.html#ae98597deb79c534e4bd84c2bfa4bd6fc", null ],
+    [ "vector3_t", "classsva_1_1ImpedanceVec.html#a010ab8f51031d62b27c1aa5e2c99d0ae", null ],
+    [ "vector6_t", "classsva_1_1ImpedanceVec.html#a9bcdca383add5a60baca8644cad2e1c7", null ],
     [ "ImpedanceVec", "classsva_1_1ImpedanceVec.html#a883d518b905e9f5713032106108b6f07", null ],
     [ "ImpedanceVec", "classsva_1_1ImpedanceVec.html#a521286301a765cfe57cdc773bd6fdf96", null ],
     [ "ImpedanceVec", "classsva_1_1ImpedanceVec.html#abcdc938fd51bb1ce9c993a7587990b1a", null ],

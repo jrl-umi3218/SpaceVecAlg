@@ -4,5 +4,7 @@ digraph "src/SpaceVecAlg/MathFunc.h"
   node [fontname="Helvetica",fontsize="10",shape=record];
   Node0 [label="src/SpaceVecAlg/MathFunc.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node0 -> Node1 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1 [label="limits",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node1 [label="cmath",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node0 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="limits",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
 }

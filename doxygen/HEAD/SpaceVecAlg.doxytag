@@ -9,6 +9,8 @@
     <name>ABInertia.h</name>
     <path>/home/runner/work/SpaceVecAlg/SpaceVecAlg/src/SpaceVecAlg/</path>
     <filename>ABInertia_8h</filename>
+    <includes id="EigenTypedef_8h" name="EigenTypedef.h" local="yes" imported="no">EigenTypedef.h</includes>
+    <includes id="fwd_8h" name="fwd.h" local="yes" imported="no">fwd.h</includes>
     <class kind="class">sva::ABInertia</class>
     <namespace>sva</namespace>
     <member kind="function">
@@ -30,6 +32,8 @@
     <name>AdmittanceVec.h</name>
     <path>/home/runner/work/SpaceVecAlg/SpaceVecAlg/src/SpaceVecAlg/</path>
     <filename>AdmittanceVec_8h</filename>
+    <includes id="EigenTypedef_8h" name="EigenTypedef.h" local="yes" imported="no">EigenTypedef.h</includes>
+    <includes id="fwd_8h" name="fwd.h" local="yes" imported="no">fwd.h</includes>
     <class kind="class">sva::AdmittanceVec</class>
     <namespace>sva</namespace>
     <member kind="function">
@@ -170,7 +174,9 @@
     <name>EigenUtility.h</name>
     <path>/home/runner/work/SpaceVecAlg/SpaceVecAlg/src/SpaceVecAlg/</path>
     <filename>EigenUtility_8h</filename>
+    <includes id="EigenTypedef_8h" name="EigenTypedef.h" local="yes" imported="no">EigenTypedef.h</includes>
     <namespace>Eigen</namespace>
+    <namespace>sva</namespace>
     <member kind="function">
       <type>Matrix3&lt; T &gt;</type>
       <name>vector3ToCrossMatrix</name>
@@ -197,6 +203,8 @@
     <name>ForceVec.h</name>
     <path>/home/runner/work/SpaceVecAlg/SpaceVecAlg/src/SpaceVecAlg/</path>
     <filename>ForceVec_8h</filename>
+    <includes id="EigenTypedef_8h" name="EigenTypedef.h" local="yes" imported="no">EigenTypedef.h</includes>
+    <includes id="fwd_8h" name="fwd.h" local="yes" imported="no">fwd.h</includes>
     <class kind="class">sva::ForceVec</class>
     <namespace>sva</namespace>
     <member kind="function">
@@ -215,9 +223,22 @@
     </member>
   </compound>
   <compound kind="file">
+    <name>fwd.h</name>
+    <path>/home/runner/work/SpaceVecAlg/SpaceVecAlg/src/SpaceVecAlg/</path>
+    <filename>fwd_8h</filename>
+    <class kind="class">sva::MotionVec</class>
+    <class kind="class">sva::ForceVec</class>
+    <class kind="class">sva::RBInertia</class>
+    <class kind="class">sva::ABInertia</class>
+    <class kind="class">sva::PTransform</class>
+    <namespace>sva</namespace>
+  </compound>
+  <compound kind="file">
     <name>ImpedanceVec.h</name>
     <path>/home/runner/work/SpaceVecAlg/SpaceVecAlg/src/SpaceVecAlg/</path>
     <filename>ImpedanceVec_8h</filename>
+    <includes id="EigenTypedef_8h" name="EigenTypedef.h" local="yes" imported="no">EigenTypedef.h</includes>
+    <includes id="fwd_8h" name="fwd.h" local="yes" imported="no">fwd.h</includes>
     <class kind="class">sva::ImpedanceVec</class>
     <namespace>sva</namespace>
     <member kind="function">
@@ -288,6 +309,8 @@
     <name>MotionVec.h</name>
     <path>/home/runner/work/SpaceVecAlg/SpaceVecAlg/src/SpaceVecAlg/</path>
     <filename>MotionVec_8h</filename>
+    <includes id="EigenTypedef_8h" name="EigenTypedef.h" local="yes" imported="no">EigenTypedef.h</includes>
+    <includes id="fwd_8h" name="fwd.h" local="yes" imported="no">fwd.h</includes>
     <class kind="class">sva::MotionVec</class>
     <namespace>sva</namespace>
     <member kind="function">
@@ -309,6 +332,7 @@
     <name>Operators.h</name>
     <path>/home/runner/work/SpaceVecAlg/SpaceVecAlg/src/SpaceVecAlg/</path>
     <filename>Operators_8h</filename>
+    <includes id="SpaceVecAlg" name="SpaceVecAlg" local="yes" imported="no">SpaceVecAlg</includes>
     <namespace>sva</namespace>
     <namespace>sva::sva_internal</namespace>
     <member kind="function">
@@ -340,59 +364,59 @@
       <arglist>(const Eigen::MatrixBase&lt; Derived1 &gt; &amp;m1, const Eigen::MatrixBase&lt; Derived2 &gt; &amp;m2, Eigen::MatrixBase&lt; Derived3 &gt; const &amp;result)</arglist>
     </member>
     <member kind="function">
-      <type>Eigen::Block&lt; Derived, 3, Dynamic &gt;</type>
+      <type>Eigen::Block&lt; Derived, 3, Eigen::Dynamic &gt;</type>
       <name>motionAngular</name>
       <anchorfile>namespacesva.html</anchorfile>
-      <anchor>a2453bbce65af3c0244ddb1b6bd5d8ce2</anchor>
+      <anchor>ac464befe06813b27d41141d0ed5cd987</anchor>
       <arglist>(Eigen::MatrixBase&lt; Derived &gt; &amp;mv)</arglist>
     </member>
     <member kind="function">
-      <type>Eigen::Block&lt; const Derived, 3, Dynamic &gt;</type>
+      <type>Eigen::Block&lt; const Derived, 3, Eigen::Dynamic &gt;</type>
       <name>motionAngular</name>
       <anchorfile>namespacesva.html</anchorfile>
-      <anchor>a4559ada646b1360e454b8e4c111b7f30</anchor>
+      <anchor>a498b3da98546ddd24b54a139e2346585</anchor>
       <arglist>(const Eigen::MatrixBase&lt; Derived &gt; &amp;mv)</arglist>
     </member>
     <member kind="function">
-      <type>Eigen::Block&lt; Derived, 3, Dynamic &gt;</type>
+      <type>Eigen::Block&lt; Derived, 3, Eigen::Dynamic &gt;</type>
       <name>motionLinear</name>
       <anchorfile>namespacesva.html</anchorfile>
-      <anchor>a9b9539cbd6e4e2f2f3b0533712a583e3</anchor>
+      <anchor>a800e177e7970c850bfdcea6dd2ca4968</anchor>
       <arglist>(Eigen::MatrixBase&lt; Derived &gt; &amp;mv)</arglist>
     </member>
     <member kind="function">
-      <type>Eigen::Block&lt; const Derived, 3, Dynamic &gt;</type>
+      <type>Eigen::Block&lt; const Derived, 3, Eigen::Dynamic &gt;</type>
       <name>motionLinear</name>
       <anchorfile>namespacesva.html</anchorfile>
-      <anchor>aba1d07bbb03512ddff15e2141a3b4a62</anchor>
+      <anchor>af8d25a3e44fc4cdb5eb29feebbb5bc83</anchor>
       <arglist>(const Eigen::MatrixBase&lt; Derived &gt; &amp;mv)</arglist>
     </member>
     <member kind="function">
-      <type>Eigen::Block&lt; Derived, 3, Dynamic &gt;</type>
+      <type>Eigen::Block&lt; Derived, 3, Eigen::Dynamic &gt;</type>
       <name>forceCouple</name>
       <anchorfile>namespacesva.html</anchorfile>
-      <anchor>a5bd057544a4e4715453d6b091287ec39</anchor>
+      <anchor>a862afe9607d73a24b848a894b4c057a8</anchor>
       <arglist>(Eigen::MatrixBase&lt; Derived &gt; &amp;mv)</arglist>
     </member>
     <member kind="function">
-      <type>Eigen::Block&lt; const Derived, 3, Dynamic &gt;</type>
+      <type>Eigen::Block&lt; const Derived, 3, Eigen::Dynamic &gt;</type>
       <name>forceCouple</name>
       <anchorfile>namespacesva.html</anchorfile>
-      <anchor>a16294cce1fad1b8fef911e95dc069441</anchor>
+      <anchor>a83d5a0129e63909dfe62cf500cfec957</anchor>
       <arglist>(const Eigen::MatrixBase&lt; Derived &gt; &amp;mv)</arglist>
     </member>
     <member kind="function">
-      <type>Eigen::Block&lt; Derived, 3, Dynamic &gt;</type>
+      <type>Eigen::Block&lt; Derived, 3, Eigen::Dynamic &gt;</type>
       <name>forceForce</name>
       <anchorfile>namespacesva.html</anchorfile>
-      <anchor>a36ac26af5675540660450973f8ff331d</anchor>
+      <anchor>ab6fe60d63a0f60f6dbaba0fd2398b052</anchor>
       <arglist>(Eigen::MatrixBase&lt; Derived &gt; &amp;mv)</arglist>
     </member>
     <member kind="function">
-      <type>Eigen::Block&lt; const Derived, 3, Dynamic &gt;</type>
+      <type>Eigen::Block&lt; const Derived, 3, Eigen::Dynamic &gt;</type>
       <name>forceForce</name>
       <anchorfile>namespacesva.html</anchorfile>
-      <anchor>a17667abbecd2160e2919e032c8c3d941</anchor>
+      <anchor>af81d52a030f92470c7b11cc7f02b8c44</anchor>
       <arglist>(const Eigen::MatrixBase&lt; Derived &gt; &amp;mv)</arglist>
     </member>
   </compound>
@@ -400,42 +424,44 @@
     <name>PTransform.h</name>
     <path>/home/runner/work/SpaceVecAlg/SpaceVecAlg/src/SpaceVecAlg/</path>
     <filename>PTransform_8h</filename>
+    <includes id="EigenTypedef_8h" name="EigenTypedef.h" local="yes" imported="no">EigenTypedef.h</includes>
+    <includes id="fwd_8h" name="fwd.h" local="yes" imported="no">fwd.h</includes>
     <class kind="class">sva::PTransform</class>
     <namespace>sva</namespace>
     <member kind="function">
-      <type>Matrix3&lt; T &gt;</type>
+      <type>Eigen::Matrix3&lt; T &gt;</type>
       <name>RotX</name>
       <anchorfile>namespacesva.html</anchorfile>
-      <anchor>a3d8592bd972b6bdd69677f5a620daa73</anchor>
+      <anchor>a1ce4f59c87b552689bffdf299e37e0c1</anchor>
       <arglist>(T theta)</arglist>
     </member>
     <member kind="function">
-      <type>Matrix3&lt; T &gt;</type>
+      <type>Eigen::Matrix3&lt; T &gt;</type>
       <name>RotY</name>
       <anchorfile>namespacesva.html</anchorfile>
-      <anchor>a72dd05ef42d5f3f01e76aecd3c769658</anchor>
+      <anchor>a7e56746de411183078e1e5df538c1d00</anchor>
       <arglist>(T theta)</arglist>
     </member>
     <member kind="function">
-      <type>Matrix3&lt; T &gt;</type>
+      <type>Eigen::Matrix3&lt; T &gt;</type>
       <name>RotZ</name>
       <anchorfile>namespacesva.html</anchorfile>
-      <anchor>a945b27220fb3db512a24939c8cc1b5ee</anchor>
+      <anchor>ad7f420fd210b69a09079042b63ac1fc8</anchor>
       <arglist>(T theta)</arglist>
     </member>
     <member kind="function">
-      <type>Vector3&lt; T &gt;</type>
+      <type>Eigen::Vector3&lt; T &gt;</type>
       <name>rotationError</name>
       <anchorfile>namespacesva.html</anchorfile>
-      <anchor>ac65899b8e5843b7c7b41093ce38a74d1</anchor>
-      <arglist>(const Matrix3&lt; T &gt; &amp;E_a_b, const Matrix3&lt; T &gt; &amp;E_a_c)</arglist>
+      <anchor>a72766cf4e27ceef9a9f9b3f1ce2fe090</anchor>
+      <arglist>(const Eigen::Matrix3&lt; T &gt; &amp;E_a_b, const Eigen::Matrix3&lt; T &gt; &amp;E_a_c)</arglist>
     </member>
     <member kind="function">
-      <type>Vector3&lt; T &gt;</type>
+      <type>Eigen::Vector3&lt; T &gt;</type>
       <name>rotationVelocity</name>
       <anchorfile>namespacesva.html</anchorfile>
-      <anchor>a44b687fe1934a2289d32f6f5e0eed1db</anchor>
-      <arglist>(const Matrix3&lt; T &gt; &amp;E_a_b)</arglist>
+      <anchor>ab2ce9031d170d97124f380187793a827</anchor>
+      <arglist>(const Eigen::Matrix3&lt; T &gt; &amp;E_a_b)</arglist>
     </member>
     <member kind="function">
       <type>MotionVec&lt; T &gt;</type>
@@ -470,14 +496,16 @@
     <name>RBInertia.h</name>
     <path>/home/runner/work/SpaceVecAlg/SpaceVecAlg/src/SpaceVecAlg/</path>
     <filename>RBInertia_8h</filename>
+    <includes id="EigenUtility_8h" name="EigenUtility.h" local="yes" imported="no">EigenUtility.h</includes>
+    <includes id="fwd_8h" name="fwd.h" local="yes" imported="no">fwd.h</includes>
     <class kind="class">sva::RBInertia</class>
     <namespace>sva</namespace>
     <member kind="function">
-      <type>Matrix3&lt; T &gt;</type>
+      <type>Eigen::Matrix3&lt; T &gt;</type>
       <name>inertiaToOrigin</name>
       <anchorfile>namespacesva.html</anchorfile>
-      <anchor>a1a0a93626ba1bf5c436166e11da493a3</anchor>
-      <arglist>(const Matrix3&lt; T &gt; &amp;inertia, T mass, const Vector3&lt; T &gt; &amp;com, const Matrix3&lt; T &gt; &amp;rotation)</arglist>
+      <anchor>a2f5983e09521352f0d1ac7927e6a7c04</anchor>
+      <arglist>(const Eigen::Matrix3&lt; T &gt; &amp;inertia, T mass, const Eigen::Vector3&lt; T &gt; &amp;com, const Eigen::Matrix3&lt; T &gt; &amp;rotation)</arglist>
     </member>
     <member kind="function">
       <type>RBInertia&lt; T &gt;</type>
@@ -501,6 +529,7 @@
     <includes id="EigenTypedef_8h" name="EigenTypedef.h" local="yes" imported="no">EigenTypedef.h</includes>
     <includes id="EigenUtility_8h" name="EigenUtility.h" local="yes" imported="no">EigenUtility.h</includes>
     <includes id="MathFunc_8h" name="MathFunc.h" local="yes" imported="no">MathFunc.h</includes>
+    <includes id="fwd_8h" name="fwd.h" local="yes" imported="no">fwd.h</includes>
     <includes id="ABInertia_8h" name="ABInertia.h" local="yes" imported="no">ABInertia.h</includes>
     <includes id="AdmittanceVec_8h" name="AdmittanceVec.h" local="yes" imported="no">AdmittanceVec.h</includes>
     <includes id="ForceVec_8h" name="ForceVec.h" local="yes" imported="no">ForceVec.h</includes>
@@ -509,11 +538,6 @@
     <includes id="PTransform_8h" name="PTransform.h" local="yes" imported="no">PTransform.h</includes>
     <includes id="RBInertia_8h" name="RBInertia.h" local="yes" imported="no">RBInertia.h</includes>
     <includes id="Operators_8h" name="Operators.h" local="yes" imported="no">Operators.h</includes>
-    <class kind="class">sva::MotionVec</class>
-    <class kind="class">sva::ForceVec</class>
-    <class kind="class">sva::RBInertia</class>
-    <class kind="class">sva::ABInertia</class>
-    <class kind="class">sva::PTransform</class>
     <namespace>sva</namespace>
     <member kind="typedef">
       <type>MotionVec&lt; double &gt;</type>
@@ -570,24 +594,24 @@
     <filename>classsva_1_1ABInertia.html</filename>
     <templarg>T</templarg>
     <member kind="typedef">
-      <type>Vector3&lt; T &gt;</type>
+      <type>Eigen::Vector3&lt; T &gt;</type>
       <name>vector3_t</name>
       <anchorfile>classsva_1_1ABInertia.html</anchorfile>
-      <anchor>af6494a1b137cebc80e12c8685c0bf66e</anchor>
+      <anchor>affeeaeaef3dd655e0dba49380b741226</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
-      <type>Matrix3&lt; T &gt;</type>
+      <type>Eigen::Matrix3&lt; T &gt;</type>
       <name>matrix3_t</name>
       <anchorfile>classsva_1_1ABInertia.html</anchorfile>
-      <anchor>ae40c0cafa7cdd5cb65984a5528c96919</anchor>
+      <anchor>aac123c8294f2931119ff3f72afd1ecbf</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
-      <type>Matrix6&lt; T &gt;</type>
+      <type>Eigen::Matrix6&lt; T &gt;</type>
       <name>matrix6_t</name>
       <anchorfile>classsva_1_1ABInertia.html</anchorfile>
-      <anchor>afd85a8fbdf63def66cec795933a3998f</anchor>
+      <anchor>ad8d0911746433593db6fff6c948ab17d</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
@@ -608,8 +632,8 @@
       <type></type>
       <name>ABInertia</name>
       <anchorfile>classsva_1_1ABInertia.html</anchorfile>
-      <anchor>a26f1d88a24d807c3c3e499194ade2428</anchor>
-      <arglist>(const TriangularView&lt; matrix3_t, Lower &gt; &amp;ltM, const matrix3_t &amp;H, const TriangularView&lt; matrix3_t, Lower &gt; &amp;ltI)</arglist>
+      <anchor>acd7e69b5445103a418f189406b6ca559</anchor>
+      <arglist>(const Eigen::TriangularView&lt; matrix3_t, Eigen::Lower &gt; &amp;ltM, const matrix3_t &amp;H, const Eigen::TriangularView&lt; matrix3_t, Eigen::Lower &gt; &amp;ltI)</arglist>
     </member>
     <member kind="function">
       <type>const matrix3_t &amp;</type>
@@ -743,17 +767,17 @@
     <filename>classsva_1_1AdmittanceVec.html</filename>
     <templarg>T</templarg>
     <member kind="typedef">
-      <type>Vector3&lt; T &gt;</type>
+      <type>Eigen::Vector3&lt; T &gt;</type>
       <name>vector3_t</name>
       <anchorfile>classsva_1_1AdmittanceVec.html</anchorfile>
-      <anchor>acd066ce0d134c16976d817e497a482d6</anchor>
+      <anchor>abacbe90e5ea7c308315b061371fb2c73</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
-      <type>Vector6&lt; T &gt;</type>
+      <type>Eigen::Vector6&lt; T &gt;</type>
       <name>vector6_t</name>
       <anchorfile>classsva_1_1AdmittanceVec.html</anchorfile>
-      <anchor>a735a97c047ab128473f551374671bcb4</anchor>
+      <anchor>a3b5eed10858fb65e25df8675f6723261</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
@@ -895,17 +919,17 @@
     <filename>classsva_1_1ForceVec.html</filename>
     <templarg>T</templarg>
     <member kind="typedef">
-      <type>Vector3&lt; T &gt;</type>
+      <type>Eigen::Vector3&lt; T &gt;</type>
       <name>vector3_t</name>
       <anchorfile>classsva_1_1ForceVec.html</anchorfile>
-      <anchor>a3f771fa492ae2c9f35c075bfe41ff990</anchor>
+      <anchor>a403aa47d36126bfd56f1d5a24343d180</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
-      <type>Vector6&lt; T &gt;</type>
+      <type>Eigen::Vector6&lt; T &gt;</type>
       <name>vector6_t</name>
       <anchorfile>classsva_1_1ForceVec.html</anchorfile>
-      <anchor>a3d2902bb90cc5a47091cc2c9bdb60800</anchor>
+      <anchor>ade240cc1de8af05c946efb31cfef1440</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
@@ -1082,17 +1106,17 @@
     <filename>classsva_1_1ImpedanceVec.html</filename>
     <templarg>T</templarg>
     <member kind="typedef">
-      <type>Vector3&lt; T &gt;</type>
+      <type>Eigen::Vector3&lt; T &gt;</type>
       <name>vector3_t</name>
       <anchorfile>classsva_1_1ImpedanceVec.html</anchorfile>
-      <anchor>acc416734f64a6a5f234823772fec81ae</anchor>
+      <anchor>a010ab8f51031d62b27c1aa5e2c99d0ae</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
-      <type>Vector6&lt; T &gt;</type>
+      <type>Eigen::Vector6&lt; T &gt;</type>
       <name>vector6_t</name>
       <anchorfile>classsva_1_1ImpedanceVec.html</anchorfile>
-      <anchor>ae98597deb79c534e4bd84c2bfa4bd6fc</anchor>
+      <anchor>a9bcdca383add5a60baca8644cad2e1c7</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
@@ -1234,17 +1258,17 @@
     <filename>classsva_1_1MotionVec.html</filename>
     <templarg>T</templarg>
     <member kind="typedef">
-      <type>Vector3&lt; T &gt;</type>
+      <type>Eigen::Vector3&lt; T &gt;</type>
       <name>vector3_t</name>
       <anchorfile>classsva_1_1MotionVec.html</anchorfile>
-      <anchor>ae6c85df2523b3bfee84b6072397b6e1c</anchor>
+      <anchor>a68d467b5a740ee112fef5e61d7d6f6b4</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
-      <type>Vector6&lt; T &gt;</type>
+      <type>Eigen::Vector6&lt; T &gt;</type>
       <name>vector6_t</name>
       <anchorfile>classsva_1_1MotionVec.html</anchorfile>
-      <anchor>ac2a777cd6140f53a263f1313d3ffbb31</anchor>
+      <anchor>a6573bf6d7f30fe26cb5b946da69c1e5c</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
@@ -1720,24 +1744,24 @@
     <filename>classsva_1_1RBInertia.html</filename>
     <templarg>T</templarg>
     <member kind="typedef">
-      <type>Vector3&lt; T &gt;</type>
+      <type>Eigen::Vector3&lt; T &gt;</type>
       <name>vector3_t</name>
       <anchorfile>classsva_1_1RBInertia.html</anchorfile>
-      <anchor>a6768085b5d1fdb4e91ddb97a64dc00fb</anchor>
+      <anchor>a4dd0a423cba5ac5cb104e1b0ab570e47</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
-      <type>Matrix3&lt; T &gt;</type>
+      <type>Eigen::Matrix3&lt; T &gt;</type>
       <name>matrix3_t</name>
       <anchorfile>classsva_1_1RBInertia.html</anchorfile>
-      <anchor>aa64e782b6a5a1278f0620fe272862aad</anchor>
+      <anchor>a4fe0c40731b9e40cb692101fb33a1dfe</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
-      <type>Matrix6&lt; T &gt;</type>
+      <type>Eigen::Matrix6&lt; T &gt;</type>
       <name>matrix6_t</name>
       <anchorfile>classsva_1_1RBInertia.html</anchorfile>
-      <anchor>a8018cbadb20f77c9c1090ee6f0894ab9</anchor>
+      <anchor>aaa1a4aed4a83b2e36b4b5adc0ebfa6e0</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
@@ -1758,8 +1782,8 @@
       <type></type>
       <name>RBInertia</name>
       <anchorfile>classsva_1_1RBInertia.html</anchorfile>
-      <anchor>a56a14051627e5e89bf06a8d8c979d56f</anchor>
-      <arglist>(T m, const vector3_t &amp;h, const TriangularView&lt; matrix3_t, Lower &gt; &amp;ltI)</arglist>
+      <anchor>aaada1412b73b025064c577e99cf427bc</anchor>
+      <arglist>(T m, const vector3_t &amp;h, const Eigen::TriangularView&lt; matrix3_t, Eigen::Lower &gt; &amp;ltI)</arglist>
     </member>
     <member kind="function">
       <type>T</type>
@@ -2116,95 +2140,95 @@
       <arglist>(std::ostream &amp;out, const MotionVec&lt; T &gt; &amp;mv)</arglist>
     </member>
     <member kind="function">
-      <type>Eigen::Block&lt; Derived, 3, Dynamic &gt;</type>
+      <type>Eigen::Block&lt; Derived, 3, Eigen::Dynamic &gt;</type>
       <name>motionAngular</name>
       <anchorfile>namespacesva.html</anchorfile>
-      <anchor>a2453bbce65af3c0244ddb1b6bd5d8ce2</anchor>
+      <anchor>ac464befe06813b27d41141d0ed5cd987</anchor>
       <arglist>(Eigen::MatrixBase&lt; Derived &gt; &amp;mv)</arglist>
     </member>
     <member kind="function">
-      <type>Eigen::Block&lt; const Derived, 3, Dynamic &gt;</type>
+      <type>Eigen::Block&lt; const Derived, 3, Eigen::Dynamic &gt;</type>
       <name>motionAngular</name>
       <anchorfile>namespacesva.html</anchorfile>
-      <anchor>a4559ada646b1360e454b8e4c111b7f30</anchor>
+      <anchor>a498b3da98546ddd24b54a139e2346585</anchor>
       <arglist>(const Eigen::MatrixBase&lt; Derived &gt; &amp;mv)</arglist>
     </member>
     <member kind="function">
-      <type>Eigen::Block&lt; Derived, 3, Dynamic &gt;</type>
+      <type>Eigen::Block&lt; Derived, 3, Eigen::Dynamic &gt;</type>
       <name>motionLinear</name>
       <anchorfile>namespacesva.html</anchorfile>
-      <anchor>a9b9539cbd6e4e2f2f3b0533712a583e3</anchor>
+      <anchor>a800e177e7970c850bfdcea6dd2ca4968</anchor>
       <arglist>(Eigen::MatrixBase&lt; Derived &gt; &amp;mv)</arglist>
     </member>
     <member kind="function">
-      <type>Eigen::Block&lt; const Derived, 3, Dynamic &gt;</type>
+      <type>Eigen::Block&lt; const Derived, 3, Eigen::Dynamic &gt;</type>
       <name>motionLinear</name>
       <anchorfile>namespacesva.html</anchorfile>
-      <anchor>aba1d07bbb03512ddff15e2141a3b4a62</anchor>
+      <anchor>af8d25a3e44fc4cdb5eb29feebbb5bc83</anchor>
       <arglist>(const Eigen::MatrixBase&lt; Derived &gt; &amp;mv)</arglist>
     </member>
     <member kind="function">
-      <type>Eigen::Block&lt; Derived, 3, Dynamic &gt;</type>
+      <type>Eigen::Block&lt; Derived, 3, Eigen::Dynamic &gt;</type>
       <name>forceCouple</name>
       <anchorfile>namespacesva.html</anchorfile>
-      <anchor>a5bd057544a4e4715453d6b091287ec39</anchor>
+      <anchor>a862afe9607d73a24b848a894b4c057a8</anchor>
       <arglist>(Eigen::MatrixBase&lt; Derived &gt; &amp;mv)</arglist>
     </member>
     <member kind="function">
-      <type>Eigen::Block&lt; const Derived, 3, Dynamic &gt;</type>
+      <type>Eigen::Block&lt; const Derived, 3, Eigen::Dynamic &gt;</type>
       <name>forceCouple</name>
       <anchorfile>namespacesva.html</anchorfile>
-      <anchor>a16294cce1fad1b8fef911e95dc069441</anchor>
+      <anchor>a83d5a0129e63909dfe62cf500cfec957</anchor>
       <arglist>(const Eigen::MatrixBase&lt; Derived &gt; &amp;mv)</arglist>
     </member>
     <member kind="function">
-      <type>Eigen::Block&lt; Derived, 3, Dynamic &gt;</type>
+      <type>Eigen::Block&lt; Derived, 3, Eigen::Dynamic &gt;</type>
       <name>forceForce</name>
       <anchorfile>namespacesva.html</anchorfile>
-      <anchor>a36ac26af5675540660450973f8ff331d</anchor>
+      <anchor>ab6fe60d63a0f60f6dbaba0fd2398b052</anchor>
       <arglist>(Eigen::MatrixBase&lt; Derived &gt; &amp;mv)</arglist>
     </member>
     <member kind="function">
-      <type>Eigen::Block&lt; const Derived, 3, Dynamic &gt;</type>
+      <type>Eigen::Block&lt; const Derived, 3, Eigen::Dynamic &gt;</type>
       <name>forceForce</name>
       <anchorfile>namespacesva.html</anchorfile>
-      <anchor>a17667abbecd2160e2919e032c8c3d941</anchor>
+      <anchor>af81d52a030f92470c7b11cc7f02b8c44</anchor>
       <arglist>(const Eigen::MatrixBase&lt; Derived &gt; &amp;mv)</arglist>
     </member>
     <member kind="function">
-      <type>Matrix3&lt; T &gt;</type>
+      <type>Eigen::Matrix3&lt; T &gt;</type>
       <name>RotX</name>
       <anchorfile>namespacesva.html</anchorfile>
-      <anchor>a3d8592bd972b6bdd69677f5a620daa73</anchor>
+      <anchor>a1ce4f59c87b552689bffdf299e37e0c1</anchor>
       <arglist>(T theta)</arglist>
     </member>
     <member kind="function">
-      <type>Matrix3&lt; T &gt;</type>
+      <type>Eigen::Matrix3&lt; T &gt;</type>
       <name>RotY</name>
       <anchorfile>namespacesva.html</anchorfile>
-      <anchor>a72dd05ef42d5f3f01e76aecd3c769658</anchor>
+      <anchor>a7e56746de411183078e1e5df538c1d00</anchor>
       <arglist>(T theta)</arglist>
     </member>
     <member kind="function">
-      <type>Matrix3&lt; T &gt;</type>
+      <type>Eigen::Matrix3&lt; T &gt;</type>
       <name>RotZ</name>
       <anchorfile>namespacesva.html</anchorfile>
-      <anchor>a945b27220fb3db512a24939c8cc1b5ee</anchor>
+      <anchor>ad7f420fd210b69a09079042b63ac1fc8</anchor>
       <arglist>(T theta)</arglist>
     </member>
     <member kind="function">
-      <type>Vector3&lt; T &gt;</type>
+      <type>Eigen::Vector3&lt; T &gt;</type>
       <name>rotationError</name>
       <anchorfile>namespacesva.html</anchorfile>
-      <anchor>ac65899b8e5843b7c7b41093ce38a74d1</anchor>
-      <arglist>(const Matrix3&lt; T &gt; &amp;E_a_b, const Matrix3&lt; T &gt; &amp;E_a_c)</arglist>
+      <anchor>a72766cf4e27ceef9a9f9b3f1ce2fe090</anchor>
+      <arglist>(const Eigen::Matrix3&lt; T &gt; &amp;E_a_b, const Eigen::Matrix3&lt; T &gt; &amp;E_a_c)</arglist>
     </member>
     <member kind="function">
-      <type>Vector3&lt; T &gt;</type>
+      <type>Eigen::Vector3&lt; T &gt;</type>
       <name>rotationVelocity</name>
       <anchorfile>namespacesva.html</anchorfile>
-      <anchor>a44b687fe1934a2289d32f6f5e0eed1db</anchor>
-      <arglist>(const Matrix3&lt; T &gt; &amp;E_a_b)</arglist>
+      <anchor>ab2ce9031d170d97124f380187793a827</anchor>
+      <arglist>(const Eigen::Matrix3&lt; T &gt; &amp;E_a_b)</arglist>
     </member>
     <member kind="function">
       <type>MotionVec&lt; T &gt;</type>
@@ -2235,11 +2259,11 @@
       <arglist>(std::ostream &amp;out, const PTransform&lt; T &gt; &amp;pt)</arglist>
     </member>
     <member kind="function">
-      <type>Matrix3&lt; T &gt;</type>
+      <type>Eigen::Matrix3&lt; T &gt;</type>
       <name>inertiaToOrigin</name>
       <anchorfile>namespacesva.html</anchorfile>
-      <anchor>a1a0a93626ba1bf5c436166e11da493a3</anchor>
-      <arglist>(const Matrix3&lt; T &gt; &amp;inertia, T mass, const Vector3&lt; T &gt; &amp;com, const Matrix3&lt; T &gt; &amp;rotation)</arglist>
+      <anchor>a2f5983e09521352f0d1ac7927e6a7c04</anchor>
+      <arglist>(const Eigen::Matrix3&lt; T &gt; &amp;inertia, T mass, const Eigen::Vector3&lt; T &gt; &amp;com, const Eigen::Matrix3&lt; T &gt; &amp;rotation)</arglist>
     </member>
     <member kind="function">
       <type>RBInertia&lt; T &gt;</type>

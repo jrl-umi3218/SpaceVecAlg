@@ -1,7 +1,7 @@
 var classsva_1_1MotionVec =
 [
-    [ "vector3_t", "classsva_1_1MotionVec.html#ae6c85df2523b3bfee84b6072397b6e1c", null ],
-    [ "vector6_t", "classsva_1_1MotionVec.html#ac2a777cd6140f53a263f1313d3ffbb31", null ],
+    [ "vector3_t", "classsva_1_1MotionVec.html#a68d467b5a740ee112fef5e61d7d6f6b4", null ],
+    [ "vector6_t", "classsva_1_1MotionVec.html#a6573bf6d7f30fe26cb5b946da69c1e5c", null ],
     [ "MotionVec", "classsva_1_1MotionVec.html#a9faa8295817ea0c3c28aa952f8ec6533", null ],
     [ "MotionVec", "classsva_1_1MotionVec.html#a943655b9d56014918439d5e5ce86762a", null ],
     [ "MotionVec", "classsva_1_1MotionVec.html#a9d4335b618a5304beb024bc63cd5c04c", null ],

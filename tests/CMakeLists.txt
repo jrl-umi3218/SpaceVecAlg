@@ -31,5 +31,6 @@ addUnitTest("InertiaTest")
 addUnitTest("PTransformTest")
 addUnitTest("AutoDiffTest")
 addUnitTest("ConversionsTest")
+addUnitTest("LogDiffTest")
 
 addBenchmark("PTransformBench")

@@ -142,10 +142,20 @@ BOOST_AUTO_TEST_CASE(dSO3JacF2)
 
 BOOST_AUTO_TEST_CASE(SO3RightJacInvTest)
 {
-  for(int i = 0; i < 10; ++i)
+  for(int i = 0; i < 1000; ++i)
   {
     Matrix3d R1 = Quaterniond::UnitRandom().toRotationMatrix();
     Matrix3d R2 = Quaterniond::UnitRandom().toRotationMatrix();
+    // Computations are getting less precise as we approach the singularity of the log for a rotation angle of pi.
+    // We skip those cases so that we can keep a tight bound on the precision of the remaining tests.
+    // This loss of precision is not a problem in practice because (i) in the target applications of sva, rotation
+    // angles close to pi is no something we should write/encounter and (ii) even if the precision deteriorates, the
+    // derivative is still not bad, and provides a correct descent direction for gradient-based computation schemes.
+    if((R2 * R1.transpose()).trace() < -0.95)
+    {
+      --i;
+      continue;
+    }
     Matrix3d I = Matrix3d::Identity();
     double h = 1e-8;
 
@@ -165,8 +175,8 @@ BOOST_AUTO_TEST_CASE(SO3RightJacInvTest)
       J2d.col(i) = (rotationError(R1, R2p) - u0) / h; // ( f(R1, R2 "+" h e_i) "-" f(R1,R2) ) / h
     }
 
-    BOOST_CHECK_SMALL((J1d - invJr).norm(), 5e-6); // Df/DX = Jr^-1
-    BOOST_CHECK_SMALL((J2d + invJr.transpose()).norm(), 5e-6); // Df/DY = -Jl^-1 = -Jr^-T
+    BOOST_CHECK_SMALL((J1d - invJr).norm(), 3e-6); // Df/DX = Jr^-1
+    BOOST_CHECK_SMALL((J2d + invJr.transpose()).norm(), 3e-6); // Df/DY = -Jl^-1 = -Jr^-T
   }
 }
 

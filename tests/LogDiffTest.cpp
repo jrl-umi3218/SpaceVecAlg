@@ -144,8 +144,20 @@ BOOST_AUTO_TEST_CASE(SO3RightJacInvTest)
 {
   for(int i = 0; i < 1000; ++i)
   {
+#if EIGEN_VERSION_AT_LEAST(3, 3, 0)
     Matrix3d R1 = Quaterniond::UnitRandom().toRotationMatrix();
     Matrix3d R2 = Quaterniond::UnitRandom().toRotationMatrix();
+#else
+    Matrix3d R1 = Matrix3d::Random().householderQr().householderQ();
+    Matrix3d R2 = Matrix3d::Random().householderQr().householderQ();
+    assert(std::abs(R1.determinant() - 1) < 1e-14); // We use the fact that the QR implementation gives a determinant
+    assert(std::abs(R2.determinant() - 1) < 1e-14); // of -(-1)^n with n the size of the matrix. However this is
+                                                    // implementation-dependent, so we keep the check.
+#endif
+
+    Matrix4d R3 = Matrix4d::Random().householderQr().householderQ();
+    std::cout << R3.determinant() << std::endl;
+
     // Computations are getting less precise as we approach the singularity of the log for a rotation angle of pi.
     // We skip those cases so that we can keep a tight bound on the precision of the remaining tests.
     // This loss of precision is not a problem in practice because (i) in the target applications of sva, rotation

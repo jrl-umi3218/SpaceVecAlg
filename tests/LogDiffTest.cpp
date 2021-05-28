@@ -27,12 +27,12 @@ BOOST_AUTO_TEST_CASE(Cbrt)
 {
   auto testd = [](double x, double eps = std::numeric_limits<double>::epsilon()) {
     double y = details::cbrt(x);
-    BOOST_CHECK_SMALL((y * y * y - x), 2 * std::abs(x) * eps);
+    BOOST_CHECK_LE((y * y * y - x), 2 * std::abs(x) * eps);
   };
 
   auto testf = [](float x, float eps = std::numeric_limits<float>::epsilon()) {
     float y = details::cbrt(x);
-    BOOST_CHECK_SMALL((y * y * y - x), 2 * std::abs(x) * eps);
+    BOOST_CHECK_LE((y * y * y - x), 2 * std::abs(x) * eps);
   };
 
   for(int i = -12; i <= 12; ++i) testd(std::pow(10., i));
@@ -52,7 +52,7 @@ BOOST_AUTO_TEST_CASE(SO3JacF2)
     BOOST_CHECK_SMALL(std::abs(f2 - res) / res, eps);
   };
 
-  auto testf = [](float x, float res, float eps = std::numeric_limits<float>::epsilon()) {
+  auto testf = [](float x, float res, float eps = 4 * std::numeric_limits<float>::epsilon()) {
     float f2 = details::SO3JacF2(x);
     BOOST_CHECK_SMALL(std::abs(f2 - res) / res, eps);
     f2 = details::SO3JacF2(-x);
@@ -154,9 +154,6 @@ BOOST_AUTO_TEST_CASE(SO3RightJacInvTest)
     assert(std::abs(R2.determinant() - 1) < 1e-14); // of -(-1)^n with n the size of the matrix. However this is
                                                     // implementation-dependent, so we keep the check.
 #endif
-
-    Matrix4d R3 = Matrix4d::Random().householderQr().householderQ();
-    std::cout << R3.determinant() << std::endl;
 
     // Computations are getting less precise as we approach the singularity of the log for a rotation angle of pi.
     // We skip those cases so that we can keep a tight bound on the precision of the remaining tests.

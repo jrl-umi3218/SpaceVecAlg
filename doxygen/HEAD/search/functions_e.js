@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['zero',['Zero',['../classsva_1_1AdmittanceVec.html#a9a9574fbd61b11af495d7f5ebf6cf6e5',1,'sva::AdmittanceVec::Zero()'],['../classsva_1_1ForceVec.html#aaeb95999d383653c0c848fc57e47c913',1,'sva::ForceVec::Zero()'],['../classsva_1_1ImpedanceVec.html#a9bf662fc388e861b5a6196c5ae84366d',1,'sva::ImpedanceVec::Zero()'],['../classsva_1_1MotionVec.html#a5ebbdd768786752203c24f5d476faaa0',1,'sva::MotionVec::Zero()']]]
+  ['vector',['vector',['../classsva_1_1AdmittanceVec.html#abe64e5b0c50d202a453db3223ab15249',1,'sva::AdmittanceVec::vector()'],['../classsva_1_1ForceVec.html#a56f0cb72ae300735ffe585754967be09',1,'sva::ForceVec::vector()'],['../classsva_1_1ImpedanceVec.html#a0bd706cf22e62571059a29094beb77c4',1,'sva::ImpedanceVec::vector()'],['../classsva_1_1MotionVec.html#a17d2ce38005722542199bee7010f7ba8',1,'sva::MotionVec::vector()']]],
+  ['vector3tocrossmatrix',['vector3ToCrossMatrix',['../namespaceEigen.html#a34d0d0706dc16ae0358433af740a48fd',1,'Eigen']]],
+  ['vector6tocrossdualmatrix',['vector6ToCrossDualMatrix',['../namespaceEigen.html#a2964e2c4bbe44365032512d28ce500ee',1,'Eigen']]],
+  ['vector6tocrossmatrix',['vector6ToCrossMatrix',['../namespaceEigen.html#a843e61000f53c05966116a6dead6d7cb',1,'Eigen']]]
 ];

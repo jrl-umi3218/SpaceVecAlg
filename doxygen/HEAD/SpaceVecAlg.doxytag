@@ -291,6 +291,48 @@
       <arglist>(T x)</arglist>
     </member>
     <member kind="function">
+      <type>bool constexpr</type>
+      <name>eq</name>
+      <anchorfile>namespacesva_1_1details.html</anchorfile>
+      <anchor>ac632326514f3f5edcc6244e5665c1613</anchor>
+      <arglist>(T x, T y)</arglist>
+    </member>
+    <member kind="function">
+      <type>T constexpr</type>
+      <name>cbrtNewtonRaphson</name>
+      <anchorfile>namespacesva_1_1details.html</anchorfile>
+      <anchor>ad47987737203dfca2c6716262c36ff1a</anchor>
+      <arglist>(T x, T curr, T prev)</arglist>
+    </member>
+    <member kind="function">
+      <type>T constexpr</type>
+      <name>cbrtSub</name>
+      <anchorfile>namespacesva_1_1details.html</anchorfile>
+      <anchor>accc0265b65786dde0a77fae63b9517d9</anchor>
+      <arglist>(T x)</arglist>
+    </member>
+    <member kind="function">
+      <type>T constexpr</type>
+      <name>cbrt</name>
+      <anchorfile>namespacesva_1_1details.html</anchorfile>
+      <anchor>ac02be9fea6302b66907b16b71379f5d1</anchor>
+      <arglist>(T x)</arglist>
+    </member>
+    <member kind="function">
+      <type>T</type>
+      <name>SO3JacF2</name>
+      <anchorfile>namespacesva_1_1details.html</anchorfile>
+      <anchor>a883e8c0f6306d2bb332102eeb8b63bfc</anchor>
+      <arglist>(const T &amp;x)</arglist>
+    </member>
+    <member kind="function">
+      <type>T</type>
+      <name>dSO3JacF2</name>
+      <anchorfile>namespacesva_1_1details.html</anchorfile>
+      <anchor>a3f5fe1b16e9dd5a8a278a8b1bf88c0ff</anchor>
+      <arglist>(const T &amp;x)</arglist>
+    </member>
+    <member kind="function">
       <type>T</type>
       <name>sinc</name>
       <anchorfile>namespacesva.html</anchorfile>
@@ -303,6 +345,20 @@
       <anchorfile>namespacesva.html</anchorfile>
       <anchor>a3cad8a4ff91f4aace786395eaaef6834</anchor>
       <arglist>(const T x)</arglist>
+    </member>
+    <member kind="function">
+      <type>Eigen::Matrix3&lt; T &gt;</type>
+      <name>SO3RightJacInv</name>
+      <anchorfile>namespacesva.html</anchorfile>
+      <anchor>ad84f4918ff3ed3ac179509e74d1f7527</anchor>
+      <arglist>(const Eigen::Vector3&lt; T &gt; &amp;u)</arglist>
+    </member>
+    <member kind="function">
+      <type>Eigen::Matrix3&lt; T &gt;</type>
+      <name>SO3RightJacInvDot</name>
+      <anchorfile>namespacesva.html</anchorfile>
+      <anchor>a4991725f3279033485d5e4636ce5a794</anchor>
+      <arglist>(const Eigen::Vector3&lt; T &gt; &amp;u, const Eigen::Vector3&lt; T &gt; &amp;du)</arglist>
     </member>
   </compound>
   <compound kind="file">
@@ -2126,6 +2182,20 @@
       <arglist>(const T x)</arglist>
     </member>
     <member kind="function">
+      <type>Eigen::Matrix3&lt; T &gt;</type>
+      <name>SO3RightJacInv</name>
+      <anchorfile>namespacesva.html</anchorfile>
+      <anchor>ad84f4918ff3ed3ac179509e74d1f7527</anchor>
+      <arglist>(const Eigen::Vector3&lt; T &gt; &amp;u)</arglist>
+    </member>
+    <member kind="function">
+      <type>Eigen::Matrix3&lt; T &gt;</type>
+      <name>SO3RightJacInvDot</name>
+      <anchorfile>namespacesva.html</anchorfile>
+      <anchor>a4991725f3279033485d5e4636ce5a794</anchor>
+      <arglist>(const Eigen::Vector3&lt; T &gt; &amp;u, const Eigen::Vector3&lt; T &gt; &amp;du)</arglist>
+    </member>
+    <member kind="function">
       <type>MotionVec&lt; T &gt;</type>
       <name>operator*</name>
       <anchorfile>namespacesva.html</anchorfile>
@@ -2349,6 +2419,48 @@
       <anchorfile>namespacesva_1_1details.html</anchorfile>
       <anchor>a1bd0cdea56a8740a2d3279f11685cb79</anchor>
       <arglist>(T x)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool constexpr</type>
+      <name>eq</name>
+      <anchorfile>namespacesva_1_1details.html</anchorfile>
+      <anchor>ac632326514f3f5edcc6244e5665c1613</anchor>
+      <arglist>(T x, T y)</arglist>
+    </member>
+    <member kind="function">
+      <type>T constexpr</type>
+      <name>cbrtNewtonRaphson</name>
+      <anchorfile>namespacesva_1_1details.html</anchorfile>
+      <anchor>ad47987737203dfca2c6716262c36ff1a</anchor>
+      <arglist>(T x, T curr, T prev)</arglist>
+    </member>
+    <member kind="function">
+      <type>T constexpr</type>
+      <name>cbrtSub</name>
+      <anchorfile>namespacesva_1_1details.html</anchorfile>
+      <anchor>accc0265b65786dde0a77fae63b9517d9</anchor>
+      <arglist>(T x)</arglist>
+    </member>
+    <member kind="function">
+      <type>T constexpr</type>
+      <name>cbrt</name>
+      <anchorfile>namespacesva_1_1details.html</anchorfile>
+      <anchor>ac02be9fea6302b66907b16b71379f5d1</anchor>
+      <arglist>(T x)</arglist>
+    </member>
+    <member kind="function">
+      <type>T</type>
+      <name>SO3JacF2</name>
+      <anchorfile>namespacesva_1_1details.html</anchorfile>
+      <anchor>a883e8c0f6306d2bb332102eeb8b63bfc</anchor>
+      <arglist>(const T &amp;x)</arglist>
+    </member>
+    <member kind="function">
+      <type>T</type>
+      <name>dSO3JacF2</name>
+      <anchorfile>namespacesva_1_1details.html</anchorfile>
+      <anchor>a3f5fe1b16e9dd5a8a278a8b1bf88c0ff</anchor>
+      <arglist>(const T &amp;x)</arglist>
     </member>
   </compound>
   <compound kind="namespace">

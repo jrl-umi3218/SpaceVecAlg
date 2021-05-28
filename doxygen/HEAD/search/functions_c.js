@@ -1,9 +1,10 @@
 var searchData=
 [
-  ['toaffine',['toAffine',['../namespacesva_1_1conversions.html#aaf02f7d90175c1f87bd0b5ce5e626566',1,'sva::conversions']]],
-  ['tohomogeneous',['toHomogeneous',['../namespacesva_1_1conversions.html#abda8dfd75276624f91e5b8d6b6bbc238',1,'sva::conversions']]],
-  ['transformerror',['transformError',['../namespacesva.html#a835d4f04eaf5d87dc9cc9b8d011f06a0',1,'sva']]],
-  ['transformvelocity',['transformVelocity',['../namespacesva.html#a78005b4f61a4c40bffd3e002e7a9ba54',1,'sva']]],
-  ['translation',['translation',['../classsva_1_1PTransform.html#a3c8278044bf69298d737cd1a1526363d',1,'sva::PTransform::translation() const'],['../classsva_1_1PTransform.html#a3f61aded680a06f2d23c4059d444bb89',1,'sva::PTransform::translation()']]],
-  ['transmul',['transMul',['../classsva_1_1PTransform.html#a94daf49e5b54e9f43179f3f001bf6fe8',1,'sva::PTransform::transMul(const ForceVec&lt; T &gt; &amp;fv) const'],['../classsva_1_1PTransform.html#a5ddaf74480426cf4bb0596be863696ab',1,'sva::PTransform::transMul(const Eigen::MatrixBase&lt; Derived &gt; &amp;fv, Eigen::MatrixBase&lt; Derived &gt; &amp;result) const'],['../classsva_1_1PTransform.html#a6884642f8a60b91c458dd26680f82153',1,'sva::PTransform::transMul(const RBInertia&lt; T &gt; &amp;rbI) const'],['../classsva_1_1PTransform.html#a4618803c8ee6c03daedcb94ee11db69e',1,'sva::PTransform::transMul(const ABInertia&lt; T &gt; &amp;rbI) const']]]
+  ['sinc',['sinc',['../namespacesva.html#a123844a3edbd3f1e68aacc22225a2a07',1,'sva']]],
+  ['sinc_5finv',['sinc_inv',['../namespacesva.html#a3cad8a4ff91f4aace786395eaaef6834',1,'sva']]],
+  ['so3jacf2',['SO3JacF2',['../namespacesva_1_1details.html#a883e8c0f6306d2bb332102eeb8b63bfc',1,'sva::details']]],
+  ['so3rightjacinv',['SO3RightJacInv',['../namespacesva.html#ad84f4918ff3ed3ac179509e74d1f7527',1,'sva']]],
+  ['so3rightjacinvdot',['SO3RightJacInvDot',['../namespacesva.html#a4991725f3279033485d5e4636ce5a794',1,'sva']]],
+  ['sqrt',['sqrt',['../namespacesva_1_1details.html#a1bd0cdea56a8740a2d3279f11685cb79',1,'sva::details']]],
+  ['sqrtnewtonraphson',['sqrtNewtonRaphson',['../namespacesva_1_1details.html#a260012a0c7888be38334b192a44c5dd3',1,'sva::details']]]
 ];

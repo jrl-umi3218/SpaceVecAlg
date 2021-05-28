@@ -82,8 +82,195 @@ Functions</h2></td></tr>
 <tr class="memitem:a1bd0cdea56a8740a2d3279f11685cb79"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a1bd0cdea56a8740a2d3279f11685cb79"><td class="memTemplItemLeft" align="right" valign="top">T constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesva_1_1details.html#a1bd0cdea56a8740a2d3279f11685cb79">sqrt</a> (T x)</td></tr>
 <tr class="separator:a1bd0cdea56a8740a2d3279f11685cb79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac632326514f3f5edcc6244e5665c1613"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ac632326514f3f5edcc6244e5665c1613"><td class="memTemplItemLeft" align="right" valign="top">bool constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesva_1_1details.html#ac632326514f3f5edcc6244e5665c1613">eq</a> (T x, T y)</td></tr>
+<tr class="separator:ac632326514f3f5edcc6244e5665c1613"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad47987737203dfca2c6716262c36ff1a"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ad47987737203dfca2c6716262c36ff1a"><td class="memTemplItemLeft" align="right" valign="top">T constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesva_1_1details.html#ad47987737203dfca2c6716262c36ff1a">cbrtNewtonRaphson</a> (T x, T curr, T prev)</td></tr>
+<tr class="separator:ad47987737203dfca2c6716262c36ff1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accc0265b65786dde0a77fae63b9517d9"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:accc0265b65786dde0a77fae63b9517d9"><td class="memTemplItemLeft" align="right" valign="top">T constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesva_1_1details.html#accc0265b65786dde0a77fae63b9517d9">cbrtSub</a> (T x)</td></tr>
+<tr class="separator:accc0265b65786dde0a77fae63b9517d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac02be9fea6302b66907b16b71379f5d1"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ac02be9fea6302b66907b16b71379f5d1"><td class="memTemplItemLeft" align="right" valign="top">T constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesva_1_1details.html#ac02be9fea6302b66907b16b71379f5d1">cbrt</a> (T x)</td></tr>
+<tr class="separator:ac02be9fea6302b66907b16b71379f5d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a883e8c0f6306d2bb332102eeb8b63bfc"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a883e8c0f6306d2bb332102eeb8b63bfc"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesva_1_1details.html#a883e8c0f6306d2bb332102eeb8b63bfc">SO3JacF2</a> (const T &amp;x)</td></tr>
+<tr class="separator:a883e8c0f6306d2bb332102eeb8b63bfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f5fe1b16e9dd5a8a278a8b1bf88c0ff"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a3f5fe1b16e9dd5a8a278a8b1bf88c0ff"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesva_1_1details.html#a3f5fe1b16e9dd5a8a278a8b1bf88c0ff">dSO3JacF2</a> (const T &amp;x)</td></tr>
+<tr class="separator:a3f5fe1b16e9dd5a8a278a8b1bf88c0ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="ac02be9fea6302b66907b16b71379f5d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac02be9fea6302b66907b16b71379f5d1">&#9670;&nbsp;</a></span>cbrt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T constexpr sva::details::cbrt </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Constexpr version of the cubic root Return value:</p><ul>
+<li>For a finite of "x", returns an approximation for the cubic root of "x"</li>
+<li>Otherwise, returns NaN <dl class="section note"><dt>Note</dt><dd>Should not be used for value x such that x+1==x or x+1==1 in floating point arithmetic. </dd></dl>
+</li>
+</ul>
+
+</div>
+</div>
+<a id="ad47987737203dfca2c6716262c36ff1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad47987737203dfca2c6716262c36ff1a">&#9670;&nbsp;</a></span>cbrtNewtonRaphson()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T constexpr sva::details::cbrtNewtonRaphson </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>curr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>prev</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="accc0265b65786dde0a77fae63b9517d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accc0265b65786dde0a77fae63b9517d9">&#9670;&nbsp;</a></span>cbrtSub()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T constexpr sva::details::cbrtSub </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3f5fe1b16e9dd5a8a278a8b1bf88c0ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f5fe1b16e9dd5a8a278a8b1bf88c0ff">&#9670;&nbsp;</a></span>dSO3JacF2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T sva::details::dSO3JacF2 </td>
+          <td>(</td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Compute the value <img class="formulaInl" alt="$ \frac{x + \sin(x)}{2x^2(1-\cos(x)} - \frac{2}{x^3}$" src="form_3.png"/> which is the derivative of <img class="formulaInl" alt="$ \frac{1}{x^2} - \frac{1+\cos(x)}{2 x \sin(x)} $" src="form_2.png"/>. </p>
+
+</div>
+</div>
+<a id="ac632326514f3f5edcc6244e5665c1613"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac632326514f3f5edcc6244e5665c1613">&#9670;&nbsp;</a></span>eq()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool constexpr sva::details::eq </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a883e8c0f6306d2bb332102eeb8b63bfc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a883e8c0f6306d2bb332102eeb8b63bfc">&#9670;&nbsp;</a></span>SO3JacF2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T sva::details::SO3JacF2 </td>
+          <td>(</td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Compute the value <img class="formulaInl" alt="$ \frac{1}{x^2} - \frac{1+\cos(x)}{2 x \sin(x)} $" src="form_2.png"/>. </p>
+
+</div>
+</div>
 <a id="a1bd0cdea56a8740a2d3279f11685cb79"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1bd0cdea56a8740a2d3279f11685cb79">&#9670;&nbsp;</a></span>sqrt()</h2>
 
@@ -103,8 +290,9 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 <p>Constexpr version of the square root Return value:</p><ul>
 <li>For a finite and non-negative value of "x", returns an approximation for the square root of "x"</li>
-<li>Otherwise, returns NaN Copied from <a href="https://stackoverflow.com/a/34134071">https://stackoverflow.com/a/34134071</a> </li>
+<li>Otherwise, returns NaN Copied from <a href="https://stackoverflow.com/a/34134071">https://stackoverflow.com/a/34134071</a></li>
 </ul>
+<dl class="section note"><dt>Note</dt><dd>Should not be used for value x such that x+1==x or x+1==1 in floating point arithmetic. </dd></dl>
 
 </div>
 </div>

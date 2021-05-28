@@ -165,6 +165,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a3cad8a4ff91f4aace786395eaaef6834"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a3cad8a4ff91f4aace786395eaaef6834"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesva.html#a3cad8a4ff91f4aace786395eaaef6834">sinc_inv</a> (const T x)</td></tr>
 <tr class="separator:a3cad8a4ff91f4aace786395eaaef6834"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad84f4918ff3ed3ac179509e74d1f7527"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ad84f4918ff3ed3ac179509e74d1f7527"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespaceEigen.html#ac4d27bf92869006caf1413e5d218e2f1">Eigen::Matrix3</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesva.html#ad84f4918ff3ed3ac179509e74d1f7527">SO3RightJacInv</a> (const <a class="el" href="namespaceEigen.html#a55408ba932fc7d1707bd7adc7e5e930f">Eigen::Vector3</a>&lt; T &gt; &amp;u)</td></tr>
+<tr class="separator:ad84f4918ff3ed3ac179509e74d1f7527"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4991725f3279033485d5e4636ce5a794"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a4991725f3279033485d5e4636ce5a794"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespaceEigen.html#ac4d27bf92869006caf1413e5d218e2f1">Eigen::Matrix3</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesva.html#a4991725f3279033485d5e4636ce5a794">SO3RightJacInvDot</a> (const <a class="el" href="namespaceEigen.html#a55408ba932fc7d1707bd7adc7e5e930f">Eigen::Vector3</a>&lt; T &gt; &amp;u, const <a class="el" href="namespaceEigen.html#a55408ba932fc7d1707bd7adc7e5e930f">Eigen::Vector3</a>&lt; T &gt; &amp;du)</td></tr>
+<tr class="separator:a4991725f3279033485d5e4636ce5a794"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5034a19c802c5810244ff02b878cd0ba"><td class="memTemplParams" colspan="2">template&lt;typename T , typename T2 &gt; </td></tr>
 <tr class="memitem:a5034a19c802c5810244ff02b878cd0ba"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classsva_1_1MotionVec.html">MotionVec</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesva.html#a5034a19c802c5810244ff02b878cd0ba">operator*</a> (T2 scalar, const <a class="el" href="classsva_1_1MotionVec.html">MotionVec</a>&lt; T &gt; &amp;mv)</td></tr>
 <tr class="separator:a5034a19c802c5810244ff02b878cd0ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -938,46 +944,8 @@ template&lt;typename T , typename T2 &gt; </div>
 
 </div>
 </div>
-<a id="a848b3652216f3166993854e02d5751a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a848b3652216f3166993854e02d5751a5">&#9670;&nbsp;</a></span>operator*() <span class="overload">[9/10]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , typename T2 &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classsva_1_1ABInertia.html">ABInertia</a>&lt;T&gt; sva::operator* </td>
-          <td>(</td>
-          <td class="paramtype">T2&#160;</td>
-          <td class="paramname"><em>scalar</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="classsva_1_1ABInertia.html">ABInertia</a>&lt; T &gt; &amp;&#160;</td>
-          <td class="paramname"><em>abI</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a5034a19c802c5810244ff02b878cd0ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5034a19c802c5810244ff02b878cd0ba">&#9670;&nbsp;</a></span>operator*() <span class="overload">[10/10]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a5034a19c802c5810244ff02b878cd0ba">&#9670;&nbsp;</a></span>operator*() <span class="overload">[9/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -998,6 +966,44 @@ template&lt;typename T , typename T2 &gt; </div>
           <td></td>
           <td class="paramtype">const <a class="el" href="classsva_1_1MotionVec.html">MotionVec</a>&lt; T &gt; &amp;&#160;</td>
           <td class="paramname"><em>mv</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a848b3652216f3166993854e02d5751a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a848b3652216f3166993854e02d5751a5">&#9670;&nbsp;</a></span>operator*() <span class="overload">[10/10]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename T2 &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsva_1_1ABInertia.html">ABInertia</a>&lt;T&gt; sva::operator* </td>
+          <td>(</td>
+          <td class="paramtype">T2&#160;</td>
+          <td class="paramname"><em>scalar</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classsva_1_1ABInertia.html">ABInertia</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>abI</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1166,46 +1172,8 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="ab8fa7e4323ec04f5e03a350901c60258"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab8fa7e4323ec04f5e03a350901c60258">&#9670;&nbsp;</a></span>operator<<() <span class="overload">[5/7]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::ostream&amp; sva::operator&lt;&lt; </td>
-          <td>(</td>
-          <td class="paramtype">std::ostream &amp;&#160;</td>
-          <td class="paramname"><em>out</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="classsva_1_1MotionVec.html">MotionVec</a>&lt; T &gt; &amp;&#160;</td>
-          <td class="paramname"><em>mv</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a307ecc2f3edbcf2e8bc942e657dcfa67"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a307ecc2f3edbcf2e8bc942e657dcfa67">&#9670;&nbsp;</a></span>operator<<() <span class="overload">[6/7]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a307ecc2f3edbcf2e8bc942e657dcfa67">&#9670;&nbsp;</a></span>operator<<() <span class="overload">[5/7]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1226,6 +1194,44 @@ template&lt;typename T &gt; </div>
           <td></td>
           <td class="paramtype">const <a class="el" href="classsva_1_1ABInertia.html">ABInertia</a>&lt; T &gt; &amp;&#160;</td>
           <td class="paramname"><em>abI</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab8fa7e4323ec04f5e03a350901c60258"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8fa7e4323ec04f5e03a350901c60258">&#9670;&nbsp;</a></span>operator<<() <span class="overload">[6/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; sva::operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classsva_1_1MotionVec.html">MotionVec</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>mv</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1489,6 +1495,73 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 <p>Compute 1/sinc(x). This code is inspired by boost/math/special_functions/sinc.hpp. </p>
+
+</div>
+</div>
+<a id="ad84f4918ff3ed3ac179509e74d1f7527"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad84f4918ff3ed3ac179509e74d1f7527">&#9670;&nbsp;</a></span>SO3RightJacInv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceEigen.html#ac4d27bf92869006caf1413e5d218e2f1">Eigen::Matrix3</a>&lt;T&gt; sva::SO3RightJacInv </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="namespaceEigen.html#a55408ba932fc7d1707bd7adc7e5e930f">Eigen::Vector3</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>u</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Inverse of the right Jacobian of SO(3) as defined in "A micro Lie theory for state estimation in robotics" by Solà et al. (see in particular eq. 144)</p>
+<p>Inverse of left Jacobian is simply obtained by transposing (see eq. 147)</p>
+<p>sva::rotationError(X,Y) is such that is derivative wrt X is <img class="formulaInl" alt="$ J_r^{-1} $" src="form_0.png"/> as given by this function and its derivative wrt Y is <img class="formulaInl" alt="$ -J_r^{-T} $" src="form_1.png"/>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">u</td><td>Point of so(3) at which to compute the matrix. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4991725f3279033485d5e4636ce5a794"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4991725f3279033485d5e4636ce5a794">&#9670;&nbsp;</a></span>SO3RightJacInvDot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceEigen.html#ac4d27bf92869006caf1413e5d218e2f1">Eigen::Matrix3</a>&lt;T&gt; sva::SO3RightJacInvDot </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="namespaceEigen.html#a55408ba932fc7d1707bd7adc7e5e930f">Eigen::Vector3</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="namespaceEigen.html#a55408ba932fc7d1707bd7adc7e5e930f">Eigen::Vector3</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>du</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Derivative w.r.t. time of Inverse of the right Jacobian of SO(3)</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">u</td><td>Point of so(3) at which to compute the matrix. </td></tr>
+    <tr><td class="paramname">du</td><td>Derivative w.r.t. time of <code>u</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

@@ -1,6 +1,9 @@
 var searchData=
 [
   ['cast',['cast',['../classsva_1_1ABInertia.html#add002f88212819ef8c9a6372ae0276a4',1,'sva::ABInertia::cast()'],['../classsva_1_1AdmittanceVec.html#a0f7e60cf887e9ba4a3132ab1f82c5db6',1,'sva::AdmittanceVec::cast()'],['../classsva_1_1ForceVec.html#a3e39df45e15447984c3edff5f0247c31',1,'sva::ForceVec::cast()'],['../classsva_1_1ImpedanceVec.html#aaa58cae47c7faff21bb53a338dd7d423',1,'sva::ImpedanceVec::cast()'],['../classsva_1_1MotionVec.html#af211404149608fa713b8ee8f236e1e67',1,'sva::MotionVec::cast()'],['../classsva_1_1PTransform.html#aa7eefd2e9f85091143e2e9293c4eba09',1,'sva::PTransform::cast()'],['../classsva_1_1RBInertia.html#a2d3a58bf68dfb27c3cce38debd4419c6',1,'sva::RBInertia::cast()']]],
+  ['cbrt',['cbrt',['../namespacesva_1_1details.html#ac02be9fea6302b66907b16b71379f5d1',1,'sva::details']]],
+  ['cbrtnewtonraphson',['cbrtNewtonRaphson',['../namespacesva_1_1details.html#ad47987737203dfca2c6716262c36ff1a',1,'sva::details']]],
+  ['cbrtsub',['cbrtSub',['../namespacesva_1_1details.html#accc0265b65786dde0a77fae63b9517d9',1,'sva::details']]],
   ['colwisecrosseq',['colwiseCrossEq',['../namespacesva_1_1sva__internal.html#a925b34e58bacdcc4481c5ff74eb7ddd4',1,'sva::sva_internal']]],
   ['colwisecrossminuseq',['colwiseCrossMinusEq',['../namespacesva_1_1sva__internal.html#aecd2872735a5a172e30de9246de058fa',1,'sva::sva_internal']]],
   ['colwisecrosspluseq',['colwiseCrossPlusEq',['../namespacesva_1_1sva__internal.html#ab737f4faada616c9e5c70f0485a9a7b6',1,'sva::sva_internal']]],

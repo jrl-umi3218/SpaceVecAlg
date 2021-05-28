@@ -1,10 +1,4 @@
 var searchData=
 [
-  ['rbinertia',['RBInertia',['../classsva_1_1RBInertia.html#a73b8ab1ffe411e38ed377d703fecc9c4',1,'sva::RBInertia::RBInertia()'],['../classsva_1_1RBInertia.html#a9c14050634eced8cf16c86bfff66a9e2',1,'sva::RBInertia::RBInertia(T m, const vector3_t &amp;h, const matrix3_t &amp;I)'],['../classsva_1_1RBInertia.html#aaada1412b73b025064c577e99cf427bc',1,'sva::RBInertia::RBInertia(T m, const vector3_t &amp;h, const Eigen::TriangularView&lt; matrix3_t, Eigen::Lower &gt; &amp;ltI)']]],
-  ['rotation',['rotation',['../classsva_1_1PTransform.html#abe85e6a061e0cc567af97b8788ff2a6e',1,'sva::PTransform::rotation() const'],['../classsva_1_1PTransform.html#a6c66d2b5851aa5092b6645b88c2978aa',1,'sva::PTransform::rotation()']]],
-  ['rotationerror',['rotationError',['../namespacesva.html#a72766cf4e27ceef9a9f9b3f1ce2fe090',1,'sva']]],
-  ['rotationvelocity',['rotationVelocity',['../namespacesva.html#ab2ce9031d170d97124f380187793a827',1,'sva']]],
-  ['rotx',['RotX',['../namespacesva.html#a1ce4f59c87b552689bffdf299e37e0c1',1,'sva']]],
-  ['roty',['RotY',['../namespacesva.html#a7e56746de411183078e1e5df538c1d00',1,'sva']]],
-  ['rotz',['RotZ',['../namespacesva.html#ad7f420fd210b69a09079042b63ac1fc8',1,'sva']]]
+  ['ptransform',['PTransform',['../classsva_1_1PTransform.html#a7d096e7f3a231a6b059d300a7289f52f',1,'sva::PTransform::PTransform()'],['../classsva_1_1PTransform.html#a930b8a61fc9f500c55fd3313f34d9f71',1,'sva::PTransform::PTransform(const PTransform&lt; T2 &gt; &amp;pt)'],['../classsva_1_1PTransform.html#a9fcfb68d5aee00cf6ea4159a66f98cec',1,'sva::PTransform::PTransform(const matrix3_t &amp;rot, const vector3_t &amp;trans)'],['../classsva_1_1PTransform.html#ae826c9c81861ec64fbaa7e615f5db05a',1,'sva::PTransform::PTransform(const quaternion_t &amp;rot, const vector3_t &amp;trans)'],['../classsva_1_1PTransform.html#a769255f0ef1e0c28c8779de8ea84e634',1,'sva::PTransform::PTransform(const quaternion_t &amp;rot)'],['../classsva_1_1PTransform.html#a968cca30c0e21d7ebafd8ac97c8494f9',1,'sva::PTransform::PTransform(const matrix3_t &amp;rot)'],['../classsva_1_1PTransform.html#ac69c898a238d9028245f19521a0e7541',1,'sva::PTransform::PTransform(const vector3_t &amp;trans)']]]
 ];

@@ -10,7 +10,7 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 set(PROJECT_NAME SpaceVecAlg)
 set(PROJECT_DESCRIPTION "Implementation of spatial vector algebra with the Eigen3 linear algebra library.")
 set(PROJECT_URL "https://github.com/jrl-umi3218/SpaceVecAlg")
-set(PROJECT_VERSION 1.1.1)
+set(PROJECT_VERSION 1.2.0)
 set(PROJECT_USE_CMAKE_EXPORT TRUE)
 
 include(cmake/base.cmake)

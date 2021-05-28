@@ -26,7 +26,7 @@ You can also choose the head mirror which will have the latest version of this p
 
 ```
 curl -1sLf \
-  'https://dl.cloudsmith.io/public/mc-rtc/stable/setup.deb.sh' \
+  'https://dl.cloudsmith.io/public/mc-rtc/head/setup.deb.sh' \
   | sudo -E bash
 ```
 
@@ -36,34 +36,20 @@ You can then install the package:
 sudo apt install libspacevecalg-dev python-spacevecalg python3-spacevecalg
 ```
 
-## Conan
-
-Install the latest version using [conan](https://conan.io/)
-
-```bash
-conan remote add multi-contact https://api.bintray.com/conan/gergondet/multi-contact
-# Install the latest release
-conan install Eigen3ToPython/latest@multi-contact/stable
-# Or install the latest development version
-# conan install Eigen3ToPython/latest@multi-contact/dev
-```
-
-## Homebrew OS X install
+## Homebrew (macOS and Linux)
 
 Install from the command line using [Homebrew](brew.sh):
 
 ```bash
-# install homebrew package manager
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-# install caskroom application manager
-brew install caskroom/cask/brew-cask
-# tap homebrew-science package repository
-brew tap homebrew/science
-# tap ahundt-robotics repository
-brew tap ahundt/robotics
-# install tasks and all its dependencies
+# Use mc-rtc tap
+brew tap mc-rtc/mc-rtc
+# install SpaceVecAlg and its Python bindings
 brew install spacevecalg
 ```
+
+## vcpkg
+
+Use the registry available [here](https://github.com/mc-rtc/vcpkg-registry/)
 
 ## Manually build from source
 

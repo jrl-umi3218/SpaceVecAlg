@@ -219,7 +219,7 @@ BOOST_AUTO_TEST_CASE(MotionVecdLeftOperatorsTest)
   mVec.cross(crossMVec, crossMVecRes);
   Eigen::internal::set_is_malloc_allowed(true);
 
-#ifdef __i386__
+#if defined __i386__ || defined __aarch64__
   BOOST_CHECK_SMALL((crossM.vector() - crossMVecRes.col(0)).array().abs().sum(), TOL);
 #else
   BOOST_CHECK_EQUAL(crossM.vector(), crossMVecRes.col(0));
@@ -234,7 +234,11 @@ BOOST_AUTO_TEST_CASE(MotionVecdLeftOperatorsTest)
   mVec.crossDual(crossFVec, crossFVecRes);
   Eigen::internal::set_is_malloc_allowed(true);
 
+#if defined __i386__ || defined __aarch64__
+  BOOST_CHECK_SMALL((crossF.vector() - crossFVecRes.col(0)).array().abs().sum(), TOL);
+#else
   BOOST_CHECK_EQUAL(crossF.vector(), crossFVecRes.col(0));
+#endif
   BOOST_CHECK_EQUAL(crossFVecRes.col(0), crossFVecRes.col(1));
 }
 

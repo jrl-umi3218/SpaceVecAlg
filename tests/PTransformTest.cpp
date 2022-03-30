@@ -9,6 +9,9 @@
 // std
 #include <iostream>
 
+// additional Eigen include (for exponential)
+#include <unsupported/Eigen/MatrixFunctions>
+
 // boost
 #define BOOST_TEST_DYN_LINK
 #define BOOST_TEST_MODULE PTransformd test
@@ -412,4 +415,59 @@ BOOST_AUTO_TEST_CASE(oldVsNewRotationVelocity)
   BOOST_CHECK(oldRotationVelocity(r2, 1e-7).isApprox(rotationVelocity(r2)));
   BOOST_CHECK(oldRotationVelocity(r3, 1e-7).isApprox(rotationVelocity(r3)));
   BOOST_CHECK(oldRotationVelocity(r4, 1e-7).isApprox(rotationVelocity(r4)));
+}
+
+BOOST_AUTO_TEST_CASE(rotationVelocityTest)
+{
+  using namespace Eigen;
+  using namespace sva;
+  namespace constants = boost::math::constants;
+
+  // Some hand-made matrices
+  Matrix3d r1(RotZ(1.) * RotX(1.5) * RotZ(2.));
+  Matrix3d r2(RotZ(1.043) * RotY(0.3422) * RotX(-0.30943));
+  Matrix3d r3(RotX(-0.8348) * RotY(-0.2344) * RotZ(0.2344));
+  Matrix3d r4(Matrix3d::Identity());
+
+  // rotationVelocity corresponds to -log
+  BOOST_CHECK(vector3ToCrossMatrix(rotationVelocity(r1)).exp().transpose().isApprox(r1));
+  BOOST_CHECK(vector3ToCrossMatrix(rotationVelocity(r2)).exp().transpose().isApprox(r2));
+  BOOST_CHECK(vector3ToCrossMatrix(rotationVelocity(r3)).exp().transpose().isApprox(r3));
+  BOOST_CHECK(vector3ToCrossMatrix(rotationVelocity(r4)).exp().transpose().isApprox(r4));
+
+  // Generic test for random rotations
+  for(int i = 0; i < 20; ++i)
+  {
+    Vector4d rd = Vector4d::Random();
+    Matrix3d r = AngleAxisd(rd[0], rd.tail<3>().normalized()).toRotationMatrix();
+    BOOST_CHECK(vector3ToCrossMatrix(rotationVelocity(r)).exp().transpose().isApprox(r));
+  }
+
+  // Tests for rotations close to I
+  for(int i = 0; i < 5; ++i)
+  {
+    for(double e = -2; e > -16; e -= .5)
+    {
+      Vector3d rd = Vector3d::Random();
+      Vector3d u = rd.normalized();
+      Matrix3d r1 = AngleAxisd(std::pow(10, e), u).toRotationMatrix();
+      Matrix3d r2 = AngleAxisd(-std::pow(10, e), u).toRotationMatrix();
+      BOOST_CHECK(vector3ToCrossMatrix(rotationVelocity(r1)).exp().transpose().isApprox(r1));
+      BOOST_CHECK(vector3ToCrossMatrix(rotationVelocity(r2)).exp().transpose().isApprox(r2));
+    }
+  }
+
+  // Tests for rotations with angle close to pi
+  for(int i = 0; i < 5; ++i)
+  {
+    for(double e = -2; e > -16; e -= .5)
+    {
+      Vector3d rd = Vector3d::Random();
+      Vector3d u = rd.normalized();
+      Matrix3d r1 = AngleAxisd(constants::pi<double>() + std::pow(10, e), u).toRotationMatrix();
+      Matrix3d r2 = AngleAxisd(constants::pi<double>() - std::pow(10, e), u).toRotationMatrix();
+      BOOST_CHECK(vector3ToCrossMatrix(rotationVelocity(r1)).exp().transpose().isApprox(r1, 1e-6));
+      BOOST_CHECK(vector3ToCrossMatrix(rotationVelocity(r2)).exp().transpose().isApprox(r2, 1e-6));
+    }
+  }
 }

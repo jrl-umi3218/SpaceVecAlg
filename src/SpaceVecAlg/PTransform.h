@@ -293,12 +293,27 @@ inline Eigen::Vector3<T> rotationError(const Eigen::Matrix3<T> & E_a_b, const Ei
 template<typename T>
 inline Eigen::Vector3<T> rotationVelocity(const Eigen::Matrix3<T> & E_a_b)
 {
-  Eigen::Vector3<T> w;
-  T acosV = (E_a_b(0, 0) + E_a_b(1, 1) + E_a_b(2, 2) - 1.) * 0.5;
+  constexpr T eps = std::numeric_limits<T>::epsilon();
+  constexpr T sqeps = details::sqrt(eps);
+  constexpr T sqsqeps = details::sqrt(sqeps);
+
+  T trace = E_a_b(0, 0) + E_a_b(1, 1) + E_a_b(2, 2);
+  T acosV = (trace - 1.) * 0.5;
   T theta = std::acos(std::min(std::max(acosV, -1.), 1.));
 
-  w = Eigen::Vector3<T>(-E_a_b(2, 1) + E_a_b(1, 2), -E_a_b(0, 2) + E_a_b(2, 0), -E_a_b(1, 0) + E_a_b(0, 1));
-  w *= sinc_inv(theta) * 0.5;
+  Eigen::Vector3<T> w(-E_a_b(2, 1) + E_a_b(1, 2), -E_a_b(0, 2) + E_a_b(2, 0), -E_a_b(1, 0) + E_a_b(0, 1));
+
+  if(1 + trace < sqsqeps) // in case of angle close to pi
+  {
+    // adapted from https://vision.in.tum.de/_media/members/demmeln/nurlanov2021so3log.pdf, sec2.2
+    Eigen::Vector3<T> s = (2 * E_a_b.diagonal() + Eigen::Vector3<T>::Constant(1 - trace)) / (3 - trace);
+    Eigen::Vector3<T> tn2 = theta * s.cwiseSqrt();
+    return (w.array() >= 0).select(tn2, -tn2);
+  }
+  else
+  {
+    w *= sinc_inv(theta) * 0.5;
+  }
 
   return w;
 }

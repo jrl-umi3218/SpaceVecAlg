@@ -457,17 +457,45 @@ BOOST_AUTO_TEST_CASE(rotationVelocityTest)
     }
   }
 
-  // Tests for rotations with angle close to pi
-  for(int i = 0; i < 5; ++i)
+  auto check_pi_rotation = [](const Eigen::Vector3d & u, double e) {
+    Matrix3d r1 = AngleAxisd(constants::pi<double>() + std::pow(10, e), u).toRotationMatrix();
+    Matrix3d r2 = AngleAxisd(constants::pi<double>() - std::pow(10, e), u).toRotationMatrix();
+    BOOST_CHECK(vector3ToCrossMatrix(rotationVelocity(r1)).exp().transpose().isApprox(r1, 1e-6));
+    BOOST_CHECK(vector3ToCrossMatrix(rotationVelocity(r2)).exp().transpose().isApprox(r2, 1e-6));
+  };
+
+  // Tests for rotations around unit axes with angle close to pi
+  for(double e = -2; e > -16; e -= .5)
+  {
+    check_pi_rotation(Eigen::Vector3d::UnitX(), e);
+    check_pi_rotation(Eigen::Vector3d::UnitY(), e);
+    check_pi_rotation(Eigen::Vector3d::UnitZ(), e);
+  }
+
+  // Tests for random rotations with angle close to pi
+  for(int i = 0; i < 1000; ++i)
   {
     for(double e = -2; e > -16; e -= .5)
     {
       Vector3d rd = Vector3d::Random();
       Vector3d u = rd.normalized();
-      Matrix3d r1 = AngleAxisd(constants::pi<double>() + std::pow(10, e), u).toRotationMatrix();
-      Matrix3d r2 = AngleAxisd(constants::pi<double>() - std::pow(10, e), u).toRotationMatrix();
-      BOOST_CHECK(vector3ToCrossMatrix(rotationVelocity(r1)).exp().transpose().isApprox(r1, 1e-6));
-      BOOST_CHECK(vector3ToCrossMatrix(rotationVelocity(r2)).exp().transpose().isApprox(r2, 1e-6));
+      check_pi_rotation(u, e);
     }
+  }
+
+  auto check_exact_pi_rotation = [](const Eigen::Vector3d & u) {
+    Matrix3d r1 = AngleAxisd(constants::pi<double>(), u).toRotationMatrix();
+    BOOST_CHECK(vector3ToCrossMatrix(rotationVelocity(r1)).exp().transpose().isApprox(r1, 1e-6));
+  };
+  // Tests for rotations around unit axes with angle equal to pi
+  check_exact_pi_rotation(Eigen::Vector3d::UnitX());
+  check_exact_pi_rotation(Eigen::Vector3d::UnitY());
+  check_exact_pi_rotation(Eigen::Vector3d::UnitZ());
+  // Tests for random rotations with angle equal to pi
+  for(int i = 0; i < 10000; ++i)
+  {
+    Vector3d rd = Vector3d::Random();
+    Vector3d u = rd.normalized();
+    check_exact_pi_rotation(u);
   }
 }

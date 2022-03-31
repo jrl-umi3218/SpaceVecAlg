@@ -1,3 +1,9 @@
+spacevecalg (1.2.1-1ubuntu1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Pierre Gergondet <pierre.gergondet+ppa@gmail.com>  Thu, 31 Mar 2022 13:23:51 +0800
+
 spacevecalg (1.2.0-1ubuntu1) unstable; urgency=medium
 
   * New upstream release

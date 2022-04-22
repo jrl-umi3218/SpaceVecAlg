@@ -205,17 +205,18 @@ class Testsinc_inv(unittest.TestCase):
     t = -1.
     nrIter = 333
     for i in range(nrIter):
-      self.assertEqual(dummy_sinc_inv(t), sva.sinc_inv(t))
+      self.assertAlmostEqual(dummy_sinc_inv(t), sva.sinc_inv(t), delta= TOL)
       t += 2./nrIter
 
     self.assertTrue(np.isnan(dummy_sinc_inv(0)))
     self.assertEqual(sva.sinc_inv(0), 1)
 
-    self.assertEqual(dummy_sinc_inv(eps), sva.sinc_inv(eps))
-    self.assertEqual(dummy_sinc_inv(np.sqrt(eps)),
-                     sva.sinc_inv(np.sqrt(eps)))
-    self.assertEqual(dummy_sinc_inv(np.sqrt(np.sqrt(eps))),
-                     sva.sinc_inv(np.sqrt(np.sqrt(eps))))
+    self.assertAlmostEqual(dummy_sinc_inv(eps), sva.sinc_inv(eps), delta = TOL)
+
+    self.assertAlmostEqual(dummy_sinc_inv(np.sqrt(eps)),
+                     sva.sinc_inv(np.sqrt(eps)), delta = TOL)
+    self.assertAlmostEqual(dummy_sinc_inv(np.sqrt(np.sqrt(eps))),
+                     sva.sinc_inv(np.sqrt(np.sqrt(eps))), delta = TOL)
 
 if __name__ == "__main__":
   suite = unittest.TestSuite()

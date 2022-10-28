@@ -209,7 +209,7 @@ class TestAdmittanceVecd(unittest.TestCase):
     vec2 = sva.AdmittanceVecd(w2, v2)
     z2 = vec2.vector()
 
-    self.assertEqual((vec + vec2).vector(), z + z2)
+    self.assertAlmostEqual(((vec + vec2).vector() - (z + z2)).norm(), 0)
 
     vec_pluseq = sva.AdmittanceVecd(vec)
     self.assertEqual(vec_pluseq, vec)

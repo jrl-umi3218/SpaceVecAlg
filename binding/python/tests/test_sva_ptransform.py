@@ -9,6 +9,8 @@ import unittest
 import eigen
 import sva
 
+import pytest
+
 import numpy as np
 
 import sys
@@ -208,7 +210,8 @@ class Testsinc_inv(unittest.TestCase):
       self.assertAlmostEqual(dummy_sinc_inv(t), sva.sinc_inv(t), delta= TOL)
       t += 2./nrIter
 
-    self.assertTrue(np.isnan(dummy_sinc_inv(0)))
+    with pytest.warns(RuntimeWarning) as record:
+        self.assertTrue(np.isnan(dummy_sinc_inv(0)))
     self.assertEqual(sva.sinc_inv(0), 1)
 
     self.assertAlmostEqual(dummy_sinc_inv(eps), sva.sinc_inv(eps), delta = TOL)

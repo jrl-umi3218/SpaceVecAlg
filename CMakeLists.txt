@@ -12,6 +12,7 @@ set(PROJECT_DESCRIPTION "Implementation of spatial vector algebra with the Eigen
 set(PROJECT_URL "https://github.com/jrl-umi3218/SpaceVecAlg")
 set(PROJECT_VERSION 1.2.1)
 set(PROJECT_USE_CMAKE_EXPORT TRUE)
+set(PYTHON_BINDING_USE_PYTEST ON)
 
 include(cmake/base.cmake)
 include(cmake/cython/cython.cmake)

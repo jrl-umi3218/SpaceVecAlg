@@ -55,12 +55,12 @@ jobs:
         compiler: ${{ matrix.compiler }}
         build-type: ${{ matrix.build-type }}
         ubuntu: |
-          apt: cython cython3 python-nose python3-nose python-numpy python3-numpy python-coverage python3-coverage python-setuptools python3-setuptools libeigen3-dev doxygen doxygen-latex libboost-all-dev
+          apt: cython cython3 python-pytest python3-pytest python-numpy python3-numpy python-coverage python3-coverage python-setuptools python3-setuptools libeigen3-dev doxygen doxygen-latex libboost-all-dev
         macos: |
           brew: eigen boost
-          pip: Cython coverage nose numpy
+          pip: Cython coverage pytest numpy
         windows: |
-          pip: Cython coverage nose numpy
+          pip: Cython coverage pytest numpy
           github:
             - path: eigenteam/eigen-git-mirror
               ref: 3.3.7

@@ -33,6 +33,7 @@ Package: libspacevecalg-dev
 Section: libdevel
 Architecture: any
 Depends: pkg-config,
+         libeigen3-dev,
          ${misc:Depends}
 Suggests: libspacevecalg-doc
 Description: SpaceVecAlg: Spatial Vector Algebra with Eigen

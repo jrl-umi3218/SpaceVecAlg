@@ -15,13 +15,13 @@ var classsva_1_1ABInertia =
     [ "matrix", "classsva_1_1ABInertia.html#a737b5348c80f0be1b6e12f583365bbdb", null ],
     [ "mul", "classsva_1_1ABInertia.html#aabf568508db6840a184affaf25023c36", null ],
     [ "operator!=", "classsva_1_1ABInertia.html#a9e39dab2c37bcf3c946e33085ac0ea2c", null ],
-    [ "operator*", "classsva_1_1ABInertia.html#a991167fad2524cd994f6c576787dd208", null ],
     [ "operator*", "classsva_1_1ABInertia.html#a915900de4941cdf251c22074420a825d", null ],
+    [ "operator*", "classsva_1_1ABInertia.html#a991167fad2524cd994f6c576787dd208", null ],
     [ "operator+", "classsva_1_1ABInertia.html#a859a6ff8e8c335cc366fa5aced534fa3", null ],
     [ "operator+", "classsva_1_1ABInertia.html#ac8039357856d51cbf6659d87c3c309dc", null ],
     [ "operator+=", "classsva_1_1ABInertia.html#af4887341bb906f27035f3fca3683c861", null ],
-    [ "operator-", "classsva_1_1ABInertia.html#abee28350a6c3a388bdffde785fc79514", null ],
     [ "operator-", "classsva_1_1ABInertia.html#ae4ae715b69dc81c12935e282c891b14d", null ],
+    [ "operator-", "classsva_1_1ABInertia.html#abee28350a6c3a388bdffde785fc79514", null ],
     [ "operator-=", "classsva_1_1ABInertia.html#adebb00a9759dbc37f0e0420a738c0a0b", null ],
     [ "operator==", "classsva_1_1ABInertia.html#a4568ccf9a99e14d81a23db50957b6e66", null ]
 ];

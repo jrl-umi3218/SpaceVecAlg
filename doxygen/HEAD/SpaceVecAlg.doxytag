@@ -3,12 +3,12 @@
   <compound kind="file">
     <name>README.md</name>
     <path>/home/runner/work/SpaceVecAlg/SpaceVecAlg/</path>
-    <filename>README_8md</filename>
+    <filename>README_8md.html</filename>
   </compound>
   <compound kind="file">
     <name>ABInertia.h</name>
     <path>/home/runner/work/SpaceVecAlg/SpaceVecAlg/src/SpaceVecAlg/</path>
-    <filename>ABInertia_8h</filename>
+    <filename>ABInertia_8h.html</filename>
     <includes id="EigenTypedef_8h" name="EigenTypedef.h" local="yes" imported="no">EigenTypedef.h</includes>
     <includes id="fwd_8h" name="fwd.h" local="yes" imported="no">fwd.h</includes>
     <class kind="class">sva::ABInertia</class>
@@ -31,7 +31,7 @@
   <compound kind="file">
     <name>AdmittanceVec.h</name>
     <path>/home/runner/work/SpaceVecAlg/SpaceVecAlg/src/SpaceVecAlg/</path>
-    <filename>AdmittanceVec_8h</filename>
+    <filename>AdmittanceVec_8h.html</filename>
     <includes id="EigenTypedef_8h" name="EigenTypedef.h" local="yes" imported="no">EigenTypedef.h</includes>
     <includes id="fwd_8h" name="fwd.h" local="yes" imported="no">fwd.h</includes>
     <class kind="class">sva::AdmittanceVec</class>
@@ -68,7 +68,7 @@
   <compound kind="file">
     <name>Conversions.h</name>
     <path>/home/runner/work/SpaceVecAlg/SpaceVecAlg/src/SpaceVecAlg/</path>
-    <filename>Conversions_8h</filename>
+    <filename>Conversions_8h.html</filename>
     <includes id="SpaceVecAlg" name="SpaceVecAlg" local="yes" imported="no">SpaceVecAlg</includes>
     <namespace>sva</namespace>
     <namespace>sva::conversions</namespace>
@@ -125,7 +125,7 @@
   <compound kind="file">
     <name>EigenTypedef.h</name>
     <path>/home/runner/work/SpaceVecAlg/SpaceVecAlg/src/SpaceVecAlg/</path>
-    <filename>EigenTypedef_8h</filename>
+    <filename>EigenTypedef_8h.html</filename>
     <namespace>Eigen</namespace>
     <member kind="typedef">
       <type>Matrix&lt; T, 6, 1 &gt;</type>
@@ -173,7 +173,7 @@
   <compound kind="file">
     <name>EigenUtility.h</name>
     <path>/home/runner/work/SpaceVecAlg/SpaceVecAlg/src/SpaceVecAlg/</path>
-    <filename>EigenUtility_8h</filename>
+    <filename>EigenUtility_8h.html</filename>
     <includes id="EigenTypedef_8h" name="EigenTypedef.h" local="yes" imported="no">EigenTypedef.h</includes>
     <namespace>Eigen</namespace>
     <namespace>sva</namespace>
@@ -202,7 +202,7 @@
   <compound kind="file">
     <name>ForceVec.h</name>
     <path>/home/runner/work/SpaceVecAlg/SpaceVecAlg/src/SpaceVecAlg/</path>
-    <filename>ForceVec_8h</filename>
+    <filename>ForceVec_8h.html</filename>
     <includes id="EigenTypedef_8h" name="EigenTypedef.h" local="yes" imported="no">EigenTypedef.h</includes>
     <includes id="fwd_8h" name="fwd.h" local="yes" imported="no">fwd.h</includes>
     <class kind="class">sva::ForceVec</class>
@@ -225,7 +225,7 @@
   <compound kind="file">
     <name>fwd.h</name>
     <path>/home/runner/work/SpaceVecAlg/SpaceVecAlg/src/SpaceVecAlg/</path>
-    <filename>fwd_8h</filename>
+    <filename>fwd_8h.html</filename>
     <class kind="class">sva::MotionVec</class>
     <class kind="class">sva::ForceVec</class>
     <class kind="class">sva::RBInertia</class>
@@ -236,7 +236,7 @@
   <compound kind="file">
     <name>ImpedanceVec.h</name>
     <path>/home/runner/work/SpaceVecAlg/SpaceVecAlg/src/SpaceVecAlg/</path>
-    <filename>ImpedanceVec_8h</filename>
+    <filename>ImpedanceVec_8h.html</filename>
     <includes id="EigenTypedef_8h" name="EigenTypedef.h" local="yes" imported="no">EigenTypedef.h</includes>
     <includes id="fwd_8h" name="fwd.h" local="yes" imported="no">fwd.h</includes>
     <class kind="class">sva::ImpedanceVec</class>
@@ -273,49 +273,49 @@
   <compound kind="file">
     <name>MathFunc.h</name>
     <path>/home/runner/work/SpaceVecAlg/SpaceVecAlg/src/SpaceVecAlg/</path>
-    <filename>MathFunc_8h</filename>
+    <filename>MathFunc_8h.html</filename>
     <namespace>sva</namespace>
     <namespace>sva::details</namespace>
     <member kind="function">
-      <type>T constexpr</type>
+      <type>constexpr T</type>
       <name>sqrtNewtonRaphson</name>
       <anchorfile>namespacesva_1_1details.html</anchorfile>
-      <anchor>a260012a0c7888be38334b192a44c5dd3</anchor>
+      <anchor>af47c1a73daa47bf2c55b6596b718541e</anchor>
       <arglist>(T x, T curr, T prev)</arglist>
     </member>
     <member kind="function">
-      <type>T constexpr</type>
+      <type>constexpr T</type>
       <name>sqrt</name>
       <anchorfile>namespacesva_1_1details.html</anchorfile>
-      <anchor>a1bd0cdea56a8740a2d3279f11685cb79</anchor>
+      <anchor>a133875c70a5d1e6e3e8d06be8f281318</anchor>
       <arglist>(T x)</arglist>
     </member>
     <member kind="function">
-      <type>bool constexpr</type>
+      <type>constexpr bool</type>
       <name>eq</name>
       <anchorfile>namespacesva_1_1details.html</anchorfile>
-      <anchor>ac632326514f3f5edcc6244e5665c1613</anchor>
+      <anchor>a0731e2baad022a8c67d627e1d7746969</anchor>
       <arglist>(T x, T y)</arglist>
     </member>
     <member kind="function">
-      <type>T constexpr</type>
+      <type>constexpr T</type>
       <name>cbrtNewtonRaphson</name>
       <anchorfile>namespacesva_1_1details.html</anchorfile>
-      <anchor>ad47987737203dfca2c6716262c36ff1a</anchor>
+      <anchor>a6d6ef9efe152f1d1029f56bcd24b8c6b</anchor>
       <arglist>(T x, T curr, T prev)</arglist>
     </member>
     <member kind="function">
-      <type>T constexpr</type>
+      <type>constexpr T</type>
       <name>cbrtSub</name>
       <anchorfile>namespacesva_1_1details.html</anchorfile>
-      <anchor>accc0265b65786dde0a77fae63b9517d9</anchor>
+      <anchor>a9969a1d4afcfee810238d7af44204777</anchor>
       <arglist>(T x)</arglist>
     </member>
     <member kind="function">
-      <type>T constexpr</type>
+      <type>constexpr T</type>
       <name>cbrt</name>
       <anchorfile>namespacesva_1_1details.html</anchorfile>
-      <anchor>ac02be9fea6302b66907b16b71379f5d1</anchor>
+      <anchor>a459957a4f3fe48650038127583fca67a</anchor>
       <arglist>(T x)</arglist>
     </member>
     <member kind="function">
@@ -364,7 +364,7 @@
   <compound kind="file">
     <name>MotionVec.h</name>
     <path>/home/runner/work/SpaceVecAlg/SpaceVecAlg/src/SpaceVecAlg/</path>
-    <filename>MotionVec_8h</filename>
+    <filename>MotionVec_8h.html</filename>
     <includes id="EigenTypedef_8h" name="EigenTypedef.h" local="yes" imported="no">EigenTypedef.h</includes>
     <includes id="fwd_8h" name="fwd.h" local="yes" imported="no">fwd.h</includes>
     <class kind="class">sva::MotionVec</class>
@@ -387,7 +387,7 @@
   <compound kind="file">
     <name>Operators.h</name>
     <path>/home/runner/work/SpaceVecAlg/SpaceVecAlg/src/SpaceVecAlg/</path>
-    <filename>Operators_8h</filename>
+    <filename>Operators_8h.html</filename>
     <includes id="SpaceVecAlg" name="SpaceVecAlg" local="yes" imported="no">SpaceVecAlg</includes>
     <namespace>sva</namespace>
     <namespace>sva::sva_internal</namespace>
@@ -479,7 +479,7 @@
   <compound kind="file">
     <name>PTransform.h</name>
     <path>/home/runner/work/SpaceVecAlg/SpaceVecAlg/src/SpaceVecAlg/</path>
-    <filename>PTransform_8h</filename>
+    <filename>PTransform_8h.html</filename>
     <includes id="EigenTypedef_8h" name="EigenTypedef.h" local="yes" imported="no">EigenTypedef.h</includes>
     <includes id="fwd_8h" name="fwd.h" local="yes" imported="no">fwd.h</includes>
     <class kind="class">sva::PTransform</class>
@@ -551,7 +551,7 @@
   <compound kind="file">
     <name>RBInertia.h</name>
     <path>/home/runner/work/SpaceVecAlg/SpaceVecAlg/src/SpaceVecAlg/</path>
-    <filename>RBInertia_8h</filename>
+    <filename>RBInertia_8h.html</filename>
     <includes id="EigenUtility_8h" name="EigenUtility.h" local="yes" imported="no">EigenUtility.h</includes>
     <includes id="fwd_8h" name="fwd.h" local="yes" imported="no">fwd.h</includes>
     <class kind="class">sva::RBInertia</class>
@@ -581,7 +581,7 @@
   <compound kind="file">
     <name>SpaceVecAlg</name>
     <path>/home/runner/work/SpaceVecAlg/SpaceVecAlg/src/SpaceVecAlg/</path>
-    <filename>SpaceVecAlg</filename>
+    <filename>SpaceVecAlg.html</filename>
     <includes id="EigenTypedef_8h" name="EigenTypedef.h" local="yes" imported="no">EigenTypedef.h</includes>
     <includes id="EigenUtility_8h" name="EigenUtility.h" local="yes" imported="no">EigenUtility.h</includes>
     <includes id="MathFunc_8h" name="MathFunc.h" local="yes" imported="no">MathFunc.h</includes>
@@ -648,7 +648,7 @@
   <compound kind="class">
     <name>sva::ABInertia</name>
     <filename>classsva_1_1ABInertia.html</filename>
-    <templarg>T</templarg>
+    <templarg></templarg>
     <member kind="typedef">
       <type>Eigen::Vector3&lt; T &gt;</type>
       <name>vector3_t</name>
@@ -821,7 +821,7 @@
   <compound kind="class">
     <name>sva::AdmittanceVec</name>
     <filename>classsva_1_1AdmittanceVec.html</filename>
-    <templarg>T</templarg>
+    <templarg></templarg>
     <member kind="typedef">
       <type>Eigen::Vector3&lt; T &gt;</type>
       <name>vector3_t</name>
@@ -973,7 +973,7 @@
   <compound kind="class">
     <name>sva::ForceVec</name>
     <filename>classsva_1_1ForceVec.html</filename>
-    <templarg>T</templarg>
+    <templarg></templarg>
     <member kind="typedef">
       <type>Eigen::Vector3&lt; T &gt;</type>
       <name>vector3_t</name>
@@ -1160,7 +1160,7 @@
   <compound kind="class">
     <name>sva::ImpedanceVec</name>
     <filename>classsva_1_1ImpedanceVec.html</filename>
-    <templarg>T</templarg>
+    <templarg></templarg>
     <member kind="typedef">
       <type>Eigen::Vector3&lt; T &gt;</type>
       <name>vector3_t</name>
@@ -1312,7 +1312,7 @@
   <compound kind="class">
     <name>sva::MotionVec</name>
     <filename>classsva_1_1MotionVec.html</filename>
-    <templarg>T</templarg>
+    <templarg></templarg>
     <member kind="typedef">
       <type>Eigen::Vector3&lt; T &gt;</type>
       <name>vector3_t</name>
@@ -1520,7 +1520,7 @@
   <compound kind="class">
     <name>sva::PTransform</name>
     <filename>classsva_1_1PTransform.html</filename>
-    <templarg>T</templarg>
+    <templarg></templarg>
     <member kind="function">
       <type></type>
       <name>PTransform</name>
@@ -1798,7 +1798,7 @@
   <compound kind="class">
     <name>sva::RBInertia</name>
     <filename>classsva_1_1RBInertia.html</filename>
-    <templarg>T</templarg>
+    <templarg></templarg>
     <member kind="typedef">
       <type>Eigen::Vector3&lt; T &gt;</type>
       <name>vector3_t</name>
@@ -2407,45 +2407,45 @@
     <name>sva::details</name>
     <filename>namespacesva_1_1details.html</filename>
     <member kind="function">
-      <type>T constexpr</type>
+      <type>constexpr T</type>
       <name>sqrtNewtonRaphson</name>
       <anchorfile>namespacesva_1_1details.html</anchorfile>
-      <anchor>a260012a0c7888be38334b192a44c5dd3</anchor>
+      <anchor>af47c1a73daa47bf2c55b6596b718541e</anchor>
       <arglist>(T x, T curr, T prev)</arglist>
     </member>
     <member kind="function">
-      <type>T constexpr</type>
+      <type>constexpr T</type>
       <name>sqrt</name>
       <anchorfile>namespacesva_1_1details.html</anchorfile>
-      <anchor>a1bd0cdea56a8740a2d3279f11685cb79</anchor>
+      <anchor>a133875c70a5d1e6e3e8d06be8f281318</anchor>
       <arglist>(T x)</arglist>
     </member>
     <member kind="function">
-      <type>bool constexpr</type>
+      <type>constexpr bool</type>
       <name>eq</name>
       <anchorfile>namespacesva_1_1details.html</anchorfile>
-      <anchor>ac632326514f3f5edcc6244e5665c1613</anchor>
+      <anchor>a0731e2baad022a8c67d627e1d7746969</anchor>
       <arglist>(T x, T y)</arglist>
     </member>
     <member kind="function">
-      <type>T constexpr</type>
+      <type>constexpr T</type>
       <name>cbrtNewtonRaphson</name>
       <anchorfile>namespacesva_1_1details.html</anchorfile>
-      <anchor>ad47987737203dfca2c6716262c36ff1a</anchor>
+      <anchor>a6d6ef9efe152f1d1029f56bcd24b8c6b</anchor>
       <arglist>(T x, T curr, T prev)</arglist>
     </member>
     <member kind="function">
-      <type>T constexpr</type>
+      <type>constexpr T</type>
       <name>cbrtSub</name>
       <anchorfile>namespacesva_1_1details.html</anchorfile>
-      <anchor>accc0265b65786dde0a77fae63b9517d9</anchor>
+      <anchor>a9969a1d4afcfee810238d7af44204777</anchor>
       <arglist>(T x)</arglist>
     </member>
     <member kind="function">
-      <type>T constexpr</type>
+      <type>constexpr T</type>
       <name>cbrt</name>
       <anchorfile>namespacesva_1_1details.html</anchorfile>
-      <anchor>ac02be9fea6302b66907b16b71379f5d1</anchor>
+      <anchor>a459957a4f3fe48650038127583fca67a</anchor>
       <arglist>(T x)</arglist>
     </member>
     <member kind="function">

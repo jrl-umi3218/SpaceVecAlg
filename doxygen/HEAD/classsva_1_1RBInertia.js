@@ -14,12 +14,12 @@ var classsva_1_1RBInertia =
     [ "momentum", "classsva_1_1RBInertia.html#a920523fbf1c99f80611b67bd8fb7e6b7", null ],
     [ "mul", "classsva_1_1RBInertia.html#a5a115924701fcdfdbfbae894d322d517", null ],
     [ "operator!=", "classsva_1_1RBInertia.html#a9f8799d6b20295d28ff033aee0284a9a", null ],
-    [ "operator*", "classsva_1_1RBInertia.html#a27d12a6c0603fb911fe6d0db86ef6729", null ],
     [ "operator*", "classsva_1_1RBInertia.html#aaf0eb16dc1c250365b2a85e00707d4d7", null ],
+    [ "operator*", "classsva_1_1RBInertia.html#a27d12a6c0603fb911fe6d0db86ef6729", null ],
     [ "operator+", "classsva_1_1RBInertia.html#a7b5549f7afd368610c2aa692280015c5", null ],
     [ "operator+=", "classsva_1_1RBInertia.html#a7659cf7eea62c8f533cc321bbf49d73f", null ],
-    [ "operator-", "classsva_1_1RBInertia.html#a9a2be8f54e19893869bd2f1987a3c324", null ],
     [ "operator-", "classsva_1_1RBInertia.html#ac40870d1a59540f1a595750cafeaf93e", null ],
+    [ "operator-", "classsva_1_1RBInertia.html#a9a2be8f54e19893869bd2f1987a3c324", null ],
     [ "operator-=", "classsva_1_1RBInertia.html#a3367ca9346696c3b59a897ba515e66b5", null ],
     [ "operator==", "classsva_1_1RBInertia.html#ac698f7e561da7bb8d204a53d60b3b541", null ]
 ];

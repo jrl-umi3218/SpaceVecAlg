@@ -1,4 +1,4 @@
-\form#0:$ J_r^{-1} $
-\form#1:$ -J_r^{-T} $
-\form#2:$ \frac{1}{x^2} - \frac{1+\cos(x)}{2 x \sin(x)} $
-\form#3:$ \frac{x + \sin(x)}{2x^2(1-\cos(x)} - \frac{2}{x^3}$
+\_form#0:$ J_r^{-1} $
+\_form#1:$ -J_r^{-T} $
+\_form#2:$ \frac{1}{x^2} - \frac{1+\cos(x)}{2 x \sin(x)} $
+\_form#3:$ \frac{x + \sin(x)}{2x^2(1-\cos(x)} - \frac{2}{x^3}$

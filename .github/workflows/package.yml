@@ -21,6 +21,7 @@ jobs:
     uses: jrl-umi3218/github-actions/.github/workflows/package-project.yml@master
     with:
       deps: '["jrl-umi3218/RBDyn"]'
+      latest-cmake: true
       matrix: |
           {
             "dist": ["bionic", "focal", "jammy"],

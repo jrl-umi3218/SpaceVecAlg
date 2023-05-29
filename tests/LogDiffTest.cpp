@@ -25,12 +25,14 @@ using namespace Eigen;
 
 BOOST_AUTO_TEST_CASE(Cbrt)
 {
-  auto testd = [](double x, double eps = std::numeric_limits<double>::epsilon()) {
+  auto testd = [](double x, double eps = std::numeric_limits<double>::epsilon())
+  {
     double y = details::cbrt(x);
     BOOST_CHECK_LE((y * y * y - x), 2 * std::abs(x) * eps);
   };
 
-  auto testf = [](float x, float eps = std::numeric_limits<float>::epsilon()) {
+  auto testf = [](float x, float eps = std::numeric_limits<float>::epsilon())
+  {
     float y = details::cbrt(x);
     BOOST_CHECK_LE((y * y * y - x), 2 * std::abs(x) * eps);
   };
@@ -45,14 +47,16 @@ BOOST_AUTO_TEST_CASE(Cbrt)
 
 BOOST_AUTO_TEST_CASE(SO3JacF2)
 {
-  auto testd = [](double x, double res, double eps = std::numeric_limits<double>::epsilon()) {
+  auto testd = [](double x, double res, double eps = std::numeric_limits<double>::epsilon())
+  {
     double f2 = details::SO3JacF2(x);
     BOOST_CHECK_SMALL(std::abs(f2 - res) / res, eps);
     f2 = details::SO3JacF2(-x);
     BOOST_CHECK_SMALL(std::abs(f2 - res) / res, eps);
   };
 
-  auto testf = [](float x, float res, float eps = 4 * std::numeric_limits<float>::epsilon()) {
+  auto testf = [](float x, float res, float eps = 4 * std::numeric_limits<float>::epsilon())
+  {
     float f2 = details::SO3JacF2(x);
     BOOST_CHECK_SMALL(std::abs(f2 - res) / res, eps);
     f2 = details::SO3JacF2(-x);
@@ -92,14 +96,16 @@ BOOST_AUTO_TEST_CASE(SO3JacF2)
 BOOST_AUTO_TEST_CASE(dSO3JacF2)
 {
   std::cout.precision(17);
-  auto testd = [](double x, double res, double eps = std::numeric_limits<double>::epsilon()) {
+  auto testd = [](double x, double res, double eps = std::numeric_limits<double>::epsilon())
+  {
     double f2 = details::dSO3JacF2(x);
     BOOST_CHECK_SMALL(std::abs(f2 - res) / res, eps);
     f2 = -details::dSO3JacF2(-x);
     BOOST_CHECK_SMALL(std::abs(f2 - res) / res, eps);
   };
 
-  auto testf = [](float x, float res, float eps = std::numeric_limits<float>::epsilon()) {
+  auto testf = [](float x, float res, float eps = std::numeric_limits<float>::epsilon())
+  {
     float f2 = details::dSO3JacF2(x);
     BOOST_CHECK_SMALL(std::abs(f2 - res) / res, eps);
     f2 = -details::dSO3JacF2(-x);

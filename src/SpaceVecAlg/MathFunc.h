@@ -292,7 +292,7 @@ Eigen::Matrix3<T> SO3RightJacInv(const Eigen::Vector3<T> & u)
   auto yz = f2 * u.y() * u.z();
   auto zz = f2 * u.z() * u.z();
   // clang-format off
-  C2 << -yy - zz,    xy   ,    xz, 
+  C2 << -yy - zz,    xy   ,    xz,
            xy   , -xx - zz,    yz,
            xz   ,    yz   , -xx - yy;
   // clang-format on
@@ -328,10 +328,10 @@ Eigen::Matrix3<T> SO3RightJacInvDot(const Eigen::Vector3<T> & u, const Eigen::Ve
   auto c13 = f2 * (du.z() * u.x() + du.x() * u.z());
   auto c23 = f2 * (du.z() * u.y() + du.y() * u.z());
   // clang-format off
-  C2 << -yy - zz,    xy   ,    xz, 
+  C2 << -yy - zz,    xy   ,    xz,
            xy   , -xx - zz,    yz,
            xz   ,    yz   , -xx - yy;
-  C3 << -dyy - dzz,    c12    ,     c13, 
+  C3 << -dyy - dzz,    c12    ,     c13,
            c12    , -dxx - dzz,     c23,
            c13    ,    c23    , -dxx - dyy;
   // clang-format on

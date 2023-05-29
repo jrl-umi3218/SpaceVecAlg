@@ -3,6 +3,7 @@
  */
 
 #include <SpaceVecAlg/SpaceVecAlg>
+
 #include <sstream>
 
 namespace sva
@@ -73,9 +74,9 @@ sva::PTransformd * NewPTransformdFromV3(const Eigen::Matrix<double, 3, 1> & v)
   return new sva::PTransformd(v);
 }
 
-sva::ForceVec<double>& const_cast_fvd(const sva::ForceVec<double> & rhs)
+sva::ForceVec<double> & const_cast_fvd(const sva::ForceVec<double> & rhs)
 {
-  return const_cast<sva::ForceVec<double>&>(rhs);
+  return const_cast<sva::ForceVec<double> &>(rhs);
 }
 
 template<typename T>
@@ -102,9 +103,9 @@ void fv_idiv(sva::ForceVec<T> * lhs, double s)
   *lhs /= s;
 }
 
-sva::MotionVec<double>& const_cast_mvd(const sva::MotionVec<double> & rhs)
+sva::MotionVec<double> & const_cast_mvd(const sva::MotionVec<double> & rhs)
 {
-  return const_cast<sva::MotionVec<double>&>(rhs);
+  return const_cast<sva::MotionVec<double> &>(rhs);
 }
 
 template<typename T>
@@ -131,9 +132,9 @@ void mv_idiv(sva::MotionVec<T> * lhs, double s)
   *lhs /= s;
 }
 
-sva::RBInertia<double>& const_cast_rbid(const sva::RBInertia<double> & rhs)
+sva::RBInertia<double> & const_cast_rbid(const sva::RBInertia<double> & rhs)
 {
-  return const_cast<sva::RBInertia<double>&>(rhs);
+  return const_cast<sva::RBInertia<double> &>(rhs);
 }
 
 template<typename T>
@@ -151,12 +152,12 @@ void rbi_isub(sva::RBInertia<T> * lhs, sva::RBInertia<T> * rhs)
 template<typename T>
 void rbi_imul(sva::RBInertia<T> * lhs, double s)
 {
-  *lhs = (*lhs)*s;
+  *lhs = (*lhs) * s;
 }
 
-sva::ABInertia<double>& const_cast_abid(const sva::ABInertia<double> & rhs)
+sva::ABInertia<double> & const_cast_abid(const sva::ABInertia<double> & rhs)
 {
-  return const_cast<sva::ABInertia<double>&>(rhs);
+  return const_cast<sva::ABInertia<double> &>(rhs);
 }
 
 template<typename T>
@@ -179,17 +180,17 @@ void abi_isub(sva::ABInertia<T> * lhs, sva::ABInertia<T> * rhs)
 template<typename T>
 void abi_imul(sva::ABInertia<T> * lhs, double s)
 {
-  *lhs = (*lhs)*s;
+  *lhs = (*lhs) * s;
 }
 
-sva::PTransform<double>& const_cast_ptd(const sva::PTransform<double> & rhs)
+sva::PTransform<double> & const_cast_ptd(const sva::PTransform<double> & rhs)
 {
-  return const_cast<sva::PTransform<double>&>(rhs);
+  return const_cast<sva::PTransform<double> &>(rhs);
 }
 
-std::vector<sva::PTransformd>& const_cast_pt_vec(const std::vector<sva::PTransformd> & rhs)
+std::vector<sva::PTransformd> & const_cast_pt_vec(const std::vector<sva::PTransformd> & rhs)
 {
-  return const_cast<std::vector<sva::PTransformd>&>(rhs);
+  return const_cast<std::vector<sva::PTransformd> &>(rhs);
 }
 
 ForceVecd ForceVecdZero()
@@ -256,4 +257,4 @@ void iv_idiv(ImpedanceVecd & lhs, double s)
   lhs /= s;
 }
 
-}
+} // namespace sva

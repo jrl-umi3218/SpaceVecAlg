@@ -457,7 +457,8 @@ BOOST_AUTO_TEST_CASE(rotationVelocityTest)
     }
   }
 
-  auto check_pi_rotation = [](const Eigen::Vector3d & u, double e) {
+  auto check_pi_rotation = [](const Eigen::Vector3d & u, double e)
+  {
     Matrix3d r1 = AngleAxisd(constants::pi<double>() + std::pow(10, e), u).toRotationMatrix();
     Matrix3d r2 = AngleAxisd(constants::pi<double>() - std::pow(10, e), u).toRotationMatrix();
     BOOST_CHECK(vector3ToCrossMatrix(rotationVelocity(r1)).exp().transpose().isApprox(r1, 1e-6));
@@ -483,7 +484,8 @@ BOOST_AUTO_TEST_CASE(rotationVelocityTest)
     }
   }
 
-  auto check_exact_pi_rotation = [](const Eigen::Vector3d & u) {
+  auto check_exact_pi_rotation = [](const Eigen::Vector3d & u)
+  {
     Matrix3d r1 = AngleAxisd(constants::pi<double>(), u).toRotationMatrix();
     BOOST_CHECK(vector3ToCrossMatrix(rotationVelocity(r1)).exp().transpose().isApprox(r1, 1e-6));
   };

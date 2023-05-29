@@ -8,7 +8,9 @@ set(CMAKE_CXX_STANDARD 11)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 set(PROJECT_NAME SpaceVecAlg)
-set(PROJECT_DESCRIPTION "Implementation of spatial vector algebra with the Eigen3 linear algebra library.")
+set(PROJECT_DESCRIPTION
+    "Implementation of spatial vector algebra with the Eigen3 linear algebra library."
+)
 set(PROJECT_URL "https://github.com/jrl-umi3218/SpaceVecAlg")
 set(PROJECT_VERSION 1.2.4)
 set(PROJECT_USE_CMAKE_EXPORT TRUE)
@@ -31,8 +33,8 @@ else()
   add_project_dependency(Eigen3 MODULE REQUIRED)
 endif()
 
-# For MSVC, set local environment variable to enable finding the built dll
-# of the main library when launching ctest with RUN_TESTS
+# For MSVC, set local environment variable to enable finding the built dll of
+# the main library when launching ctest with RUN_TESTS
 if(MSVC)
   set(CMAKE_MSVCIDE_RUN_PATH "\$(SolutionDir)/src/\$(Configuration)")
 endif(MSVC)

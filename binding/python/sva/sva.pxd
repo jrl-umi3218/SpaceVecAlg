@@ -3,7 +3,7 @@
 #
 
 cimport eigen.eigen as eigen
-cimport c_sva
+cimport sva.c_sva as c_sva
 from libcpp.vector cimport vector
 from libcpp cimport bool as cppbool
 

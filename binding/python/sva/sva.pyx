@@ -1,4 +1,5 @@
 # distutils: language = c++
+# cython: c_api_binop_methods=True
 
 #
 # Copyright 2012-2019 CNRS-UM LIRMM, CNRS-AIST JRL

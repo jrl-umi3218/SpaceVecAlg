@@ -12,6 +12,7 @@ on:
     - doc/**
     - README.md
     - ".github/workflows/build.yml"
+    - ".pre-commit-config.yaml"
     branches:
     - "**"
     tags:

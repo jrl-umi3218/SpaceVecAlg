@@ -1,3 +1,9 @@
+spacevecalg (1.2.6-1debian1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Pierre Gergondet <pierre.gergondet+ppa@gmail.com>  Fri, 10 Nov 2023 19:27:27 +0900
+
 spacevecalg (1.2.5-1debian1) unstable; urgency=medium
 
   * New upstream release

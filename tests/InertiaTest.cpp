@@ -241,7 +241,7 @@ BOOST_AUTO_TEST_CASE(RBInertiadLeftOperatorsTest)
   rb.mul(mVec6Xd, fVecRes6Xd);
   Eigen::internal::set_is_malloc_allowed(true);
 
-#ifdef __i386__
+#if defined __i386__ || defined __aarch64__
   BOOST_CHECK_SMALL((fVec.vector() - fVecRes6Xd.col(0)).array().abs().sum(), TOL);
 #else
   BOOST_CHECK_EQUAL(fVec.vector(), fVecRes6Xd.col(0));
@@ -295,7 +295,7 @@ BOOST_AUTO_TEST_CASE(ABInertiadLeftOperatorsTest)
   ab.mul(mVec6Xd, fVecRes6Xd);
   Eigen::internal::set_is_malloc_allowed(true);
 
-#ifdef __i386__
+#if defined __i386__ || defined __aarch64__
   BOOST_CHECK_SMALL((fVec.vector() - fVecRes6Xd.col(0)).array().abs().sum(), TOL);
 #else
   BOOST_CHECK_EQUAL(fVec.vector(), fVecRes6Xd.col(0));

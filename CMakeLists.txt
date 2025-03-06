@@ -12,7 +12,7 @@ set(PROJECT_DESCRIPTION
     "Implementation of spatial vector algebra with the Eigen3 linear algebra library."
 )
 set(PROJECT_URL "https://github.com/jrl-umi3218/SpaceVecAlg")
-set(PROJECT_VERSION 1.2.6)
+set(PROJECT_VERSION 1.2.7)
 set(PROJECT_USE_CMAKE_EXPORT TRUE)
 set(PYTHON_BINDING_USE_PYTEST ON)
 

@@ -3,6 +3,8 @@
 namespace nb = nanobind;
 
 void bind_PTransformd(nb::module_ &);
+void bind_MotionVecd(nb::module_ &);
+void bind_ForceVecd(nb::module_ &);
 
 NB_MODULE(_sva, unused_m)
 {
@@ -15,8 +17,11 @@ NB_MODULE(_sva, unused_m)
    *
    * See https://github.com/wjakob/nanobind/issues/420#issuecomment-1950233151 for further details
    */
+  (void) unused_m;
   nb::module_ m = nb::module_::import_("sva");
   // register functions and classes here
   m.doc() = "Python bindings for the SpaceVecAlg library";
   bind_PTransformd(m);
+  bind_ForceVecd(m);
+  bind_MotionVecd(m);
 }

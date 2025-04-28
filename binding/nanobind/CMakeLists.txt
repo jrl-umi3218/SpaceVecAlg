@@ -54,7 +54,10 @@ nanobind_add_module(
   NB_STATIC
   # Source code goes here
   src/sva_module/sva_module.cpp
-  src/sva_module/bind_PTransformd.cpp)
+  src/sva_module/bind_PTransformd.cpp
+  src/sva_module/bind_ForceVecd.cpp
+  src/sva_module/bind_MotionVecd.cpp
+)
 
 find_package(SpaceVecAlg REQUIRED)
 target_link_libraries(_sva PUBLIC SpaceVecAlg::SpaceVecAlg)
@@ -77,4 +80,6 @@ nanobind_add_stub(
   PYTHON_PATH
   ${SKBUILD_PLATLIB_DIR}/sva/
   DEPENDS
-  _sva)
+  _sva
+  INSTALL_TIME
+)

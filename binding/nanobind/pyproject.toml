@@ -20,8 +20,7 @@ classifiers = [
 # dependencies = [ "cryptography >=41.0" ]
 
 [project.urls]
-Homepage = "https://jrl.cnrs.fr/sva/"
-Repository = "https://github.com/jrl-umi3218/sva"
+Repository = "https://github.com/jrl-umi3218/SpaceVecAlg"
 Documentation = "https://jrl.cnrs.fr/sva/"
 Issues = "https://github.com/jrl-umi3218/sva/issues"
 Changelog = "https://github.com/jrl-umi3218/sva/releases/tag/v2.12.0"

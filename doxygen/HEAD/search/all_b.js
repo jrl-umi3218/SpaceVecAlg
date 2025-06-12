@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['rbinertia_93',['RBInertia',['../classsva_1_1RBInertia.html',1,'sva::RBInertia&lt; T &gt;'],['../classsva_1_1RBInertia.html#a73b8ab1ffe411e38ed377d703fecc9c4',1,'sva::RBInertia::RBInertia()'],['../classsva_1_1RBInertia.html#a9c14050634eced8cf16c86bfff66a9e2',1,'sva::RBInertia::RBInertia(T m, const vector3_t &amp;h, const matrix3_t &amp;I)'],['../classsva_1_1RBInertia.html#aaada1412b73b025064c577e99cf427bc',1,'sva::RBInertia::RBInertia(T m, const vector3_t &amp;h, const Eigen::TriangularView&lt; matrix3_t, Eigen::Lower &gt; &amp;ltI)']]],
+  ['rbinertia_93',['RBInertia',['../classsva_1_1RBInertia.html#a73b8ab1ffe411e38ed377d703fecc9c4',1,'sva::RBInertia::RBInertia()'],['../classsva_1_1RBInertia.html#a9c14050634eced8cf16c86bfff66a9e2',1,'sva::RBInertia::RBInertia(T m, const vector3_t &amp;h, const matrix3_t &amp;I)'],['../classsva_1_1RBInertia.html#aaada1412b73b025064c577e99cf427bc',1,'sva::RBInertia::RBInertia(T m, const vector3_t &amp;h, const Eigen::TriangularView&lt; matrix3_t, Eigen::Lower &gt; &amp;ltI)'],['../classsva_1_1RBInertia.html',1,'sva::RBInertia&lt; T &gt;']]],
   ['rbinertia_2eh_94',['RBInertia.h',['../RBInertia_8h.html',1,'']]],
   ['rbinertiad_95',['RBInertiad',['../namespacesva.html#ac56f2d381429fa55047d24d79ac9ae82',1,'sva']]],
   ['readme_2emd_96',['README.md',['../README_8md.html',1,'']]],

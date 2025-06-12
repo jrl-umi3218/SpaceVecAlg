@@ -16,7 +16,6 @@ digraph "src/SpaceVecAlg/fwd.h"
   Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node6 [label="src/SpaceVecAlg/Admittance\lVec.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$AdmittanceVec_8h.html",tooltip=" "];
   Node6 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node7 [label="src/SpaceVecAlg/ForceVec.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ForceVec_8h.html",tooltip=" "];
   Node7 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
@@ -32,4 +31,5 @@ digraph "src/SpaceVecAlg/fwd.h"
   Node1 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node11 [label="src/SpaceVecAlg/RBInertia.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$RBInertia_8h.html",tooltip=" "];
   Node11 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }

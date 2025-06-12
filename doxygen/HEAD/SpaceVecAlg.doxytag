@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
-<tagfile>
+<tagfile doxygen_version="1.9.1">
   <compound kind="file">
     <name>README.md</name>
     <path>/home/runner/work/SpaceVecAlg/SpaceVecAlg/</path>
@@ -226,11 +226,6 @@
     <name>fwd.h</name>
     <path>/home/runner/work/SpaceVecAlg/SpaceVecAlg/src/SpaceVecAlg/</path>
     <filename>fwd_8h.html</filename>
-    <class kind="class">sva::MotionVec</class>
-    <class kind="class">sva::ForceVec</class>
-    <class kind="class">sva::RBInertia</class>
-    <class kind="class">sva::ABInertia</class>
-    <class kind="class">sva::PTransform</class>
     <namespace>sva</namespace>
   </compound>
   <compound kind="file">
@@ -2030,10 +2025,10 @@
     <class kind="class">sva::ABInertia</class>
     <class kind="class">sva::AdmittanceVec</class>
     <class kind="class">sva::ForceVec</class>
-    <class kind="class">sva::ImpedanceVec</class>
     <class kind="class">sva::MotionVec</class>
-    <class kind="class">sva::PTransform</class>
     <class kind="class">sva::RBInertia</class>
+    <class kind="class">sva::PTransform</class>
+    <class kind="class">sva::ImpedanceVec</class>
     <member kind="typedef">
       <type>MotionVec&lt; double &gt;</type>
       <name>MotionVecd</name>
@@ -2499,11 +2494,11 @@
     <name>Conversions</name>
     <title>Convert to and from sva types</title>
     <filename>group__Conversions.html</filename>
-    <namespace>sva::conversions</namespace>
   </compound>
   <compound kind="page">
     <name>index</name>
     <title>SpaceVecAlg</title>
-    <filename>index</filename>
+    <filename>index.html</filename>
+    <docanchor file="index.html">md_README</docanchor>
   </compound>
 </tagfile>

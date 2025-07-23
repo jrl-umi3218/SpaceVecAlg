@@ -2,6 +2,7 @@
 # Copyright 2012-2019 CNRS-UM LIRMM, CNRS-AIST JRL
 #
 
+message(STATUS "Building legacy Cython bindings for SpaceVecAlg")
 make_cython_bindings(
   sva
   TARGETS

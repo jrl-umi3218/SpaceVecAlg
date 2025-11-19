@@ -42,23 +42,26 @@ target_include_directories(
 install(TARGETS SpaceVecAlg EXPORT "${TARGETS_EXPORT_NAME}")
 install(DIRECTORY SpaceVecAlg DESTINATION ${INCLUDE_INSTALL_DIR})
 
-if(${NANOBIND_BINDINGS})
+if(NANOBIND_BINDINGS)
   # NOTE: requires pip install nanobind scikit-build-core
+  if(NOT PYTHON_EXECUTABLE)
+    find_package(
+      Python3
+      COMPONENTS Interpreter
+      REQUIRED)
+    set(PYTHON_EXECUTABLE "${Python3_EXECUTABLE}")
+  endif()
   add_custom_target(
-    spacevecalg-nanobind-bindings
-    COMMAND pip install --no-build-isolation -ve .
+    SpaceVecAlg-nanobind-bindings
+    COMMAND ${PYTHON_EXECUTABLE} -m pip install --no-build-isolation -ve .
     WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/binding/nanobind
     COMMENT
       "Building and installing nanobind bindings for SpaceVecAlg (non-isolated)"
   )
-  # add_dependencies(spacevecalg-nanobind-bindings install)
 
   add_custom_target(
-    force-spacevecalg-nanobind-bindings
-    COMMAND pip install .
+    force-SpaceVecAlg-nanobind-bindings
+    COMMAND ${PYTHON_EXECUTABLE} -m pip install .
     WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/binding/nanobind
     COMMENT "Installing nanobind bindings for SpaceVecAlg (isolated)")
-
-  # add_dependencies(spacevecalg-nanobind-bindings SpaceVecAlg)
-  # add_dependencies(force-nanobind-bindings SpaceVecAlg)
 endif()

@@ -14,7 +14,7 @@ base = python_requires("Eigen3ToPython/latest@multi-contact/dev")
 
 class SpaceVecAlgConan(base.Eigen3ToPythonConan):
     name = "SpaceVecAlg"
-    version = "1.2.7"
+    version = "1.2.8"
     description = "Spatial Vector Algebra with the Eigen library"
     topics = ("robotics", "algebra", "eigen", "python")
     url = "https://github.com/jrl-umi3218/SpaceVecAlg"

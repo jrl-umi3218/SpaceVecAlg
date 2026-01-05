@@ -13,3 +13,4 @@ build*
 .cache/
 result
 compile_commands.json
+result

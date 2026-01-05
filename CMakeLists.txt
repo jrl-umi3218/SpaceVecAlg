@@ -22,6 +22,14 @@ JRL_CMAKE_MODULES
 TARGET jrl-cmakemodules::jrl-cmakemodules
 PROPERTY INTERFACE_INCLUDE_DIRECTORIES)
 
+set(JRL_CMAKEMODULES_USE_V2 ON CACHE BOOL "Use jrl-cmakemodules v2")
+find_package(jrl-cmakemodules 0.2.0 CONFIG QUIET)
+if(jrl-cmakemodules_FOUND)
+else()
+  message(STATUS "Using jrl-cmakemodules from source directory: cmake-v2")
+  add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/cmake-v2 jrl-cmakemodules)
+endif()
+
 include(${JRL_CMAKE_MODULES}/base.cmake)
 include(${JRL_CMAKE_MODULES}/cython/cython.cmake)
 include(${JRL_CMAKE_MODULES}/msvc-specific.cmake)

@@ -2,7 +2,7 @@
 # Copyright 2012-2019 CNRS-UM LIRMM, CNRS-AIST JRL
 #
 
-cmake_minimum_required(VERSION 3.20)
+cmake_minimum_required(VERSION 3.22)
 
 set(CMAKE_CXX_STANDARD 17)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
@@ -16,9 +16,15 @@ set(PROJECT_VERSION 1.2.8)
 set(PROJECT_USE_CMAKE_EXPORT TRUE)
 set(PYTHON_BINDING_USE_PYTEST ON)
 
-include(cmake/base.cmake)
-include(cmake/cython/cython.cmake)
-include(cmake/msvc-specific.cmake)
+find_package(jrl-cmakemodules CONFIG)
+get_property(
+JRL_CMAKE_MODULES
+TARGET jrl-cmakemodules::jrl-cmakemodules
+PROPERTY INTERFACE_INCLUDE_DIRECTORIES)
+
+include(${JRL_CMAKE_MODULES}/base.cmake)
+include(${JRL_CMAKE_MODULES}/cython/cython.cmake)
+include(${JRL_CMAKE_MODULES}/msvc-specific.cmake)
 
 # Disable -Werror on Unix for now.
 set(CXX_DISABLE_WERROR True)

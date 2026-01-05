@@ -11,3 +11,4 @@ CMakeLists.txt.user*
 build
 .cache/
 compile_commands.json
+result

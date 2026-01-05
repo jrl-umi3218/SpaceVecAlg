@@ -1,26 +1,34 @@
+# FIXME: aarch64, python bindings
 {
-  description = "SpaceVecAlg";
+  description = "Implementation of spatial vector algebra with the Eigen3 linear algebra library.";
 
   inputs = {
-    mc-rtc-nix.url = "github:mc-rtc/nixpkgs";
-    # mc-rtc-nix.url = "path:/home/arnaud/devel/mc-rtc-nix/nixpkgs";
-    # mc-rtc-nix.url = "github:arntanguy/nixpkgs-1?ref=topic/flakoboros";
+    gepetto.url = "github:gepetto/nix";
+    flake-parts.follows = "gepetto/flake-parts";
+    nixpkgs.follows = "gepetto/nixpkgs";
+    nix-ros-overlay.follows = "gepetto/nix-ros-overlay";
+    systems.follows = "gepetto/systems";
+    treefmt-nix.follows = "gepetto/treefmt-nix";
   };
 
   outputs =
     inputs:
-    inputs.mc-rtc-nix.lib.mkFlakoboros inputs (
-      { lib, ... }:
-      {
-        extraPackages = [ "ninja" ];
-        overrideAttrs.spacevecalg =
-          { drv-prev, ... }:
-          {
-            src = lib.cleanSource ./.;
-            cmakeFlags = drv-prev.cmakeFlags ++ [
-              "-DPYTHON_BINDINGS=OFF"
-            ];
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      # FIXME: cross-compilation for aarch64 does not work as-is
+      # systems = import inputs.systems;
+      systems = [ "x86_64-linux" ];
+      imports = [ inputs.gepetto.flakeModule ];
+      perSystem =
+        {
+          pkgs,
+          self',
+          ...
+        }:
+        {
+          packages = {
+            default = self'.packages.spacevecalg;
+            spacevecalg = pkgs.callPackage ./. { };
           };
-      }
-    );
+        };
+    };
 }

@@ -8,6 +8,7 @@
   eigen,
   boost,
   python313Packages,
+  sphinx,
 
   # propagatedBuildInputs
   jrl-cmakemodules,
@@ -34,6 +35,9 @@ stdenv.mkDerivation {
     boost
     python313Packages.python
     python313Packages.nanobind
+    sphinx
+    python313Packages.sphinx-autoapi
+    python313Packages.sphinx-book-theme
   ];
 
   propagatedBuildInputs = [

@@ -1,48 +1,7 @@
-# Set the minimum CMake version and policies for highest tested version
-cmake_minimum_required(VERSION 3.15...4.0)
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-
-project(SpaceVecAlg)
-
-# Warn if the user invokes CMake directly
-if(NOT SKBUILD)
-  message(
-    WARNING
-      "\
-  This CMake file is meant to be executed using 'scikit-build-core'.
-  Running it directly will almost certainly not produce the desired
-  result. If you are a user trying to install this package, use the
-  command below, which will install all necessary build dependencies,
-  compile the package in an isolated environment, and then install it.
-  =====================================================================
-   $ pip install .
-  =====================================================================
-  If you are a software developer, and this is your own package, then
-  it is usually much more efficient to install the build dependencies
-  in your environment once and use the following command that avoids
-  a costly creation of a new virtual environment at every compilation:
-  =====================================================================
-   $ pip install nanobind scikit-build-core[pyproject]
-   $ pip install --no-build-isolation -ve .
-  =====================================================================
-  You may optionally add -Ceditable.rebuild=true to auto-rebuild when
-  the package is imported. Otherwise, you need to rerun the above
-  after editing C++ files.")
-endif()
-
-# Try to import all Python components potentially needed by nanobind
-find_package(
-  Python 3.8 REQUIRED
-  COMPONENTS Interpreter Development.Module
-  OPTIONAL_COMPONENTS Development.SABIModule)
-
-# Import nanobind through CMake's find_package mechanism
-find_package(nanobind CONFIG REQUIRED)
-
 # We are now ready to compile the actual extension module
 nanobind_add_module(
   # Name of the extension
-  _sva
+  sva_pywrap
   # Target the stable ABI for Python 3.12+, which reduces the number of binary
   # wheels that must be built. This does nothing on older Python versions
   STABLE_ABI
@@ -52,32 +11,50 @@ nanobind_add_module(
   # If your project builds multiple extensions, you can replace this flag by
   # NB_SHARED to conserve space by reusing a shared libnanobind across libraries
   NB_STATIC
+  LTO
+  NB_SUPPRESS_WARNINGS
   # Source code goes here
   src/sva_module/sva_module.cpp
   src/sva_module/bind_PTransformd.cpp
   src/sva_module/bind_ForceVecd.cpp
   src/sva_module/bind_MotionVecd.cpp)
-
-find_package(SpaceVecAlg REQUIRED)
-target_link_libraries(_sva PUBLIC SpaceVecAlg::SpaceVecAlg)
+jrl_check_python_module_name(sva_pywrap)
+target_link_libraries(sva_pywrap PRIVATE SpaceVecAlg)
 target_include_directories(
-  _sva PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>)
-# Install directive for scikit-build-core
-install(TARGETS _sva LIBRARY DESTINATION sva)
+  sva_pywrap PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>)
+jrl_target_set_default_compile_options(sva_pywrap PRIVATE)
+jrl_target_set_output_directory(sva_pywrap OUTPUT_DIRECTORY
+                                ${CMAKE_BINARY_DIR}/lib/site-packages/sva)
+
+jrl_python_generate_init_py(
+  sva_pywrap OUTPUT_PATH ${CMAKE_BINARY_DIR}/lib/site-packages/sva/__init__.py)
 
 # Display output of stub generation
 set(CMAKE_EXECUTE_PROCESS_COMMAND_ECHO STDOUT)
 
 nanobind_add_stub(
-  _sva_stub
+  sva_pywrap_stub
   MODULE
-  sva
+  sva.sva_pywrap
   OUTPUT
-  ${SKBUILD_PLATLIB_DIR}/sva/__init__.pyi
-  MARKER_FILE
-  ${SKBUILD_PLATLIB_DIR}/sva/py.typed
+  ${CMAKE_BINARY_DIR}/lib/site-packages/test_project/test_project_pywrap.pyi
   PYTHON_PATH
-  ${SKBUILD_PLATLIB_DIR}/sva/
+  ${CMAKE_BINARY_DIR}/lib/site-packages
   DEPENDS
-  _sva
-  INSTALL_TIME)
+  sva_pywrap
+  VERBOSE)
+
+jrl_python_compile_all(DIRECTORY ${CMAKE_BINARY_DIR}/lib/site-packages/sva
+                       VERBOSE)
+
+jrl_python_compute_install_dir(python_install_dir)
+install(
+  DIRECTORY ${CMAKE_BINARY_DIR}/lib/site-packages/sva
+  DESTINATION ${python_install_dir}
+  FILES_MATCHING
+  PATTERN "*.py"
+  PATTERN "*.pyc"
+  PATTERN "*.pyi"
+  PATTERN "*.typed"
+  PATTERN "*.so"
+  PATTERN "*.pyd")

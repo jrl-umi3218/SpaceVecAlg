@@ -29,11 +29,6 @@ jrl_configure_defaults()
 
 set(CMAKE_CXX_STANDARD 17)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
-set(PROJECT_USE_CMAKE_EXPORT TRUE)
-set(PYTHON_BINDING_USE_PYTEST ON)
-
-# Disable -Werror on Unix for now.
-set(CXX_DISABLE_WERROR True)
 
 # -------
 # OPTIONS
@@ -41,7 +36,8 @@ set(CXX_DISABLE_WERROR True)
 jrl_option(BUILD_TESTING "Build testing." ON)
 jrl_option(BENCHMARKS "Generate benchmark." OFF)
 jrl_option(NANOBIND_BINDINGS "Build nanobind Python bindings" ON)
-# jrl_option(PYTHON_BINDING "Build nanobind Python bindings" OFF)
+# Disable old python bindings jrl_option(PYTHON_BINDING "Build cython Python
+# bindings" OFF)
 
 # ------------
 # DEPENDENCIES
@@ -49,9 +45,10 @@ jrl_option(NANOBIND_BINDINGS "Build nanobind Python bindings" ON)
 jrl_find_package(Eigen3 REQUIRED)
 
 # For MSVC, set local environment variable to enable finding the built dll of
-# the main library when launching ctest with RUN_TESTS if(MSVC)
-# set(CMAKE_MSVCIDE_RUN_PATH "\$(SolutionDir)/src/\$(Configuration)")
-# endif(MSVC)
+# the main library when launching ctest with RUN_TESTS
+if(MSVC)
+  set(CMAKE_MSVCIDE_RUN_PATH "\$(SolutionDir)/src/\$(Configuration)")
+endif(MSVC)
 
 # FIXME(jrl-cmakemodules v2): when moving the code of this section to
 # src/CMakeLists.txt it fails because it cannot find SpaceVecAlg in
@@ -106,8 +103,8 @@ if(NANOBIND_BINDINGS)
   add_subdirectory(binding/nanobind)
 endif()
 
-# XXX: Disable cython bindings if(PYTHON_BINDING)
-# add_subdirectory(binding/python) endif()
+# Disable cython bindings if(PYTHON_BINDING) add_subdirectory(binding/python)
+# endif()
 
 # Export the package files (headers, targets, config files, etc.)
 jrl_export_package()

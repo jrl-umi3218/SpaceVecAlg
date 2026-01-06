@@ -23,6 +23,7 @@ stdenv.mkDerivation {
         ./CMakeLists.txt
         ./src
         ./tests
+        ./cmake-v2
     ];
   };
 

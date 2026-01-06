@@ -38,7 +38,7 @@ set(CXX_DISABLE_WERROR True)
 jrl_option(BUILD_TESTING "Build testing." ON)
 jrl_option(BENCHMARKS "Generate benchmark." OFF)
 jrl_option(NANOBIND_BINDINGS "Build nanobind Python bindings" ON)
-jrl_option(PYTHON_BINDING "Build nanobind Python bindings" OFF)
+# jrl_option(PYTHON_BINDING "Build nanobind Python bindings" OFF)
 
 # ------------
 # DEPENDENCIES
@@ -103,9 +103,10 @@ if(NANOBIND_BINDINGS)
   add_subdirectory(binding/nanobind)
 endif()
 
-if(PYTHON_BINDING)
-  add_subdirectory(binding/python)
-endif()
+# XXX: Disable cython bindings
+# if(PYTHON_BINDING)
+#   add_subdirectory(binding/python)
+# endif()
 
 # Export the package files (headers, targets, config files, etc.)
 jrl_export_package()

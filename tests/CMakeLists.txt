@@ -1,19 +1,20 @@
 #
-# Copyright 2012-2020 CNRS-UM LIRMM, CNRS-AIST JRL
+# Copyright 2012-2025 CNRS-UM LIRMM, CNRS-AIST JRL
 #
 
-enable_testing()
-
-find_package(Boost REQUIRED COMPONENTS unit_test_framework timer)
+jrl_find_package(Boost CONFIG REQUIRED COMPONENTS unit_test_framework timer)
 
 macro(addUnitTest name)
   if(${BUILD_TESTING})
     add_executable(${name} ${name}.cpp)
     target_link_libraries(${name} PUBLIC SpaceVecAlg Boost::unit_test_framework)
     set_target_properties(${name} PROPERTIES FOLDER "tests")
-    add_test(${name}Unit ${name})
+    add_test(
+      NAME ${name}Unit
+      COMMAND ${name}
+      WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
     # Adding a project configuration file (for MSVC only)
-    generate_msvc_dot_user_file(${name})
+    # generate_msvc_dot_user_file(${name})
   endif()
 endmacro(addUnitTest)
 
@@ -23,7 +24,7 @@ macro(addBenchmark name)
     target_link_libraries(${name} PUBLIC SpaceVecAlg Boost::unit_test_framework
                                          Boost::timer)
     # Adding a project configuration file (for MSVC only)
-    generate_msvc_dot_user_file(${name})
+    # generate_msvc_dot_user_file(${name})
   endif()
 endmacro(addBenchmark)
 

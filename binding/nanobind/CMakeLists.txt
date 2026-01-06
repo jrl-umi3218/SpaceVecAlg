@@ -14,14 +14,12 @@ nanobind_add_module(
   LTO
   NB_SUPPRESS_WARNINGS
   # Source code goes here
-  src/sva_module/sva_module.cpp
-  src/sva_module/bind_PTransformd.cpp
-  src/sva_module/bind_ForceVecd.cpp
-  src/sva_module/bind_MotionVecd.cpp)
+  src/sva/sva_module.cpp
+  src/sva/bind_PTransformd.cpp
+  src/sva/bind_ForceVecd.cpp
+  src/sva/bind_MotionVecd.cpp)
 jrl_check_python_module_name(sva_pywrap)
 target_link_libraries(sva_pywrap PRIVATE SpaceVecAlg)
-target_include_directories(
-  sva_pywrap PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>)
 jrl_target_set_default_compile_options(sva_pywrap PRIVATE)
 jrl_target_set_output_directory(sva_pywrap OUTPUT_DIRECTORY
                                 ${CMAKE_BINARY_DIR}/lib/site-packages/sva)
@@ -37,10 +35,11 @@ nanobind_add_stub(
   MODULE
   sva.sva_pywrap
   OUTPUT
-  ${CMAKE_BINARY_DIR}/lib/site-packages/test_project/test_project_pywrap.pyi
+  ${CMAKE_BINARY_DIR}/lib/site-packages/sva/sva_pywrap.pyi
   PYTHON_PATH
   ${CMAKE_BINARY_DIR}/lib/site-packages
-  # MARKER_FILE ${CMAKE_BINARY_DIR}/lib/site-packages/sva/py.typed
+  MARKER_FILE
+  ${CMAKE_BINARY_DIR}/lib/site-packages/sva/py.typed
   DEPENDS
   sva_pywrap
   VERBOSE)

@@ -96,6 +96,13 @@ if(BUILD_TESTING OR BENCHMARKS)
   add_subdirectory(tests)
 endif()
 
+if(NANOBIND_BINDINGS)
+  message(STATUS "[${PROJECT_NAME}] Building Python bindings")
+  jrl_find_python(3.8 REQUIRED COMPONENTS Interpreter Development.Module)
+  jrl_find_nanobind(2.4.0 CONFIG REQUIRED)
+  add_subdirectory(binding/nanobind)
+endif()
+
 if(PYTHON_BINDING)
   add_subdirectory(binding/python)
 endif()

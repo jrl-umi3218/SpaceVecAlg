@@ -7,7 +7,8 @@
   cmake,
   eigen,
   boost,
-  python3Packages,
+  git,
+  python313Packages,
 
   # propagatedBuildInputs
   jrl-cmakemodules,
@@ -32,17 +33,20 @@ stdenv.mkDerivation {
     cmake
     eigen
     boost
-    python3Packages.python
+    git
+    python313Packages.python
+    python313Packages.nanobind
   ];
 
   propagatedBuildInputs = [
     jrl-cmakemodules
-    python3Packages.numpy
+    python313Packages.numpy
   ];
 
   # FIXME: upgrade python bindings (nanobind?)
   cmakeFlags = [
     "-DPYTHON_BINDING=OFF"
+    "-DNANOBIND_BINDINGS=ON"
     "-DBUILD_TESTING=ON"
   ];
 }

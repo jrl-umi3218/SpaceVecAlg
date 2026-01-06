@@ -7,7 +7,6 @@
   cmake,
   eigen,
   boost,
-  git,
   python313Packages,
 
   # propagatedBuildInputs
@@ -33,7 +32,6 @@ stdenv.mkDerivation {
     cmake
     eigen
     boost
-    git
     python313Packages.python
     python313Packages.nanobind
   ];
@@ -45,7 +43,6 @@ stdenv.mkDerivation {
 
   # FIXME: upgrade python bindings (nanobind?)
   cmakeFlags = [
-    "-DPYTHON_BINDING=OFF"
     "-DNANOBIND_BINDINGS=ON"
     "-DBUILD_TESTING=ON"
   ];

@@ -5,6 +5,9 @@
 cmake_minimum_required(VERSION 3.22)
 
 find_package(jrl-cmakemodules 0.2.0 CONFIG QUIET)
+set(JRL_CMAKEMODULES_USE_V2
+    ON
+    CACHE BOOL "Use jrl-cmakemodules v2")
 if(jrl-cmakemodules_FOUND)
   message(
     STATUS "Using jrl-cmakemodules from CMake package: ${jrl-cmakemodules_DIR}")
@@ -13,9 +16,6 @@ else()
   add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/cmake-v2 jrl-cmakemodules)
 endif()
 
-# Configure default binary and install directories, build type, etc.
-jrl_configure_defaults()
-
 project(
   SpaceVecAlg
   VERSION 1.2.7
@@ -23,6 +23,9 @@ project(
     "Implementation of spatial vector algebra with the Eigen3 linear algebra library."
   HOMEPAGE_URL "https://github.com/jrl-umi3218/SpaceVecAlg"
   LANGUAGES CXX)
+
+# Configure default binary and install directories, build type, etc.
+jrl_configure_defaults()
 
 set(CMAKE_CXX_STANDARD 17)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
@@ -103,10 +106,8 @@ if(NANOBIND_BINDINGS)
   add_subdirectory(binding/nanobind)
 endif()
 
-# XXX: Disable cython bindings
-# if(PYTHON_BINDING)
-#   add_subdirectory(binding/python)
-# endif()
+# XXX: Disable cython bindings if(PYTHON_BINDING)
+# add_subdirectory(binding/python) endif()
 
 # Export the package files (headers, targets, config files, etc.)
 jrl_export_package()

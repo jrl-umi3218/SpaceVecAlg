@@ -40,6 +40,7 @@ nanobind_add_stub(
   ${CMAKE_BINARY_DIR}/lib/site-packages/test_project/test_project_pywrap.pyi
   PYTHON_PATH
   ${CMAKE_BINARY_DIR}/lib/site-packages
+  # MARKER_FILE ${CMAKE_BINARY_DIR}/lib/site-packages/sva/py.typed
   DEPENDS
   sva_pywrap
   VERBOSE)

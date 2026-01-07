@@ -18,6 +18,24 @@
         "type": "github"
       }
     },
+    "flake-parts_2": {
+      "inputs": {
+        "nixpkgs-lib": "nixpkgs-lib_2"
+      },
+      "locked": {
+        "lastModified": 1765835352,
+        "narHash": "sha256-XswHlK/Qtjasvhd1nOa1e8MgZ8GS//jBoTqWtrS1Giw=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "a34fae9c08a15ad73f295041fec82323541400a9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -71,6 +89,26 @@
       "original": {
         "owner": "gepetto",
         "repo": "nix",
+        "type": "github"
+      }
+    },
+    "jrl-cmakemodules": {
+      "inputs": {
+        "flake-parts": "flake-parts_2",
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1767781441,
+        "narHash": "sha256-0VVUWuu1g4tLxsfwnhMIc/fXKoa061fsm+KB9lYcnnM=",
+        "owner": "ahoarau",
+        "repo": "jrl-cmakemodules",
+        "rev": "9279291821cd00fa616f227d5a9cfad03a125e9c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ahoarau",
+        "ref": "jrl-next",
+        "repo": "jrl-cmakemodules",
         "type": "github"
       }
     },
@@ -146,6 +184,37 @@
         "type": "github"
       }
     },
+    "nixpkgs-lib_2": {
+      "locked": {
+        "lastModified": 1765674936,
+        "narHash": "sha256-k00uTP4JNfmejrCLJOwdObYC9jHRrr/5M/a/8L2EIdo=",
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "rev": "2075416fcb47225d9b68ac469a5c4801a9c4dd85",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1766153546,
+        "narHash": "sha256-lIagbRYXHD1DClqzuqmkC3N/GOxZrwTh13eRtmNUyEg=",
+        "owner": "nim65s",
+        "repo": "nixpkgs",
+        "rev": "a945047facf45faddcbfa2315207950334c62720",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "flake-parts": [
@@ -153,6 +222,7 @@
           "flake-parts"
         ],
         "gepetto": "gepetto",
+        "jrl-cmakemodules": "jrl-cmakemodules",
         "nix-ros-overlay": [
           "gepetto",
           "nix-ros-overlay"

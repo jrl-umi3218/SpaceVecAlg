@@ -24,7 +24,7 @@ stdenv.mkDerivation {
         ./CMakeLists.txt
         ./src
         ./tests
-        ./cmake-v2
+        ./cmake
     ];
   };
 
@@ -38,6 +38,7 @@ stdenv.mkDerivation {
     sphinx
     python313Packages.sphinx-autodoc2
     python313Packages.sphinx-book-theme
+    jrl-cmakemodules
   ];
 
   propagatedBuildInputs = [

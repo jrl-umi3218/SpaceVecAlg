@@ -9,6 +9,10 @@
     nix-ros-overlay.follows = "gepetto/nix-ros-overlay";
     systems.follows = "gepetto/systems";
     treefmt-nix.follows = "gepetto/treefmt-nix";
+    # XXX: use official flake when v2 PR is merged
+    jrl-cmakemodules = {
+      url = "github:ahoarau/jrl-cmakemodules?ref=jrl-next";
+    };
   };
 
   outputs =
@@ -27,7 +31,9 @@
         {
           packages = {
             default = self'.packages.spacevecalg;
-            spacevecalg = pkgs.callPackage ./. { };
+            spacevecalg = pkgs.callPackage ./. {
+                jrl-cmakemodules = inputs.jrl-cmakemodules.packages.${pkgs.system}.default;
+            };
           };
         };
     };

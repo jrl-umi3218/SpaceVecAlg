@@ -24,8 +24,21 @@ jrl_target_set_default_compile_options(sva_pywrap PRIVATE)
 jrl_target_set_output_directory(sva_pywrap OUTPUT_DIRECTORY
                                 ${CMAKE_BINARY_DIR}/lib/site-packages/sva)
 
-jrl_python_generate_init_py(
-  sva_pywrap OUTPUT_PATH ${CMAKE_BINARY_DIR}/lib/site-packages/sva/__init__.py)
+# XXX: as-is the default generated __init__.py includes the package as
+# sva.sva_pywrap.<classname>. I prefer all symbols to be in the public namespace sva.<classname> thus we install our own
+# jrl_python_generate_init_py(
+#   sva_pywrap OUTPUT_PATH ${CMAKE_BINARY_DIR}/lib/site-packages/sva/__init__.py)
+configure_file(
+  ${CMAKE_CURRENT_SOURCE_DIR}/__init__.py
+  ${CMAKE_BINARY_DIR}/lib/site-packages/sva/__init__.py
+  COPYONLY
+)
+
+# This is needed for LSP to recognise sva.<symbol> instead of sva.sva_pywrap.<symbol>
+file(WRITE
+  ${CMAKE_BINARY_DIR}/lib/site-packages/sva/__init__.pyi
+  "from .sva_pywrap import *\n"
+)
 
 # Display output of stub generation
 set(CMAKE_EXECUTE_PROCESS_COMMAND_ECHO STDOUT)

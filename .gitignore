@@ -14,3 +14,4 @@ build*
 result
 compile_commands.json
 result
+.direnv/

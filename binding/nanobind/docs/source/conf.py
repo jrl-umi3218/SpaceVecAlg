@@ -14,17 +14,21 @@ release = "2.12.0"
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ["autoapi.extension"]
+extensions = [
+    "sphinx.ext.autodoc",
+    "sphinx.ext.napoleon",  # For Google/NumPy docstring support
+]
 
 templates_path = ["_templates"]
 exclude_patterns = []
 
-autoapi_dirs = [
-    "/home/arnaud/devel/mc-rtc-nix/workspace/SpaceVecAlg/build/lib/site-packages/sva"
-]
-autoapi_file_patterns = ["*.pyi", "*.py"]
-autoapi_python_class_content = "both"
-
+# autodoc options
+autodoc_typehints = "description"
+autodoc_default_options = {
+    "members": True,
+    "undoc-members": True,
+    "show-inheritance": True,
+}
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
@@ -40,7 +44,4 @@ html_theme_options = {
 html_title = ""
 # html_logo = "_static/images/mc_rtc_logo.png"
 
-
 html_static_path = ["_static"]
-
-autodoc_typehints = "description"

@@ -36,7 +36,7 @@ stdenv.mkDerivation {
     python313Packages.python
     python313Packages.nanobind
     sphinx
-    python313Packages.sphinx-autoapi
+    python313Packages.sphinx-autodoc2
     python313Packages.sphinx-book-theme
   ];
 
@@ -50,4 +50,8 @@ stdenv.mkDerivation {
     "-DNANOBIND_BINDINGS=ON"
     "-DBUILD_TESTING=ON"
   ];
+
+  shellHook = ''
+    export PYTHONPATH="$PWD/build/lib/site-packages:$PYTHONPATH"
+  '';
 }

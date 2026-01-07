@@ -5,16 +5,8 @@
 cmake_minimum_required(VERSION 3.22)
 
 find_package(jrl-cmakemodules 0.2.0 CONFIG QUIET)
-set(JRL_CMAKEMODULES_USE_V2
-    ON
-    CACHE BOOL "Use jrl-cmakemodules v2")
-if(jrl-cmakemodules_FOUND)
-  message(
-    STATUS "Using jrl-cmakemodules from CMake package: ${jrl-cmakemodules_DIR}")
-else()
-  message(STATUS "Using jrl-cmakemodules from source directory: cmake-v2")
-  add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/cmake-v2 jrl-cmakemodules)
-endif()
+
+include(cmake/get-jrl-cmakemodules.cmake)
 
 project(
   SpaceVecAlg

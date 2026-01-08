@@ -20,6 +20,7 @@ nanobind_add_module(
   src/sva/bind_MotionVecd.cpp)
 jrl_check_python_module_name(sva_pywrap)
 target_link_libraries(sva_pywrap PRIVATE SpaceVecAlg)
+target_link_libraries(sva_pywrap PRIVATE nanoeigenpy::nanoeigenpy_headers)
 jrl_target_set_default_compile_options(sva_pywrap PRIVATE)
 jrl_target_set_output_directory(sva_pywrap OUTPUT_DIRECTORY
                                 ${CMAKE_BINARY_DIR}/lib/site-packages/sva)
@@ -28,7 +29,7 @@ jrl_target_set_output_directory(sva_pywrap OUTPUT_DIRECTORY
 # sva.sva_pywrap.<classname>. I prefer all symbols to be in the public namespace
 # sva.<classname> thus we install our own jrl_python_generate_init_py(
 # sva_pywrap OUTPUT_PATH ${CMAKE_BINARY_DIR}/lib/site-packages/sva/__init__.py)
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/__init__.py
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/__init__.conf.py
                ${CMAKE_BINARY_DIR}/lib/site-packages/sva/__init__.py COPYONLY)
 
 # This is needed for LSP to recognise sva.<symbol> instead of

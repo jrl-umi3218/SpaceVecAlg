@@ -30,15 +30,21 @@ stdenv.mkDerivation {
 
   doCecks = true; # run unit tests
   nativeBuildInputs = [
+    # build dependencies
     cmake
+    jrl-cmakemodules
     eigen
     boost
     python313Packages.python
     python313Packages.nanobind
+    python313Packages.nanoeigenpy
+    # testing
+    python313Packages.pytest
+    python313Packages.scipy
+    # documentation
     sphinx
     python313Packages.sphinx-autodoc2
     python313Packages.sphinx-book-theme
-    jrl-cmakemodules
   ];
 
   propagatedBuildInputs = [

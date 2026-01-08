@@ -53,6 +53,7 @@ if(NANOBIND_BINDINGS)
   message(STATUS "[${PROJECT_NAME}] Building Python bindings")
   jrl_find_python(3.8 REQUIRED COMPONENTS Interpreter Development.Module)
   jrl_find_nanobind(2.4.0 CONFIG REQUIRED)
+  jrl_find_package(nanoeigenpy CONFIG REQUIRED)
   add_subdirectory(binding/nanobind)
 endif()
 

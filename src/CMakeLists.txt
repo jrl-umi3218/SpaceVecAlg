@@ -29,7 +29,7 @@ target_include_directories(
   SpaceVecAlg INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
                         $<INSTALL_INTERFACE:include>)
 
-jrl_target_headers(SpaceVecAlg PUBLIC HEADERS ${HEADERS})
+jrl_target_headers(SpaceVecAlg PUBLIC HEADERS ${HEADERS} BASE_DIRS src)
 set_target_properties(SpaceVecAlg PROPERTIES VERSION ${PROJECT_VERSION})
 
 # Declare export components

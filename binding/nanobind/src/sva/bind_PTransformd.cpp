@@ -15,6 +15,10 @@ void bind_PTransformd(nb::module_ & sva)
   using PT = sva::PTransformd;
   using Vec3 = Eigen::Vector3d;
   using Mat3 = Eigen::Matrix3d;
+  using MV = sva::MotionVecd;
+  using FV = sva::ForceVecd;
+  using RBI = sva::RBInertiad;
+  using ABI = sva::ABInertiad;
 
   auto pt = nb::class_<PT>(sva, "PTransformd");
   pt.def(nb::init(), "Default constructor, rotation and translation are unitialized")
@@ -28,19 +32,78 @@ void bind_PTransformd(nb::module_ & sva)
       .def_static("Identity", &PT::Identity, "Creates an identity transformation")
       .def("rotation", nb::overload_cast<>(&PT::rotation, nb::const_), nb::rv_policy::reference_internal,
            "Get the rotation matrix")
+      .def("rotation", nb::overload_cast<>(&PT::rotation), nb::rv_policy::reference_internal,
+           "Get the rotation matrix (mutable)")
       .def("translation", nb::overload_cast<>(&PT::translation, nb::const_), nb::rv_policy::reference_internal,
            "Get the translation vector")
+      .def("translation", nb::overload_cast<>(&PT::translation), nb::rv_policy::reference_internal,
+           "Get the translation vector (mutable)")
       .def("inv", &PT::inv, "Return the inverse transformation")
       .def("matrix", &PT::matrix, "Return the 6x6 Plücker transformation matrix")
+      .def("dualMatrix", &PT::dualMatrix, "Return the 6x6 dual Plücker transformation matrix")
+      .def(
+          "cast", [](const PT & self) { return self.cast<double>(); },
+          "Cast to another scalar type (only double supported in binding)")
       .def("__repr__",
            [](const PT & self)
            {
              std::ostringstream ss;
              ss << self;
              return ss.str();
-           });
+           })
 
-  pt.def("dualMatrix", &PT::dualMatrix, "Return the 6x6 dual Plücker transformation matrix");
+      // Operator overloads
+      .def(
+          "__mul__", [](const PT & self, const PT & other) { return self * other; }, nb::arg("other"),
+          "Multiply two PTransformd objects")
+      .def(
+          "__mul__", [](const PT & self, const MV & mv) { return self * mv; }, nb::arg("motion_vec"),
+          "Transform a MotionVecd (X*v)")
+      // .def("__mul__", [](const PT & self, const FV & fv) { return self.dualMul(fv); }, nb::arg("force_vec"),
+      //      "Transform a ForceVecd (X*f)")
+      // .def("__mul__", [](const PT & self, const RBI & rbI) { return self.dualMul(rbI); }, nb::arg("rb_inertia"),
+      //      "Transform a RBInertiad (X*IX^-1)")
+      // .def("__mul__", [](const PT & self, const ABI & abI) { return self.dualMul(abI); }, nb::arg("ab_inertia"),
+      //      "Transform an ABInertiad (X*IX^-1)")
+      .def(
+          "__eq__", [](const PT & self, const PT & other) { return self == other; }, nb::arg("other"),
+          "Check equality of two PTransformd objects")
+      .def(
+          "__ne__", [](const PT & self, const PT & other) { return self != other; }, nb::arg("other"),
+          "Check inequality of two PTransformd objects")
+
+      // Explicit named methods for inverse and transpose variants
+      .def(
+          "invMul", [](const PT & self, const MV & mv) { return self.invMul(mv); }, nb::arg("motion_vec"),
+          "Transform a MotionVecd by the inverse (X^-1*v)")
+      .def(
+          "dualMul", [](const PT & self, const FV & fv) { return self.dualMul(fv); }, nb::arg("force_vec"),
+          "Transform a ForceVecd (X*f)")
+      .def(
+          "dualMul", [](const PT & self, const RBI & rbI) { return self.dualMul(rbI); }, nb::arg("rb_inertia"),
+          "Transform a RBInertiad (X*IX^-1)")
+      .def(
+          "dualMul", [](const PT & self, const ABI & abI) { return self.dualMul(abI); }, nb::arg("ab_inertia"),
+          "Transform an ABInertiad (X*IX^-1)")
+      .def(
+          "transMul", [](const PT & self, const FV & fv) { return self.transMul(fv); }, nb::arg("force_vec"),
+          "Transform a ForceVecd by the transpose (Xt*f)")
+      .def(
+          "transMul", [](const PT & self, const RBI & rbI) { return self.transMul(rbI); }, nb::arg("rb_inertia"),
+          "Transform a RBInertiad by the transpose (XtIX)")
+      .def(
+          "transMul", [](const PT & self, const ABI & abI) { return self.transMul(abI); }, nb::arg("ab_inertia"),
+          "Transform an ABInertiad by the transpose (XtIX)")
+
+      // Helper methods for extracting parts of multiplication results
+      .def("angularMul", &PT::angularMul, nb::arg("motion_vec"), "Compute angular part of X*v")
+      .def("linearMul", &PT::linearMul, nb::arg("motion_vec"), "Compute linear part of X*v")
+      .def("angularInvMul", &PT::angularInvMul, nb::arg("motion_vec"), "Compute angular part of X^-1*v")
+      .def("linearInvMul", &PT::linearInvMul, nb::arg("motion_vec"), "Compute linear part of X^-1*v")
+      .def("coupleDualMul", &PT::coupleDualMul, nb::arg("force_vec"), "Compute couple part of X*f")
+      .def("forceDualMul", &PT::forceDualMul, nb::arg("force_vec"), "Compute force part of X*f")
+      .def("coupleTransMul", &PT::coupleTransMul, nb::arg("force_vec"), "Compute couple part of Xt*f")
+      .def("forceTransMul", &PT::forceTransMul, nb::arg("force_vec"), "Compute force part of Xt*f");
 
   // Bind templated free functions in the sva namespace
   sva.def("RotX", &sva::RotX<double>, nb::arg("theta"), "Create a rotation matrix about the X axis");
@@ -57,18 +120,4 @@ void bind_PTransformd(nb::module_ & sva)
   sva.def("interpolate", &sva::interpolate<double>, nb::arg("from"), nb::arg("to"), nb::arg("t"),
           "Interpolate between two PTransformd objects");
   sva.def("sinc_inv", &sva::sinc_inv<double>, nb::arg("x"), "numerically stable inverse sinc function");
-
-  // bind operators
-  pt.def(
-      "__mul__", [](const PT & self, const PT & other) { return self * other; }, nb::arg("other"),
-      "Multiply two PTransformd objects");
-
-  pt.def(
-      "__eq__", [](const PT & self, const PT & other) { return self == other; }, nb::arg("other"),
-      "Check equality of two PTransformd objects");
-
-  pt.def(
-      "__ne__", [](const PT & self, const PT & other) { return self != other; }, nb::arg("other"),
-      "Check inequality of two PTransformd objects");
 }
-// ...existing code...

@@ -1,4 +1,3 @@
-# FIXME: aarch64, python bindings
 {
   description = "Implementation of spatial vector algebra with the Eigen3 linear algebra library.";
 
@@ -18,21 +17,20 @@
   outputs =
     inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      # FIXME: cross-compilation for aarch64 does not work as-is
-      # systems = import inputs.systems;
-      systems = [ "x86_64-linux" ];
+      systems = import inputs.systems;
       imports = [ inputs.gepetto.flakeModule ];
       perSystem =
         {
           pkgs,
           self',
+          inputs',
           ...
         }:
         {
           packages = {
             default = self'.packages.spacevecalg;
             spacevecalg = pkgs.callPackage ./. {
-                jrl-cmakemodules = inputs.jrl-cmakemodules.packages.${pkgs.system}.default;
+                jrl-cmakemodules = inputs'.jrl-cmakemodules.packages.default;
             };
           };
         };

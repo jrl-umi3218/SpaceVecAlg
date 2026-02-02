@@ -79,6 +79,9 @@ void bind_MotionVecd(nb::module_ & sva)
              std::ostringstream ss;
              ss << self;
              return ss.str();
-           });
+           })
+      // pickle (serialization)
+      .def("__getstate__", [](const MV & self) { return self.vector(); })
+      .def("__setstate__", [](MV & self, nb::handle h) { self = MV(nb::cast<Vec6>(h)); });
 }
 // ...existing code...

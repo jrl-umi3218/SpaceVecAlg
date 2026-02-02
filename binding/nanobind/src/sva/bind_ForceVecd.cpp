@@ -73,5 +73,18 @@ void bind_ForceVecd(nb::module_ & sva)
              std::ostringstream ss;
              ss << self;
              return ss.str();
+           })
+      // pickle (serialization)
+      .def("__getstate__",
+           [](const FV & self)
+           {
+             // Serialize as the internal 6D vector directly
+             return self.vector();
+           })
+      .def("__setstate__",
+           [](FV & self, nb::handle h)
+           {
+             // Accept a single vector directly
+             self = FV(nb::cast<Vec6>(h));
            });
 }

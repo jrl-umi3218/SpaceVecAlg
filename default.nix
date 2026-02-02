@@ -9,6 +9,7 @@
   boost,
   python313Packages,
   sphinx,
+  prek,
 
   # propagatedBuildInputs
   jrl-cmakemodules,
@@ -20,11 +21,11 @@ stdenv.mkDerivation {
   src = lib.fileset.toSource {
     root = ./.;
     fileset = lib.fileset.unions [
-        ./binding
-        ./CMakeLists.txt
-        ./src
-        ./tests
-        ./cmake
+      ./binding
+      ./CMakeLists.txt
+      ./src
+      ./tests
+      ./cmake
     ];
   };
 
@@ -45,6 +46,8 @@ stdenv.mkDerivation {
     sphinx
     python313Packages.sphinx-autodoc2
     python313Packages.sphinx-book-theme
+    # faster pre-commit alternative
+    prek
   ];
 
   propagatedBuildInputs = [

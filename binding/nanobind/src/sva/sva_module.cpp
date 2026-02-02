@@ -7,6 +7,7 @@ void bind_MotionVecd(nb::module_ &);
 void bind_ForceVecd(nb::module_ &);
 void bind_ABInertiad(nb::module_ &);
 void bind_RBInertiad(nb::module_ &);
+void bind_Operators(nb::module_ &);
 
 NB_MODULE(sva_pywrap, m)
 {
@@ -17,4 +18,5 @@ NB_MODULE(sva_pywrap, m)
   bind_MotionVecd(m);
   bind_RBInertiad(m);
   bind_ABInertiad(m);
+  bind_Operators(m);
 }

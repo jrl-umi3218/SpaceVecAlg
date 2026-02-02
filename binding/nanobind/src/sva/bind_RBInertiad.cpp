@@ -21,6 +21,7 @@ void bind_RBInertiad(nb::module_ & sva)
       .def(nb::init<double, const Vec3 &, const Mat3 &>(),
            "Constructor from mass, spatial momentum, and inertia matrix", nb::arg("mass"), nb::arg("momentum"),
            nb::arg("inertia"))
+      .def(nb::init<const RBI &>(), "Copy constructor")
       .def("mass", &RBI::mass, "Get the mass")
       .def("momentum", &RBI::momentum, nb::rv_policy::reference_internal, "Get the spatial momentum (const)")
       .def("lowerTriangularInertia", &RBI::lowerTriangularInertia, nb::rv_policy::reference_internal,
@@ -62,8 +63,8 @@ void bind_RBInertiad(nb::module_ & sva)
              std::ostringstream ss;
              ss << self;
              return ss.str();
-           });
-  // Optionally, bind RBI * MotionVecd if needed:
-  // .def("__mul__", [](const RBI & self, const MV & mv) { return self * mv; }, nb::arg("motion_vec"), "Multiply
-  // RBInertiad by MotionVecd")
+           })
+      .def(
+          "__mul__", [](const RBI & self, const MV & mv) { return self * mv; }, nb::arg("motion_vec"),
+          "Multiply RBInertiad by MotionVecd");
 }

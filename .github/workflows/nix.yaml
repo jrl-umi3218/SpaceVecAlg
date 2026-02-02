@@ -1,0 +1,40 @@
+name: Nix CI
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  nix-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v27
+
+      - name: Show Nix environment info
+        run: nix --version
+
+      - name: Build with CMake in Nix shell
+        run: |
+          nix develop --command cmake -S . -B build
+          nix develop --command cmake --build build
+
+      - name: Run tests (pytest)
+        run: |
+          nix develop --command pytest binding/nanobind/tests
+
+      # Optionally, run C++ tests if you have them
+      - name: Run C++ tests (ctest)
+        run: |
+          nix develop --command ctest --test-dir build || true
+
+      # Optionally, build documentation
+      - name: Build documentation
+        run: |
+          nix develop --command make -C binding/nanobind/docs html || true

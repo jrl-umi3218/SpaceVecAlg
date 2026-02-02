@@ -11,6 +11,7 @@ void bind_MotionVecd(nb::module_ & sva)
 {
   using MV = sva::MotionVecd;
   using FV = sva::ForceVecd;
+  using IV = sva::ImpedanceVecd;
   using Vec3 = Eigen::Vector3d;
   using Vec6 = Eigen::Matrix<double, 6, 1>;
 
@@ -19,6 +20,7 @@ void bind_MotionVecd(nb::module_ & sva)
       .def(nb::init<const Vec6 &>(), "Constructor from 6D vector", nb::arg("vec"))
       .def(nb::init<const Vec3 &, const Vec3 &>(), "Constructor from angular and linear vectors", nb::arg("angular"),
            nb::arg("linear"))
+      .def(nb::init<const MV &>(), "Copy constructor")
       .def_static("Zero", &MV::Zero, "Return a zero motion vector")
       .def("angular", nb::overload_cast<>(&MV::angular, nb::const_), nb::rv_policy::reference_internal,
            "Get the angular part")
@@ -50,6 +52,9 @@ void bind_MotionVecd(nb::module_ & sva)
       .def(
           "__mul__", [](const MV & self, double scalar) { return self * scalar; }, nb::arg("scalar"),
           "Multiply by scalar")
+      .def(
+          "__mul__", [](const MV & self, const IV & av) { return av * self; }, nb::arg("impedance_vec"),
+          "Multiply with ImpedanceVecd (returns MotionVecd)")
       .def(
           "__rmul__", [](const MV & self, double scalar) { return self * scalar; }, nb::arg("scalar"),
           "Multiply by scalar")

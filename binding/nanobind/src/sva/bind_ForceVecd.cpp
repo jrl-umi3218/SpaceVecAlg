@@ -10,6 +10,7 @@ namespace nb = nanobind;
 void bind_ForceVecd(nb::module_ & sva)
 {
   using FV = sva::ForceVecd;
+  using AV = sva::AdmittanceVecd;
   using Vec3 = Eigen::Vector3d;
   using Vec6 = Eigen::Matrix<double, 6, 1>;
 
@@ -18,6 +19,7 @@ void bind_ForceVecd(nb::module_ & sva)
       .def(nb::init<const Vec6 &>(), "Constructor from 6D vector", nb::arg("vec"))
       .def(nb::init<const Vec3 &, const Vec3 &>(), "Constructor from couple and force vectors", nb::arg("couple"),
            nb::arg("force"))
+      .def(nb::init<const FV &>(), "Copy constructor")
       .def_static("Zero", &FV::Zero, "Return a zero force vector")
       .def("couple", nb::overload_cast<>(&FV::couple, nb::const_), nb::rv_policy::reference_internal,
            "Get the couple (const)")
@@ -62,6 +64,9 @@ void bind_ForceVecd(nb::module_ & sva)
       .def(
           "__itruediv__", [](FV & self, double scalar) -> FV & { return self /= scalar; }, nb::arg("scalar"),
           "In-place division")
+      .def(
+          "__mul__", [](const FV & self, const AV & av) { return av * self; }, nb::arg("admittance_vec"),
+          "Multiply with AdmittanceVecd (returns MotionVecd)")
       .def(
           "__eq__", [](const FV & self, const FV & other) { return self == other; }, nb::arg("other"), "Check equality")
       .def(

@@ -29,6 +29,7 @@ void bind_PTransformd(nb::module_ & sva)
       .def(nb::init<const Mat3 &>(), "Constructor from rotation matrix", nb::arg("rotation"))
       .def(nb::init<const Eigen::Quaterniond &>(), "Constructor from quaternion", nb::arg("quaternion"))
       .def(nb::init<const Vec3 &>(), "Constructor from translation vector", nb::arg("translation"))
+      .def(nb::init<const PT &>(), "Copy constructor")
       .def_static("Identity", &PT::Identity, "Creates an identity transformation")
       .def("rotation", nb::overload_cast<>(&PT::rotation, nb::const_), nb::rv_policy::reference_internal,
            "Get the rotation matrix")

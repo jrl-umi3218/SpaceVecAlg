@@ -22,6 +22,7 @@ void bind_ABInertiad(nb::module_ & sva)
       .def(nb::init<const Mat3 &, const Mat3 &, const Mat3 &>(),
            "Constructor from mass, generalized inertia, and inertia matrices", nb::arg("mass"), nb::arg("g_inertia"),
            nb::arg("inertia"))
+      .def(nb::init<const ABI &>(), "Copy constructor")
       .def("lowerTriangularMassMatrix", &ABI::lowerTriangularMassMatrix, nb::rv_policy::reference_internal,
            "Get the lower triangular mass matrix (const)")
       .def("massMatrix", &ABI::massMatrix, "Get the full mass matrix")
@@ -65,10 +66,13 @@ void bind_ABInertiad(nb::module_ & sva)
              std::ostringstream ss;
              ss << self;
              return ss.str();
-           });
-  // Optionally, bind ABI + RBInertiad and ABI * MotionVecd if needed:
-  // .def("__add__", [](const ABI & self, const RBInertia & rbI) { return self + rbI; }, nb::arg("rb_inertia"), "Add
-  // ABInertiad and RBInertiad") .def("__mul__", [](const ABI & self, const MV & mv) { return self * mv; },
-  // nb::arg("motion_vec"), "Multiply ABInertiad by MotionVecd")
+           })
+      // Optionally, bind ABI + RBInertiad and ABI * MotionVecd if needed:
+      .def(
+          "__add__", [](const ABI & self, const RBInertia & rbI) { return self + rbI; }, nb::arg("rb_inertia"),
+          "Add ABInertiad and RBInertiad")
+      .def(
+          "__mul__", [](const ABI & self, const MV & mv) { return self * mv; }, nb::arg("motion_vec"),
+          "Multiply ABInertiad by MotionVecd");
 }
 // ...existing code...

@@ -30,7 +30,7 @@
           packages = {
             default = self'.packages.spacevecalg;
             spacevecalg = pkgs.callPackage ./. {
-                jrl-cmakemodules = inputs'.jrl-cmakemodules.packages.default;
+              jrl-cmakemodules = inputs'.jrl-cmakemodules.packages.default;
             };
           };
         };

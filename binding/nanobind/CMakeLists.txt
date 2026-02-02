@@ -19,7 +19,8 @@ nanobind_add_module(
   src/sva/bind_ForceVecd.cpp
   src/sva/bind_MotionVecd.cpp
   src/sva/bind_ABInertiad.cpp
-  src/sva/bind_RBInertiad.cpp)
+  src/sva/bind_RBInertiad.cpp
+  src/sva/bind_Operators.cpp)
 jrl_check_python_module_name(sva_pywrap)
 target_link_libraries(sva_pywrap PRIVATE SpaceVecAlg)
 target_link_libraries(sva_pywrap PRIVATE nanoeigenpy::nanoeigenpy_headers)

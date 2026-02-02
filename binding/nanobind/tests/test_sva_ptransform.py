@@ -6,7 +6,6 @@ import sys
 
 TOL = 1e-5
 
-# ok
 def test_rotation_matrix():
     theta = np.random.randn() * 10
 
@@ -25,7 +24,6 @@ def test_rotation_matrix():
     rot_z = aa_z.matrix()
     assert np.allclose(sva.RotZ(theta), rot_z, atol=TOL)
 
-# ok
 def test_ptransformd():
     # Rotation matrix and quaternion from AngleAxis
     Em = eigen.AngleAxis(np.pi/2, np.array([1.0, 0.0, 0.0])).inverse().matrix()
@@ -74,7 +72,6 @@ def test_ptransformd():
     assert pt2 != pt8
     assert not (pt2 != pt2)
 
-# ok
 def test_ptransformd_left_operator():
     Eq = eigen.AngleAxis(np.pi/2, np.array([1.0, 0.0, 0.0]))
     r = np.random.randn(3) * 100

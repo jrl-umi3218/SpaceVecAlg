@@ -103,7 +103,24 @@ void bind_PTransformd(nb::module_ & sva)
       .def("coupleDualMul", &PT::coupleDualMul, nb::arg("force_vec"), "Compute couple part of X*f")
       .def("forceDualMul", &PT::forceDualMul, nb::arg("force_vec"), "Compute force part of X*f")
       .def("coupleTransMul", &PT::coupleTransMul, nb::arg("force_vec"), "Compute couple part of Xt*f")
-      .def("forceTransMul", &PT::forceTransMul, nb::arg("force_vec"), "Compute force part of Xt*f");
+      .def("forceTransMul", &PT::forceTransMul, nb::arg("force_vec"), "Compute force part of Xt*f")
+      .def("__getstate__",
+           [](const PT & self)
+           {
+             Eigen::Quaterniond quat(self.rotation());
+             // Store as (np.array, translation)
+             // quat.coeffs() gives (x, y, z, w) as Eigen::Vector4d
+             return nb::make_tuple(quat.coeffs(), self.translation());
+           })
+      .def("__setstate__",
+           [](PT & self, nb::tuple t)
+           {
+             if(t.size() != 2) throw std::runtime_error("Invalid state!");
+             Eigen::Vector4d coeffs = nb::cast<Eigen::Vector4d>(t[0]);
+             Eigen::Quaterniond quat(coeffs[3], coeffs[0], coeffs[1], coeffs[2]); // (w, x, y, z)
+             Vec3 trans = nb::cast<Vec3>(t[1]);
+             self = PT(quat, trans);
+           });
 
   // Bind templated free functions in the sva namespace
   sva.def("RotX", &sva::RotX<double>, nb::arg("theta"), "Create a rotation matrix about the X axis");

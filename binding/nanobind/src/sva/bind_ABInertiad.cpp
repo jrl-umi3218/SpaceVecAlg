@@ -73,6 +73,21 @@ void bind_ABInertiad(nb::module_ & sva)
           "Add ABInertiad and RBInertiad")
       .def(
           "__mul__", [](const ABI & self, const MV & mv) { return self * mv; }, nb::arg("motion_vec"),
-          "Multiply ABInertiad by MotionVecd");
+          "Multiply ABInertiad by MotionVecd")
+      .def("__getstate__",
+           [](const ABI & self)
+           {
+             // Return a tuple: (massMatrix, gInertia, inertia)
+             return nb::make_tuple(self.massMatrix(), self.gInertia(), self.inertia());
+           })
+      .def("__setstate__",
+           [](ABI & self, nb::tuple t)
+           {
+             if(t.size() != 3) throw std::runtime_error("Invalid state!");
+             Mat3 massMatrix = nb::cast<Mat3>(t[0]);
+             Mat3 gInertia = nb::cast<Mat3>(t[1]);
+             Mat3 inertia = nb::cast<Mat3>(t[2]);
+             self = ABI(massMatrix, gInertia, inertia);
+           });
 }
 // ...existing code...

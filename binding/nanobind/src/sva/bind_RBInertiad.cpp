@@ -66,5 +66,21 @@ void bind_RBInertiad(nb::module_ & sva)
            })
       .def(
           "__mul__", [](const RBI & self, const MV & mv) { return self * mv; }, nb::arg("motion_vec"),
-          "Multiply RBInertiad by MotionVecd");
+          "Multiply RBInertiad by MotionVecd")
+      // pickle (serialization)
+      .def("__getstate__",
+           [](const RBI & self)
+           {
+             // Return a tuple: (mass, momentum, inertia)
+             return nb::make_tuple(self.mass(), self.momentum(), self.inertia());
+           })
+      .def("__setstate__",
+           [](RBI & self, nb::tuple t)
+           {
+             if(t.size() != 3) throw std::runtime_error("Invalid state!");
+             double mass = nb::cast<double>(t[0]);
+             Vec3 momentum = nb::cast<Vec3>(t[1]);
+             Mat3 inertia = nb::cast<Mat3>(t[2]);
+             self = RBI(mass, momentum, inertia);
+           });
 }

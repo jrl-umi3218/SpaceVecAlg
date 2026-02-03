@@ -27,10 +27,26 @@
           ...
         }:
         {
-          packages = {
-            default = self'.packages.spacevecalg;
-            spacevecalg = pkgs.callPackage ./. {
-              jrl-cmakemodules = inputs'.jrl-cmakemodules.packages.default;
+            packages = {
+              default = self'.packages.spacevecalg;
+              spacevecalg = pkgs.callPackage ./. {
+                jrl-cmakemodules = inputs'.jrl-cmakemodules.packages.default;
+              };
+              spacevecalg-python = pkgs.python313Packages.callPackage ./. {
+                buildPythonPackage = pkgs.python313Packages.buildPythonPackage;
+                isPython = true;
+                jrl-cmakemodules = inputs'.jrl-cmakemodules.packages.default;
+                python313Packages = pkgs.python313Packages;
+                sphinx = pkgs.python313Packages.sphinx;
+                prek = pkgs.prek;
+                spacevecalg = self'.packages.spacevecalg;
+              };
+            };
+          devShells = {
+            default = pkgs.mkShell {
+              packages = [
+                self'.packages.spacevecalg-python
+              ];
             };
           };
         };

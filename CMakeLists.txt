@@ -2,36 +2,39 @@
 # Copyright 2012-2019 CNRS-UM LIRMM, CNRS-AIST JRL
 #
 
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.22)
+
+find_package(jrl-cmakemodules 0.2.0 CONFIG QUIET)
+
+include(cmake/get-jrl-cmakemodules.cmake)
+
+project(
+  SpaceVecAlg
+  VERSION 1.2.7
+  DESCRIPTION
+    "Implementation of spatial vector algebra with the Eigen3 linear algebra library."
+  HOMEPAGE_URL "https://github.com/jrl-umi3218/SpaceVecAlg"
+  LANGUAGES CXX)
+
+# Configure default binary and install directories, build type, etc.
+jrl_configure_defaults()
 
 set(CMAKE_CXX_STANDARD 17)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
-set(PROJECT_NAME SpaceVecAlg)
-set(PROJECT_DESCRIPTION
-    "Implementation of spatial vector algebra with the Eigen3 linear algebra library."
-)
-set(PROJECT_URL "https://github.com/jrl-umi3218/SpaceVecAlg")
-set(PROJECT_VERSION 1.2.8)
-set(PROJECT_USE_CMAKE_EXPORT TRUE)
-set(PYTHON_BINDING_USE_PYTEST ON)
+# -------
+# OPTIONS
+# -------
+jrl_option(BUILD_TESTING "Build testing." ON)
+jrl_option(BENCHMARKS "Generate benchmark." OFF)
+jrl_option(NANOBIND_BINDINGS "Build nanobind Python bindings" ON)
+# Disable old python bindings jrl_option(PYTHON_BINDING "Build cython Python
+# bindings" OFF)
 
-include(cmake/base.cmake)
-include(cmake/cython/cython.cmake)
-include(cmake/msvc-specific.cmake)
-
-# Disable -Werror on Unix for now.
-set(CXX_DISABLE_WERROR True)
-project(${PROJECT_NAME} CXX)
-
-option(BENCHMARKS "Generate benchmark." OFF)
-
-find_package(Eigen3 QUIET NO_CMAKE_PACKAGE_REGISTRY)
-if(Eigen3_FOUND)
-  add_project_dependency(Eigen3 REQUIRED NO_CMAKE_PACKAGE_REGISTRY)
-else()
-  add_project_dependency(Eigen3 MODULE REQUIRED)
-endif()
+# ------------
+# DEPENDENCIES
+# ------------
+jrl_find_package(Eigen3 REQUIRED)
 
 # For MSVC, set local environment variable to enable finding the built dll of
 # the main library when launching ctest with RUN_TESTS
@@ -41,10 +44,25 @@ endif(MSVC)
 
 add_subdirectory(src)
 
-if(${BUILD_TESTING} OR ${BENCHMARKS})
+if(BUILD_TESTING OR BENCHMARKS)
+  enable_testing()
   add_subdirectory(tests)
 endif()
 
-if(${PYTHON_BINDING})
-  add_subdirectory(binding/python)
+if(NANOBIND_BINDINGS)
+  message(STATUS "[${PROJECT_NAME}] Building Python bindings")
+  jrl_find_python(3.8 REQUIRED COMPONENTS Interpreter Development.Module)
+  jrl_find_nanobind(2.4.0 CONFIG REQUIRED)
+  jrl_find_package(nanoeigenpy CONFIG REQUIRED)
+  add_subdirectory(binding/nanobind)
 endif()
+
+# Disable cython bindings if(PYTHON_BINDING) add_subdirectory(binding/python)
+# endif()
+
+# Export the package files (headers, targets, config files, etc.)
+jrl_export_package()
+
+# Print summaries
+jrl_print_dependencies_summary()
+jrl_print_options_summary()

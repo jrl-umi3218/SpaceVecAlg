@@ -9,3 +9,6 @@ binding/python/build
 CMakeLists.txt.user*
 *.autosave
 build/
+.direnv/
+.cache/
+result

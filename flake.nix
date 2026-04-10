@@ -20,13 +20,14 @@
           {
             flakoboros = {
               extraPackages = [ "ninja" ];
-                overrideAttrs.spacevecalg = _: (super: {
+              overrideAttrs.spacevecalg =
+                _:
+                (super: {
                   src = lib.cleanSource ./.;
                   cmakeFlags = super.cmakeFlags ++ [
                     "-DPYTHON_BINDINGS=OFF"
                   ];
-                }
-              );
+                });
             };
           }
         ];

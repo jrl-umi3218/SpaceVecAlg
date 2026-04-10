@@ -321,6 +321,11 @@
         ],
         "gepetto": "gepetto",
         "jrl-cmakemodulesv2": "jrl-cmakemodulesv2",
+        "nixpkgs": [
+          "mc-rtc-nix",
+          "gepetto",
+          "nixpkgs"
+        ],
         "systems": [
           "mc-rtc-nix",
           "gepetto",
@@ -328,14 +333,18 @@
         ]
       },
       "locked": {
-        "lastModified": 1775813279,
-        "narHash": "sha256-oUzfQJe6uHD5yTgcWG8X8llQY+1ZmoKm8nDTFMShpPE=",
-        "path": "/home/arnaud/devel/mc-rtc-nix/nixpkgs",
-        "type": "path"
+        "lastModified": 1775815519,
+        "narHash": "sha256-RxYGzLlqaNGidG+RuY0D/Wtieudocos/NeYYhj4bRRc=",
+        "owner": "arntanguy",
+        "repo": "nixpkgs-1",
+        "rev": "e141d56ad5f30bfd2b3cd3d7cea70383c91b1d72",
+        "type": "github"
       },
       "original": {
-        "path": "/home/arnaud/devel/mc-rtc-nix/nixpkgs",
-        "type": "path"
+        "owner": "arntanguy",
+        "ref": "topic/flakoboros",
+        "repo": "nixpkgs-1",
+        "type": "github"
       }
     },
     "nix-ros-overlay": {

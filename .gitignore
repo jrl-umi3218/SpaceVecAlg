@@ -8,4 +8,7 @@ binding/python/build
 *.swp
 CMakeLists.txt.user*
 *.autosave
-build/
+build*
+.direnv/
+.cache/
+result

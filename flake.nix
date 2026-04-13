@@ -21,13 +21,12 @@
             flakoboros = {
               extraPackages = [ "ninja" ];
               overrideAttrs.spacevecalg =
-                _:
-                (super: {
+                { drv-prev, ... }: {
                   src = lib.cleanSource ./.;
-                  cmakeFlags = super.cmakeFlags ++ [
+                  cmakeFlags = drv-prev.cmakeFlags ++ [
                     "-DPYTHON_BINDINGS=OFF"
                   ];
-                });
+                };
             };
           }
         ];

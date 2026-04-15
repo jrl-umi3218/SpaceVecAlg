@@ -19,6 +19,7 @@ jobs:
         with:
           name: mc-rtc-nix
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+          extraPullNames: "ros,gepetto"
       - run: nix flake check -L
       - run: nix build -L ".#${{ matrix.extends }}"
   check:

@@ -64,7 +64,8 @@ jobs:
         git remote set-url origin "https://gergondet:${{ secrets.GH_PAGES_TOKEN }}@github.com/${{ github.repository}}"
         if `git fetch --depth=1 origin gh-pages:gh-pages`; then
           sudo chown -R `whoami` build/
-          cd build/doc && $GITHUB_WORKSPACE/cmake/github/update-doxygen-doc.sh -r $GITHUB_WORKSPACE -b $GITHUB_WORKSPACE/build
+          ls -lR $GITHUB_WORKSPACE
+          cd build/doc && $GITHUB_WORKSPACE/build/_deps/jrl-cmakemodules-src/github/update-doxygen-doc.sh -r $GITHUB_WORKSPACE -b $GITHUB_WORKSPACE/build
         fi
     - name: Slack Notification
       if: failure()

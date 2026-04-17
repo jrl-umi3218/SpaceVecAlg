@@ -4,6 +4,8 @@ SpaceVecAlg
 [![License](https://img.shields.io/badge/License-BSD%202--Clause-green.svg)](https://opensource.org/licenses/BSD-2-Clause)
 [![Hosted By: Cloudsmith](https://img.shields.io/badge/OSS%20hosting%20by-cloudsmith-blue?logo=cloudsmith)](https://cloudsmith.com)
 [![CI](https://github.com/jrl-umi3218/SpaceVecAlg/workflows/CI%20of%20SpaceVecAlg/badge.svg?branch=master)](https://github.com/jrl-umi3218/SpaceVecAlg/actions?query=workflow%3A%22CI+of+SpaceVecAlg%22)
+[![Doc](https://img.shields.io/badge/website-online-brightgreen?logo=read-the-docs&style=flat)](https://jrl-umi3218.github.io/SpaceVecAlg/)
+
 
 SpaceVecAlg aim to implement Spatial Vector Algebra with the Eigen3 linear algebra library.
 

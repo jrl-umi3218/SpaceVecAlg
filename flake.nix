@@ -1,54 +1,52 @@
 {
   description = "Implementation of spatial vector algebra with the Eigen3 linear algebra library.";
 
-  inputs = {
-    gepetto.url = "github:gepetto/nix";
-    flake-parts.follows = "gepetto/flake-parts";
-    nixpkgs.follows = "gepetto/nixpkgs";
-    nix-ros-overlay.follows = "gepetto/nix-ros-overlay";
-    systems.follows = "gepetto/systems";
-    treefmt-nix.follows = "gepetto/treefmt-nix";
-    # XXX: use official flake when v2 PR is merged
-    jrl-cmakemodules = {
-      url = "github:ahoarau/jrl-cmakemodules?ref=jrl-next";
-    };
-  };
+  inputs.mc-rtc-nix.url = "github:mc-rtc/nixpkgs";
 
   outputs =
     inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = import inputs.systems;
-      imports = [ inputs.gepetto.flakeModule ];
-      perSystem =
-        {
-          pkgs,
-          self',
-          inputs',
-          ...
-        }:
-        {
-            packages = {
-              default = self'.packages.spacevecalg;
-              spacevecalg = pkgs.callPackage ./. {
-                jrl-cmakemodules = inputs'.jrl-cmakemodules.packages.default;
-              };
-              spacevecalg-python = pkgs.python313Packages.callPackage ./. {
-                buildPythonPackage = pkgs.python313Packages.buildPythonPackage;
-                isPython = true;
-                jrl-cmakemodules = inputs'.jrl-cmakemodules.packages.default;
-                python313Packages = pkgs.python313Packages;
-                sphinx = pkgs.python313Packages.sphinx;
-                prek = pkgs.prek;
-                spacevecalg = self'.packages.spacevecalg;
-              };
-            };
-          devShells = {
-            default = pkgs.mkShell {
-              packages = [
-                self'.packages.spacevecalg-python
-              ];
-            };
+    inputs.mc-rtc-nix.lib.mkFlakoboros inputs (
+      { lib, ... }:
+      {
+        extraDevPyPackages = [ "spacevecalg" ];
+
+        overrides.spacevecalg =
+          { pkgs-final, ... }:
+          {
+            jrl-cmakemodules = pkgs-final.jrl-cmakemodulesv2;
           };
+        overrideAttrs.spacevecalg =
+          { pkgs-final, ... }:
+          {
+            pname = "spacevecalg";
+            src = lib.cleanSource ./.;
+            cmakeFlags = [
+              (lib.cmakeBool "PYTHON_BINDINGS" false)
+              (lib.cmakeBool "NANOBIND_BINDINGS" true)
+              (lib.cmakeBool "BUILD_TESTING" false)
+            ];
+            nativeBuildInputs = with pkgs-final; [
+              cmake
+              jrl-cmakemodulesv2
+              doxygen
+              python3Packages.python
+            ];
+            propagatedBuildInputs = with pkgs-final; [
+              eigen
+              boost
+              python3Packages.nanoeigenpy
+              python3Packages.nanobind
+            ];
+          };
+
+        pyPackages = {
+          spacevecalg =
+            {
+              pkgs,
+              toPythonModule,
+            }:
+            (toPythonModule (pkgs.spacevecalg.override { }));
         };
-    };
+      }
+    );
 }

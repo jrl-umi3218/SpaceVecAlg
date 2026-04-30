@@ -30,6 +30,7 @@ jrl_option(BENCHMARKS "Generate benchmark." OFF)
 jrl_option(NANOBIND_BINDINGS "Build nanobind Python bindings" ON)
 # Disable old python bindings jrl_option(PYTHON_BINDING "Build cython Python
 # bindings" OFF)
+jrl_print_options_summary()
 
 # ------------
 # DEPENDENCIES
@@ -65,4 +66,3 @@ jrl_export_package()
 
 # Print summaries
 jrl_print_dependencies_summary()
-jrl_print_options_summary()

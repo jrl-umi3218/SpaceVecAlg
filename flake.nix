@@ -18,7 +18,7 @@
         overrideAttrs.spacevecalg =
           { pkgs-final, ... }:
           {
-            pname = "spacevecalg";
+            pname = "spacevecalg-nanobind";
             src = lib.cleanSource ./.;
             cmakeFlags = [
               (lib.cmakeBool "PYTHON_BINDINGS" false)

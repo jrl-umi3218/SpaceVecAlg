@@ -29,11 +29,9 @@ jobs:
       - run: nix build -L
       - run: nix build -L .#spacevecalg.doc
       - name: Deploy to GitHub Pages (temporarely for nix-nanobind branch)
-        # if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main')
-        if: github.event_name == 'push' && (github.ref == 'refs/heads/nix-nanobind')
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GH_PAGES_TOKEN }}
           publish_dir: ./result-doc/nanobind/sva
           destination_dir: nanobind
   check:

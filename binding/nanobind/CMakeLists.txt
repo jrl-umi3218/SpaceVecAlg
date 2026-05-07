@@ -74,3 +74,20 @@ install(
   PATTERN "*.typed"
   PATTERN "*.so"
   PATTERN "*.pyd")
+
+if(NANOBIND_DOCUMENTATION)
+  sphinx_add_docs(
+    docs
+    ALL
+    SOURCE_DIRECTORY
+    ${CMAKE_CURRENT_SOURCE_DIR}/docs
+    OUTPUT_DIRECTORY
+    ${CMAKE_BINARY_DIR}/doc/nanobind/sva/html
+    PYTHON_PATH_PREPEND
+    ${CMAKE_BINARY_DIR}/lib/site-packages
+    BUILDER
+    html)
+  add_dependencies(docs sva_pywrap_stub)
+  install(DIRECTORY ${CMAKE_BINARY_DIR}/doc/nanobind/sva/html
+          DESTINATION doc/nanobind/sva)
+endif()

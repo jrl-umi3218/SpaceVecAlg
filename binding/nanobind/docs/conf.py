@@ -7,7 +7,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = "SpaceVecAlg"
-copyright = "2025, CNRS-AIST JRL, LIRMM"
+copyright = "2026, CNRS-AIST JRL, LIRMM"
 author = "CNRS-AIST JRL, LIRMM"
 release = "2.12.0"
 
@@ -15,8 +15,7 @@ release = "2.12.0"
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
-    "sphinx.ext.autodoc",
-    "sphinx.ext.napoleon",  # For Google/NumPy docstring support
+    "sphinx.ext.autodoc"
 ]
 
 templates_path = ["_templates"]

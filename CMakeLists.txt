@@ -6,8 +6,6 @@ cmake_minimum_required(VERSION 3.22)
 
 find_package(jrl-cmakemodules 0.2.0 CONFIG QUIET)
 
-include(cmake/get-jrl-cmakemodules.cmake)
-
 project(
   SpaceVecAlg
   VERSION 1.2.7
@@ -15,6 +13,8 @@ project(
     "Implementation of spatial vector algebra with the Eigen3 linear algebra library."
   HOMEPAGE_URL "https://github.com/jrl-umi3218/SpaceVecAlg"
   LANGUAGES CXX)
+
+include(cmake/get-jrl-cmakemodules.cmake)
 
 # Configure default binary and install directories, build type, etc.
 jrl_configure_defaults()
@@ -28,6 +28,14 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 jrl_option(BUILD_TESTING "Build testing." ON)
 jrl_option(BENCHMARKS "Generate benchmark." OFF)
 jrl_option(NANOBIND_BINDINGS "Build nanobind Python bindings" ON)
+jrl_option(
+  NANOBIND_DOCUMENTATION
+  "Build nanobind documentation"
+  OFF
+  CONDITION
+  NANOBIND_DOCUMENTATION
+  FALLBACK
+  OFF)
 # Disable old python bindings jrl_option(PYTHON_BINDING "Build cython Python
 # bindings" OFF)
 jrl_print_options_summary()
@@ -55,7 +63,10 @@ if(NANOBIND_BINDINGS)
   jrl_find_python(3.8 REQUIRED COMPONENTS Interpreter Development.Module)
   jrl_find_nanobind(2.4.0 CONFIG REQUIRED)
   jrl_find_package(nanoeigenpy CONFIG REQUIRED)
-  add_subdirectory(binding/nanobind)
+  if(NANOBIND_DOCUMENTATION)
+    include(cmake/get-sphinx-cmake.cmake)
+    add_subdirectory(binding/nanobind)
+  endif()
 endif()
 
 # Disable cython bindings if(PYTHON_BINDING) add_subdirectory(binding/python)

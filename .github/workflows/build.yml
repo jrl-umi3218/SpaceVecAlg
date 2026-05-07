@@ -4,9 +4,13 @@ on:
   push:
     branches:
       - '**'
+    branches-ignore:
+      - nix-nanobind
   pull_request:
     branches:
       - '**'
+    branches-ignore:
+      - nix-nanobind
 
 jobs:
   build:

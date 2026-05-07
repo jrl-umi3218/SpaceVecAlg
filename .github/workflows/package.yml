@@ -4,9 +4,13 @@ on:
     types:
     - package-master
     - package-release
+    branches-ignore:
+      - nix-nanobind
   pull_request:
     branches:
     - "**"
+    branches-ignore:
+      - nix-nanobind
   push:
     paths-ignore:
     - doc/**
@@ -15,6 +19,8 @@ on:
     - ".pre-commit-config.yaml"
     branches:
     - "**"
+    branches-ignore:
+      - nix-nanobind
     tags:
     - v*
 jobs:

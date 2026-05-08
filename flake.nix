@@ -38,6 +38,8 @@
               doxygen
               graphviz
               python3Packages.python
+              python3Packages.pythonImportsCheckHook
+              python3Packages.pytestCheckHook
               # nanobind documentation
               sphinx
               sphinx-cmake
@@ -50,6 +52,10 @@
               python3Packages.nanoeigenpy
               python3Packages.nanobind
             ];
+
+            # pytest
+            pythonImportsCheck = [ "sva" ];
+            pytestFlagsArray = [ "$src/binding/nanobind/tests" ];
           };
 
         pyPackages = {

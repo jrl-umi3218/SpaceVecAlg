@@ -28,6 +28,8 @@
             ];
             cmakeFlags = [
               (lib.cmakeBool "PYTHON_BINDINGS" false)
+              (lib.cmakeBool "BUILD_DOCUMENTATION" true)
+              (lib.cmakeBool "INSTALL_DOCUMENTATION" true)
               (lib.cmakeBool "NANOBIND_BINDINGS" true)
               (lib.cmakeBool "NANOBIND_DOCUMENTATION" true)
               (lib.cmakeBool "BUILD_TESTING" false)
@@ -36,6 +38,7 @@
               cmake
               jrl-cmakemodulesv2
               doxygen
+              graphviz
               python3Packages.python
               # nanobind documentation
               sphinx
@@ -49,11 +52,6 @@
               python3Packages.nanoeigenpy
               python3Packages.nanobind
             ];
-            # Move the generated docs from the default install location to the doc output
-            postInstall = ''
-              mkdir -p $doc/nanobind/sva/html
-              mv $out/doc/nanobind/sva/html/* $doc/nanobind/sva/ || true
-            '';
           };
 
         pyPackages = {

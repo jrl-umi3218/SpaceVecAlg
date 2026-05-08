@@ -82,12 +82,12 @@ if(NANOBIND_DOCUMENTATION)
     SOURCE_DIRECTORY
     ${CMAKE_CURRENT_SOURCE_DIR}/docs
     OUTPUT_DIRECTORY
-    ${CMAKE_BINARY_DIR}/doc/nanobind/sva/html
+    ${CMAKE_BINARY_DIR}/share/doc/sva/nanobind/html
     PYTHON_PATH_PREPEND
     ${CMAKE_BINARY_DIR}/lib/site-packages
     BUILDER
     html)
   add_dependencies(docs sva_pywrap_stub)
-  install(DIRECTORY ${CMAKE_BINARY_DIR}/doc/nanobind/sva/html
-          DESTINATION doc/nanobind/sva)
+  install(DIRECTORY ${CMAKE_BINARY_DIR}/share/doc/sva/nanobind/html
+          DESTINATION share/doc/sva/nanobind)
 endif()

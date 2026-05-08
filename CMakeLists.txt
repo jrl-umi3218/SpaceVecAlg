@@ -33,9 +33,20 @@ jrl_option(
   "Build nanobind documentation"
   OFF
   CONDITION
-  NANOBIND_DOCUMENTATION
+  NANOBIND_BINDINGS
   FALLBACK
   OFF)
+jrl_option(BUILD_DOCUMENTATION "Whether doxygen documentation should be built"
+           OFF)
+jrl_option(
+  INSTALL_DOCUMENTATION
+  "Generate and install the doxygen documentation"
+  OFF
+  CONDITION
+  BUILD_DOCUMENTATION
+  FALLBACK
+  OFF)
+
 # Disable old python bindings jrl_option(PYTHON_BINDING "Build cython Python
 # bindings" OFF)
 jrl_print_options_summary()
@@ -44,6 +55,9 @@ jrl_print_options_summary()
 # DEPENDENCIES
 # ------------
 jrl_find_package(Eigen3 REQUIRED)
+if(BUILD_DOCUMENTATION)
+  jrl_find_package(Doxygen REQUIRED COMPONENTS dot)
+endif()
 
 # For MSVC, set local environment variable to enable finding the built dll of
 # the main library when launching ctest with RUN_TESTS
@@ -56,6 +70,21 @@ add_subdirectory(src)
 if(BUILD_TESTING OR BENCHMARKS)
   enable_testing()
   add_subdirectory(tests)
+endif()
+
+if(BUILD_DOCUMENTATION)
+  # Configure Doxygen
+  set(DOXYGEN_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/share/doc/sva/doxygen)
+  set(DOXYGEN_USE_MDFILE_AS_MAINPAGE "${CMAKE_CURRENT_SOURCE_DIR}/README.md")
+  doxygen_add_docs(doc ${PROJECT_SOURCE_DIR} ALL
+                   COMMENT "Generating API documentation with Doxygen")
+
+  if(INSTALL_DOCUMENTATION)
+    install(
+      DIRECTORY ${CMAKE_BINARY_DIR}/share/doc/sva/doxygen/html
+      DESTINATION ${CMAKE_INSTALL_PREFIX}/share/doc/sva/doxygen
+      COMPONENT doc)
+  endif()
 endif()
 
 if(NANOBIND_BINDINGS)

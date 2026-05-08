@@ -1,9 +1,7 @@
 {
   description = "Implementation of spatial vector algebra with the Eigen3 linear algebra library.";
 
-  # inputs.mc-rtc-nix.url = "github:mc-rtc/nixpkgs";
-  inputs.mc-rtc-nix.url = "github:mc-rtc/nixpkgs/pull/33/head";
-  # inputs.mc-rtc-nix.url = "path:/home/arnaud/devel/mc-rtc-nix/nixpkgs";
+  inputs.mc-rtc-nix.url = "github:mc-rtc/nixpkgs";
 
   outputs =
     inputs:

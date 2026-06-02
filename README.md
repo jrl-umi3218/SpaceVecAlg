@@ -14,7 +14,39 @@ All this implementation is based on appendix A of [Roy Featherstone Rigid Body D
 Installing
 ------
 
-## Ubuntu LTS (16.04, 18.04, 20.04, 22.04, 24.04)
+## Nix
+
+### Run
+
+To get a python shell with SpaceVecAlg installed
+
+```sh
+nix run github:jrl-umi3218/SpaceVecAlg
+```
+
+Then
+```python
+import eigen
+```
+
+### Develop
+
+To develop, use
+
+```
+gh repo clone jrl-umi3218/SpaceVecAlg
+direnv allow # activates a nix develop environment and set the python path
+cmake -B build $cmakeFlags
+cmake --build build
+```
+
+Then
+```python
+import eigen
+# latest bindings built from source
+```
+
+## Ubuntu LTS (22.04, 24.04, 26.04)
 
 You must first setup our package mirror:
 

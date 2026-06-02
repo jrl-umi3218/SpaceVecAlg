@@ -13,14 +13,9 @@
       { lib, ... }:
       {
         extraPackages = [ "ninja" ];
-        overrideAttrs.spacevecalg =
-          { drv-prev, ... }:
-          {
-            src = lib.cleanSource ./.;
-            cmakeFlags = drv-prev.cmakeFlags ++ [
-              "-DPYTHON_BINDINGS=OFF"
-            ];
-          };
+        pyOverrideAttrs.spacevecalg = {
+          src = lib.cleanSource ./.;
+        };
       }
     );
 }

@@ -19,6 +19,8 @@ on:
     - v*
 jobs:
   package:
+    # Temporarely disable for nix-nanobind pr #74
+    if: false
     uses: jrl-umi3218/github-actions/.github/workflows/package-project.yml@master
     with:
       deps: '["jrl-umi3218/RBDyn"]'

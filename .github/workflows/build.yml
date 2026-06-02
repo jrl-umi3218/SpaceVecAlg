@@ -10,6 +10,8 @@ on:
 
 jobs:
   build:
+    # Temporarely disable for nix-nanobind pr #74
+    if: false
     strategy:
       fail-fast: false
       matrix:

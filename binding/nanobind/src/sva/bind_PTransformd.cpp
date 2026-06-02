@@ -1,0 +1,141 @@
+#include <SpaceVecAlg/SpaceVecAlg>
+
+#include <nanobind/eigen/dense.h>
+#include <nanobind/nanobind.h>
+#include <nanobind/stl/string.h>
+#include <nanoeigenpy/geometry/quaternion.hpp>
+#include <sstream>
+
+namespace nb = nanobind;
+
+void bind_PTransformd(nb::module_ & sva)
+{
+  nanoeigenpy::exposeQuaternion<double>(sva, "Quaternion");
+
+  using PT = sva::PTransformd;
+  using Vec3 = Eigen::Vector3d;
+  using Mat3 = Eigen::Matrix3d;
+  using MV = sva::MotionVecd;
+  using FV = sva::ForceVecd;
+  using RBI = sva::RBInertiad;
+  using ABI = sva::ABInertiad;
+
+  auto pt = nb::class_<PT>(sva, "PTransformd");
+  pt.def(nb::init(), "Default constructor, rotation and translation are unitialized")
+      .def(nb::init<const Mat3 &, const Vec3 &>(), "Constructor from rotation matrix and translation vector",
+           nb::arg("rotation"), nb::arg("translation"))
+      .def(nb::init<const Eigen::Quaterniond &, const Vec3 &>(), "Constructor from quaternion and translation vector",
+           nb::arg("quaternion"), nb::arg("translation"))
+      .def(nb::init<const Mat3 &>(), "Constructor from rotation matrix", nb::arg("rotation"))
+      .def(nb::init<const Eigen::Quaterniond &>(), "Constructor from quaternion", nb::arg("quaternion"))
+      .def(nb::init<const Vec3 &>(), "Constructor from translation vector", nb::arg("translation"))
+      .def(nb::init<const PT &>(), "Copy constructor")
+      .def_static("Identity", &PT::Identity, "Creates an identity transformation")
+      .def("rotation", nb::overload_cast<>(&PT::rotation, nb::const_), nb::rv_policy::reference_internal,
+           "Get the rotation matrix")
+      .def("rotation", nb::overload_cast<>(&PT::rotation), nb::rv_policy::reference_internal,
+           "Get the rotation matrix (mutable)")
+      .def("translation", nb::overload_cast<>(&PT::translation, nb::const_), nb::rv_policy::reference_internal,
+           "Get the translation vector")
+      .def("translation", nb::overload_cast<>(&PT::translation), nb::rv_policy::reference_internal,
+           "Get the translation vector (mutable)")
+      .def("inv", &PT::inv, "Return the inverse transformation")
+      .def("matrix", &PT::matrix, "Return the 6x6 Plücker transformation matrix")
+      .def("dualMatrix", &PT::dualMatrix, "Return the 6x6 dual Plücker transformation matrix")
+      .def(
+          "cast", [](const PT & self) { return self.cast<double>(); },
+          "Cast to another scalar type (only double supported in binding)")
+      .def("__repr__",
+           [](const PT & self)
+           {
+             std::ostringstream ss;
+             ss << self;
+             return ss.str();
+           })
+
+      // Operator overloads
+      .def(
+          "__mul__", [](const PT & self, const PT & other) { return self * other; }, nb::arg("other"),
+          "Multiply two PTransformd objects")
+      .def(
+          "__mul__", [](const PT & self, const MV & mv) { return self * mv; }, nb::arg("motion_vec"),
+          "Transform a MotionVecd (X*v)")
+      // .def("__mul__", [](const PT & self, const FV & fv) { return self.dualMul(fv); }, nb::arg("force_vec"),
+      //      "Transform a ForceVecd (X*f)")
+      // .def("__mul__", [](const PT & self, const RBI & rbI) { return self.dualMul(rbI); }, nb::arg("rb_inertia"),
+      //      "Transform a RBInertiad (X*IX^-1)")
+      // .def("__mul__", [](const PT & self, const ABI & abI) { return self.dualMul(abI); }, nb::arg("ab_inertia"),
+      //      "Transform an ABInertiad (X*IX^-1)")
+      .def(
+          "__eq__", [](const PT & self, const PT & other) { return self == other; }, nb::arg("other"),
+          "Check equality of two PTransformd objects")
+      .def(
+          "__ne__", [](const PT & self, const PT & other) { return self != other; }, nb::arg("other"),
+          "Check inequality of two PTransformd objects")
+
+      // Explicit named methods for inverse and transpose variants
+      .def(
+          "invMul", [](const PT & self, const MV & mv) { return self.invMul(mv); }, nb::arg("motion_vec"),
+          "Transform a MotionVecd by the inverse (X^-1*v)")
+      .def(
+          "dualMul", [](const PT & self, const FV & fv) { return self.dualMul(fv); }, nb::arg("force_vec"),
+          "Transform a ForceVecd (X*f)")
+      .def(
+          "dualMul", [](const PT & self, const RBI & rbI) { return self.dualMul(rbI); }, nb::arg("rb_inertia"),
+          "Transform a RBInertiad (X*IX^-1)")
+      .def(
+          "dualMul", [](const PT & self, const ABI & abI) { return self.dualMul(abI); }, nb::arg("ab_inertia"),
+          "Transform an ABInertiad (X*IX^-1)")
+      .def(
+          "transMul", [](const PT & self, const FV & fv) { return self.transMul(fv); }, nb::arg("force_vec"),
+          "Transform a ForceVecd by the transpose (Xt*f)")
+      .def(
+          "transMul", [](const PT & self, const RBI & rbI) { return self.transMul(rbI); }, nb::arg("rb_inertia"),
+          "Transform a RBInertiad by the transpose (XtIX)")
+      .def(
+          "transMul", [](const PT & self, const ABI & abI) { return self.transMul(abI); }, nb::arg("ab_inertia"),
+          "Transform an ABInertiad by the transpose (XtIX)")
+
+      // Helper methods for extracting parts of multiplication results
+      .def("angularMul", &PT::angularMul, nb::arg("motion_vec"), "Compute angular part of X*v")
+      .def("linearMul", &PT::linearMul, nb::arg("motion_vec"), "Compute linear part of X*v")
+      .def("angularInvMul", &PT::angularInvMul, nb::arg("motion_vec"), "Compute angular part of X^-1*v")
+      .def("linearInvMul", &PT::linearInvMul, nb::arg("motion_vec"), "Compute linear part of X^-1*v")
+      .def("coupleDualMul", &PT::coupleDualMul, nb::arg("force_vec"), "Compute couple part of X*f")
+      .def("forceDualMul", &PT::forceDualMul, nb::arg("force_vec"), "Compute force part of X*f")
+      .def("coupleTransMul", &PT::coupleTransMul, nb::arg("force_vec"), "Compute couple part of Xt*f")
+      .def("forceTransMul", &PT::forceTransMul, nb::arg("force_vec"), "Compute force part of Xt*f")
+      .def("__getstate__",
+           [](const PT & self)
+           {
+             Eigen::Quaterniond quat(self.rotation());
+             // Store as (np.array, translation)
+             // quat.coeffs() gives (x, y, z, w) as Eigen::Vector4d
+             return nb::make_tuple(quat.coeffs(), self.translation());
+           })
+      .def("__setstate__",
+           [](PT & self, nb::tuple t)
+           {
+             if(t.size() != 2) throw std::runtime_error("Invalid state!");
+             Eigen::Vector4d coeffs = nb::cast<Eigen::Vector4d>(t[0]);
+             Eigen::Quaterniond quat(coeffs[3], coeffs[0], coeffs[1], coeffs[2]); // (w, x, y, z)
+             Vec3 trans = nb::cast<Vec3>(t[1]);
+             self = PT(quat, trans);
+           });
+
+  // Bind templated free functions in the sva namespace
+  sva.def("RotX", &sva::RotX<double>, nb::arg("theta"), "Create a rotation matrix about the X axis");
+  sva.def("RotY", &sva::RotY<double>, nb::arg("theta"), "Create a rotation matrix about the Y axis");
+  sva.def("RotZ", &sva::RotZ<double>, nb::arg("theta"), "Create a rotation matrix about the Z axis");
+  sva.def("rotationError", &sva::rotationError<double>, nb::arg("E_a_b"), nb::arg("E_a_c"),
+          "Compute the 3D rotation error between two matrices");
+  sva.def("rotationVelocity", &sva::rotationVelocity<double>, nb::arg("E_a_b"),
+          "Compute the 3D rotation vector of the rotation matrix");
+  sva.def("transformError", &sva::transformError<double>, nb::arg("X_a_b"), nb::arg("X_a_c"),
+          "Compute the 6D error between two PTransformd objects");
+  sva.def("transformVelocity", &sva::transformVelocity<double>, nb::arg("X_a_b"),
+          "Compute the motion vector of the matrix X_a_b");
+  sva.def("interpolate", &sva::interpolate<double>, nb::arg("from"), nb::arg("to"), nb::arg("t"),
+          "Interpolate between two PTransformd objects");
+  sva.def("sinc_inv", &sva::sinc_inv<double>, nb::arg("x"), "numerically stable inverse sinc function");
+}

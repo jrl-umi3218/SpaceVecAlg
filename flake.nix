@@ -1,26 +1,71 @@
 {
-  description = "SpaceVecAlg";
+  description = "Implementation of spatial vector algebra with the Eigen3 linear algebra library.";
 
-  inputs = {
-    mc-rtc-nix.url = "github:mc-rtc/nixpkgs";
-    # mc-rtc-nix.url = "path:/home/arnaud/devel/mc-rtc-nix/nixpkgs";
-    # mc-rtc-nix.url = "github:arntanguy/nixpkgs-1?ref=topic/flakoboros";
-  };
+  inputs.mc-rtc-nix.url = "github:mc-rtc/nixpkgs";
 
   outputs =
     inputs:
     inputs.mc-rtc-nix.lib.mkFlakoboros inputs (
       { lib, ... }:
       {
-        extraPackages = [ "ninja" ];
-        overrideAttrs.spacevecalg =
-          { drv-prev, ... }:
+        extraDevPyPackages = [ "spacevecalg" ];
+
+        overrides.spacevecalg =
+          { pkgs-final, ... }:
           {
-            src = lib.cleanSource ./.;
-            cmakeFlags = drv-prev.cmakeFlags ++ [
-              "-DPYTHON_BINDINGS=OFF"
-            ];
+            jrl-cmakemodules = pkgs-final.jrl-cmakemodulesv2;
           };
+        overrideAttrs.spacevecalg =
+          { pkgs-final, ... }:
+          {
+            pname = "spacevecalg-nanobind";
+            src = lib.cleanSource ./.;
+            outputs = [
+              "out"
+              "doc"
+            ];
+            cmakeFlags = [
+              (lib.cmakeBool "PYTHON_BINDINGS" false)
+              (lib.cmakeBool "BUILD_DOCUMENTATION" true)
+              (lib.cmakeBool "INSTALL_DOCUMENTATION" true)
+              (lib.cmakeBool "NANOBIND_BINDINGS" true)
+              (lib.cmakeBool "NANOBIND_DOCUMENTATION" true)
+              (lib.cmakeBool "BUILD_TESTING" false)
+            ];
+            nativeBuildInputs = with pkgs-final; [
+              cmake
+              jrl-cmakemodulesv2
+              doxygen
+              graphviz
+              python3Packages.python
+              python3Packages.pythonImportsCheckHook
+              python3Packages.pytestCheckHook
+              # nanobind documentation
+              sphinx
+              sphinx-cmake
+              python3Packages.sphinx-autodoc2
+              python3Packages.sphinx-book-theme
+            ];
+            propagatedBuildInputs = with pkgs-final; [
+              eigen
+              boost
+              python3Packages.nanoeigenpy
+              python3Packages.nanobind
+            ];
+
+            # pytest
+            pythonImportsCheck = [ "sva" ];
+            pytestFlagsArray = [ "$src/binding/nanobind/tests" ];
+          };
+
+        pyPackages = {
+          spacevecalg =
+            {
+              pkgs,
+              toPythonModule,
+            }:
+            (toPythonModule (pkgs.spacevecalg.override { }));
+        };
       }
     );
 }

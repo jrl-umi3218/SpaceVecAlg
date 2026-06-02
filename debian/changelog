@@ -1,3 +1,9 @@
+spacevecalg (1.2.10-1debian1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Arnaud TANGUY <arn.tanguy+ppa@gmail.com>  Tue, 02 Jun 2026 16:30:00 +0000
+
 spacevecalg (1.2.9-1debian1) unstable; urgency=medium
 
   * New upstream release

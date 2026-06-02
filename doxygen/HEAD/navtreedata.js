@@ -26,22 +26,26 @@ var NAVTREE =
 [
   [ "SpaceVecAlg", "index.html", [
     [ "Installing", "index.html#autotoc_md0", null ],
-    [ "Ubuntu LTS (16.04, 18.04, 20.04, 22.04, 24.04)", "index.html#autotoc_md1", null ],
-    [ "Homebrew (macOS and Linux)", "index.html#autotoc_md2", null ],
-    [ "vcpkg", "index.html#autotoc_md3", null ],
-    [ "Manually build from source", "index.html#autotoc_md4", [
-      [ "Dependencies", "index.html#autotoc_md5", null ],
-      [ "Building", "index.html#autotoc_md6", [
-        [ "CMake options", "index.html#autotoc_md7", null ]
-      ] ],
-      [ "Arch Linux", "index.html#autotoc_md8", null ]
+    [ "Nix", "index.html#autotoc_md1", [
+      [ "Run", "index.html#autotoc_md2", null ],
+      [ "Develop", "index.html#autotoc_md3", null ]
     ] ],
-    [ "Documentation", "index.html#autotoc_md9", [
-      [ "Appendix A table transcription to C++", "index.html#autotoc_md11", [
-        [ "Handedness - Left Hand Rule", "index.html#autotoc_md10", null ],
-        [ "Table A.2 transcription", "index.html#autotoc_md12", null ],
-        [ "Table A.4 transcription", "index.html#autotoc_md13", null ],
-        [ "Table A.3 transcription", "index.html#autotoc_md14", null ]
+    [ "Ubuntu LTS (22.04, 24.04, 26.04)", "index.html#autotoc_md4", null ],
+    [ "Homebrew (macOS and Linux)", "index.html#autotoc_md5", null ],
+    [ "vcpkg", "index.html#autotoc_md6", null ],
+    [ "Manually build from source", "index.html#autotoc_md7", [
+      [ "Dependencies", "index.html#autotoc_md8", null ],
+      [ "Building", "index.html#autotoc_md9", [
+        [ "CMake options", "index.html#autotoc_md10", null ]
+      ] ],
+      [ "Arch Linux", "index.html#autotoc_md11", null ]
+    ] ],
+    [ "Documentation", "index.html#autotoc_md12", [
+      [ "Appendix A table transcription to C++", "index.html#autotoc_md14", [
+        [ "Handedness - Left Hand Rule", "index.html#autotoc_md13", null ],
+        [ "Table A.2 transcription", "index.html#autotoc_md15", null ],
+        [ "Table A.4 transcription", "index.html#autotoc_md16", null ],
+        [ "Table A.3 transcription", "index.html#autotoc_md17", null ]
       ] ]
     ] ],
     [ "Modules", "modules.html", "modules" ],

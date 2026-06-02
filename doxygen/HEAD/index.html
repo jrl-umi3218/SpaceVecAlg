@@ -93,7 +93,23 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <h1><a class="anchor" id="autotoc_md0"></a>
 Installing</h1>
 <h1><a class="anchor" id="autotoc_md1"></a>
-Ubuntu LTS (16.04, 18.04, 20.04, 22.04, 24.04)</h1>
+Nix</h1>
+<h2><a class="anchor" id="autotoc_md2"></a>
+Run</h2>
+<p>To get a python shell with SpaceVecAlg installed</p>
+<div class="fragment"><div class="line">nix run github:jrl-umi3218/SpaceVecAlg</div>
+</div><!-- fragment --><p>Then </p><div class="fragment"><div class="line">import eigen</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md3"></a>
+Develop</h2>
+<p>To develop, use</p>
+<div class="fragment"><div class="line">gh repo clone jrl-umi3218/SpaceVecAlg</div>
+<div class="line">direnv allow # activates a nix develop environment and set the python path</div>
+<div class="line">cmake -B build $cmakeFlags</div>
+<div class="line">cmake --build build</div>
+</div><!-- fragment --><p>Then </p><div class="fragment"><div class="line">import eigen</div>
+<div class="line"># latest bindings built from source</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md4"></a>
+Ubuntu LTS (22.04, 24.04, 26.04)</h1>
 <p>You must first setup our package mirror:</p>
 <div class="fragment"><div class="line">curl -1sLf \</div>
 <div class="line">  &#39;https://dl.cloudsmith.io/public/mc-rtc/stable/setup.deb.sh&#39; \</div>
@@ -104,19 +120,19 @@ Ubuntu LTS (16.04, 18.04, 20.04, 22.04, 24.04)</h1>
 <div class="line">  | sudo -E bash</div>
 </div><!-- fragment --><p>You can then install the package:</p>
 <div class="fragment"><div class="line">sudo apt install libspacevecalg-dev python-spacevecalg python3-spacevecalg</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md2"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md5"></a>
 Homebrew (macOS and Linux)</h1>
 <p>Install from the command line using <a href="brew.sh">Homebrew</a>:</p>
 <div class="fragment"><div class="line"># Use mc-rtc tap</div>
 <div class="line">brew tap mc-rtc/mc-rtc</div>
 <div class="line"># install SpaceVecAlg and its Python bindings</div>
 <div class="line">brew install spacevecalg</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md3"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md6"></a>
 vcpkg</h1>
 <p>Use the registry available <a href="https://github.com/mc-rtc/vcpkg-registry/">here</a></p>
-<h1><a class="anchor" id="autotoc_md4"></a>
+<h1><a class="anchor" id="autotoc_md7"></a>
 Manually build from source</h1>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md8"></a>
 Dependencies</h2>
 <p>To compile you need the following tools:</p>
 <ul>
@@ -133,7 +149,7 @@ Dependencies</h2>
 <li><a href="http://cython.org/">Cython</a> &gt;= 0.25</li>
 <li><a href="https://github.com/jrl-umi3218/Eigen3ToPython">Eigen3ToPython</a> (to use the Python binding)</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md9"></a>
 Building</h2>
 <div class="fragment"><div class="line">git clone --recursive https://github.com/jrl-umi3218/SpaceVecAlg</div>
 <div class="line">cd SpaceVecAlg</div>
@@ -141,7 +157,7 @@ Building</h2>
 <div class="line">cd build</div>
 <div class="line">cmake [options] ..</div>
 <div class="line">make &amp;&amp; make intall</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md7"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md10"></a>
 CMake options</h3>
 <p>By default, the build will use the <code>python</code> and <code>pip</code> command to install the bindings for the default system version (this behaviour can be used to build the bindings in a given virtualenv). The following options allow to control this behaviour:</p>
 <ul>
@@ -151,10 +167,10 @@ CMake options</h3>
 <li><code>PYTHON_BINDING_BUILD_PYTHON2_AND_PYTHON2</code>: builds two sets of bindings one with <code>python2</code> and <code>pip2</code>, the other with <code>python3</code> and <code>pip3</code></li>
 <li><code>BUILD_TESTING</code> Enable unit tests building (ON/OFF, default: ON)</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md8"></a>
+<h2><a class="anchor" id="autotoc_md11"></a>
 Arch Linux</h2>
 <p>You can use the following <a href="https://aur.archlinux.org/packages/spacevecalg-git">AUR package</a>.</p>
-<h1><a class="anchor" id="autotoc_md9"></a>
+<h1><a class="anchor" id="autotoc_md12"></a>
 Documentation</h1>
 <p>Features:</p><ul>
 <li>Featherstone Spatial Vector Algebra C++11 implementation</li>
@@ -167,15 +183,15 @@ Documentation</h1>
 <p>The <a href="https://github.com/jorisv/sva_rbdyn_tutorials">SpaceVecAlg and RBDyn tutorial</a> is also a big ressource to understand <a href="http://nbviewer.ipython.org/github/jorisv/sva_rbdyn_tutorials/blob/master/SpaceVecAlg.ipynb">how to use SpaceVecAlg</a>. Also you will find a lot of IPython Notebook that will present real use case.</p>
 <p>Finally you can build a Doxygen documentation by typing <code>make doc</code> in the build directory. After a <code>make install</code> the documentation will be in <code>CMAKE_INSTALL_PREFIX/share/doc/SpaceVecAlg</code> (see the Installing section).</p>
 <p>An up-to-date doxygen documentation is also available <a href="http://jrl-umi3218.github.io/SpaceVecAlg/doxygen/HEAD/index.html">online</a>.</p>
-<h3><a class="anchor" id="autotoc_md10"></a>
+<h3><a class="anchor" id="autotoc_md13"></a>
 Handedness - Left Hand Rule</h3>
 <p>When getting started with SpaceVecAlg it is important to know that PTransform utlizes the Left Hand Rule for rigid body transforms and not the <a href="https://en.wikipedia.org/wiki/Right-hand_rule">Right Hand Rule</a> used by many other libraries and classes. Switching the handedness of a rigid body transform can be done with the functions in <a href="https://github.com/jrl-umi3218/SpaceVecAlg/blob/master/src/SpaceVecAlg/Conversions.h">Conversions.h</a>, or inverting the rotation component. If your transforms are not working as you expect, the handedness is worth double checking.</p>
-<h2><a class="anchor" id="autotoc_md11"></a>
+<h2><a class="anchor" id="autotoc_md14"></a>
 Appendix A table transcription to C++</h2>
 <p>In this section <code>a</code> stand for a double, <code>v</code> for a motion vector, <code>f</code> for a force vector, <code>I</code> for a rigid body inertia, <code>I^a</code> for a articulated body inertia and <code>X</code> for a plücker transfrom.</p>
 <p><code>.</code> stand for the dot product, <code>x</code>for the cross product and <code>x^{\*}</code> for the cross product dual.</p>
 <p><code>r</code> stand for a 3d translation vector, <code>E</code> for a 3d rotation matrix, <code>m</code> for a mass, <code>c</code> for the center of mass 3d vector from the body origin, <code>I_c</code> for the 3d rotational inertia matrix at CoM frame.</p>
-<h3><a class="anchor" id="autotoc_md12"></a>
+<h3><a class="anchor" id="autotoc_md15"></a>
 Table A.2 transcription</h3>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -203,7 +219,7 @@ Table A.2 transcription</h3>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">v = XtoV(X)   </td><td class="markdownTableBodyNone"><code>sva::transformVelocity(X)</code>   </td></tr>
 </table>
-<h3><a class="anchor" id="autotoc_md13"></a>
+<h3><a class="anchor" id="autotoc_md16"></a>
 Table A.4 transcription</h3>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -257,7 +273,7 @@ Table A.4 transcription</h3>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">X^{T} I^a X   </td><td class="markdownTableBodyNone"><code><a class="el" href="namespacesva.html#a259dde998fab6de957995eedfdb4d179">sva::PTransformd()</a>.transMul(sva::ABInertiad())</code>   </td></tr>
 </table>
-<h3><a class="anchor" id="autotoc_md14"></a>
+<h3><a class="anchor" id="autotoc_md17"></a>
 Table A.3 transcription</h3>
 <p>Here <code>w</code> stand for the 3d angular velocity, <code>v</code> for the 3d linear velocity, <code>n</code> for the 3d torque, <code>f</code> for the 3d force, <code>E</code> for the 3d rotation matrix, <code>r</code> for the 3d translation vector, <code>q</code> for a unit quaternion, <code>m</code> for a mass, <code>h</code> for the first moment of mass (h = m c) at body frame, <code>I</code> for the 3d rotational inertia at body frame, <code>M</code> for the 3d mass matrix, and <code>H</code> for the 3d generalized inertia matrix.</p>
 <table class="markdownTable">

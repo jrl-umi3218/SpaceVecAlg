@@ -21,10 +21,9 @@ else()
     include(FetchContent)
     FetchContent_Declare(
       "jrl-cmakemodules"
-      #GIT_REPOSITORY "https://github.com/jrl-umi3218/jrl-cmakemodules.git")
+      # GIT_REPOSITORY "https://github.com/jrl-umi3218/jrl-cmakemodules.git")
       GIT_REPOSITORY "https://github.com/arntanguy/jrl-cmakemodules.git"
-      GIT_TAG c5c1f90c12565d95bea63c0f9cb5555ec136dc72
-    )
+      GIT_TAG c5c1f90c12565d95bea63c0f9cb5555ec136dc72)
     FetchContent_MakeAvailable("jrl-cmakemodules")
     FetchContent_GetProperties("jrl-cmakemodules" SOURCE_DIR JRL_CMAKE_MODULES)
   endif()

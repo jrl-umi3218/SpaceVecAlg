@@ -65,13 +65,13 @@ class pkg_config(object):
     def __init__(self):
         compile_args = "@CYTHON_BINDINGS_COMPILE_DEFINITIONS@"
         self.compile_args = ["-D" + x for x in compile_args.split(";") if len(x)]
-        
+
         # --- Add NumPy 2.0+ compatibility fallbacks ---
         self.compile_args.append("-DNPY_NO_DEPRECATED_API=NPY_1_7_API_VERSION")
         self.compile_args.append("-DPyDataType_TYPEOBJ(obj)=((PyArray_Descr*)obj)->typeobj")
         self.compile_args.append("-DPyDataType_KIND(obj)=((PyArray_Descr*)obj)->kind")
         # ----------------------------------------------
-        
+
         self.compile_args = list(set(self.compile_args))
         include_dirs = "@CYTHON_BINDINGS_INCLUDE_DIRECTORIES@"
         include_dirs += ";{}".format(numpy_get_include())

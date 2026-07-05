@@ -33,16 +33,13 @@ macro(_setup_python_for_cython)
         set(Python3_EXECUTABLE ${DEFAULT_PYTHON3_EXECUTABLE})
       endif()
     endif()
-    
+
     # --- Standard CMake Virtual Env Management ---
     # set(Python3_FIND_VIRTUALENV "FIRST")
     # ---------------------------------------------
-    
-    find_package(
-      ${PYTHON_VERSION}
-      REQUIRED
-      COMPONENTS Interpreter Development NumPy
-    )
+
+    find_package(${PYTHON_VERSION} REQUIRED COMPONENTS Interpreter Development
+                                                       NumPy)
 
     # --- Print out the detected paths ---
     message(STATUS "---------------------------------------------------")
@@ -57,17 +54,11 @@ endmacro()
 # from an interface library
 macro(_CYTHON_DUMMY_TARGET TARGET)
   if(NOT TARGET _cython_dummy_${TARGET})
-    add_library(
-      _cython_dummy_${TARGET}
-      SHARED
-      EXCLUDE_FROM_ALL
-      "${CYTHON_DUMMY_CPP_LOCATION}"
-    )
+    add_library(_cython_dummy_${TARGET} SHARED EXCLUDE_FROM_ALL
+                "${CYTHON_DUMMY_CPP_LOCATION}")
     target_link_libraries(_cython_dummy_${TARGET} PUBLIC ${TARGET})
-    set_target_properties(
-      _cython_dummy_${TARGET}
-      PROPERTIES FOLDER "bindings/details"
-    )
+    set_target_properties(_cython_dummy_${TARGET} PROPERTIES FOLDER
+                                                             "bindings/details")
   endif()
 endmacro()
 
@@ -101,55 +92,46 @@ macro(
   SOURCES
   GENERATE_SOURCES
   TARGETS
-  WITH_TESTS
-)
-  set(
-    SETUP_LOCATION
-    "${CMAKE_CURRENT_BINARY_DIR}/${PACKAGE}/${PYTHON}/$<CONFIGURATION>"
-  )
-  set(${PACKAGE}_${PYTHON}_SETUP_LOCATION "${SETUP_LOCATION}" CACHE INTERNAL "")
+  WITH_TESTS)
+  set(SETUP_LOCATION
+      "${CMAKE_CURRENT_BINARY_DIR}/${PACKAGE}/${PYTHON}/$<CONFIGURATION>")
+  set(${PACKAGE}_${PYTHON}_SETUP_LOCATION
+      "${SETUP_LOCATION}"
+      CACHE INTERNAL "")
   if(TARGET cython_${PYTHON}_${PACKAGE})
-    target_include_directories(
-      cython_${PYTHON}_${PACKAGE}
-      INTERFACE "${SETUP_LOCATION}"
-    )
+    target_include_directories(cython_${PYTHON}_${PACKAGE}
+                               INTERFACE "${SETUP_LOCATION}")
   endif()
   if(DEFINED CMAKE_BUILD_TYPE)
-    file(
-      MAKE_DIRECTORY
-        "${CMAKE_CURRENT_BINARY_DIR}/${PACKAGE}/${PYTHON}/${CMAKE_BUILD_TYPE}"
-    )
+    file(MAKE_DIRECTORY
+         "${CMAKE_CURRENT_BINARY_DIR}/${PACKAGE}/${PYTHON}/${CMAKE_BUILD_TYPE}")
   else()
     foreach(CFG ${CMAKE_CONFIGURATION_TYPES})
-      file(
-        MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${PACKAGE}/${PYTHON}/${CFG}"
-      )
+      file(MAKE_DIRECTORY
+           "${CMAKE_CURRENT_BINARY_DIR}/${PACKAGE}/${PYTHON}/${CFG}")
     endforeach()
   endif()
   file(
-    GENERATE OUTPUT "${SETUP_LOCATION}/setup.py"
-    INPUT "${CMAKE_CURRENT_BINARY_DIR}/${PACKAGE}/setup.in.py"
-  )
+    GENERATE
+    OUTPUT "${SETUP_LOCATION}/setup.py"
+    INPUT "${CMAKE_CURRENT_BINARY_DIR}/${PACKAGE}/setup.in.py")
   # Target to build the bindings
   set(TARGET_NAME ${PACKAGE}-${PYTHON}-bindings)
   add_custom_target(
-    ${TARGET_NAME}
-    ALL
-    COMMAND
-      ${CMAKE_COMMAND} -E chdir "${SETUP_LOCATION}" ${PYTHON_EXECUTABLE} setup.py build_ext
-      --inplace
+    ${TARGET_NAME} ALL
+    COMMAND ${CMAKE_COMMAND} -E chdir "${SETUP_LOCATION}" ${PYTHON_EXECUTABLE}
+            setup.py build_ext --inplace
     COMMENT "Generating local ${PACKAGE} ${PYTHON} bindings"
     DEPENDS ${SOURCES} ${GENERATE_SOURCES}
-    SOURCES ${SOURCES} ${GENERATE_SOURCES}
-  )
+    SOURCES ${SOURCES} ${GENERATE_SOURCES})
   set_target_properties(${TARGET_NAME} PROPERTIES FOLDER "bindings")
   add_dependencies(${TARGET_NAME} ${TARGETS})
   # Copy sources
   foreach(F ${GENERATE_SOURCES})
     file(
-      GENERATE OUTPUT "${SETUP_LOCATION}/${F}"
-      INPUT "${CMAKE_CURRENT_BINARY_DIR}/${PACKAGE}/configured/${F}"
-    )
+      GENERATE
+      OUTPUT "${SETUP_LOCATION}/${F}"
+      INPUT "${CMAKE_CURRENT_BINARY_DIR}/${PACKAGE}/configured/${F}")
   endforeach()
   set(I 0)
   foreach(SRC ${SOURCES})
@@ -157,7 +139,7 @@ macro(
       if(NOT ${SRC} MATCHES "^${CMAKE_CURRENT_BINARY_DIR}")
         message(
           FATAL_ERROR
-          "Source provided to ADD_CYTHON_BINDINGS must have a relative path or an absolute path in CMAKE_CURRENT_BINARY_DIR (${CMAKE_CURRENT_BINARY_DIR})"
+            "Source provided to ADD_CYTHON_BINDINGS must have a relative path or an absolute path in CMAKE_CURRENT_BINARY_DIR (${CMAKE_CURRENT_BINARY_DIR})"
         )
       endif()
       file(RELATIVE_PATH REL_SRC "${CMAKE_CURRENT_BINARY_DIR}" "${SRC}")
@@ -170,23 +152,18 @@ macro(
     add_custom_target(
       copy-sources-${I}-${TARGET_NAME}
       COMMAND ${CMAKE_COMMAND} -E copy_if_different ${FILE_IN} ${FILE_OUT}
-      DEPENDS ${FILE_IN}
-    )
-    set_target_properties(
-      copy-sources-${I}-${TARGET_NAME}
-      PROPERTIES FOLDER "bindings/details"
-    )
+      DEPENDS ${FILE_IN})
+    set_target_properties(copy-sources-${I}-${TARGET_NAME}
+                          PROPERTIES FOLDER "bindings/details")
     add_dependencies(${TARGET_NAME} copy-sources-${I}-${TARGET_NAME})
     math(EXPR I "${I} + 1")
   endforeach()
   # Manual target to force regeneration
   add_custom_target(
     force-${TARGET_NAME}
-    COMMAND
-      ${CMAKE_COMMAND} -E chdir "${SETUP_LOCATION}" ${PYTHON_EXECUTABLE} setup.py build_ext
-      --inplace --force
-    COMMENT "Generating local ${PACKAGE} ${PYTHON} bindings (forced)"
-  )
+    COMMAND ${CMAKE_COMMAND} -E chdir "${SETUP_LOCATION}" ${PYTHON_EXECUTABLE}
+            setup.py build_ext --inplace --force
+    COMMENT "Generating local ${PACKAGE} ${PYTHON} bindings (forced)")
   set_target_properties(force-${TARGET_NAME} PROPERTIES FOLDER "bindings")
   # Tests
   if(${WITH_TESTS} AND ${BUILD_TESTING})
@@ -201,10 +178,8 @@ macro(
     foreach(TGT ${TARGETS})
       _is_interface_library(${TGT} IS_INTERFACE)
       if(NOT ${IS_INTERFACE})
-        set(
-          EXTRA_LD_PATH
-          "$<TARGET_FILE_DIR:${TGT}>${PATH_SEP}${EXTRA_LD_PATH}"
-        )
+        set(EXTRA_LD_PATH
+            "$<TARGET_FILE_DIR:${TGT}>${PATH_SEP}${EXTRA_LD_PATH}")
       endif()
     endforeach()
     if(${WITH_TESTS})
@@ -213,43 +188,36 @@ macro(
         COMMAND
           ${CMAKE_COMMAND} -E env "${ENV_VAR}=${EXTRA_LD_PATH}$ENV{${ENV_VAR}}"
           ${CMAKE_COMMAND} -E env "PYTHONPATH=.${PATH_SEP}$ENV{PYTHONPATH}"
-          ${CMAKE_COMMAND} -E chdir "${SETUP_LOCATION}" ${PYTHON_EXECUTABLE} -m pytest
-      )
+          ${CMAKE_COMMAND} -E chdir "${SETUP_LOCATION}" ${PYTHON_EXECUTABLE} -m
+          pytest)
     endif()
   endif()
   # Install targets
   if(DEFINED PYTHON_DEB_ROOT)
     add_custom_target(
       install-${TARGET_NAME}
-      COMMAND
-        ${CMAKE_COMMAND} -E chdir "${SETUP_LOCATION}" ${PYTHON_EXECUTABLE} setup.py install
-        --root=${PYTHON_DEB_ROOT} --install-layout=deb
-      COMMENT "Install ${PACKAGE} ${PYTHON} bindings (Debian layout)"
-    )
+      COMMAND ${CMAKE_COMMAND} -E chdir "${SETUP_LOCATION}" ${PYTHON_EXECUTABLE}
+              setup.py install --root=${PYTHON_DEB_ROOT} --install-layout=deb
+      COMMENT "Install ${PACKAGE} ${PYTHON} bindings (Debian layout)")
   else()
     set(PIP_EXTRA_OPTIONS "")
     # set(PIP_EXTRA_OPTIONS "--no-system-install")
     add_custom_target(
       install-${TARGET_NAME}
-      COMMAND
-        ${CMAKE_COMMAND} -E chdir "${SETUP_LOCATION}" ${PYTHON_EXECUTABLE} -m pip install .
-        ${PIP_EXTRA_OPTIONS} --upgrade
-      COMMENT "Install ${PACKAGE} ${PYTHON} bindings"
-    )
+      COMMAND ${CMAKE_COMMAND} -E chdir "${SETUP_LOCATION}" ${PYTHON_EXECUTABLE}
+              -m pip install . ${PIP_EXTRA_OPTIONS} --upgrade
+      COMMENT "Install ${PACKAGE} ${PYTHON} bindings")
     set_target_properties(install-${TARGET_NAME} PROPERTIES FOLDER "bindings")
     add_custom_target(
       uninstall-${TARGET_NAME}
-      COMMAND
-        ${CMAKE_COMMAND} -E chdir "${SETUP_LOCATION}" ${PYTHON_EXECUTABLE} -m pip uninstall
-        -y ${PACKAGE}
-      COMMENT "Removing ${PACKAGE} ${PYTHON} bindings"
-    )
+      COMMAND ${CMAKE_COMMAND} -E chdir "${SETUP_LOCATION}" ${PYTHON_EXECUTABLE}
+              -m pip uninstall -y ${PACKAGE}
+      COMMENT "Removing ${PACKAGE} ${PYTHON} bindings")
     set_target_properties(uninstall-${TARGET_NAME} PROPERTIES FOLDER "bindings")
     add_dependencies(uninstall uninstall-${TARGET_NAME})
   endif()
   install(
-    CODE
-      "EXECUTE_PROCESS(COMMAND \"${CMAKE_COMMAND}\" --build \"${CMAKE_BINARY_DIR}\" --config \${CMAKE_INSTALL_CONFIG_NAME} --target install-${TARGET_NAME})"
+    CODE "EXECUTE_PROCESS(COMMAND \"${CMAKE_COMMAND}\" --build \"${CMAKE_BINARY_DIR}\" --config \${CMAKE_INSTALL_CONFIG_NAME} --target install-${TARGET_NAME})"
   )
 endmacro()
 
@@ -287,21 +255,10 @@ endmacro()
 macro(ADD_CYTHON_BINDINGS PACKAGE)
   set(options)
   set(oneValueArgs VERSION)
-  set(
-    multiValueArgs
-    MODULES
-    TARGETS
-    EXPORT_SOURCES
-    PRIVATE_SOURCES
-    GENERATE_SOURCES
-  )
-  cmake_parse_arguments(
-    CYTHON_BINDINGS
-    "${options}"
-    "${oneValueArgs}"
-    "${multiValueArgs}"
-    ${ARGN}
-  )
+  set(multiValueArgs MODULES TARGETS EXPORT_SOURCES PRIVATE_SOURCES
+                     GENERATE_SOURCES)
+  cmake_parse_arguments(CYTHON_BINDINGS "${options}" "${oneValueArgs}"
+                        "${multiValueArgs}" ${ARGN})
   if(NOT DEFINED CYTHON_BINDINGS_VERSION)
     set(CYTHON_BINDINGS_VERSION ${PROJECT_VERSION})
   endif()
@@ -320,7 +277,7 @@ macro(ADD_CYTHON_BINDINGS PACKAGE)
   if(NOT DEFINED CYTHON_BINDINGS_TARGETS)
     message(
       FATAL_ERROR
-      "Error in ADD_CYTHON_BINDINGS, bindings should depend on at least one target"
+        "Error in ADD_CYTHON_BINDINGS, bindings should depend on at least one target"
     )
   endif()
   # Setup the basic setup script
@@ -344,86 +301,57 @@ macro(ADD_CYTHON_BINDINGS PACKAGE)
   foreach(TGT ${CYTHON_BINDINGS_TARGETS})
     _is_interface_library(${TGT} IS_INTERFACE)
     if(${IS_INTERFACE})
-      _CYTHON_DUMMY_TARGET(${TGT})
+      _cython_dummy_target(${TGT})
+      list(APPEND CYTHON_BINDINGS_COMPILE_DEFINITIONS
+           "$<TARGET_PROPERTY:_cython_dummy_${TGT},COMPILE_DEFINITIONS>")
       list(
         APPEND CYTHON_BINDINGS_COMPILE_DEFINITIONS
-        "$<TARGET_PROPERTY:_cython_dummy_${TGT},COMPILE_DEFINITIONS>"
-      )
-      list(
-        APPEND CYTHON_BINDINGS_COMPILE_DEFINITIONS
-        "$<TARGET_PROPERTY:_cython_dummy_${TGT},INTERFACE_COMPILE_DEFINITIONS>"
-      )
-      list(
-        APPEND CYTHON_BINDINGS_CXX_STANDARD
-        "$<TARGET_PROPERTY:_cython_dummy_${TGT},CXX_STANDARD>"
-      )
+        "$<TARGET_PROPERTY:_cython_dummy_${TGT},INTERFACE_COMPILE_DEFINITIONS>")
+      list(APPEND CYTHON_BINDINGS_CXX_STANDARD
+           "$<TARGET_PROPERTY:_cython_dummy_${TGT},CXX_STANDARD>")
+      list(APPEND CYTHON_BINDINGS_INCLUDE_DIRECTORIES
+           "$<TARGET_PROPERTY:_cython_dummy_${TGT},INCLUDE_DIRECTORIES>")
       list(
         APPEND CYTHON_BINDINGS_INCLUDE_DIRECTORIES
-        "$<TARGET_PROPERTY:_cython_dummy_${TGT},INCLUDE_DIRECTORIES>"
-      )
-      list(
-        APPEND CYTHON_BINDINGS_INCLUDE_DIRECTORIES
-        "$<TARGET_PROPERTY:_cython_dummy_${TGT},INTERFACE_INCLUDE_DIRECTORIES>"
-      )
-      list(
-        APPEND CYTHON_BINDINGS_LINK_FLAGS
-        "$<TARGET_PROPERTY:_cython_dummy_${TGT},LINK_FLAGS>"
-      )
+        "$<TARGET_PROPERTY:_cython_dummy_${TGT},INTERFACE_INCLUDE_DIRECTORIES>")
+      list(APPEND CYTHON_BINDINGS_LINK_FLAGS
+           "$<TARGET_PROPERTY:_cython_dummy_${TGT},LINK_FLAGS>")
     else()
       _is_static_library(${TGT} IS_STATIC)
-      list(
-        APPEND CYTHON_BINDINGS_COMPILE_DEFINITIONS
-        "$<TARGET_PROPERTY:${TGT},COMPILE_DEFINITIONS>"
-      )
-      list(
-        APPEND CYTHON_BINDINGS_COMPILE_DEFINITIONS
-        "$<TARGET_PROPERTY:${TGT},INTERFACE_COMPILE_DEFINITIONS>"
-      )
-      list(
-        APPEND CYTHON_BINDINGS_CXX_STANDARD
-        "$<TARGET_PROPERTY:${TGT},CXX_STANDARD>"
-      )
-      list(
-        APPEND CYTHON_BINDINGS_INCLUDE_DIRECTORIES
-        "$<TARGET_PROPERTY:${TGT},INCLUDE_DIRECTORIES>"
-      )
-      list(
-        APPEND CYTHON_BINDINGS_INCLUDE_DIRECTORIES
-        "$<TARGET_PROPERTY:${TGT},INTERFACE_INCLUDE_DIRECTORIES>"
-      )
-      list(
-        APPEND CYTHON_BINDINGS_LINK_FLAGS
-        "$<TARGET_PROPERTY:${TGT},LINK_FLAGS>"
-      )
+      list(APPEND CYTHON_BINDINGS_COMPILE_DEFINITIONS
+           "$<TARGET_PROPERTY:${TGT},COMPILE_DEFINITIONS>")
+      list(APPEND CYTHON_BINDINGS_COMPILE_DEFINITIONS
+           "$<TARGET_PROPERTY:${TGT},INTERFACE_COMPILE_DEFINITIONS>")
+      list(APPEND CYTHON_BINDINGS_CXX_STANDARD
+           "$<TARGET_PROPERTY:${TGT},CXX_STANDARD>")
+      list(APPEND CYTHON_BINDINGS_INCLUDE_DIRECTORIES
+           "$<TARGET_PROPERTY:${TGT},INCLUDE_DIRECTORIES>")
+      list(APPEND CYTHON_BINDINGS_INCLUDE_DIRECTORIES
+           "$<TARGET_PROPERTY:${TGT},INTERFACE_INCLUDE_DIRECTORIES>")
+      list(APPEND CYTHON_BINDINGS_LINK_FLAGS
+           "$<TARGET_PROPERTY:${TGT},LINK_FLAGS>")
       list(APPEND CYTHON_BINDINGS_LIBRARIES "$<TARGET_LINKER_FILE:${TGT}>")
       list(APPEND CYTHON_BINDINGS_TARGET_FILES "$<TARGET_LINKER_FILE:${TGT}>")
       if(${IS_STATIC})
-        list(
-          APPEND CYTHON_BINDINGS_STATIC_LIBRARIES
-          "$<TARGET_LINKER_FILE:${TGT}>"
-        )
+        list(APPEND CYTHON_BINDINGS_STATIC_LIBRARIES
+             "$<TARGET_LINKER_FILE:${TGT}>")
       endif()
     endif()
   endforeach()
-  configure_file(
-    "${CYTHON_SETUP_IN_PY_LOCATION}"
-    "${CMAKE_CURRENT_BINARY_DIR}/${PACKAGE}/setup.in.py"
-  )
+  configure_file("${CYTHON_SETUP_IN_PY_LOCATION}"
+                 "${CMAKE_CURRENT_BINARY_DIR}/${PACKAGE}/setup.in.py")
   foreach(F ${CYTHON_BINDINGS_GENERATE_SOURCES})
-    configure_file(
-      ${F}
-      "${CMAKE_CURRENT_BINARY_DIR}/${PACKAGE}/configured/${F}"
-    )
+    configure_file(${F}
+                   "${CMAKE_CURRENT_BINARY_DIR}/${PACKAGE}/configured/${F}")
   endforeach()
-  _ADD_CYTHON_BINDINGS_TARGETS(
+  _add_cython_bindings_targets(
     "python3"
     ${Python3_EXECUTABLE}
     ${PACKAGE}
     "${CYTHON_BINDINGS_SOURCES}"
     "${CYTHON_BINDINGS_GENERATE_SOURCES}"
     "${CYTHON_BINDINGS_TARGETS}"
-    ${WITH_TESTS}
-  )
+    ${WITH_TESTS})
 endmacro()
 
 # In this macro PYTHON is the module we should search and PYTHON_B is the name
@@ -438,20 +366,16 @@ macro(_MAKE_CYTHON_LIBRARY PACKAGE PYTHON PYTHON_B OUT)
     execute_process(
       COMMAND ${PYTHON_B} -c "import sys; print(sys.version_info.major);"
       OUTPUT_VARIABLE ${PYTHON}_FIND_VERSION_MAJOR
-      OUTPUT_STRIP_TRAILING_WHITESPACE
-    )
+      OUTPUT_STRIP_TRAILING_WHITESPACE)
     execute_process(
       COMMAND ${PYTHON_B} -c "import sys; print(sys.version_info.minor);"
       OUTPUT_VARIABLE ${PYTHON}_FIND_VERSION_MINOR
-      OUTPUT_STRIP_TRAILING_WHITESPACE
-    )
+      OUTPUT_STRIP_TRAILING_WHITESPACE)
     find_package(${PYTHON} REQUIRED COMPONENTS Interpreter Development)
     add_library(${TGT_NAME} INTERFACE)
     target_link_libraries(${TGT_NAME} INTERFACE ${${PYTHON}_LIBRARIES})
-    target_include_directories(
-      ${TGT_NAME}
-      INTERFACE "${${PYTHON}_INCLUDE_DIRS}"
-    )
+    target_include_directories(${TGT_NAME}
+                               INTERFACE "${${PYTHON}_INCLUDE_DIRS}")
     if(DEFINED ${SETUP_LOCATION_VAR})
       set(SETUP_LOCATION "${${SETUP_LOCATION_VAR}}")
       target_include_directories(${TGT_NAME} INTERFACE "${SETUP_LOCATION}")
@@ -461,7 +385,7 @@ macro(_MAKE_CYTHON_LIBRARY PACKAGE PYTHON PYTHON_B OUT)
 endmacro()
 
 macro(_APPEND_CYTHON_LIBRARY PACKAGE PYTHON PYTHON_B OUT)
-  _MAKE_CYTHON_LIBRARY(${PACKAGE} ${PYTHON} ${PYTHON_B} LIB)
+  _make_cython_library(${PACKAGE} ${PYTHON} ${PYTHON_B} LIB)
   list(APPEND ${OUT} ${LIB})
 endmacro()
 
@@ -479,7 +403,7 @@ macro(GET_CYTHON_LIBRARIES PACKAGE VAR)
     list(APPEND CMAKE_MODULE_PATH ${PYTHON_EXTRA_CMAKE_MODULE_PATH})
   endif()
   set(${VAR})
-  _APPEND_CYTHON_LIBRARY(${PACKAGE} Python3 python3 ${VAR})
+  _append_cython_library(${PACKAGE} Python3 python3 ${VAR})
 endmacro()
 
 # .rst: .. command:: GET_PYTHON_NAMES(VAR)
@@ -530,21 +454,10 @@ endmacro()
 function(MAKE_CYTHON_BINDINGS PACKAGE)
   set(options)
   set(oneValueArgs VERSION)
-  set(
-    multiValueArgs
-    MODULES
-    TARGETS
-    EXPORT_SOURCES
-    PRIVATE_SOURCES
-    GENERATE_SOURCES
-  )
-  cmake_parse_arguments(
-    CYTHON_BINDINGS
-    "${options}"
-    "${oneValueArgs}"
-    "${multiValueArgs}"
-    ${ARGN}
-  )
+  set(multiValueArgs MODULES TARGETS EXPORT_SOURCES PRIVATE_SOURCES
+                     GENERATE_SOURCES)
+  cmake_parse_arguments(CYTHON_BINDINGS "${options}" "${oneValueArgs}"
+                        "${multiValueArgs}" ${ARGN})
   if(NOT DEFINED CYTHON_BINDINGS_VERSION)
     set(CYTHON_BINDINGS_VERSION ${PROJECT_VERSION})
   endif()
@@ -563,7 +476,7 @@ function(MAKE_CYTHON_BINDINGS PACKAGE)
   if(NOT DEFINED CYTHON_BINDINGS_TARGETS)
     message(
       FATAL_ERROR
-      "Error in ADD_CYTHON_BINDINGS, bindings should depend on at least one target"
+        "Error in ADD_CYTHON_BINDINGS, bindings should depend on at least one target"
     )
   endif()
   set(CYTHON_BINDINGS_SOURCES)
@@ -580,43 +493,30 @@ function(MAKE_CYTHON_BINDINGS PACKAGE)
       list(APPEND CYTHON_BINDINGS_COMPILE_SOURCES ${SRC})
     endif()
   endforeach()
-  add_library(
-    _cython_dummy_${PACKAGE}
-    SHARED
-    EXCLUDE_FROM_ALL
-    "${CYTHON_DUMMY_CPP_LOCATION}"
-  )
-  target_link_libraries(
-    _cython_dummy_${PACKAGE}
-    INTERFACE ${CYTHON_BINDINGS_TARGETS}
-  )
-  set_target_properties(
-    _cython_dummy_${PACKAGE}
-    PROPERTIES FOLDER "bindings/details"
-  )
+  add_library(_cython_dummy_${PACKAGE} SHARED EXCLUDE_FROM_ALL
+              "${CYTHON_DUMMY_CPP_LOCATION}")
+  target_link_libraries(_cython_dummy_${PACKAGE}
+                        INTERFACE ${CYTHON_BINDINGS_TARGETS})
+  set_target_properties(_cython_dummy_${PACKAGE} PROPERTIES FOLDER
+                                                            "bindings/details")
   foreach(PYTHON ${PYTHON_BINDING_VERSIONS})
-    set(
-      PACKAGE_OUTPUT_DIRECTORY
-      ${CMAKE_CURRENT_BINARY_DIR}/${PYTHON}/$<CONFIG>/${PACKAGE}
-    )
-  if(DEFINED PYTHON_DEB_ROOT)
+    set(PACKAGE_OUTPUT_DIRECTORY
+        ${CMAKE_CURRENT_BINARY_DIR}/${PYTHON}/$<CONFIG>/${PACKAGE})
+    if(DEFINED PYTHON_DEB_ROOT)
       execute_process(
         COMMAND
           ${${PYTHON}_EXECUTABLE} -c
           "import sysconfig; print(sysconfig.get_path('platlib', vars={'base': ''}))"
         RESULT_VARIABLE PYTHON_INSTALL_DESTINATION_FOUND
         OUTPUT_VARIABLE PYTHON_INSTALL_DESTINATION
-        OUTPUT_STRIP_TRAILING_WHITESPACE
-      )
+        OUTPUT_STRIP_TRAILING_WHITESPACE)
     else()
       execute_process(
-        COMMAND
-          ${${PYTHON}_EXECUTABLE} -c
-          "import sysconfig; print(sysconfig.get_path('purelib'))"
+        COMMAND ${${PYTHON}_EXECUTABLE} -c
+                "import sysconfig; print(sysconfig.get_path('purelib'))"
         RESULT_VARIABLE PYTHON_INSTALL_DESTINATION_FOUND
         OUTPUT_VARIABLE PYTHON_INSTALL_DESTINATION
-        OUTPUT_STRIP_TRAILING_WHITESPACE
-      )
+        OUTPUT_STRIP_TRAILING_WHITESPACE)
       # Debian/Ubuntu has a specific problem here See
       # https://github.com/mesonbuild/meson/issues/8739 for an overview of the
       # problem
@@ -626,35 +526,31 @@ function(MAKE_CYTHON_BINDINGS PACKAGE)
             ${Python3_EXECUTABLE} -c
             "import sys; print(\"python{}.{}\".format(sys.version_info.major, sys.version_info.minor));"
           OUTPUT_VARIABLE PYTHON_VERSION
-          OUTPUT_STRIP_TRAILING_WHITESPACE
-        )
-        string(
-          REPLACE "python3/"
-          "${PYTHON_VERSION}/"
-          PYTHON_INSTALL_DESTINATION
-          "${PYTHON_INSTALL_DESTINATION}"
-        )
+          OUTPUT_STRIP_TRAILING_WHITESPACE)
+        string(REPLACE "python3/" "${PYTHON_VERSION}/"
+                       PYTHON_INSTALL_DESTINATION
+                       "${PYTHON_INSTALL_DESTINATION}")
       endif()
     endif()
     foreach(F ${CYTHON_BINDINGS_GENERATE_SOURCES})
       configure_file(${F} ${CMAKE_CURRENT_BINARY_DIR}/${PYTHON}/cmake/${F})
       file(
-        GENERATE OUTPUT ${PACKAGE_OUTPUT_DIRECTORY}/${F}
-        INPUT ${CMAKE_CURRENT_BINARY_DIR}/${PYTHON}/cmake/${F}
-      )
+        GENERATE
+        OUTPUT ${PACKAGE_OUTPUT_DIRECTORY}/${F}
+        INPUT ${CMAKE_CURRENT_BINARY_DIR}/${PYTHON}/cmake/${F})
     endforeach()
     foreach(F ${CYTHON_BINDINGS_EXPORT_SOURCES})
       file(
-        GENERATE OUTPUT ${PACKAGE_OUTPUT_DIRECTORY}/${F}
-        INPUT ${CMAKE_CURRENT_SOURCE_DIR}/${F}
-      )
+        GENERATE
+        OUTPUT ${PACKAGE_OUTPUT_DIRECTORY}/${F}
+        INPUT ${CMAKE_CURRENT_SOURCE_DIR}/${F})
     endforeach()
     foreach(F ${CYTHON_BINDINGS_PRIVATE_SOURCES})
       if(${F} MATCHES "^tests/")
         file(
-          GENERATE OUTPUT ${PACKAGE_OUTPUT_DIRECTORY}/${F}
-          INPUT ${CMAKE_CURRENT_SOURCE_DIR}/${F}
-        )
+          GENERATE
+          OUTPUT ${PACKAGE_OUTPUT_DIRECTORY}/${F}
+          INPUT ${CMAKE_CURRENT_SOURCE_DIR}/${F})
       endif()
     endforeach()
     install(
@@ -663,10 +559,9 @@ function(MAKE_CYTHON_BINDINGS PACKAGE)
       # We can't use PACKAGE_OUTPUT_DIRECTORY because it contains a
       # generator-expression
       REGEX "^${CMAKE_CURRENT_BINARY_DIR}/${PYTHON}/[A-z]*/${PACKAGE}/tests.*"
-        EXCLUDE
+            EXCLUDE
       PATTERN ".pytest_cache/*" EXCLUDE
-      PATTERN "__pycache__/*" EXCLUDE
-    )
+      PATTERN "__pycache__/*" EXCLUDE)
     # Make an uninstall rule that:
     #
     # * Remove the installed module fully (including the empty directory)
@@ -675,10 +570,8 @@ function(MAKE_CYTHON_BINDINGS PACKAGE)
     set(UNINSTALL_TARGET_NAME uninstall-${PACKAGE}-${PYTHON}-bindings)
     add_custom_target(
       ${UNINSTALL_TARGET_NAME}
-      COMMAND
-        ${CMAKE_COMMAND} -E rm -rf
-        ${PYTHON_INSTALL_DESTINATION}/${PACKAGE}*.dist-info
-    )
+      COMMAND ${CMAKE_COMMAND} -E rm -rf
+              ${PYTHON_INSTALL_DESTINATION}/${PACKAGE}*.dist-info)
     add_dependencies(uninstall ${UNINSTALL_TARGET_NAME})
     if(WITH_TESTS AND BUILD_TESTING)
       if(WIN32)
@@ -692,10 +585,8 @@ function(MAKE_CYTHON_BINDINGS PACKAGE)
       foreach(TGT ${CYTHON_BINDINGS_TARGETS})
         _is_interface_library(${TGT} IS_INTERFACE)
         if(NOT ${IS_INTERFACE})
-          set(
-            EXTRA_LD_PATH
-            "$<TARGET_FILE_DIR:${TGT}>${PATH_SEP}${EXTRA_LD_PATH}"
-          )
+          set(EXTRA_LD_PATH
+              "$<TARGET_FILE_DIR:${TGT}>${PATH_SEP}${EXTRA_LD_PATH}")
         endif()
       endforeach()
       add_test(
@@ -704,17 +595,14 @@ function(MAKE_CYTHON_BINDINGS PACKAGE)
           ${CMAKE_COMMAND} -E env "${ENV_VAR}=${EXTRA_LD_PATH}$ENV{${ENV_VAR}}"
           ${CMAKE_COMMAND} -E env "PYTHONPATH=.${PATH_SEP}$ENV{PYTHONPATH}"
           ${CMAKE_COMMAND} -E chdir "${PACKAGE_OUTPUT_DIRECTORY}"
-          ${${PYTHON}_EXECUTABLE} -m pytest
-      )
+          ${${PYTHON}_EXECUTABLE} -m pytest)
     endif()
     foreach(MOD ${CYTHON_BINDINGS_MODULES})
       string(REPLACE "." "/" SRC ${MOD})
       set(SRC "${SRC}.pyx")
       if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/${SRC}")
         message(
-          FATAL_ERROR
-          "Expected to find ${CMAKE_CURRENT_SOURCE_DIR}/${SRC}"
-        )
+          FATAL_ERROR "Expected to find ${CMAKE_CURRENT_SOURCE_DIR}/${SRC}")
       endif()
       string(REGEX REPLACE ".pyx$" ".cpp" SRC_CPP ${SRC})
       string(REGEX REPLACE "/[^/]*$" "" SRC_DIR ${SRC})
@@ -734,11 +622,10 @@ function(MAKE_CYTHON_BINDINGS PACKAGE)
           -I${CMAKE_CURRENT_SOURCE_DIR}/include
           ${CMAKE_CURRENT_SOURCE_DIR}/${SRC}
         DEPENDS ${CYTHON_BINDINGS_SOURCES} ${CYTHON_BINDINGS_TARGETS}
-        COMMAND_EXPAND_LISTS
-      )
+        COMMAND_EXPAND_LISTS)
       set(TARGET_NAME ${LIB_NAME}_${PYTHON})
       if(${PYTHON} STREQUAL "Python3")
-        Python3_add_library(${TARGET_NAME} MODULE ${CPP_OUT})
+        python3_add_library(${TARGET_NAME} MODULE ${CPP_OUT})
       else()
         message(FATAL_ERROR "Unknown Python value: ${PYTHON}")
       endif()
@@ -752,49 +639,34 @@ function(MAKE_CYTHON_BINDINGS PACKAGE)
         # Cython usually includes the deprecated NumPy API
         target_compile_options(${TARGET_NAME} PRIVATE -Wno-cpp)
         # Cython does some fishy conversions
-        target_compile_options(
-          ${TARGET_NAME}
-          PRIVATE -Wno-conversion -Wno-overflow
-        )
+        target_compile_options(${TARGET_NAME} PRIVATE -Wno-conversion
+                                                      -Wno-overflow)
         # Generating API might look like unusued variables
-        target_compile_options(
-          ${TARGET_NAME}
-          PRIVATE -Wno-unused-variable -Wno-unused-function
-        )
+        target_compile_options(${TARGET_NAME} PRIVATE -Wno-unused-variable
+                                                      -Wno-unused-function)
       endif()
+      target_include_directories(${TARGET_NAME}
+                                 PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
       target_include_directories(
-        ${TARGET_NAME}
-        PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include
-      )
-      target_include_directories(
-        ${TARGET_NAME}
-        INTERFACE ${CMAKE_CURRENT_BINARY_DIR}/${PYTHON}
-      )
+        ${TARGET_NAME} INTERFACE ${CMAKE_CURRENT_BINARY_DIR}/${PYTHON})
       target_link_libraries(
-        ${TARGET_NAME}
-        PUBLIC ${CYTHON_BINDINGS_TARGETS} ${PYTHON}::Python ${PYTHON}::NumPy
-      )
+        ${TARGET_NAME} PUBLIC ${CYTHON_BINDINGS_TARGETS} ${PYTHON}::Python
+                              ${PYTHON}::NumPy)
       set_target_properties(
         ${TARGET_NAME}
-        PROPERTIES
-          CXX_VISIBILITY_PRESET default
-          PREFIX ""
-          DEBUG_POSTFIX ""
-          OUTPUT_NAME ${LIB_OUTPUT_NAME}
-          LIBRARY_OUTPUT_DIRECTORY ${MOD_OUTPUT_DIRECTORY}
-          RUNTIME_OUTPUT_DIRECTORY ${MOD_OUTPUT_DIRECTORY}
-      )
+        PROPERTIES CXX_VISIBILITY_PRESET default
+                   PREFIX ""
+                   DEBUG_POSTFIX ""
+                   OUTPUT_NAME ${LIB_OUTPUT_NAME}
+                   LIBRARY_OUTPUT_DIRECTORY ${MOD_OUTPUT_DIRECTORY}
+                   RUNTIME_OUTPUT_DIRECTORY ${MOD_OUTPUT_DIRECTORY})
       if(NOT TARGET ${UNINSTALL_TARGET_NAME}-${MOD_FOLDER})
         add_custom_target(
           ${UNINSTALL_TARGET_NAME}-${MOD_FOLDER}
-          COMMAND
-            ${CMAKE_COMMAND} -E rm -rf
-            ${PYTHON_INSTALL_DESTINATION}/${MOD_FOLDER}
-        )
-        add_dependencies(
-          ${UNINSTALL_TARGET_NAME}
-          ${UNINSTALL_TARGET_NAME}-${MOD_FOLDER}
-        )
+          COMMAND ${CMAKE_COMMAND} -E rm -rf
+                  ${PYTHON_INSTALL_DESTINATION}/${MOD_FOLDER})
+        add_dependencies(${UNINSTALL_TARGET_NAME}
+                         ${UNINSTALL_TARGET_NAME}-${MOD_FOLDER})
       endif()
     endforeach()
   endforeach()

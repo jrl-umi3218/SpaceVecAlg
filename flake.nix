@@ -19,6 +19,7 @@
           { pkgs-final, ... }:
           {
             pname = "spacevecalg-nanobind";
+            dontWrapQtApps = true;
             src = lib.cleanSource ./.;
             outputs = [
               "out"

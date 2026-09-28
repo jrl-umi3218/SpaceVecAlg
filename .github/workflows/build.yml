@@ -40,8 +40,8 @@ jobs:
         windows: |
           pip: Cython coverage pytest numpy
           github:
-            - path: eigenteam/eigen-git-mirror
-              ref: 3.3.7
+            - path: eigen-mirror/eigen
+              ref: 3.4.1
         github: |
           - path: jrl-umi3218/Eigen3ToPython
         macos-options: -DPYTHON_BINDING:BOOL=OFF

@@ -21,10 +21,9 @@ else()
     include(FetchContent)
     FetchContent_Declare(
       "jrl-cmakemodules"
-      #GIT_REPOSITORY "https://github.com/jrl-umi3218/jrl-cmakemodules.git")
+      # GIT_REPOSITORY "https://github.com/jrl-umi3218/jrl-cmakemodules.git")
       GIT_REPOSITORY "https://github.com/arntanguy/jrl-cmakemodules.git"
-      GIT_TAG c5c1f90c12565d95bea63c0f9cb5555ec136dc72
-    )
+      GIT_TAG 81c1a9bd25756a0f5562480ebe923a0a11115230)
     FetchContent_MakeAvailable("jrl-cmakemodules")
     FetchContent_GetProperties("jrl-cmakemodules" SOURCE_DIR JRL_CMAKE_MODULES)
   endif()
@@ -41,9 +40,13 @@ set(PROJECT_URL "https://github.com/jrl-umi3218/SpaceVecAlg")
 set(PROJECT_VERSION 1.2.10)
 set(PROJECT_USE_CMAKE_EXPORT TRUE)
 set(PYTHON_BINDING_USE_PYTEST ON)
+option(PYTHON_BINDING "Build the Python binding" ON)
 
 include(${JRL_CMAKE_MODULES}/base.cmake)
-include(${JRL_CMAKE_MODULES}/cython/cython.cmake)
+if(PYTHON_BINDING)
+  include(${JRL_CMAKE_MODULES}/python.cmake)
+  include(${JRL_CMAKE_MODULES}/cython/cython.cmake)
+endif()
 include(${JRL_CMAKE_MODULES}/msvc-specific.cmake)
 
 # Disable -Werror on Unix for now.

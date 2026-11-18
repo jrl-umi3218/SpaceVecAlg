@@ -1,9 +1,12 @@
 var searchData=
 [
-  ['dependencies_0',['Dependencies',['../index.html#autotoc_md7',1,'']]],
-  ['dlldirectorymanager_1',['DllDirectoryManager',['../class_1_1DllDirectoryManager.html',1,'DllDirectoryManager'],['../classsva_1_1DllDirectoryManager.html',1,'sva.DllDirectoryManager']]],
-  ['documentation_2',['Documentation',['../index.html#autotoc_md11',1,'']]],
-  ['dot_3',['dot',['../classsva_1_1MotionVec.html#ac6f537daade96c05ad329b2e5690d8eb',1,'sva::MotionVec']]],
-  ['dualmatrix_4',['dualMatrix',['../classsva_1_1PTransform.html#a62557fb6c098245e624b81512b95de6d',1,'sva::PTransform']]],
-  ['dualmul_5',['dualMul',['../classsva_1_1PTransform.html#a3e1349fae3b09375d5ec49c8f88c9a5e',1,'sva::PTransform::dualMul(const ForceVec&lt; T &gt; &amp;fv) const'],['../classsva_1_1PTransform.html#abee09629bcbeeec92ab4936396de9bda',1,'sva::PTransform::dualMul(const Eigen::MatrixBase&lt; Derived &gt; &amp;fv, Eigen::MatrixBase&lt; Derived &gt; &amp;result) const'],['../classsva_1_1PTransform.html#a2e84ad55dd642decbadf979c073ba609',1,'sva::PTransform::dualMul(const RBInertia&lt; T &gt; &amp;rbI) const'],['../classsva_1_1PTransform.html#a5a729e6e0acc888df06a01dc7faaa906',1,'sva::PTransform::dualMul(const ABInertia&lt; T &gt; &amp;rbI) const']]]
+  ['for_20mc_5frtc_0',['nanobind python bindings for mc_rtc',['../dir_7f0dcc5c70bcdde622944150737aad2c.html#autotoc_md0',1,'']]],
+  ['force_1',['force',['../classsva_1_1ForceVec.html#add7a7f3b2cad8a9f9e3627a2ab1fdd11',1,'sva::ForceVec']]],
+  ['forcedualmul_2',['forceDualMul',['../classsva_1_1PTransform.html#ac77d100e0ec6dfdca21c5d4ed5b31b59',1,'sva::PTransform']]],
+  ['forcetransmul_3',['forceTransMul',['../classsva_1_1PTransform.html#ad384719b299bbc1ce1073591510bc0c3',1,'sva::PTransform']]],
+  ['forcevec_4',['ForceVec',['../classsva_1_1ForceVec.html',1,'sva::ForceVec&lt; T &gt;'],['../classsva_1_1ForceVec.html#a7e9d1c4ca61297af37a34de6b27d505b',1,'sva::ForceVec::ForceVec(const vector6_t &amp;vec)'],['../classsva_1_1ForceVec.html#a9b3a676a68d07834110c8094c9c33620',1,'sva::ForceVec::ForceVec(const vector3_t &amp;couple, const vector3_t &amp;force)']]],
+  ['from_20source_5',['Manually build from source',['../index.html#autotoc_md9',1,'']]],
+  ['from_20sva_20types_6',['Convert to and from sva types',['../group__Conversions.html',1,'']]],
+  ['fromaffine_7',['fromAffine',['../namespacesva_1_1conversions.html#aa8c07380f6d75944f835dd25430904ed',1,'sva::conversions']]],
+  ['fromhomogeneous_8',['fromHomogeneous',['../namespacesva_1_1conversions.html#a6e34e04936ffef6648a56081c0a941e8',1,'sva::conversions']]]
 ];

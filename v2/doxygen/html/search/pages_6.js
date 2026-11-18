@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['bindings_20for_20mc_5frtc_0',['nanobind python bindings for mc_rtc',['../dir_7f0dcc5c70bcdde622944150737aad2c.html#autotoc_md0',1,'']]],
-  ['build_1',['Build',['../dir_7f0dcc5c70bcdde622944150737aad2c.html#autotoc_md1',1,'']]],
-  ['build_20from_20source_2',['Manually build from source',['../index.html#autotoc_md6',1,'']]],
-  ['building_3',['Building',['../index.html#autotoc_md8',1,'']]]
+  ['c_0',['Appendix A table transcription to C++',['../index.html#autotoc_md16',1,'']]],
+  ['cmake_20options_1',['CMake options',['../index.html#autotoc_md12',1,'']]]
 ];

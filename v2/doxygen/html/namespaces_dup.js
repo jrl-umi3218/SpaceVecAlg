@@ -10,13 +10,13 @@ var namespaces_dup =
         [ "LeftHanded", "namespacesva_1_1conversions.html#a6bf64591c3e46c0a00767a33150595d5", null ],
         [ "RightHanded", "namespacesva_1_1conversions.html#adfa051e762e1b8048e916c9297df6ac9", null ]
       ] ],
-      [ "DllDirectoryManager", "classsva_1_1DllDirectoryManager.html", "classsva_1_1DllDirectoryManager" ],
       [ "ABInertia", "classsva_1_1ABInertia.html", "classsva_1_1ABInertia" ],
       [ "AdmittanceVec", "classsva_1_1AdmittanceVec.html", "classsva_1_1AdmittanceVec" ],
+      [ "DllDirectoryManager", "classsva_1_1DllDirectoryManager.html", "classsva_1_1DllDirectoryManager" ],
       [ "ForceVec", "classsva_1_1ForceVec.html", "classsva_1_1ForceVec" ],
+      [ "ImpedanceVec", "classsva_1_1ImpedanceVec.html", "classsva_1_1ImpedanceVec" ],
       [ "MotionVec", "classsva_1_1MotionVec.html", "classsva_1_1MotionVec" ],
-      [ "RBInertia", "classsva_1_1RBInertia.html", "classsva_1_1RBInertia" ],
       [ "PTransform", "classsva_1_1PTransform.html", "classsva_1_1PTransform" ],
-      [ "ImpedanceVec", "classsva_1_1ImpedanceVec.html", "classsva_1_1ImpedanceVec" ]
+      [ "RBInertia", "classsva_1_1RBInertia.html", "classsva_1_1RBInertia" ]
     ] ]
 ];

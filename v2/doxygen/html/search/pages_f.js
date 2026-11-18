@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['options_0',['CMake options',['../index.html#autotoc_md9',1,'']]]
+  ['python_20bindings_20for_20mc_5frtc_0',['nanobind python bindings for mc_rtc',['../dir_7f0dcc5c70bcdde622944150737aad2c.html#autotoc_md0',1,'']]]
 ];

@@ -1,7 +1,10 @@
 var searchData=
 [
-  ['rbinertia_0',['RBInertia',['../classsva_1_1RBInertia.html',1,'sva::RBInertia&lt; T &gt;'],['../classsva_1_1RBInertia.html#a9c14050634eced8cf16c86bfff66a9e2',1,'sva::RBInertia::RBInertia(T m, const vector3_t &amp;h, const matrix3_t &amp;I)'],['../classsva_1_1RBInertia.html#aaada1412b73b025064c577e99cf427bc',1,'sva::RBInertia::RBInertia(T m, const vector3_t &amp;h, const Eigen::TriangularView&lt; matrix3_t, Eigen::Lower &gt; &amp;ltI)']]],
-  ['righthanded_1',['RightHanded',['../namespacesva_1_1conversions.html#adfa051e762e1b8048e916c9297df6ac9',1,'sva::conversions']]],
-  ['rotation_2',['rotation',['../classsva_1_1PTransform.html#adafba0ae02952f5feb00718edfe679d9',1,'sva::PTransform::rotation() const'],['../classsva_1_1PTransform.html#a8ed879c2337ba893886b4c173a9c700a',1,'sva::PTransform::rotation()']]],
-  ['rule_3',['Handedness - Left Hand Rule',['../index.html#autotoc_md12',1,'']]]
+  ['safe_5fadd_5fdll_5fdirectory_0',['safe_add_dll_directory',['../class_1_1DllDirectoryManager.html#aeedab479f9a8244afa34fae3c2854b6e',1,'DllDirectoryManager.safe_add_dll_directory()'],['../classsva_1_1DllDirectoryManager.html#ac36f15d3ec2c68831879a3a7326e9e6c',1,'sva.DllDirectoryManager.safe_add_dll_directory()']]],
+  ['source_1',['Manually build from source',['../index.html#autotoc_md9',1,'']]],
+  ['spacevecalg_2',['SpaceVecAlg',['../index.html',1,'']]],
+  ['spacevecalgconan_3',['SpaceVecAlgConan',['../classconanfile_1_1SpaceVecAlgConan.html',1,'conanfile']]],
+  ['spacevecalgtestconan_4',['SpaceVecAlgTestConan',['../classconanfile_1_1SpaceVecAlgTestConan.html',1,'conanfile']]],
+  ['sva_20types_5',['Convert to and from sva types',['../group__Conversions.html',1,'']]],
+  ['sva_3a_3aconversions_6',['conversions',['../namespacesva_1_1conversions.html',1,'sva']]]
 ];

@@ -1,18 +1,18 @@
 var annotated_dup =
 [
     [ "conanfile", null, [
-      [ "SpaceVecAlgTestConan", "classconanfile_1_1SpaceVecAlgTestConan.html", null ],
-      [ "SpaceVecAlgConan", "classconanfile_1_1SpaceVecAlgConan.html", null ]
+      [ "SpaceVecAlgConan", "classconanfile_1_1SpaceVecAlgConan.html", null ],
+      [ "SpaceVecAlgTestConan", "classconanfile_1_1SpaceVecAlgTestConan.html", null ]
     ] ],
     [ "sva", null, [
-      [ "DllDirectoryManager", "classsva_1_1DllDirectoryManager.html", "classsva_1_1DllDirectoryManager" ],
       [ "ABInertia", "classsva_1_1ABInertia.html", "classsva_1_1ABInertia" ],
       [ "AdmittanceVec", "classsva_1_1AdmittanceVec.html", "classsva_1_1AdmittanceVec" ],
+      [ "DllDirectoryManager", "classsva_1_1DllDirectoryManager.html", "classsva_1_1DllDirectoryManager" ],
       [ "ForceVec", "classsva_1_1ForceVec.html", "classsva_1_1ForceVec" ],
+      [ "ImpedanceVec", "classsva_1_1ImpedanceVec.html", "classsva_1_1ImpedanceVec" ],
       [ "MotionVec", "classsva_1_1MotionVec.html", "classsva_1_1MotionVec" ],
-      [ "RBInertia", "classsva_1_1RBInertia.html", "classsva_1_1RBInertia" ],
       [ "PTransform", "classsva_1_1PTransform.html", "classsva_1_1PTransform" ],
-      [ "ImpedanceVec", "classsva_1_1ImpedanceVec.html", "classsva_1_1ImpedanceVec" ]
+      [ "RBInertia", "classsva_1_1RBInertia.html", "classsva_1_1RBInertia" ]
     ] ],
     [ "test_sva_containers", null, [
       [ "TestSVAPTransformdVector", "classtest__sva__containers_1_1TestSVAPTransformdVector.html", null ],

@@ -26,22 +26,26 @@ var NAVTREE =
 [
   [ "SpaceVecAlg", "index.html", [
     [ "Installing", "index.html#autotoc_md2", null ],
-    [ "Ubuntu LTS (16.04, 18.04, 20.04, 22.04, 24.04)", "index.html#autotoc_md3", null ],
-    [ "Homebrew (macOS and Linux)", "index.html#autotoc_md4", null ],
-    [ "vcpkg", "index.html#autotoc_md5", null ],
-    [ "Manually build from source", "index.html#autotoc_md6", [
-      [ "Dependencies", "index.html#autotoc_md7", null ],
-      [ "Building", "index.html#autotoc_md8", [
-        [ "CMake options", "index.html#autotoc_md9", null ]
-      ] ],
-      [ "Arch Linux", "index.html#autotoc_md10", null ]
+    [ "Nix", "index.html#autotoc_md3", [
+      [ "Run", "index.html#autotoc_md4", null ],
+      [ "Develop", "index.html#autotoc_md5", null ]
     ] ],
-    [ "Documentation", "index.html#autotoc_md11", [
-      [ "Appendix A table transcription to C++", "index.html#autotoc_md13", [
-        [ "Handedness - Left Hand Rule", "index.html#autotoc_md12", null ],
-        [ "Table A.2 transcription", "index.html#autotoc_md14", null ],
-        [ "Table A.4 transcription", "index.html#autotoc_md15", null ],
-        [ "Table A.3 transcription", "index.html#autotoc_md16", null ]
+    [ "Ubuntu LTS (22.04, 24.04, 26.04)", "index.html#autotoc_md6", null ],
+    [ "Homebrew (macOS and Linux)", "index.html#autotoc_md7", null ],
+    [ "vcpkg", "index.html#autotoc_md8", null ],
+    [ "Manually build from source", "index.html#autotoc_md9", [
+      [ "Dependencies", "index.html#autotoc_md10", null ],
+      [ "Building", "index.html#autotoc_md11", [
+        [ "CMake options", "index.html#autotoc_md12", null ]
+      ] ],
+      [ "Arch Linux", "index.html#autotoc_md13", null ]
+    ] ],
+    [ "Documentation", "index.html#autotoc_md14", [
+      [ "Appendix A table transcription to C++", "index.html#autotoc_md16", [
+        [ "Handedness - Left Hand Rule", "index.html#autotoc_md15", null ],
+        [ "Table A.2 transcription", "index.html#autotoc_md17", null ],
+        [ "Table A.4 transcription", "index.html#autotoc_md18", null ],
+        [ "Table A.3 transcription", "index.html#autotoc_md19", null ]
       ] ]
     ] ],
     [ "Topics", "topics.html", "topics" ],
@@ -75,6 +79,6 @@ var NAVTREEINDEX =
 "index.html#autotoc_md10"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronization';
-var SYNCOFFMSG = 'click to enable panel synchronization';
-var LISTOFALLMEMBERS = 'List of all members';
+const SYNCONMSG = 'click to disable panel synchronization';
+const SYNCOFFMSG = 'click to enable panel synchronization';
+const LISTOFALLMEMBERS = 'List of all members';

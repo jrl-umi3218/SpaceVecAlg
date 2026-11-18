@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['rule_0',['Handedness - Left Hand Rule',['../index.html#autotoc_md12',1,'']]]
+  ['source_0',['Manually build from source',['../index.html#autotoc_md9',1,'']]],
+  ['spacevecalg_1',['SpaceVecAlg',['../index.html',1,'']]]
 ];

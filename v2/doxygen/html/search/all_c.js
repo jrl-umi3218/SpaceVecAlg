@@ -1,9 +1,12 @@
 var searchData=
 [
-  ['identity_0',['Identity',['../classsva_1_1PTransform.html#afcf6e0fa0a604acfbd8290e925f616c3',1,'sva::PTransform']]],
-  ['impedancevec_1',['ImpedanceVec',['../classsva_1_1ImpedanceVec.html',1,'sva::ImpedanceVec&lt; T &gt;'],['../classsva_1_1ImpedanceVec.html#a883d518b905e9f5713032106108b6f07',1,'sva::ImpedanceVec::ImpedanceVec()'],['../classsva_1_1ImpedanceVec.html#a521286301a765cfe57cdc773bd6fdf96',1,'sva::ImpedanceVec::ImpedanceVec(const vector6_t &amp;vec)'],['../classsva_1_1ImpedanceVec.html#abcdc938fd51bb1ce9c993a7587990b1a',1,'sva::ImpedanceVec::ImpedanceVec(const vector3_t &amp;angular, const vector3_t &amp;linear)'],['../classsva_1_1ImpedanceVec.html#af3c5f6573c5551196f116f3f76f0c5d7',1,'sva::ImpedanceVec::ImpedanceVec(T angular, T linear)']]],
-  ['inertia_2',['inertia',['../classsva_1_1ABInertia.html#af29d625f832c2b8eae2e3d5b92a0d8df',1,'sva::ABInertia::inertia()'],['../classsva_1_1RBInertia.html#a9bd37d109db9a02a6adc7ee4173568ed',1,'sva::RBInertia::inertia()']]],
-  ['installing_3',['Installing',['../index.html#autotoc_md2',1,'']]],
-  ['inv_4',['inv',['../classsva_1_1PTransform.html#a3eb005923b840a6f6dd7d278170bd6dc',1,'sva::PTransform']]],
-  ['invmul_5',['invMul',['../classsva_1_1PTransform.html#a14a63cb9912562a00d761f53d18be649',1,'sva::PTransform::invMul(const MotionVec&lt; T &gt; &amp;mv) const'],['../classsva_1_1PTransform.html#a926b1150bacc8c4136c165a9ee5aae93',1,'sva::PTransform::invMul(const Eigen::MatrixBase&lt; Derived &gt; &amp;mv, Eigen::MatrixBase&lt; Derived &gt; &amp;result) const']]]
+  ['left_20hand_20rule_0',['Handedness - Left Hand Rule',['../index.html#autotoc_md15',1,'']]],
+  ['lefthanded_1',['LeftHanded',['../namespacesva_1_1conversions.html#a6bf64591c3e46c0a00767a33150595d5',1,'sva::conversions']]],
+  ['linear_2',['linear',['../classsva_1_1AdmittanceVec.html#a1c0f0641914633acc08bdf719d18e0e0',1,'sva::AdmittanceVec::linear() const'],['../classsva_1_1AdmittanceVec.html#ad6a3382543852fe7968b4788127a2ca5',1,'sva::AdmittanceVec::linear()'],['../classsva_1_1ImpedanceVec.html#a4c08069f526706402142a0124315c528',1,'sva::ImpedanceVec::linear() const'],['../classsva_1_1ImpedanceVec.html#a565b05ca63420a7eafeb5e190e0e686d',1,'sva::ImpedanceVec::linear()'],['../classsva_1_1MotionVec.html#a40417eb6d52f859ebd73096ea375080e',1,'sva::MotionVec::linear() const'],['../classsva_1_1MotionVec.html#a16985b59c7905af7cb8774a6f0c4b3e2',1,'sva::MotionVec::linear()']]],
+  ['linearinvmul_3',['linearInvMul',['../classsva_1_1PTransform.html#a7d91d45d41db1ce53ca6104aa033162f',1,'sva::PTransform']]],
+  ['linearmul_4',['linearMul',['../classsva_1_1PTransform.html#a61f6aa92e48f305432add470ea25400b',1,'sva::PTransform']]],
+  ['linux_5',['Linux',['../index.html#autotoc_md13',1,'Arch Linux'],['../index.html#autotoc_md7',1,'Homebrew (macOS and Linux)']]],
+  ['lowertriangularinertia_6',['lowerTriangularInertia',['../classsva_1_1ABInertia.html#a4883ab9e1ec4b5f188a8030f1c664ff3',1,'sva::ABInertia::lowerTriangularInertia()'],['../classsva_1_1RBInertia.html#a7660a94150722ab58dd0399c673fca70',1,'sva::RBInertia::lowerTriangularInertia()']]],
+  ['lowertriangularmassmatrix_7',['lowerTriangularMassMatrix',['../classsva_1_1ABInertia.html#a392f25a6309f2b4045d73b5a7823ee37',1,'sva::ABInertia']]],
+  ['lts_2022_2004_2024_2004_2026_2004_8',['Ubuntu LTS (22.04, 24.04, 26.04)',['../index.html#autotoc_md6',1,'']]]
 ];

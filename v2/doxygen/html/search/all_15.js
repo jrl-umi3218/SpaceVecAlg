@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['ubuntu_20lts_2016_2004_2018_2004_2020_2004_2022_2004_2024_2004_0',['Ubuntu LTS (16.04, 18.04, 20.04, 22.04, 24.04)',['../index.html#autotoc_md3',1,'']]]
+  ['vcpkg_0',['vcpkg',['../index.html#autotoc_md8',1,'']]],
+  ['vector_1',['vector',['../classsva_1_1AdmittanceVec.html#abe64e5b0c50d202a453db3223ab15249',1,'sva::AdmittanceVec::vector()'],['../classsva_1_1ForceVec.html#a56f0cb72ae300735ffe585754967be09',1,'sva::ForceVec::vector()'],['../classsva_1_1ImpedanceVec.html#a0bd706cf22e62571059a29094beb77c4',1,'sva::ImpedanceVec::vector()'],['../classsva_1_1MotionVec.html#a17d2ce38005722542199bee7010f7ba8',1,'sva::MotionVec::vector()']]]
 ];

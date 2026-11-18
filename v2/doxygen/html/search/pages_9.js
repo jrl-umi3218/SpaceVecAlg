@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['for_20mc_5frtc_0',['nanobind python bindings for mc_rtc',['../dir_7f0dcc5c70bcdde622944150737aad2c.html#autotoc_md0',1,'']]],
-  ['from_20source_1',['Manually build from source',['../index.html#autotoc_md6',1,'']]]
+  ['hand_20rule_0',['Handedness - Left Hand Rule',['../index.html#autotoc_md15',1,'']]],
+  ['handedness_20left_20hand_20rule_1',['Handedness - Left Hand Rule',['../index.html#autotoc_md15',1,'']]],
+  ['homebrew_20macos_20and_20linux_2',['Homebrew (macOS and Linux)',['../index.html#autotoc_md7',1,'']]]
 ];

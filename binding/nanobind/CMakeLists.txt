@@ -64,6 +64,7 @@ jrl_python_compile_all(DIRECTORY ${CMAKE_BINARY_DIR}/lib/site-packages/sva
                        VERBOSE)
 
 jrl_python_compute_install_dir(python_install_dir)
+
 install(
   DIRECTORY ${CMAKE_BINARY_DIR}/lib/site-packages/sva
   DESTINATION ${python_install_dir}

@@ -2,18 +2,21 @@ name: "CI - Nix"
 on:
   push:
     branches:
+      - devel
       - master
+      - main
   pull_request:
     branches:
+      - devel
       - master
+      - main
 jobs:
   nix:
     runs-on: "${{ matrix.os }}-latest"
     strategy:
+      fail-fast: false
       matrix:
-        os: [ubuntu, macos]
-        #extends: ["", "pkgs-eigen5", "pkgs-full", "pkgs-nanobind"]
-        extends: [""]
+        os: [ubuntu]
     steps:
       - uses: actions/checkout@v6
       - uses: cachix/install-nix-action@v31
@@ -23,7 +26,14 @@ jobs:
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
           extraPullNames: "ros,gepetto"
       - run: nix flake check -L
-      - run: nix build -L ".#${{ matrix.extends }}"
+      - run: nix build -L
+      - run: nix build -L .#spacevecalg.doc
+      - name: Deploy to GitHub Pages (temporarely for nix-nanobind branch)
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GH_PAGES_TOKEN }}
+          publish_dir: ./result-doc/share/doc/sva
+          destination_dir: v2
   check:
     if: always()
     name: check-macos-linux-nix

@@ -1,0 +1,24 @@
+[build-system]
+build-backend = "cmeel"
+requires = [
+        "cmeel[build]",
+        "jrl-cmakemodules",
+        "cmeel-boost",
+        "cmeel-eigen >=3.4",
+        "nanobind >= 2.4.0",
+        "nanoeigenpy"
+]
+
+[project]
+authors = [{email = "arnaud.tanguy@lirmm.fr", name = "Arnaud Tanguy"}]
+description = "Implementation of spatial vector algebra with the Eigen3 linear algebra library."
+license = "BSD-2-Clause"
+name = "SpaceVecAlg"
+requires-python = ">= 3.8"
+version = "1.2.10"
+dependencies = [ "nanoeigenpy" ]
+
+[project.urls]
+# changelog = "https://github.com/cmake-wheel/cmeel-example/blob/main/CHANGELOG.md"
+homepage = "https://github.com/jrl-umi3218/SpaceVecAlg"
+repository = "https://github.com/jrl-umi3218/SpaceVecAlg.git"

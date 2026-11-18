@@ -54,7 +54,7 @@ jrl_print_options_summary()
 # ------------
 # DEPENDENCIES
 # ------------
-jrl_find_package(Eigen3 REQUIRED)
+jrl_find_package(Eigen3 REQUIRED EXPECTED_TARGETS Eigen3::Eigen)
 if(BUILD_DOCUMENTATION)
   jrl_find_package(Doxygen REQUIRED COMPONENTS dot)
 endif()

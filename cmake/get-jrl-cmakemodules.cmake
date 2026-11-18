@@ -32,8 +32,8 @@ if(ENV{JRL_CMAKEMODULES_SOURCE_DIR})
 endif()
 
 # Option 3: Try to look for the installed package
-message(STATUS "Looking for jrl-cmakemodules (version: >=1.1.2) package...")
-find_package(jrl-cmakemodules 1.1.2 CONFIG QUIET)
+message(STATUS "Looking for jrl-cmakemodules (version: >=2.1.0) package...")
+find_package(jrl-cmakemodules 2.1.0 CONFIG QUIET)
 
 # If we have the package, we are done here.
 if(jrl-cmakemodules_FOUND)
@@ -48,6 +48,6 @@ message(STATUS "Fetching jrl-cmakemodules using FetchContent...")
 include(FetchContent)
 FetchContent_Declare(
   jrl-cmakemodules
-  GIT_REPOSITORY https://github.com/ahoarau/jrl-cmakemodules
-  GIT_TAG jrl-next)
+  GIT_REPOSITORY https://github.com/jrl-umi3218/jrl-cmakemodules
+  GIT_TAG master)
 FetchContent_MakeAvailable(jrl-cmakemodules)

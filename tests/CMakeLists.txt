@@ -2,7 +2,7 @@
 # Copyright 2012-2025 CNRS-UM LIRMM, CNRS-AIST JRL
 #
 
-jrl_find_package(Boost CONFIG REQUIRED COMPONENTS unit_test_framework timer)
+find_package(Boost CONFIG REQUIRED COMPONENTS unit_test_framework timer)
 
 macro(addUnitTest name)
   if(${BUILD_TESTING})
